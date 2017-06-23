@@ -21,10 +21,11 @@ For older releases, see the [release history](release-history).
 
 ### Installation
 
-Installation instructions are available for different versions:
+Installation instructions [for the latest release](release-docs/current/Installation)
+can be found in the release documentation.
 
-  * [latest development version](https://github.com/openstreetmap/Nominatim/blob/master/docs/Installation.md)
-  * [latest release](docs/current/Installation)
+Up-to-date installations [for the latest development version](https://github.com/openstreetmap/Nominatim/blob/master/docs/Installation.md) are
+avaiable in the github repository.
 
 For older releases, see the [release history](release-history).
 
