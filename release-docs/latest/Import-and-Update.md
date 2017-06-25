@@ -8,7 +8,7 @@ Importing a new database
 The following instructions explain how to create a Nominatim database
 from an OSM planet file and how to keep the database up to date. It
 is assumed that you have already successfully installed the Nominatim
-software itself, if not return to the [installation page](Installation.md).
+software itself, if not return to the [installation page](Installation).
 
 Configuration setup in settings/local.php
 -----------------------------------------

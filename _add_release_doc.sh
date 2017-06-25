@@ -24,7 +24,8 @@ parmalink: /release-docs/$VERSION/$BASENAME
 ---
 MDHEAD
 
-    cat $fl >> $DESTDIR/$fl
+# fix markdown links on the way
+sed 's:\.md):):g' $fl >> $DESTDIR/$fl
 
 done
 

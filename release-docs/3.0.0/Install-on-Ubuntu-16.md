@@ -68,7 +68,7 @@ Setting up PostgreSQL
 
 Tune the postgresql configuration, which is located in 
 `/etc/postgresql/9.5/main/postgresql.conf`. See section *Postgres Tuning* in
-[the installation page](Installation.md) for the parameters to change.
+[the installation page](Installation) for the parameters to change.
 
 Restart the postgresql service after updating this config file.
 
@@ -144,4 +144,4 @@ EOF
 
 
 Nominatim is now ready to use. Continue with
-[importing a database from OSM data](Import-and-Update.md).
+[importing a database from OSM data](Import-and-Update).

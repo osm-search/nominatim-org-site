@@ -9,8 +9,8 @@ This page contains generic installation instructions for Nominatim and its
 prerequisites. There are also step-by-step instructions available for
 the following operating systems:
 
-  * [Ubuntu 16.04](Install-on-Ubuntu-16.md)
-  * [CentOS 7.2](Install-on-Centos-7.md)
+  * [Ubuntu 16.04](Install-on-Ubuntu-16)
+  * [CentOS 7.2](Install-on-Centos-7)
 
 These OS-specific instructions can also be found in executable form
 in the `vagrant/` directory.
@@ -27,7 +27,7 @@ For compiling:
   * a recent C++ compiler
 
 Nominatim comes with its own version of osm2pgsql. See the
-[osm2pgsql README](../osm2pgsql/README.md) for additional dependencies
+[osm2pgsql README](../osm2pgsql/README) for additional dependencies
 required for compiling osm2pgsql.
 
 For running tests:
@@ -155,4 +155,4 @@ Restart the nginx and php5-fpm services and the website should now be available
 on http://localhost/.
 
 
-Now continue with [importing the database](Import-and-Update.md).
+Now continue with [importing the database](Import-and-Update).

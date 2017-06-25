@@ -80,7 +80,7 @@ with initializing the database, then enable the server to start at boot:
 
 Next tune the postgresql configuration, which is located in 
 `/var/lib/pgsql/data/postgresql.conf`. See section *Postgres Tuning* in
-[the installation page](Installation.md) for the parameters to change.
+[the installation page](Installation) for the parameters to change.
 
 Now start the postgresql service after updating this config file.
 
@@ -172,4 +172,4 @@ EOF
 
 
 Nominatim is now ready to use. Continue with
-[importing a database from OSM data](Import-and-Update.md).
+[importing a database from OSM data](Import-and-Update).
