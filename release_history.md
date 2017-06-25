@@ -14,10 +14,12 @@ Released: {{rel.date}}
 
 Download: [Nominatim-{{rel.name}}.tar.bz2](http://www.nominatim.org/release/Nominatim-{{rel.name}}.tar.bz2)
 
-{% if rel.doc == "wiki" %}
+[Release Notes](https://github.com/openstreetmap/Nominatim/releases/tag/v{{rel.name}})
+{% if rel.doc == "wiki" -%}
 [Installation instructions](http://wiki.openstreetmap.org/wiki/Nominatim/Installation)
-{% else %}
+{% else -%}
 [Installation instructions](docs/{{rel.name}}/Installation)
 {% endif %}
+
 
 {% endfor %}

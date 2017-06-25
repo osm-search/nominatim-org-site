@@ -20,7 +20,7 @@ for fl in *md; do
     cat > $DESTDIR/$fl << MDHEAD
 ---
 layout: page
-parmalink: /docs/$VERSION/$BASENAME
+parmalink: /release-docs/$VERSION/$BASENAME
 ---
 MDHEAD
 
