@@ -18,7 +18,7 @@ Download: [Nominatim-{{rel.name}}.tar.bz2](http://www.nominatim.org/release/Nomi
 {% if rel.doc == "wiki" -%}
 [Installation instructions](http://wiki.openstreetmap.org/wiki/Nominatim/Installation)
 {% else -%}
-[Installation instructions](docs/{{rel.name}}/Installation)
+[Installation instructions](/release-docs/{{rel.name}}/Installation)
 {% endif %}
 
 
