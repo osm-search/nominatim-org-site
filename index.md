@@ -5,11 +5,6 @@ permalink: /
 
 **Nominatim** (from the Latin, *by name*) is a tool to search OSM data by name and address and to generate synthetic addresses of OSM points (reverse geocoding).
 
-### [Usage](https://wiki.openstreetmap.org/wiki/Nominatim)
-
-For usage see the [Nominatim Usage site](https://wiki.openstreetmap.org/wiki/Nominatim)
-on the OpenStreetMap wiki.
-
 ### Download
 
 You can download the latest development version from
@@ -19,15 +14,15 @@ The latest release is [{{site.data.releases[0].name}}](http://www.nominatim.org/
 
 For older releases, see the [release history](release-history).
 
-### Installation
+### Documentation
 
-Installation instructions [for the latest release](release-docs/latest/Installation)
-can be found in the release documentation.
-
-Up-to-date installations [for the latest development version](https://github.com/openstreetmap/Nominatim/blob/master/docs/Installation.md) are
-avaiable in the github repository.
-
-For older releases, see the [release history](release-history).
+ * [Usage](https://wiki.openstreetmap.org/wiki/Nominatim) gives a short overview
+   over the API.
+ * [FAQ](faq) answers commonly asked questions by users of the API.
+ * [Installation](release-docs/latest/Installation) contains instructions for
+   installing your own Nominatim database using the latest
+   release. Installation instructions for the [development version](https://github.com/openstreetmap/Nominatim/blob/master/docs/Installation.md) can be found
+   on github. For older releases, see the [release history](release-history).
 
 ### Additional Files
 
