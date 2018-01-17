@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    <url>
+     <loc>http://nominatim.org/</loc>
+     <lastmod>2018-01-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+        
+    <url>
+     <loc>http://nominatim.org/admin/Installation/</loc>
+     <lastmod>2018-01-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://nominatim.org/admin/Import-and-Update/</loc>
+     <lastmod>2018-01-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://nominatim.org/admin/Migration/</loc>
+     <lastmod>2018-01-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://nominatim.org/admin/Faq/</loc>
+     <lastmod>2018-01-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>http://nominatim.org/appendix/Install-on-Centos-7/</loc>
+     <lastmod>2018-01-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://nominatim.org/appendix/Install-on-Ubuntu-16/</loc>
+     <lastmod>2018-01-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+</urlset>

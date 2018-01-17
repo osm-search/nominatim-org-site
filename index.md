@@ -19,10 +19,15 @@ For older releases, see the [release history](release-history).
  * [Usage](https://wiki.openstreetmap.org/wiki/Nominatim) gives a short overview
    over the API.
  * [FAQ](faq) answers commonly asked questions by users of the API.
- * [Installation](release-docs/latest/Installation) contains instructions for
+ * [Installation](release-docs/latest/) contains instructions for
    installing your own Nominatim database using the latest
-   release. Installation instructions for the [development version](https://github.com/openstreetmap/Nominatim/blob/master/docs/Installation.md) can be found
-   on github. For older releases, see the [release history](release-history).
+   release.
+
+
+Documentation for the development version can be found in the
+[develop section](/release-docs/develop/). For older releases,
+check out the [release history](release-history).
+
 
 ### Additional Files
 
