@@ -9,28 +9,28 @@
    doc : 3.0.0
  - name: 2.5.1
    date: 2016-09-06
-   doc : wiki
+   doc : 2.5.1
  - name: 2.5.0
    date: 2016-02-21
-   doc : wiki
+   doc : 2.5.1
  - name: 2.4.0
    date: 2015-05-07
-   doc : wiki
+   doc : none
  - name: 2.3.1
    date: 2014-12-01
-   doc : wiki
+   doc : none
  - name: 2.3.0
    date: 2014-10-04
-   doc : wiki
+   doc : none
  - name: 2.2.0
    date: 2014-02-24
-   doc : wiki
+   doc : none
  - name: 2.1.0
    date: 2013-09-27
-   doc : wiki
+   doc : none
  - name: 2.0.1
    date: 2013-03-06
-   doc : wiki
+   doc : none
  - name: 2.0.0
    date: 2012-10-31
-   doc : wiki
+   doc : none

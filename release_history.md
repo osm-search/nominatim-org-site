@@ -15,10 +15,8 @@ Released: {{rel.date}}
 Download: [Nominatim-{{rel.name}}.tar.bz2](https://www.nominatim.org/release/Nominatim-{{rel.name}}.tar.bz2)
 
 [Release Notes](https://github.com/openstreetmap/Nominatim/releases/tag/v{{rel.name}})
-{% if rel.doc == "wiki" -%}
-[Installation instructions](https://wiki.openstreetmap.org/wiki/Nominatim/Installation)
-{% else -%}
-[Release documentation](/release-docs/{{rel.name}}/)
+{% if rel.doc != "none" -%}
+[Release documentation](/release-docs/{{rel.doc}}/)
 {% endif %}
 
 
