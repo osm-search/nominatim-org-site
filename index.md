@@ -16,17 +16,16 @@ For older releases, see the [release history](release-history).
 
 ### Documentation
 
- * [Usage](https://wiki.openstreetmap.org/wiki/Nominatim) gives a short overview
-   over the API.
- * [FAQ](faq) answers commonly asked questions by users of the API.
- * [Installation](release-docs/latest/) contains instructions for
-   installing your own Nominatim database using the latest
-   release.
+See the [documentation of the latest release](release-docs/latest/) for
 
+ * [API documentation](release-docs/latest/api/Overview/)
+ * [Installation instructions](release-docs/latest/admin/Installation/)
 
-Documentation for the development version can be found in the
-[develop section](/release-docs/develop/). For older releases,
-check out the [release history](release-history).
+The documentation for the latest master branch from github (including the version
+running on [https://nominatim.openstreetmap.org](https://nominatim.openstreetmap.org)) can be found in the
+[development section](/release-docs/develop/).
+
+For older releases, check out the [release history](release-history).
 
 
 ### Additional Files
@@ -34,7 +33,7 @@ check out the [release history](release-history).
 The following is a list of additional data files useful for Nominatim
 installations:
 
- * [country_grid.sql.gz](data/country_grid.sql.gz) (mandatory from 3.0.0)
+ * [country_grid.sql.gz](data/country_grid.sql.gz) (mandatory from 3.0.0, included in release tar balls)
 
     Base geometries for all countries.
 

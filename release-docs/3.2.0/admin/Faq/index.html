@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Troubleshooting - Nominatim 3.2.0</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Troubleshooting";
+    var mkdocs_page_input_path = "admin/Faq.md";
+    var mkdocs_page_url = "/admin/Faq/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 3.2.0</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>API Reference</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Overview/">Overview</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Search/">Search</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Reverse/">Reverse</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Lookup/">Address Lookup</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Details/">Details</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Output/">Place Output Formats</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Faq/">FAQ</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Administration Guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Installation/">Basic Installation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Import-and-Update/">Importing and Updating</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Migration/">Migration from older Versions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Troubleshooting</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#troubleshooting-nominatim-installations">Troubleshooting Nominatim Installations</a></li>
+                
+                    <li><a class="toctree-l4" href="#installation-issues">Installation Issues</a></li>
+                
+                    <li><a class="toctree-l4" href="#running-your-own-instance">Running your own instance</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Developers Guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../develop/overview/">Overview</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Appendix</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../appendix/Install-on-Ubuntu-16/">Installation on Ubuntu 16</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 3.2.0</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Administration Guide &raquo;</li>
+        
+      
+    
+    <li>Troubleshooting</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/openstreetmap/Nominatim" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="troubleshooting-nominatim-installations">Troubleshooting Nominatim Installations<a class="headerlink" href="#troubleshooting-nominatim-installations" title="Permanent link"></a></h1>
+<h2 id="installation-issues">Installation Issues<a class="headerlink" href="#installation-issues" title="Permanent link"></a></h2>
+<h3 id="can-a-stoppedkilled-import-process-be-resumed">Can a stopped/killed import process be resumed?<a class="headerlink" href="#can-a-stoppedkilled-import-process-be-resumed" title="Permanent link"></a></h3>
+<p>"I accidentally killed the import process after it has been running for many hours. Can it be resumed?"</p>
+<p>It is possible if the import already got to the indexing stage.
+Check the last line of output that was logged before the process
+was killed. If it looks like this:</p>
+<pre class="codehilite"><code>Done 844 in 13 @ 64.923080 per second - Rank 26 ETA (seconds): 7.886255</code></pre>
+
+
+<p>then you can resume with the following command:</p>
+<pre class="codehilite"><code class="language-sh">./utils/setup.php --index --create-search-indices --create-country-names</code></pre>
+
+
+<p>If the reported rank is 26 or higher, you can also safely add <code>--index-noanalyse</code>.</p>
+<h3 id="php-open_basedir-restriction-in-effect-warnings">PHP "open_basedir restriction in effect" warnings<a class="headerlink" href="#php-open_basedir-restriction-in-effect-warnings" title="Permanent link"></a></h3>
+<pre class="codehilite"><code>`PHP Warning:  file_get_contents(): open_basedir restriction in effect.`</code></pre>
+
+
+<p>You need to adjust the <a href="http://www.php.net/manual/en/ini.core.php#ini.open-basedir">open_basedir</a> setting
+in your PHP configuration (<code>php.ini file</code>). By default this setting may look like this:</p>
+<pre class="codehilite"><code>open_basedir = /srv/http/:/home/:/tmp/:/usr/share/pear/</code></pre>
+
+
+<p>Either add reported directories to the list or disable this setting temporarily by 
+dding ";" at the beginning of the line. Don't forget to enable this setting again
+once you are done with the PHP command line operations.</p>
+<h3 id="php-timzeone-warnings">PHP timzeone warnings<a class="headerlink" href="#php-timzeone-warnings" title="Permanent link"></a></h3>
+<p>The Apache log may contain lots of PHP warnings like this:
+    <code>PHP Warning:  date_default_timezone_set() function.</code></p>
+<p>You should set the default time zone as instructed in the warning in
+your <code>php.ini</code> file. Find the entry about timezone and set it to
+something like this:</p>
+<pre class="codehilite"><code>; Defines the default timezone used by the date functions
+; http://php.net/date.timezone
+date.timezone = 'America/Denver'</code></pre>
+
+
+<p>Or</p>
+<pre class="codehilite"><code>echo &quot;date.timezone = 'America/Denver'&quot; &gt; /etc/php.d/timezone.ini</code></pre>
+
+
+<h3 id="nominatimso-version-mismatch">nominatim.so version mismatch<a class="headerlink" href="#nominatimso-version-mismatch" title="Permanent link"></a></h3>
+<p>When running the import you may get a version mismatch:
+<code>COPY_END for place failed: ERROR: incompatible library "/srv/Nominatim/nominatim/build/module/nominatim.so": version mismatch</code></p>
+<p>pg_config seems to use bad includes sometimes when multiple versions
+of PostgreSQL are available in the system. Make sure you remove the
+server development libraries (<code>postgresql-server-dev-9.5</code> on Ubuntu)
+and recompile (<code>cmake .. &amp;&amp; make</code>).</p>
+<h3 id="i-see-the-error-function-transliterationtext-does-not-exist">I see the error: "function transliteration(text) does not exist"<a class="headerlink" href="#i-see-the-error-function-transliterationtext-does-not-exist" title="Permanent link"></a></h3>
+<p>Reinstall the nominatim functions with <code>setup.php --create--functions</code>
+and check for any errors, e.g. a missing <code>nominatim.so</code> file.</p>
+<h3 id="the-website-shows-could-not-get-word-tokens">The website shows: "Could not get word tokens"<a class="headerlink" href="#the-website-shows-could-not-get-word-tokens" title="Permanent link"></a></h3>
+<p>The server cannot access your database. Add <code>&amp;debug=1</code> to your URL
+to get the full error message.</p>
+<h3 id="on-centos-the-website-shows-could-not-connect-to-server">On CentOS the website shows "Could not connect to server"<a class="headerlink" href="#on-centos-the-website-shows-could-not-connect-to-server" title="Permanent link"></a></h3>
+<p><code>could not connect to server: No such file or directory</code></p>
+<p>On CentOS v7 the PostgreSQL server is started with <code>systemd</code>.
+Check if <code>/usr/lib/systemd/system/httpd.service</code> contains a line <code>PrivateTmp=true</code>.
+If so then Apache cannot see the <code>/tmp/.s.PGSQL.5432</code> file. It's a good security feature,
+so use the <a href="../../appendix/Install-on-Centos-7/#adding-selinux-security-settings">preferred solution</a>.</p>
+<p>However, you can solve this the quick and dirty way by commenting out that line and then run</p>
+<pre class="codehilite"><code>sudo systemctl daemon-reload
+sudo systemctl restart httpd</code></pre>
+
+
+<h3 id="website-reports-db-error-insufficient-permissions">Website reports "DB Error: insufficient permissions"<a class="headerlink" href="#website-reports-db-error-insufficient-permissions" title="Permanent link"></a></h3>
+<p>The user the webserver, e.g. Apache, runs under needs to have access to the Nominatim database. You can find the user like <a href="https://serverfault.com/questions/125865/finding-out-what-user-apache-is-running-as">this</a>, for default Ubuntu operating system for example it's <code>www-data</code>.</p>
+<ol>
+<li>
+<p>Repeat the <code>createuser</code> step of the installation instructions.</p>
+</li>
+<li>
+<p>Give the user permission to existing tables</p>
+</li>
+</ol>
+<pre class="codehilite"><code>   GRANT usage ON SCHEMA public TO &quot;www-data&quot;;
+   GRANT SELECT ON ALL TABLES IN SCHEMA public TO &quot;www-data&quot;;</code></pre>
+
+
+<h3 id="website-reports-could-not-load-library-nominatimso">Website reports "Could not load library "nominatim.so"<a class="headerlink" href="#website-reports-could-not-load-library-nominatimso" title="Permanent link"></a></h3>
+<p>Example error message</p>
+<pre class="codehilite"><code>   SELECT make_standard_name('3039 E MEADOWLARK LN') [nativecode=ERROR: could not
+   load library &quot;/srv/nominatim/Nominatim-3.1.0/build/module/nominatim.so&quot;:
+   /srv/nominatim/Nominatim-3.1.0/build/module/nominatim.so: cannot open shared
+   object file: Permission denied
+   CONTEXT: PL/pgSQL function make_standard_name(text) line 5 at assignment]</code></pre>
+
+
+<p>The Postgresql database, i.e. user postgres, needs to have access to that file.</p>
+<p>The permission need to be read &amp; executable by everybody, e.g.</p>
+<pre class="codehilite"><code>   -rwxr-xr-x 1 nominatim nominatim 297984 build/module/nominatim.so</code></pre>
+
+
+<p>Try <code>chmod a+r nominatim.so; chmod a+x nominatim.so</code>.</p>
+<p>When running SELinux, make sure that the
+<a href="../../appendix/Install-on-Centos-7/#adding-selinux-security-settings">context is set up correctly</a>.</p>
+<h3 id="setupphp-fails-with-db-error-extension-not-found">Setup.php fails with "DB Error: extension not found"<a class="headerlink" href="#setupphp-fails-with-db-error-extension-not-found" title="Permanent link"></a></h3>
+<p>Make sure you have the Postgres extensions hstore and postgis installed.
+See the installation instruction for a full list of required packages.</p>
+<h3 id="setupphp-reports-cannot-redeclare-getdb">Setup.php reports "Cannot redeclare getDB()"<a class="headerlink" href="#setupphp-reports-cannot-redeclare-getdb" title="Permanent link"></a></h3>
+<p><code>Cannot redeclare getDB() (previously declared in /your/path/Nominatim/lib/db.php:4)</code></p>
+<p>The message is a bit misleading as PHP needs to load the file <code>DB.php</code> and
+instead re-loads Nominatim's <code>db.php</code>. To solve this make sure you
+have the <a href="http://pear.php.net/package/DB/">Pear module 'DB'</a> installed.</p>
+<pre class="codehilite"><code>sudo pear install DB</code></pre>
+
+
+<h3 id="i-forgot-to-delete-the-flatnodes-file-before-starting-an-import">I forgot to delete the flatnodes file before starting an import.<a class="headerlink" href="#i-forgot-to-delete-the-flatnodes-file-before-starting-an-import" title="Permanent link"></a></h3>
+<p>That's fine. For each import the flatnodes file get overwritten.
+See <a href="">https://help.openstreetmap.org/questions/52419/nominatim-flatnode-storage</a>
+for more information.</p>
+<h2 id="running-your-own-instance">Running your own instance<a class="headerlink" href="#running-your-own-instance" title="Permanent link"></a></h2>
+<h3 id="can-i-import-multiple-countries-and-keep-them-up-to-date">Can I import multiple countries and keep them up to date?<a class="headerlink" href="#can-i-import-multiple-countries-and-keep-them-up-to-date" title="Permanent link"></a></h3>
+<p>You should use the extracts and updates from https://download.geofabrik.de.
+For the initial import, download the countries you need and merge them.
+See <a href="https://help.openstreetmap.org/questions/48843/merging-two-or-more-geographical-areas-to-import-two-or-more-osm-files-in-nominatim">OSM Help</a>
+for examples how to do that. Use the resulting single osm file when
+running <code>setup.php</code>.</p>
+<p>For updates you need to download the change files for each country
+once per day and apply them <strong>separately</strong> using</p>
+<pre class="codehilite"><code>./utils/update.php --import-diff &lt;filename&gt; --index</code></pre>
+
+
+<p>See <a href="https://github.com/openstreetmap/Nominatim/issues/60#issuecomment-18679446">this issue</a>
+for a script that runs the updates using osmosis.</p>
+<h3 id="can-i-import-negative-osm-ids-into-nominatim">Can I import negative OSM ids into Nominatim?<a class="headerlink" href="#can-i-import-negative-osm-ids-into-nominatim" title="Permanent link"></a></h3>
+<p>See <a href="https://help.openstreetmap.org/questions/64662/nominatim-flatnode-with-negative-id">this question of Stackoverflow</a>.</p>
+<h3 id="missing-xml-or-text-declaration">Missing XML or text declaration<a class="headerlink" href="#missing-xml-or-text-declaration" title="Permanent link"></a></h3>
+<p>The website might show: <code>XML Parsing Error: XML or text declaration not at start of entity Location.</code></p>
+<p>Make sure there are no spaces at the beginning of your <code>settings/local.php</code> file.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../develop/overview/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Migration/" class="btn btn-neutral" title="Migration from older Versions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/openstreetmap/Nominatim" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../Migration/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../develop/overview/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
