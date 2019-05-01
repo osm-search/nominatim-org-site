@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Basic Installation - Nominatim 3.3.0</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Basic Installation";
+    var mkdocs_page_input_path = "admin/Installation.md";
+    var mkdocs_page_url = "/admin/Installation/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 3.3.0</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>API Reference</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Overview/">Overview</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Search/">Search</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Reverse/">Reverse</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Lookup/">Address Lookup</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Details/">Details</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Output/">Place Output Formats</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Faq/">FAQ</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Administration Guide</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Basic Installation</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#basic-installation">Basic Installation</a></li>
+                
+                    <li><a class="toctree-l4" href="#prerequisites">Prerequisites</a></li>
+                
+                    <li><a class="toctree-l4" href="#setup-of-the-server">Setup of the server</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Import-and-Update/">Importing and Updating</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Migration/">Migration from older Versions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Faq/">Troubleshooting</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Developers Guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../develop/overview/">Overview</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../develop/Import/">OSM Data Import</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../develop/Ranking/">Place Ranking</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>External Data Sources</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data-sources/overview/">Overview</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data-sources/Country-Grid/">Country Grid</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Appendix</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../appendix/Install-on-Ubuntu-16/">Installation on Ubuntu 16</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 3.3.0</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Administration Guide &raquo;</li>
+        
+      
+    
+    <li>Basic Installation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/openstreetmap/Nominatim" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="basic-installation">Basic Installation<a class="headerlink" href="#basic-installation" title="Permanent link"></a></h1>
+<p>This page contains generic installation instructions for Nominatim and its
+prerequisites. There are also step-by-step instructions available for
+the following operating systems:</p>
+<ul>
+<li><a href="../../appendix/Install-on-Ubuntu-18/">Ubuntu 18.04</a></li>
+<li><a href="../../appendix/Install-on-Ubuntu-16/">Ubuntu 16.04</a></li>
+<li><a href="../../appendix/Install-on-Centos-7/">CentOS 7.2</a></li>
+</ul>
+<p>These OS-specific instructions can also be found in executable form
+in the <code>vagrant/</code> directory.</p>
+<p>Users have created instructions for other frameworks. We haven't tested those
+and can't offer support.</p>
+<ul>
+<li><a href="https://github.com/mediagis/nominatim-docker">Docker</a></li>
+<li><a href="https://github.com/peter-evans/nominatim-k8s">Docker on Kubernetes</a></li>
+<li><a href="https://github.com/synthesio/infra-ansible-nominatim">Ansible</a></li>
+</ul>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link"></a></h2>
+<h3 id="software">Software<a class="headerlink" href="#software" title="Permanent link"></a></h3>
+<p>For compiling:</p>
+<ul>
+<li><a href="https://cmake.org/">cmake</a></li>
+<li><a href="http://xmlsoft.org/">libxml2</a></li>
+<li>a recent C++ compiler</li>
+</ul>
+<p>Nominatim comes with its own version of osm2pgsql. See the
+osm2pgsql README for additional dependencies required for compiling osm2pgsql.</p>
+<p>For running tests:</p>
+<ul>
+<li><a href="http://pythonhosted.org/behave/">behave</a></li>
+<li><a href="http://initd.org/psycopg">Psycopg2</a></li>
+<li><a href="https://nose.readthedocs.io">nose</a></li>
+<li><a href="https://phpunit.de">phpunit</a></li>
+</ul>
+<p>For running Nominatim:</p>
+<ul>
+<li><a href="http://www.postgresql.org">PostgreSQL</a> (9.1 or later)</li>
+<li><a href="http://postgis.refractions.net">PostGIS</a> (2.0 or later)</li>
+<li><a href="http://php.net">PHP</a> (5.4 or later)</li>
+<li>PHP-pgsql</li>
+<li>PHP-intl (bundled with PHP)</li>
+<li><a href="http://pear.php.net/package/DB">PEAR::DB</a></li>
+<li>a webserver (apache or nginx are recommended)</li>
+</ul>
+<p>For running continuous updates:</p>
+<ul>
+<li><a href="http://osmcode.org/pyosmium/">pyosmium</a></li>
+</ul>
+<h3 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link"></a></h3>
+<p>A minimum of 2GB of RAM is required or installation will fail. For a full
+planet import 32GB of RAM or more strongly are recommended.</p>
+<p>For a full planet install you will need at least 700GB of hard disk space
+(take into account that the OSM database is growing fast). SSD disks
+will help considerably to speed up import and queries.</p>
+<p>On a 6-core machine with 32GB RAM and SSDs the import of a full planet takes
+a bit more than 2 days. Without SSDs 7-8 days are more realistic.</p>
+<h2 id="setup-of-the-server">Setup of the server<a class="headerlink" href="#setup-of-the-server" title="Permanent link"></a></h2>
+<h3 id="postgresql-tuning">PostgreSQL tuning<a class="headerlink" href="#postgresql-tuning" title="Permanent link"></a></h3>
+<p>You might want to tune your PostgreSQL installation so that the later steps
+make best use of your hardware. You should tune the following parameters in
+your <code>postgresql.conf</code> file.</p>
+<pre class="codehilite"><code>shared_buffers (2GB)
+maintenance_work_mem (10GB)
+work_mem (50MB)
+effective_cache_size (24GB)
+synchronous_commit = off
+checkpoint_segments = 100 # only for postgresql &lt;= 9.4
+checkpoint_timeout = 10min
+checkpoint_completion_target = 0.9</code></pre>
+
+
+<p>The numbers in brackets behind some parameters seem to work fine for
+32GB RAM machine. Adjust to your setup.</p>
+<p>For the initial import, you should also set:</p>
+<pre class="codehilite"><code>fsync = off
+full_page_writes = off</code></pre>
+
+
+<p>Don't forget to reenable them after the initial import or you risk database
+corruption. Autovacuum must not be switched off because it ensures that the
+tables are frequently analysed.</p>
+<h3 id="webserver-setup">Webserver setup<a class="headerlink" href="#webserver-setup" title="Permanent link"></a></h3>
+<p>The <code>website/</code> directory in the build directory contains the configured
+website. Include the directory into your webbrowser to serve php files
+from there.</p>
+<h4 id="configure-for-use-with-apache">Configure for use with Apache<a class="headerlink" href="#configure-for-use-with-apache" title="Permanent link"></a></h4>
+<p>Make sure your Apache configuration contains the required permissions for the
+directory and create an alias:</p>
+<pre class="codehilite"><code>&lt;Directory &quot;/srv/nominatim/build/website&quot;&gt;
+  Options FollowSymLinks MultiViews
+  AddType text/html   .php
+  DirectoryIndex search.php
+  Require all granted
+&lt;/Directory&gt;
+Alias /nominatim /srv/nominatim/build/website</code></pre>
+
+
+<p><code>/srv/nominatim/build</code> should be replaced with the location of your
+build directory.</p>
+<p>After making changes in the apache config you need to restart apache.
+The website should now be available on http://localhost/nominatim.</p>
+<h4 id="configure-for-use-with-nginx">Configure for use with Nginx<a class="headerlink" href="#configure-for-use-with-nginx" title="Permanent link"></a></h4>
+<p>Use php-fpm as a deamon for serving PHP cgi. Install php-fpm together with nginx.</p>
+<p>By default php listens on a network socket. If you want it to listen to a
+Unix socket instead, change the pool configuration (<code>pool.d/www.conf</code>) as
+follows:</p>
+<pre class="codehilite"><code>; Comment out the tcp listener and add the unix socket
+;listen = 127.0.0.1:9000
+listen = /var/run/php5-fpm.sock
+
+; Ensure that the daemon runs as the correct user
+listen.owner = www-data
+listen.group = www-data
+listen.mode = 0666</code></pre>
+
+
+<p>Tell nginx that php files are special and to fastcgi_pass to the php-fpm
+unix socket by adding the location definition to the default configuration.</p>
+<pre class="codehilite"><code>root /srv/nominatim/build/website;
+index search.php index.html;
+location ~ [^/]\.php(/|$) {
+    fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+    if (!-f $document_root$fastcgi_script_name) {
+        return 404;
+    }
+    fastcgi_pass unix:/var/run/php5-fpm.sock;
+    fastcgi_index search.php;
+    include fastcgi.conf;
+}</code></pre>
+
+
+<p>Restart the nginx and php5-fpm services and the website should now be available
+at <code>http://localhost/</code>.</p>
+<p>Now continue with <a href="../Import-and-Update/">importing the database</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Import-and-Update/" class="btn btn-neutral float-right" title="Importing and Updating">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../api/Faq/" class="btn btn-neutral" title="FAQ"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/openstreetmap/Nominatim" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../../api/Faq/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Import-and-Update/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

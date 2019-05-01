@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>GB Postcodes - Nominatim 3.3.0</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "GB Postcodes";
+    var mkdocs_page_input_path = "data-sources/GB-Postcodes.md";
+    var mkdocs_page_url = "/data-sources/GB-Postcodes/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 3.3.0</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>API Reference</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Overview/">Overview</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Search/">Search</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Reverse/">Reverse</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Lookup/">Address Lookup</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Details/">Details</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Output/">Place Output Formats</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../api/Faq/">FAQ</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Administration Guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../admin/Installation/">Basic Installation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../admin/Import-and-Update/">Importing and Updating</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../admin/Migration/">Migration from older Versions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../admin/Faq/">Troubleshooting</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Developers Guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../develop/overview/">Overview</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../develop/Import/">OSM Data Import</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../develop/Ranking/">Place Ranking</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>External Data Sources</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../overview/">Overview</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../US-Tiger/">US Census (Tiger)</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">GB Postcodes</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#gb-postcodes">GB Postcodes</a></li>
+                
+                    <li><a class="toctree-l4" href="#gb-vs-uk">GB vs UK</a></li>
+                
+                    <li><a class="toctree-l4" href="#importing-separately-after-the-initial-import">Importing separately after the initial import</a></li>
+                
+                    <li><a class="toctree-l4" href="#converting-code-point-open-data">Converting Code-Point Open data</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../Country-Grid/">Country Grid</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Appendix</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../appendix/Install-on-Ubuntu-16/">Installation on Ubuntu 16</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 3.3.0</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>External Data Sources &raquo;</li>
+        
+      
+    
+    <li>GB Postcodes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/openstreetmap/Nominatim" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="gb-postcodes">GB Postcodes<a class="headerlink" href="#gb-postcodes" title="Permanent link"></a></h1>
+<p>The server <a href="https://www.nominatim.org/release-docs/latest/admin/Import-and-Update/">importing instructions</a> allow optionally download <a href="https://www.nominatim.org/data/gb_postcode_data.sql.gz"><code>gb_postcode_data.sql.gz</code></a>. This document explains how the file got created.</p>
+<h2 id="gb-vs-uk">GB vs UK<a class="headerlink" href="#gb-vs-uk" title="Permanent link"></a></h2>
+<p>GB (Great Britain) is more correct as the Ordnance Survey dataset doesn't contain postcodes from Northern Ireland.</p>
+<h2 id="importing-separately-after-the-initial-import">Importing separately after the initial import<a class="headerlink" href="#importing-separately-after-the-initial-import" title="Permanent link"></a></h2>
+<p>If you forgot to download the file, or have a new version, you can import it separately:</p>
+<ol>
+<li>
+<p>Import the downloaded <code>gb_postcode_data.sql.gz</code> file.</p>
+</li>
+<li>
+<p>Run the SQL query <code>SELECT count(getorcreate_postcode_id(postcode)) FROM gb_postcode;</code>. This will update the search index.</p>
+</li>
+<li>
+<p>Run <code>utils/setup.php --calculate-postcodes</code> from the build directory. This will copy data form the <code>gb_postcode</code> table to the <code>location_postcodes</code> table.</p>
+</li>
+</ol>
+<h2 id="converting-code-point-open-data">Converting Code-Point Open data<a class="headerlink" href="#converting-code-point-open-data" title="Permanent link"></a></h2>
+<ol>
+<li>
+<p>Download from <a href="https://www.ordnancesurvey.co.uk/business-and-government/products/code-point-open.html">Code-Point® Open</a>. It requires an email address where a download link will be send to.</p>
+</li>
+<li>
+<p><code>unzip codepo_gb.zip</code></p>
+<p>Unpacked you'll see a directory of CSV files.</p>
+<pre class="codehilite"><code>$ more codepo_gb/Data/CSV/n.csv
+&quot;N1 0AA&quot;,10,530626,183961,&quot;E92000001&quot;,&quot;E19000003&quot;,&quot;E18000007&quot;,&quot;&quot;,&quot;E09000019&quot;,&quot;E05000368&quot;
+&quot;N1 0AB&quot;,10,530559,183978,&quot;E92000001&quot;,&quot;E19000003&quot;,&quot;E18000007&quot;,&quot;&quot;,&quot;E09000019&quot;,&quot;E05000368&quot;</code></pre>
+
+
+<p>The coordinates are "Northings" and "Eastings" in <a href="http://epsg.io/1314">OSGB 1936</a> projection. They can be projected to WGS84 like this</p>
+<pre class="codehilite"><code>SELECT ST_AsText(ST_Transform(ST_SetSRID('POINT(530626 183961)'::geometry,27700), 4326));
+POINT(-0.117872733220225 51.5394424719303)</code></pre>
+
+
+<p><a href="https://www.openstreetmap.org/?mlon=-0.117872733220225&amp;mlat=51.5394424719303&amp;zoom=16">-0.117872733220225 51.5394424719303 on OSM map</a></p>
+</li>
+<li>
+<p>Create database, import CSV files, add geometry column, dump into file</p>
+<pre class="codehilite"><code>DBNAME=create_gb_postcode_file
+createdb $DBNAME
+echo 'CREATE EXTENSION postgis' | psql $DBNAME
+
+cat data/gb_postcode_table.sql | psql $DBNAME      
+cat codepo_gb/Data/CSV/*.csv | ./data-sources/gb-postcodes/convert_codepoint.php | psql $DBNAME
+cat codepo_gb/Doc/licence.txt | iconv -f iso-8859-1 -t utf-8 | dos2unix | sed 's/^/-- /g' &gt; gb_postcode_data.sql
+pg_dump -a -t gb_postcode $DBNAME | grep -v '^--' &gt;&gt; gb_postcode_data.sql
+
+gzip -9 -f gb_postcode_data.sql
+ls -lah gb_postcode_data.*
+# dropdb $DBNAME</code></pre>
+
+
+</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Country-Grid/" class="btn btn-neutral float-right" title="Country Grid">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../US-Tiger/" class="btn btn-neutral" title="US Census (Tiger)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/openstreetmap/Nominatim" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../US-Tiger/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Country-Grid/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
