@@ -41,6 +41,10 @@ installations:
 
     Additional postcode data for Great Britain.
 
+ * [us_postcode_data.sql.gz](data/us_postcode_data.sql.gz)
+
+    Additional postcode data for the United States.
+
  * [wikipedia_article.sql.bin](data/wikipedia_article.sql.bin)
  * [wikipedia_redirect.sql.bin](data/wikipedia_redirect.sql.bin)
 
