@@ -4,4 +4,4 @@ build:
 	jekyll build
 
 export:
-	scp -r _site/* d:www/nominatim.org/site/
+	scp -r _site/* wyre:/mnt/nominatim-org-data/site/

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Address Lookup - Nominatim 3.4.0</title>
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Address Lookup";
+    var mkdocs_page_input_path = "api/Lookup.md";
+    var mkdocs_page_url = "/api/Lookup/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 3.4.0</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../Overview/">Overview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Search/">Search</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reverse/">Reverse</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Address Lookup</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#address-lookup">Address lookup</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#parameters">Parameters</a></li>
+        
+            <li><a class="toctree-l4" href="#examples">Examples</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Details/">Details</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Output/">Place Output Formats</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Faq/">FAQ</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Administration Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../admin/Installation/">Basic Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../admin/Import-and-Update/">Importing and Updating</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../admin/Migration/">Migration from older Versions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../admin/Faq/">Troubleshooting</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developers Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../develop/overview/">Overview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Import/">OSM Data Import</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Ranking/">Place Ranking</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Documentation/">Documentation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">External Data Sources</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../data-sources/overview/">Overview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/Country-Grid/">Country Grid</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Appendix</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/Install-on-Ubuntu-16/">Installation on Ubuntu 16</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 3.4.0</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>API Reference &raquo;</li>
+        
+      
+    
+    <li>Address Lookup</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/api/Lookup.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="address-lookup">Address lookup<a class="headerlink" href="#address-lookup" title="Permanent link"></a></h1>
+<p>The lookup API allows to query the address and other details of one or
+multiple OSM objects like node, way or relation.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link"></a></h2>
+<p>The lookup API has the following format:</p>
+<pre class="codehilite"><code>  https://nominatim.openstreetmap.org/lookup?osm_ids=[N|W|R]&lt;value&gt;,…,…,&amp;&lt;params&gt;</code></pre>
+
+
+<p><code>osm_ids</code> is mandatory and must contain a comma-separated list of OSM ids each
+prefixed with its type, one of node(N), way(W) or relation(R). Up to 50 ids
+can be queried at the same time.</p>
+<p>Additional optional parameters are explained below.</p>
+<h3 id="output-format">Output format<a class="headerlink" href="#output-format" title="Permanent link"></a></h3>
+<ul>
+<li><code>format=[xml|json|jsonv2|geojson|geocodejson]</code></li>
+</ul>
+<p>See <a href="../Output/">Place Output Formats</a> for details on each format. (Default: xml)</p>
+<ul>
+<li><code>json_callback=&lt;string&gt;</code></li>
+</ul>
+<p>Wrap JSON output in a callback function (JSONP) i.e. <code>&lt;string&gt;(&lt;json&gt;)</code>.
+Only has an effect for JSON output formats.</p>
+<h3 id="output-details">Output details<a class="headerlink" href="#output-details" title="Permanent link"></a></h3>
+<ul>
+<li><code>addressdetails=[0|1]</code></li>
+</ul>
+<p>Include a breakdown of the address into elements. (Default: 0)</p>
+<ul>
+<li><code>extratags=[0|1]</code></li>
+</ul>
+<p>Include additional information in the result if available,
+e.g. wikipedia link, opening hours. (Default: 0)</p>
+<ul>
+<li><code>namedetails=[0|1]</code></li>
+</ul>
+<p>Include a list of alternative names in the results. These may include
+language variants, references, operator and brand. (Default: 0)</p>
+<h3 id="language-of-results">Language of results<a class="headerlink" href="#language-of-results" title="Permanent link"></a></h3>
+<ul>
+<li><code>accept-language=&lt;browser language string&gt;</code></li>
+</ul>
+<p>Preferred language order for showing search results, overrides the value
+specified in the "Accept-Language" HTTP header.
+Either use a standard RFC2616 accept-language string or a simple
+comma-separated list of language codes.</p>
+<h3 id="other">Other<a class="headerlink" href="#other" title="Permanent link"></a></h3>
+<ul>
+<li><code>email=&lt;valid email address&gt;</code></li>
+</ul>
+<p>If you are making large numbers of request please include an appropriate email
+address to identify your requests. See Nominatim's <a href="https://operations.osmfoundation.org/policies/nominatim/">Usage Policy</a> for more details.</p>
+<ul>
+<li><code>debug=[0|1]</code></li>
+</ul>
+<p>Output assorted developer debug information. Data on internals of Nominatim's
+"Search Loop" logic, and SQL queries. The output is (rough) HTML format.
+This overrides the specified machine readable format. (Default: 0)</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link"></a></h2>
+<h5 id="xml">XML<a class="headerlink" href="#xml" title="Permanent link"></a></h5>
+<p><a href="https://nominatim.openstreetmap.org/lookup?osm_ids=R146656,W104393803,N240109189">https://nominatim.openstreetmap.org/lookup?osm_ids=R146656,W104393803,N240109189</a></p>
+<pre class="codehilite"><code class="language-xml">  &lt;lookupresults timestamp=&quot;Mon, 29 Jun 15 18:01:33 +0000&quot; attribution=&quot;Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright&quot; querystring=&quot;R146656,W104393803,N240109189&quot; polygon=&quot;false&quot;&gt;
+    &lt;place place_id=&quot;127761056&quot; osm_type=&quot;relation&quot; osm_id=&quot;146656&quot; place_rank=&quot;16&quot; lat=&quot;53.4791466&quot; lon=&quot;-2.2447445&quot; display_name=&quot;Manchester, Greater Manchester, North West England, England, United Kingdom&quot; class=&quot;boundary&quot; type=&quot;administrative&quot; importance=&quot;0.704893333438333&quot;&gt;
+      &lt;city&gt;Manchester&lt;/city&gt;
+      &lt;county&gt;Greater Manchester&lt;/county&gt;
+      &lt;state_district&gt;North West England&lt;/state_district&gt;
+      &lt;state&gt;England&lt;/state&gt;
+      &lt;country&gt;United Kingdom&lt;/country&gt;
+      &lt;country_code&gt;gb&lt;/country_code&gt;
+    &lt;/place&gt;
+    &lt;place place_id=&quot;77769745&quot; osm_type=&quot;way&quot; osm_id=&quot;104393803&quot; place_rank=&quot;30&quot; lat=&quot;52.5162024&quot; lon=&quot;13.3777343363579&quot; display_name=&quot;Brandenburg Gate, 1, Pariser Platz, Mitte, Berlin, 10117, Germany&quot; class=&quot;tourism&quot; type=&quot;attraction&quot; importance=&quot;0.443472858361592&quot;&gt;
+      &lt;attraction&gt;Brandenburg Gate&lt;/attraction&gt;
+      &lt;house_number&gt;1&lt;/house_number&gt;
+      &lt;pedestrian&gt;Pariser Platz&lt;/pedestrian&gt;
+      &lt;suburb&gt;Mitte&lt;/suburb&gt;
+      &lt;city_district&gt;Mitte&lt;/city_district&gt;
+      &lt;city&gt;Berlin&lt;/city&gt;
+      &lt;state&gt;Berlin&lt;/state&gt;
+      &lt;postcode&gt;10117&lt;/postcode&gt;
+      &lt;country&gt;Germany&lt;/country&gt;
+      &lt;country_code&gt;de&lt;/country_code&gt;
+    &lt;/place&gt;
+    &lt;place place_id=&quot;2570600569&quot; osm_type=&quot;node&quot; osm_id=&quot;240109189&quot; place_rank=&quot;15&quot; lat=&quot;52.5170365&quot; lon=&quot;13.3888599&quot; display_name=&quot;Berlin, Germany&quot; class=&quot;place&quot; type=&quot;city&quot; importance=&quot;0.822149797630868&quot;&gt;
+      &lt;city&gt;Berlin&lt;/city&gt;
+      &lt;state&gt;Berlin&lt;/state&gt;
+      &lt;country&gt;Germany&lt;/country&gt;
+      &lt;country_code&gt;de&lt;/country_code&gt;
+    &lt;/place&gt;
+  &lt;/lookupresults&gt;</code></pre>
+
+
+<h5 id="json-with-extratags">JSON with extratags<a class="headerlink" href="#json-with-extratags" title="Permanent link"></a></h5>
+<p><a href="https://nominatim.openstreetmap.org/lookup?osm_ids=W50637691&amp;format=json">https://nominatim.openstreetmap.org/lookup?osm_ids=W50637691&amp;format=json</a></p>
+<pre class="codehilite"><code class="language-json">[
+  {
+    &quot;place_id&quot;: &quot;84271358&quot;,
+    &quot;licence&quot;: &quot;Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright&quot;,
+    &quot;osm_type&quot;: &quot;way&quot;,
+    &quot;osm_id&quot;: &quot;50637691&quot;,
+    &quot;lat&quot;: &quot;52.39955055&quot;,
+    &quot;lon&quot;: &quot;13.04806574678&quot;,
+    &quot;display_name&quot;: &quot;Brandenburger Tor, Brandenburger Straße, Nördliche Innenstadt, Innenstadt, Potsdam, Brandenburg, 14467, Germany&quot;,
+    &quot;class&quot;: &quot;historic&quot;,
+    &quot;type&quot;: &quot;city_gate&quot;,
+    &quot;importance&quot;: &quot;0.221233780277011&quot;,
+    &quot;address&quot;: {
+      &quot;address29&quot;: &quot;Brandenburger Tor&quot;,
+      &quot;pedestrian&quot;: &quot;Brandenburger Straße&quot;,
+      &quot;suburb&quot;: &quot;Nördliche Innenstadt&quot;,
+      &quot;city&quot;: &quot;Potsdam&quot;,
+      &quot;state&quot;: &quot;Brandenburg&quot;,
+      &quot;postcode&quot;: &quot;14467&quot;,
+      &quot;country&quot;: &quot;Germany&quot;,
+      &quot;country_code&quot;: &quot;de&quot;
+    },
+    &quot;extratags&quot;: {
+      &quot;image&quot;: &quot;http://commons.wikimedia.org/wiki/File:Potsdam_brandenburger_tor.jpg&quot;,
+      &quot;wikidata&quot;: &quot;Q695045&quot;,
+      &quot;wikipedia&quot;: &quot;de:Brandenburger Tor (Potsdam)&quot;,
+      &quot;wheelchair&quot;: &quot;yes&quot;,
+      &quot;description&quot;: &quot;Kleines Brandenburger Tor in Potsdam&quot;
+    }
+  }
+]</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Details/" class="btn btn-neutral float-right" title="Details">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Reverse/" class="btn btn-neutral" title="Reverse"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../Reverse/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Details/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
