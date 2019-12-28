@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   <link href="../../extra.css" rel="stylesheet">
+  <link href="../../styles.css" rel="stylesheet">
   
   <script>
     // Current page data
@@ -237,7 +238,8 @@
 an OSM object.</p>
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link"></a></h2>
 <p>The main format of the reverse API is</p>
-<pre class="codehilite"><code>https://nominatim.openstreetmap.org/reverse?&lt;query&gt;</code></pre>
+<div class="codehilite"><pre><span></span>https://nominatim.openstreetmap.org/reverse?&lt;query&gt;
+</pre></div>
 
 
 <p>There are two ways how the requested location can be specified:</p>
@@ -368,148 +370,152 @@ This overrides the specified machine readable format. (Default: 0)</p>
 <ul>
 <li><a href="https://nominatim.openstreetmap.org/reverse?format=xml&amp;lat=52.5487429714954&amp;lon=-1.81602098644987&amp;zoom=18&amp;addressdetails=1">https://nominatim.openstreetmap.org/reverse?format=xml&amp;lat=52.5487429714954&amp;lon=-1.81602098644987&amp;zoom=18&amp;addressdetails=1</a></li>
 </ul>
-<pre class="codehilite"><code class="language-xml">  &lt;reversegeocode timestamp=&quot;Fri, 06 Nov 09 16:33:54 +0000&quot; querystring=&quot;...&quot;&gt;
-    &lt;result place_id=&quot;1620612&quot; osm_type=&quot;node&quot; osm_id=&quot;452010817&quot;&gt;
+<div class="codehilite"><pre><span></span>  <span class="nt">&lt;reversegeocode</span> <span class="na">timestamp=</span><span class="s">&quot;Fri, 06 Nov 09 16:33:54 +0000&quot;</span> <span class="na">querystring=</span><span class="s">&quot;...&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;result</span> <span class="na">place_id=</span><span class="s">&quot;1620612&quot;</span> <span class="na">osm_type=</span><span class="s">&quot;node&quot;</span> <span class="na">osm_id=</span><span class="s">&quot;452010817&quot;</span><span class="nt">&gt;</span>
       135, Pilkington Avenue, Wylde Green, City of Birmingham, West Midlands (county), B72, United Kingdom
-    &lt;/result&gt;
-    &lt;addressparts&gt;
-      &lt;house_number&gt;135&lt;/house_number&gt;
-      &lt;road&gt;Pilkington Avenue&lt;/road&gt;
-      &lt;village&gt;Wylde Green&lt;/village&gt;
-      &lt;town&gt;Sutton Coldfield&lt;/town&gt;
-      &lt;city&gt;City of Birmingham&lt;/city&gt;
-      &lt;county&gt;West Midlands (county)&lt;/county&gt;
-      &lt;postcode&gt;B72&lt;/postcode&gt;
-      &lt;country&gt;United Kingdom&lt;/country&gt;
-      &lt;country_code&gt;gb&lt;/country_code&gt;
-    &lt;/addressparts&gt;
-  &lt;/reversegeocode&gt;</code></pre>
+    <span class="nt">&lt;/result&gt;</span>
+    <span class="nt">&lt;addressparts&gt;</span>
+      <span class="nt">&lt;house_number&gt;</span>135<span class="nt">&lt;/house_number&gt;</span>
+      <span class="nt">&lt;road&gt;</span>Pilkington Avenue<span class="nt">&lt;/road&gt;</span>
+      <span class="nt">&lt;village&gt;</span>Wylde Green<span class="nt">&lt;/village&gt;</span>
+      <span class="nt">&lt;town&gt;</span>Sutton Coldfield<span class="nt">&lt;/town&gt;</span>
+      <span class="nt">&lt;city&gt;</span>City of Birmingham<span class="nt">&lt;/city&gt;</span>
+      <span class="nt">&lt;county&gt;</span>West Midlands (county)<span class="nt">&lt;/county&gt;</span>
+      <span class="nt">&lt;postcode&gt;</span>B72<span class="nt">&lt;/postcode&gt;</span>
+      <span class="nt">&lt;country&gt;</span>United Kingdom<span class="nt">&lt;/country&gt;</span>
+      <span class="nt">&lt;country_code&gt;</span>gb<span class="nt">&lt;/country_code&gt;</span>
+    <span class="nt">&lt;/addressparts&gt;</span>
+  <span class="nt">&lt;/reversegeocode&gt;</span>
+</pre></div>
 
 
 <h5 id="example-with-formatjsonv2">Example with <code>format=jsonv2</code><a class="headerlink" href="#example-with-formatjsonv2" title="Permanent link"></a></h5>
 <ul>
 <li><a href="https://nominatim.openstreetmap.org/reverse?format=jsonv2&amp;lat=-34.44076&amp;lon=-58.70521">https://nominatim.openstreetmap.org/reverse?format=jsonv2&amp;lat=-34.44076&amp;lon=-58.70521</a></li>
 </ul>
-<pre class="codehilite"><code class="language-json">{
-  &quot;place_id&quot;:&quot;134140761&quot;,
-  &quot;licence&quot;:&quot;Data © OpenStreetMap contributors, ODbL 1.0. https:\/\/www.openstreetmap.org\/copyright&quot;,
-  &quot;osm_type&quot;:&quot;way&quot;,
-  &quot;osm_id&quot;:&quot;280940520&quot;,
-&quot;lat&quot;:&quot;-34.4391708&quot;,
-  &quot;lon&quot;:&quot;-58.7064573&quot;,
-  &quot;place_rank&quot;:&quot;26&quot;,
-  &quot;category&quot;:&quot;highway&quot;,
-  &quot;type&quot;:&quot;motorway&quot;,
-  &quot;importance&quot;:&quot;0.1&quot;,
-  &quot;addresstype&quot;:&quot;road&quot;,
-  &quot;display_name&quot;:&quot;Autopista Pedro Eugenio Aramburu, El Triángulo, Partido de Malvinas Argentinas, Buenos Aires, 1.619, Argentina&quot;,
-  &quot;name&quot;:&quot;Autopista Pedro Eugenio Aramburu&quot;,
-  &quot;address&quot;:{
-    &quot;road&quot;:&quot;Autopista Pedro Eugenio Aramburu&quot;,
-    &quot;village&quot;:&quot;El Triángulo&quot;,
-    &quot;state_district&quot;:&quot;Partido de Malvinas Argentinas&quot;,
-    &quot;state&quot;:&quot;Buenos Aires&quot;,
-    &quot;postcode&quot;:&quot;1.619&quot;,
-    &quot;country&quot;:&quot;Argentina&quot;,
-    &quot;country_code&quot;:&quot;ar&quot;
-  },
-  &quot;boundingbox&quot;:[&quot;-34.44159&quot;,&quot;-34.4370994&quot;,&quot;-58.7086067&quot;,&quot;-58.7044712&quot;]
-}</code></pre>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;place_id&quot;</span><span class="p">:</span><span class="s2">&quot;134140761&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;licence&quot;</span><span class="p">:</span><span class="s2">&quot;Data © OpenStreetMap contributors, ODbL 1.0. https:\/\/www.openstreetmap.org\/copyright&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;osm_type&quot;</span><span class="p">:</span><span class="s2">&quot;way&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;osm_id&quot;</span><span class="p">:</span><span class="s2">&quot;280940520&quot;</span><span class="p">,</span>
+<span class="nt">&quot;lat&quot;</span><span class="p">:</span><span class="s2">&quot;-34.4391708&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;lon&quot;</span><span class="p">:</span><span class="s2">&quot;-58.7064573&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;place_rank&quot;</span><span class="p">:</span><span class="s2">&quot;26&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="s2">&quot;highway&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;motorway&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;importance&quot;</span><span class="p">:</span><span class="s2">&quot;0.1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;addresstype&quot;</span><span class="p">:</span><span class="s2">&quot;road&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;display_name&quot;</span><span class="p">:</span><span class="s2">&quot;Autopista Pedro Eugenio Aramburu, El Triángulo, Partido de Malvinas Argentinas, Buenos Aires, 1.619, Argentina&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Autopista Pedro Eugenio Aramburu&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;address&quot;</span><span class="p">:{</span>
+    <span class="nt">&quot;road&quot;</span><span class="p">:</span><span class="s2">&quot;Autopista Pedro Eugenio Aramburu&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;village&quot;</span><span class="p">:</span><span class="s2">&quot;El Triángulo&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;state_district&quot;</span><span class="p">:</span><span class="s2">&quot;Partido de Malvinas Argentinas&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="s2">&quot;Buenos Aires&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;postcode&quot;</span><span class="p">:</span><span class="s2">&quot;1.619&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="s2">&quot;Argentina&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;country_code&quot;</span><span class="p">:</span><span class="s2">&quot;ar&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;boundingbox&quot;</span><span class="p">:[</span><span class="s2">&quot;-34.44159&quot;</span><span class="p">,</span><span class="s2">&quot;-34.4370994&quot;</span><span class="p">,</span><span class="s2">&quot;-58.7086067&quot;</span><span class="p">,</span><span class="s2">&quot;-58.7044712&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
 
 
 <h5 id="example-with-formatgeojson">Example with <code>format=geojson</code><a class="headerlink" href="#example-with-formatgeojson" title="Permanent link"></a></h5>
 <ul>
 <li><a href="https://nominatim.openstreetmap.org/reverse?format=geojson&amp;lat=44.50155&amp;lon=11.33989">https://nominatim.openstreetmap.org/reverse?format=geojson&amp;lat=44.50155&amp;lon=11.33989</a></li>
 </ul>
-<pre class="codehilite"><code class="language-json">{
-  &quot;type&quot;: &quot;FeatureCollection&quot;,
-  &quot;licence&quot;: &quot;Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright&quot;,
-  &quot;features&quot;: [
-    {
-      &quot;type&quot;: &quot;Feature&quot;,
-      &quot;properties&quot;: {
-        &quot;place_id&quot;: &quot;18512203&quot;,
-        &quot;osm_type&quot;: &quot;node&quot;,
-        &quot;osm_id&quot;: &quot;1704756187&quot;,
-        &quot;place_rank&quot;: &quot;30&quot;,
-        &quot;category&quot;: &quot;place&quot;,
-        &quot;type&quot;: &quot;house&quot;,
-        &quot;importance&quot;: &quot;0&quot;,
-        &quot;addresstype&quot;: &quot;place&quot;,
-        &quot;name&quot;: null,
-        &quot;display_name&quot;: &quot;71, Via Guglielmo Marconi, Saragozza-Porto, Bologna, BO, Emilia-Romagna, 40122, Italy&quot;,
-        &quot;address&quot;: {
-          &quot;house_number&quot;: &quot;71&quot;,
-          &quot;road&quot;: &quot;Via Guglielmo Marconi&quot;,
-          &quot;suburb&quot;: &quot;Saragozza-Porto&quot;,
-          &quot;city&quot;: &quot;Bologna&quot;,
-          &quot;county&quot;: &quot;BO&quot;,
-          &quot;state&quot;: &quot;Emilia-Romagna&quot;,
-          &quot;postcode&quot;: &quot;40122&quot;,
-          &quot;country&quot;: &quot;Italy&quot;,
-          &quot;country_code&quot;: &quot;it&quot;
-        }
-      },
-      &quot;bbox&quot;: [
-        11.3397676,
-        44.5014307,
-        11.3399676,
-        44.5016307
-      ],
-      &quot;geometry&quot;: {
-        &quot;type&quot;: &quot;Point&quot;,
-        &quot;coordinates&quot;: [
-          11.3398676,
-          44.5015307
-        ]
-      }
-    }
-  ]
-}</code></pre>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;licence&quot;</span><span class="p">:</span> <span class="s2">&quot;Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;place_id&quot;</span><span class="p">:</span> <span class="s2">&quot;18512203&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;osm_type&quot;</span><span class="p">:</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;osm_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1704756187&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;place_rank&quot;</span><span class="p">:</span> <span class="s2">&quot;30&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;place&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;house&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;importance&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;addresstype&quot;</span><span class="p">:</span> <span class="s2">&quot;place&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;71, Via Guglielmo Marconi, Saragozza-Porto, Bologna, BO, Emilia-Romagna, 40122, Italy&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;house_number&quot;</span><span class="p">:</span> <span class="s2">&quot;71&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;road&quot;</span><span class="p">:</span> <span class="s2">&quot;Via Guglielmo Marconi&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;suburb&quot;</span><span class="p">:</span> <span class="s2">&quot;Saragozza-Porto&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Bologna&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;county&quot;</span><span class="p">:</span> <span class="s2">&quot;BO&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;Emilia-Romagna&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;40122&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Italy&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;country_code&quot;</span><span class="p">:</span> <span class="s2">&quot;it&quot;</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mf">11.3397676</span><span class="p">,</span>
+        <span class="mf">44.5014307</span><span class="p">,</span>
+        <span class="mf">11.3399676</span><span class="p">,</span>
+        <span class="mf">44.5016307</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="mf">11.3398676</span><span class="p">,</span>
+          <span class="mf">44.5015307</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
 
 
 <h5 id="example-with-formatgeocodejson">Example with <code>format=geocodejson</code><a class="headerlink" href="#example-with-formatgeocodejson" title="Permanent link"></a></h5>
 <p><a href="https://nominatim.openstreetmap.org/reverse?format=geocodejson&amp;lat=60.2299&amp;lon=11.1663">https://nominatim.openstreetmap.org/reverse?format=geocodejson&amp;lat=60.2299&amp;lon=11.1663</a></p>
-<pre class="codehilite"><code class="language-json">{
-  &quot;type&quot;: &quot;FeatureCollection&quot;,
-  &quot;geocoding&quot;: {
-    &quot;version&quot;: &quot;0.1.0&quot;,
-    &quot;attribution&quot;: &quot;Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright&quot;,
-    &quot;licence&quot;: &quot;ODbL&quot;,
-    &quot;query&quot;: &quot;60.229917843587,11.16630979382&quot;
-  },
-  &quot;features&quot;: {
-    &quot;type&quot;: &quot;Feature&quot;,
-    &quot;properties&quot;: {
-      &quot;geocoding&quot;: {
-        &quot;place_id&quot;: &quot;42700574&quot;,
-        &quot;osm_type&quot;: &quot;node&quot;,
-        &quot;osm_id&quot;: &quot;3110596255&quot;,
-        &quot;type&quot;: &quot;house&quot;,
-        &quot;accuracy&quot;: 0,
-        &quot;label&quot;: &quot;1, Løvenbergvegen, Mogreina, Ullensaker, Akershus, 2054, Norway&quot;,
-        &quot;name&quot;: null,
-        &quot;housenumber&quot;: &quot;1&quot;,
-        &quot;street&quot;: &quot;Løvenbergvegen&quot;,
-        &quot;postcode&quot;: &quot;2054&quot;,
-        &quot;county&quot;: &quot;Akershus&quot;,
-        &quot;country&quot;: &quot;Norway&quot;,
-        &quot;admin&quot;: {
-          &quot;level7&quot;: &quot;Ullensaker&quot;,
-          &quot;level4&quot;: &quot;Akershus&quot;,
-          &quot;level2&quot;: &quot;Norway&quot;
-        }
-      }
-    },
-    &quot;geometry&quot;: {
-      &quot;type&quot;: &quot;Point&quot;,
-      &quot;coordinates&quot;: [
-        11.1658572,
-        60.2301296
-      ]
-    }
-  }
-}</code></pre>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;geocoding&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;attribution&quot;</span><span class="p">:</span> <span class="s2">&quot;Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;licence&quot;</span><span class="p">:</span> <span class="s2">&quot;ODbL&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;60.229917843587,11.16630979382&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;features&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;geocoding&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;place_id&quot;</span><span class="p">:</span> <span class="s2">&quot;42700574&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;osm_type&quot;</span><span class="p">:</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;osm_id&quot;</span><span class="p">:</span> <span class="s2">&quot;3110596255&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;house&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;accuracy&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;1, Løvenbergvegen, Mogreina, Ullensaker, Akershus, 2054, Norway&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;housenumber&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;street&quot;</span><span class="p">:</span> <span class="s2">&quot;Løvenbergvegen&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;2054&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;county&quot;</span><span class="p">:</span> <span class="s2">&quot;Akershus&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Norway&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;admin&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;level7&quot;</span><span class="p">:</span> <span class="s2">&quot;Ullensaker&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;level4&quot;</span><span class="p">:</span> <span class="s2">&quot;Akershus&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;level2&quot;</span><span class="p">:</span> <span class="s2">&quot;Norway&quot;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mf">11.1658572</span><span class="p">,</span>
+        <span class="mf">60.2301296</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
               
             </div>
           </div>

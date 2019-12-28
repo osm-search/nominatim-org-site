@@ -59,6 +59,7 @@ docs/CMakeFiles/doc:
 	cd /home/suzuki/osm/dev/Nominatim/build/docs && /usr/bin/cmake -E create_symlink /home/suzuki/osm/dev/Nominatim/docs/api /home/suzuki/osm/dev/Nominatim/build/docs/api
 	cd /home/suzuki/osm/dev/Nominatim/build/docs && /usr/bin/cmake -E create_symlink /home/suzuki/osm/dev/Nominatim/docs/index.md /home/suzuki/osm/dev/Nominatim/build/docs/index.md
 	cd /home/suzuki/osm/dev/Nominatim/build/docs && /usr/bin/cmake -E create_symlink /home/suzuki/osm/dev/Nominatim/docs/extra.css /home/suzuki/osm/dev/Nominatim/build/docs/extra.css
+	cd /home/suzuki/osm/dev/Nominatim/build/docs && /usr/bin/cmake -E create_symlink /home/suzuki/osm/dev/Nominatim/docs/styles.css /home/suzuki/osm/dev/Nominatim/build/docs/styles.css
 	cd /home/suzuki/osm/dev/Nominatim/build/docs && /usr/bin/cmake -E create_symlink /home/suzuki/osm/dev/Nominatim/docs/data-sources/overview.md /home/suzuki/osm/dev/Nominatim/build/docs/data-sources/overview.md
 	cd /home/suzuki/osm/dev/Nominatim/build/docs && /usr/bin/cmake -E create_symlink /home/suzuki/osm/dev/Nominatim/data-sources/us-tiger/README.md /home/suzuki/osm/dev/Nominatim/build/docs/data-sources/US-Tiger.md
 	cd /home/suzuki/osm/dev/Nominatim/build/docs && /usr/bin/cmake -E create_symlink /home/suzuki/osm/dev/Nominatim/data-sources/gb-postcodes/README.md /home/suzuki/osm/dev/Nominatim/build/docs/data-sources/GB-Postcodes.md

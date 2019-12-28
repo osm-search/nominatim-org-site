@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   <link href="../../extra.css" rel="stylesheet">
+  <link href="../../styles.css" rel="stylesheet">
   
   <script>
     // Current page data
@@ -246,12 +247,13 @@ to newer versions of Nominatim.</p>
 <p>The table <code>location_area_country</code> has been optimized. You need to switch to the
 new format when you run updates. While updates are disabled, run the following
 SQL commands:</p>
-<pre class="codehilite"><code class="language-sql">CREATE TABLE location_area_country_new AS
-  SELECT place_id, country_code, geometry FROM location_area_country;
-DROP TABLE location_area_country;
-ALTER TABLE location_area_country_new RENAME TO location_area_country;
-CREATE INDEX idx_location_area_country_geometry ON location_area_country USING GIST (geometry);
-CREATE INDEX idx_location_area_country_place_id ON location_area_country USING BTREE (place_id);</code></pre>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">location_area_country_new</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">place_id</span><span class="p">,</span> <span class="n">country_code</span><span class="p">,</span> <span class="n">geometry</span> <span class="k">FROM</span> <span class="n">location_area_country</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">location_area_country</span><span class="p">;</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">location_area_country_new</span> <span class="k">RENAME</span> <span class="k">TO</span> <span class="n">location_area_country</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_location_area_country_geometry</span> <span class="k">ON</span> <span class="n">location_area_country</span> <span class="k">USING</span> <span class="n">GIST</span> <span class="p">(</span><span class="n">geometry</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_location_area_country_place_id</span> <span class="k">ON</span> <span class="n">location_area_country</span> <span class="k">USING</span> <span class="n">BTREE</span> <span class="p">(</span><span class="n">place_id</span><span class="p">);</span>
+</pre></div>
 
 
 <h2 id="320-330">3.2.0 -&gt; 3.3.0<a class="headerlink" href="#320-330" title="Permanent link"></a></h2>
@@ -267,51 +269,58 @@ CREATE INDEX idx_location_area_country_place_id ON location_area_country USING B
 <li>(complex) <code>pgsql:dbname=db1;host=machine1.domain.com;port=1234;user=johndoe;password=secret</code></li>
 </ul>
 <h3 id="natural-earth-country-boundaries-no-longer-needed-as-fallback">Natural Earth country boundaries no longer needed as fallback<a class="headerlink" href="#natural-earth-country-boundaries-no-longer-needed-as-fallback" title="Permanent link"></a></h3>
-<pre class="codehilite"><code>DROP TABLE country_naturalearthdata;</code></pre>
+<div class="codehilite"><pre><span></span>DROP TABLE country_naturalearthdata;
+</pre></div>
 
 
 <p>Finally, update all SQL functions:</p>
-<pre class="codehilite"><code class="language-sh">./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions</code></pre>
+<div class="codehilite"><pre><span></span>./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
+</pre></div>
 
 
 <h3 id="configurable-address-levels">Configurable Address Levels<a class="headerlink" href="#configurable-address-levels" title="Permanent link"></a></h3>
 <p>The new configurable address levels require a new table. Create it with the
 following command:</p>
-<pre class="codehilite"><code class="language-sh">./utils/update.php --update-address-levels</code></pre>
+<div class="codehilite"><pre><span></span>./utils/update.php --update-address-levels
+</pre></div>
 
 
 <h2 id="310-320">3.1.0 -&gt; 3.2.0<a class="headerlink" href="#310-320" title="Permanent link"></a></h2>
 <h3 id="new-reverse-algorithm">New reverse algorithm<a class="headerlink" href="#new-reverse-algorithm" title="Permanent link"></a></h3>
 <p>The reverse algorithm has changed and requires new indexes. Run the following
 SQL statements to create the indexes:</p>
-<pre class="codehilite"><code>CREATE INDEX idx_placex_geometry_reverse_lookupPoint
+<div class="codehilite"><pre><span></span>CREATE INDEX idx_placex_geometry_reverse_lookupPoint
   ON placex USING gist (geometry)
   WHERE (name is not null or housenumber is not null or rank_address between 26 and 27)
-    AND class not in ('railway','tunnel','bridge','man_made')
+    AND class not in (&#39;railway&#39;,&#39;tunnel&#39;,&#39;bridge&#39;,&#39;man_made&#39;)
     AND rank_address &gt;= 26 AND indexed_status = 0 AND linked_place_id is null;
 CREATE INDEX idx_placex_geometry_reverse_lookupPolygon
   ON placex USING gist (geometry)
-  WHERE St_GeometryType(geometry) in ('ST_Polygon', 'ST_MultiPolygon')
-    AND rank_address between 4 and 25 AND type != 'postcode'
+  WHERE St_GeometryType(geometry) in (&#39;ST_Polygon&#39;, &#39;ST_MultiPolygon&#39;)
+    AND rank_address between 4 and 25 AND type != &#39;postcode&#39;
     AND name is not null AND indexed_status = 0 AND linked_place_id is null;
 CREATE INDEX idx_placex_geometry_reverse_placeNode
   ON placex USING gist (geometry)
-  WHERE osm_type = 'N' AND rank_search between 5 and 25
-    AND class = 'place' AND type != 'postcode'
-    AND name is not null AND indexed_status = 0 AND linked_place_id is null;</code></pre>
+  WHERE osm_type = &#39;N&#39; AND rank_search between 5 and 25
+    AND class = &#39;place&#39; AND type != &#39;postcode&#39;
+    AND name is not null AND indexed_status = 0 AND linked_place_id is null;
+</pre></div>
 
 
 <p>You also need to grant the website user access to the <code>country_osm_grid</code> table:</p>
-<pre class="codehilite"><code>GRANT SELECT ON table country_osm_grid to &quot;www-user&quot;;</code></pre>
+<div class="codehilite"><pre><span></span>GRANT SELECT ON table country_osm_grid to &quot;www-user&quot;;
+</pre></div>
 
 
 <p>Replace the <code>www-user</code> with the user name of your website server if necessary.</p>
 <p>You can now drop the unused indexes:</p>
-<pre class="codehilite"><code>DROP INDEX idx_placex_reverse_geometry;</code></pre>
+<div class="codehilite"><pre><span></span>DROP INDEX idx_placex_reverse_geometry;
+</pre></div>
 
 
 <p>Finally, update all SQL functions:</p>
-<pre class="codehilite"><code class="language-sh">./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions</code></pre>
+<div class="codehilite"><pre><span></span>./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
+</pre></div>
 
 
 <h2 id="300-310">3.0.0 -&gt; 3.1.0<a class="headerlink" href="#300-310" title="Permanent link"></a></h2>
@@ -319,53 +328,59 @@ CREATE INDEX idx_placex_geometry_reverse_placeNode
 <p>A new separate table for artificially computed postcode centroids was introduced.
 Migration to the new format is possible but <strong>not recommended</strong>.</p>
 <p>Create postcode table and indexes, running the following SQL statements:</p>
-<pre class="codehilite"><code class="language-sql">CREATE TABLE location_postcode
-  (place_id BIGINT, parent_place_id BIGINT, rank_search SMALLINT,
-   rank_address SMALLINT, indexed_status SMALLINT, indexed_date TIMESTAMP,
-   country_code varchar(2), postcode TEXT,
-   geometry GEOMETRY(Geometry, 4326));
-CREATE INDEX idx_postcode_geometry ON location_postcode USING GIST (geometry);
-CREATE UNIQUE INDEX idx_postcode_id ON location_postcode USING BTREE (place_id);
-CREATE INDEX idx_postcode_postcode ON location_postcode USING BTREE (postcode);
-GRANT SELECT ON location_postcode TO &quot;www-data&quot;;
-drop type if exists nearfeaturecentr cascade;
-create type nearfeaturecentr as (
-  place_id BIGINT,
-  keywords int[],
-  rank_address smallint,
-  rank_search smallint,
-  distance float,
-  isguess boolean,
-  postcode TEXT,
-  centroid GEOMETRY
-);</code></pre>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">location_postcode</span>
+  <span class="p">(</span><span class="n">place_id</span> <span class="nb">BIGINT</span><span class="p">,</span> <span class="n">parent_place_id</span> <span class="nb">BIGINT</span><span class="p">,</span> <span class="n">rank_search</span> <span class="nb">SMALLINT</span><span class="p">,</span>
+   <span class="n">rank_address</span> <span class="nb">SMALLINT</span><span class="p">,</span> <span class="n">indexed_status</span> <span class="nb">SMALLINT</span><span class="p">,</span> <span class="n">indexed_date</span> <span class="k">TIMESTAMP</span><span class="p">,</span>
+   <span class="n">country_code</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">postcode</span> <span class="nb">TEXT</span><span class="p">,</span>
+   <span class="n">geometry</span> <span class="n">GEOMETRY</span><span class="p">(</span><span class="n">Geometry</span><span class="p">,</span> <span class="mi">4326</span><span class="p">));</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_postcode_geometry</span> <span class="k">ON</span> <span class="n">location_postcode</span> <span class="k">USING</span> <span class="n">GIST</span> <span class="p">(</span><span class="n">geometry</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">UNIQUE</span> <span class="k">INDEX</span> <span class="n">idx_postcode_id</span> <span class="k">ON</span> <span class="n">location_postcode</span> <span class="k">USING</span> <span class="n">BTREE</span> <span class="p">(</span><span class="n">place_id</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_postcode_postcode</span> <span class="k">ON</span> <span class="n">location_postcode</span> <span class="k">USING</span> <span class="n">BTREE</span> <span class="p">(</span><span class="n">postcode</span><span class="p">);</span>
+<span class="k">GRANT</span> <span class="k">SELECT</span> <span class="k">ON</span> <span class="n">location_postcode</span> <span class="k">TO</span> <span class="ss">&quot;www-data&quot;</span><span class="p">;</span>
+<span class="k">drop</span> <span class="k">type</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">nearfeaturecentr</span> <span class="k">cascade</span><span class="p">;</span>
+<span class="k">create</span> <span class="k">type</span> <span class="n">nearfeaturecentr</span> <span class="k">as</span> <span class="p">(</span>
+  <span class="n">place_id</span> <span class="nb">BIGINT</span><span class="p">,</span>
+  <span class="n">keywords</span> <span class="nb">int</span><span class="p">[],</span>
+  <span class="n">rank_address</span> <span class="nb">smallint</span><span class="p">,</span>
+  <span class="n">rank_search</span> <span class="nb">smallint</span><span class="p">,</span>
+  <span class="n">distance</span> <span class="nb">float</span><span class="p">,</span>
+  <span class="n">isguess</span> <span class="nb">boolean</span><span class="p">,</span>
+  <span class="n">postcode</span> <span class="nb">TEXT</span><span class="p">,</span>
+  <span class="n">centroid</span> <span class="n">GEOMETRY</span>
+<span class="p">);</span>
+</pre></div>
 
 
 <p>Add postcode column to <code>location_area</code> tables with SQL statement:</p>
-<pre class="codehilite"><code class="language-sql">ALTER TABLE location_area ADD COLUMN postcode TEXT;</code></pre>
+<div class="codehilite"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">location_area</span> <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">postcode</span> <span class="nb">TEXT</span><span class="p">;</span>
+</pre></div>
 
 
 <p>Then reimport the functions:</p>
-<pre class="codehilite"><code class="language-sh">./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions</code></pre>
+<div class="codehilite"><pre><span></span>./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
+</pre></div>
 
 
 <p>Create appropriate triggers with SQL:</p>
-<pre class="codehilite"><code class="language-sql">CREATE TRIGGER location_postcode_before_update BEFORE UPDATE ON location_postcode
-    FOR EACH ROW EXECUTE PROCEDURE postcode_update();</code></pre>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">location_postcode_before_update</span> <span class="k">BEFORE</span> <span class="k">UPDATE</span> <span class="k">ON</span> <span class="n">location_postcode</span>
+    <span class="k">FOR</span> <span class="k">EACH</span> <span class="k">ROW</span> <span class="k">EXECUTE</span> <span class="k">PROCEDURE</span> <span class="n">postcode_update</span><span class="p">();</span>
+</pre></div>
 
 
 <p>Finally populate the postcode table (will take a while):</p>
-<pre class="codehilite"><code class="language-sh">./utils/setup.php --calculate-postcodes --index --index-noanalyse</code></pre>
+<div class="codehilite"><pre><span></span>./utils/setup.php --calculate-postcodes --index --index-noanalyse
+</pre></div>
 
 
 <p>This will create a working database. You may also delete the old artificial
 postcodes now. Note that this may be expensive and is not absolutely necessary.
 The following SQL statement will remove them:</p>
-<pre class="codehilite"><code class="language-sql">DELETE FROM place_addressline a USING placex p
- WHERE a.address_place_id = p.place_id and p.osm_type = 'P';
-ALTER TABLE placex DISABLE TRIGGER USER;
-DELETE FROM placex WHERE osm_type = 'P';
-ALTER TABLE placex ENABLE TRIGGER USER;</code></pre>
+<div class="codehilite"><pre><span></span><span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">place_addressline</span> <span class="n">a</span> <span class="k">USING</span> <span class="n">placex</span> <span class="n">p</span>
+ <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">address_place_id</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">place_id</span> <span class="k">and</span> <span class="n">p</span><span class="p">.</span><span class="n">osm_type</span> <span class="o">=</span> <span class="s1">&#39;P&#39;</span><span class="p">;</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">placex</span> <span class="n">DISABLE</span> <span class="k">TRIGGER</span> <span class="k">USER</span><span class="p">;</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">placex</span> <span class="k">WHERE</span> <span class="n">osm_type</span> <span class="o">=</span> <span class="s1">&#39;P&#39;</span><span class="p">;</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">placex</span> <span class="n">ENABLE</span> <span class="k">TRIGGER</span> <span class="k">USER</span><span class="p">;</span>
+</pre></div>
               
             </div>
           </div>

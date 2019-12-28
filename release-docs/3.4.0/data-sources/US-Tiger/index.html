@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   <link href="../../extra.css" rel="stylesheet">
+  <link href="../../styles.css" rel="stylesheet">
   
   <script>
     // Current page data
@@ -231,28 +232,32 @@
 <ol>
 <li>
 <p>Install the GDAL library and python bindings and the unzip tool</p>
-<pre class="codehilite"><code># Ubuntu:
-sudo apt-get install python3-gdal unzip</code></pre>
+<div class="codehilite"><pre><span></span># Ubuntu:
+sudo apt-get install python3-gdal unzip
+</pre></div>
 
 
 </li>
 <li>
 <p>Get the TIGER 2019 data. You will need the EDGES files
      (3,233 zip files, 11GB total).</p>
-<pre class="codehilite"><code> wget -r ftp://ftp2.census.gov/geo/tiger/TIGER2019/EDGES/</code></pre>
+<div class="codehilite"><pre><span></span> wget -r ftp://ftp2.census.gov/geo/tiger/TIGER2019/EDGES/
+</pre></div>
 
 
 </li>
 <li>
 <p>Convert the data into SQL statements. Adjust the file paths in the scripts as needed</p>
-<pre class="codehilite"><code>cd data-sources/us-tiger
-./convert.sh &lt;input-path&gt; &lt;output-path&gt;</code></pre>
+<div class="codehilite"><pre><span></span>cd data-sources/us-tiger
+./convert.sh &lt;input-path&gt; &lt;output-path&gt;
+</pre></div>
 
 
 </li>
 <li>
 <p>Maybe: package the created files</p>
-<pre class="codehilite"><code>tar -czf tiger2019-nominatim-preprocessed.tar.gz tiger</code></pre>
+<div class="codehilite"><pre><span></span>tar -czf tiger2019-nominatim-preprocessed.tar.gz tiger
+</pre></div>
 
 
 </li>

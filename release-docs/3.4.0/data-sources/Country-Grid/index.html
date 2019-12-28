@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   <link href="../../extra.css" rel="stylesheet">
+  <link href="../../styles.css" rel="stylesheet">
   
   <script>
     // Current page data
@@ -267,18 +268,19 @@
 <h3 id="datacountry_osm_gridsql">data/country_osm_grid.sql<a class="headerlink" href="#datacountry_osm_gridsql" title="Permanent link"></a></h3>
 <p><code>country_grid.sql</code> merges territories by country. Then uses <code>function.sql: quad_split_geometry</code> to split each country into multiple <a href="https://en.wikipedia.org/wiki/Quadtree">Quadtree</a> polygons for faster point-in-polygon lookups.</p>
 <p>To visualize one country as geojson feature collection, e.g. for loading into <a href="http://geojson.io/">geojson.io</a>:</p>
-<pre class="codehilite"><code>-- http://www.postgresonline.com/journal/archives/267-Creating-GeoJSON-Feature-Collections-with-JSON-and-PostGIS-functions.html
+<div class="codehilite"><pre><span></span>-- http://www.postgresonline.com/journal/archives/267-Creating-GeoJSON-Feature-Collections-with-JSON-and-PostGIS-functions.html
 
 SELECT row_to_json(fc)
 FROM (
-  SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
+  SELECT &#39;FeatureCollection&#39; As type, array_to_json(array_agg(f)) As features
   FROM (
-    SELECT 'Feature' As type,
+    SELECT &#39;Feature&#39; As type,
     ST_AsGeoJSON(lg.geometry)::json As geometry,
     row_to_json((country_code, area)) As properties
-    FROM country_osm_grid As lg where country_code='mx'
+    FROM country_osm_grid As lg where country_code=&#39;mx&#39;
   ) As f
-) As fc;</code></pre>
+) As fc;
+</pre></div>
 
 
 <p><code>cat /tmp/query.sql | psql -At nominatim &gt; /tmp/mexico.quad.geojson</code></p>

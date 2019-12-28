@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   <link href="../../extra.css" rel="stylesheet">
+  <link href="../../styles.css" rel="stylesheet">
   
   <script>
     // Current page data
@@ -294,21 +295,23 @@ a bit more than 2 days. Without SSDs 7-8 days are more realistic.</p>
 <p>You might want to tune your PostgreSQL installation so that the later steps
 make best use of your hardware. You should tune the following parameters in
 your <code>postgresql.conf</code> file.</p>
-<pre class="codehilite"><code>shared_buffers (2GB)
+<div class="codehilite"><pre><span></span>shared_buffers (2GB)
 maintenance_work_mem (10GB)
 work_mem (50MB)
 effective_cache_size (24GB)
 synchronous_commit = off
 checkpoint_segments = 100 # only for postgresql &lt;= 9.4
 checkpoint_timeout = 10min
-checkpoint_completion_target = 0.9</code></pre>
+checkpoint_completion_target = 0.9
+</pre></div>
 
 
 <p>The numbers in brackets behind some parameters seem to work fine for
 32GB RAM machine. Adjust to your setup.</p>
 <p>For the initial import, you should also set:</p>
-<pre class="codehilite"><code>fsync = off
-full_page_writes = off</code></pre>
+<div class="codehilite"><pre><span></span>fsync = off
+full_page_writes = off
+</pre></div>
 
 
 <p>Don't forget to reenable them after the initial import or you risk database
@@ -321,13 +324,14 @@ from there.</p>
 <h4 id="configure-for-use-with-apache">Configure for use with Apache<a class="headerlink" href="#configure-for-use-with-apache" title="Permanent link"></a></h4>
 <p>Make sure your Apache configuration contains the required permissions for the
 directory and create an alias:</p>
-<pre class="codehilite"><code>&lt;Directory &quot;/srv/nominatim/build/website&quot;&gt;
+<div class="codehilite"><pre><span></span><span class="nt">&lt;Directory</span> <span class="err">&quot;/srv/nominatim/build/website&quot;</span><span class="nt">&gt;</span>
   Options FollowSymLinks MultiViews
   AddType text/html   .php
   DirectoryIndex search.php
   Require all granted
-&lt;/Directory&gt;
-Alias /nominatim /srv/nominatim/build/website</code></pre>
+<span class="nt">&lt;/Directory&gt;</span>
+Alias /nominatim /srv/nominatim/build/website
+</pre></div>
 
 
 <p><code>/srv/nominatim/build</code> should be replaced with the location of your
@@ -339,29 +343,31 @@ The website should now be available on http://localhost/nominatim.</p>
 <p>By default php listens on a network socket. If you want it to listen to a
 Unix socket instead, change the pool configuration (<code>pool.d/www.conf</code>) as
 follows:</p>
-<pre class="codehilite"><code>; Comment out the tcp listener and add the unix socket
+<div class="codehilite"><pre><span></span>; Comment out the tcp listener and add the unix socket
 ;listen = 127.0.0.1:9000
 listen = /var/run/php5-fpm.sock
 
 ; Ensure that the daemon runs as the correct user
 listen.owner = www-data
 listen.group = www-data
-listen.mode = 0666</code></pre>
+listen.mode = 0666
+</pre></div>
 
 
 <p>Tell nginx that php files are special and to fastcgi_pass to the php-fpm
 unix socket by adding the location definition to the default configuration.</p>
-<pre class="codehilite"><code>root /srv/nominatim/build/website;
-index search.php index.html;
-location ~ [^/]\.php(/|$) {
-    fastcgi_split_path_info ^(.+?\.php)(/.*)$;
-    if (!-f $document_root$fastcgi_script_name) {
-        return 404;
-    }
-    fastcgi_pass unix:/var/run/php5-fpm.sock;
-    fastcgi_index search.php;
-    include fastcgi.conf;
-}</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">root</span> <span class="o">/</span><span class="nt">srv</span><span class="o">/</span><span class="nt">nominatim</span><span class="o">/</span><span class="nt">build</span><span class="o">/</span><span class="nt">website</span><span class="o">;</span>
+<span class="nt">index</span> <span class="nt">search</span><span class="p">.</span><span class="nc">php</span> <span class="nt">index</span><span class="p">.</span><span class="nc">html</span><span class="o">;</span>
+<span class="nt">location</span> <span class="o">~</span> <span class="cp">[</span><span class="p">^</span><span class="o">/</span><span class="cp">]</span><span class="err">\</span><span class="p">.</span><span class="nc">php</span><span class="o">(/|$)</span> <span class="p">{</span>
+    <span class="err">fastcgi_split_path_info</span> <span class="err">^(.+?\.php)(/.*)$</span><span class="p">;</span>
+    <span class="err">if</span> <span class="err">(!-f</span> <span class="err">$document_root$fastcgi_script_name)</span> <span class="err">{</span>
+        <span class="err">return</span> <span class="err">404</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nt">fastcgi_pass</span> <span class="nt">unix</span><span class="o">:/</span><span class="nt">var</span><span class="o">/</span><span class="nt">run</span><span class="o">/</span><span class="nt">php5-fpm</span><span class="p">.</span><span class="nc">sock</span><span class="o">;</span>
+    <span class="nt">fastcgi_index</span> <span class="nt">search</span><span class="p">.</span><span class="nc">php</span><span class="o">;</span>
+    <span class="nt">include</span> <span class="nt">fastcgi</span><span class="p">.</span><span class="nc">conf</span><span class="o">;</span>
+<span class="err">}</span>
+</pre></div>
 
 
 <p>Restart the nginx and php5-fpm services and the website should now be available

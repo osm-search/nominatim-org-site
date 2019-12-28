@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   <link href="../../extra.css" rel="stylesheet">
+  <link href="../../styles.css" rel="stylesheet">
   
   <script>
     // Current page data
@@ -241,21 +242,25 @@
 <p>It is possible if the import already got to the indexing stage.
 Check the last line of output that was logged before the process
 was killed. If it looks like this:</p>
-<pre class="codehilite"><code>Done 844 in 13 @ 64.923080 per second - Rank 26 ETA (seconds): 7.886255</code></pre>
+<div class="codehilite"><pre><span></span>Done 844 in 13 @ 64.923080 per second - Rank 26 ETA (seconds): 7.886255
+</pre></div>
 
 
 <p>then you can resume with the following command:</p>
-<pre class="codehilite"><code class="language-sh">./utils/setup.php --index --create-search-indices --create-country-names</code></pre>
+<div class="codehilite"><pre><span></span>./utils/setup.php --index --create-search-indices --create-country-names
+</pre></div>
 
 
 <p>If the reported rank is 26 or higher, you can also safely add <code>--index-noanalyse</code>.</p>
 <h3 id="php-open_basedir-restriction-in-effect-warnings">PHP "open_basedir restriction in effect" warnings<a class="headerlink" href="#php-open_basedir-restriction-in-effect-warnings" title="Permanent link"></a></h3>
-<pre class="codehilite"><code>PHP Warning:  file_get_contents(): open_basedir restriction in effect.</code></pre>
+<div class="codehilite"><pre><span></span>PHP Warning:  file_get_contents(): open_basedir restriction in effect.
+</pre></div>
 
 
 <p>You need to adjust the <a href="https://www.php.net/manual/en/ini.core.php#ini.open-basedir">open_basedir</a> setting
 in your PHP configuration (<code>php.ini file</code>). By default this setting may look like this:</p>
-<pre class="codehilite"><code>open_basedir = /srv/http/:/home/:/tmp/:/usr/share/pear/</code></pre>
+<div class="codehilite"><pre><span></span>open_basedir = /srv/http/:/home/:/tmp/:/usr/share/pear/
+</pre></div>
 
 
 <p>Either add reported directories to the list or disable this setting temporarily by
@@ -267,13 +272,15 @@ once you are done with the PHP command line operations.</p>
 <p>You should set the default time zone as instructed in the warning in
 your <code>php.ini</code> file. Find the entry about timezone and set it to
 something like this:</p>
-<pre class="codehilite"><code>; Defines the default timezone used by the date functions
+<div class="codehilite"><pre><span></span>; Defines the default timezone used by the date functions
 ; https://php.net/date.timezone
-date.timezone = 'America/Denver'</code></pre>
+date.timezone = &#39;America/Denver&#39;
+</pre></div>
 
 
 <p>Or</p>
-<pre class="codehilite"><code>echo &quot;date.timezone = 'America/Denver'&quot; &gt; /etc/php.d/timezone.ini</code></pre>
+<div class="codehilite"><pre><span></span>echo &quot;date.timezone = &#39;America/Denver&#39;&quot; &gt; /etc/php.d/timezone.ini
+</pre></div>
 
 
 <h3 id="nominatimso-version-mismatch">nominatim.so version mismatch<a class="headerlink" href="#nominatimso-version-mismatch" title="Permanent link"></a></h3>
@@ -314,8 +321,9 @@ Check if <code>/usr/lib/systemd/system/httpd.service</code> contains a line <cod
 If so then Apache cannot see the <code>/tmp/.s.PGSQL.5432</code> file. It's a good security feature,
 so use the <a href="../appendix/Install-on-Centos-7/#adding-selinux-security-settings">preferred solution</a>.</p>
 <p>However, you can solve this the quick and dirty way by commenting out that line and then run</p>
-<pre class="codehilite"><code>sudo systemctl daemon-reload
-sudo systemctl restart httpd</code></pre>
+<div class="codehilite"><pre><span></span>sudo systemctl daemon-reload
+sudo systemctl restart httpd
+</pre></div>
 
 
 <h3 id="must-be-an-array-or-an-object-that-implements-countable-warning-in-usrsharepeardbphp">"must be an array or an object that implements Countable" warning in /usr/share/pear/DB.php<a class="headerlink" href="#must-be-an-array-or-an-object-that-implements-countable-warning-in-usrsharepeardbphp" title="Permanent link"></a></h3>
@@ -331,22 +339,25 @@ installed.</p>
 <p>Give the user permission to existing tables</p>
 </li>
 </ol>
-<pre class="codehilite"><code>   GRANT usage ON SCHEMA public TO &quot;www-data&quot;;
-   GRANT SELECT ON ALL TABLES IN SCHEMA public TO &quot;www-data&quot;;</code></pre>
+<div class="codehilite"><pre><span></span>   GRANT usage ON SCHEMA public TO &quot;www-data&quot;;
+   GRANT SELECT ON ALL TABLES IN SCHEMA public TO &quot;www-data&quot;;
+</pre></div>
 
 
 <h3 id="website-reports-could-not-load-library-nominatimso">Website reports "Could not load library "nominatim.so"<a class="headerlink" href="#website-reports-could-not-load-library-nominatimso" title="Permanent link"></a></h3>
 <p>Example error message</p>
-<pre class="codehilite"><code>   SELECT make_standard_name('3039 E MEADOWLARK LN') [nativecode=ERROR: could not
+<div class="codehilite"><pre><span></span>   SELECT make_standard_name(&#39;3039 E MEADOWLARK LN&#39;) [nativecode=ERROR: could not
    load library &quot;/srv/nominatim/Nominatim-3.1.0/build/module/nominatim.so&quot;:
    /srv/nominatim/Nominatim-3.1.0/build/module/nominatim.so: cannot open shared
    object file: Permission denied
-   CONTEXT: PL/pgSQL function make_standard_name(text) line 5 at assignment]</code></pre>
+   CONTEXT: PL/pgSQL function make_standard_name(text) line 5 at assignment]
+</pre></div>
 
 
 <p>The PostgreSQL database, i.e. user <code>postgres</code>, needs to have access to that file.</p>
 <p>The permission need to be read &amp; executable by everybody, e.g.</p>
-<pre class="codehilite"><code>   -rwxr-xr-x 1 nominatim nominatim 297984 build/module/nominatim.so</code></pre>
+<div class="codehilite"><pre><span></span>   -rwxr-xr-x 1 nominatim nominatim 297984 build/module/nominatim.so
+</pre></div>
 
 
 <p>Try <code>chmod a+r nominatim.so; chmod a+x nominatim.so</code>.</p>
@@ -360,7 +371,8 @@ See the installation instruction for a full list of required packages.</p>
 <p>The message is a bit misleading as PHP needs to load the file <code>DB.php</code> and
 instead re-loads Nominatim's <code>db.php</code>. To solve this make sure you
 have the <a href="https://pear.php.net/package/DB/">Pear module 'DB'</a> installed.</p>
-<pre class="codehilite"><code>sudo pear install DB</code></pre>
+<div class="codehilite"><pre><span></span>sudo pear install DB
+</pre></div>
 
 
 <h3 id="i-forgot-to-delete-the-flatnodes-file-before-starting-an-import">I forgot to delete the flatnodes file before starting an import.<a class="headerlink" href="#i-forgot-to-delete-the-flatnodes-file-before-starting-an-import" title="Permanent link"></a></h3>
@@ -376,7 +388,8 @@ for examples how to do that. Use the resulting single osm file when
 running <code>setup.php</code>.</p>
 <p>For updates you need to download the change files for each country
 once per day and apply them <strong>separately</strong> using</p>
-<pre class="codehilite"><code>./utils/update.php --import-diff &lt;filename&gt; --index</code></pre>
+<div class="codehilite"><pre><span></span><span class="o">.</span><span class="l">/utils/update.php</span> <span class="err">--</span><span class="nb">import</span><span class="err">-</span>diff <span class="l">&lt;filename&gt;</span> <span class="err">--</span>index
+</pre></div>
 
 
 <p>See <a href="https://github.com/openstreetmap/Nominatim/issues/60#issuecomment-18679446">this issue</a>

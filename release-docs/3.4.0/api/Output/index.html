@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   <link href="../../extra.css" rel="stylesheet">
+  <link href="../../styles.css" rel="stylesheet">
   
   <script>
     // Current page data
@@ -241,7 +242,7 @@ parameter.</p>
 <h3 id="json">JSON<a class="headerlink" href="#json" title="Permanent link"></a></h3>
 <p>The JSON format returns an array of places (for search and lookup) or
 a single place (for reverse) of the following format:</p>
-<pre class="codehilite"><code>  {
+<div class="codehilite"><pre><span></span>  {
     &quot;place_id&quot;: &quot;100149&quot;,
     &quot;licence&quot;: &quot;Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright&quot;,
     &quot;osm_type&quot;: &quot;node&quot;,
@@ -269,7 +270,8 @@ a single place (for reverse) of the following format:</p>
       &quot;wikipedia&quot;: &quot;en:London&quot;,
       &quot;population&quot;: &quot;8416535&quot;
     }
-  },</code></pre>
+  },
+</pre></div>
 
 
 <p>The possible fields are:</p>
@@ -337,27 +339,28 @@ of the centroid.</p>
 <p>The XML response returns one or more place objects in slightly different
 formats depending on the API call.</p>
 <h4 id="reverse">Reverse<a class="headerlink" href="#reverse" title="Permanent link"></a></h4>
-<pre class="codehilite"><code>&lt;reversegeocode timestamp=&quot;Sat, 11 Aug 18 11:53:21 +0000&quot;
-                attribution=&quot;Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright&quot;
-                querystring=&quot;lat=48.400381&amp;lon=11.745876&amp;zoom=5&amp;format=xml&quot;&gt;
-  &lt;result place_id=&quot;179509537&quot; osm_type=&quot;relation&quot; osm_id=&quot;2145268&quot; ref=&quot;BY&quot;
-          lat=&quot;48.9467562&quot; lon=&quot;11.4038717&quot;
-          boundingbox=&quot;47.2701114,50.5647142,8.9763497,13.8396373&quot;&gt;
+<div class="codehilite"><pre><span></span><span class="nt">&lt;reversegeocode</span> <span class="na">timestamp=</span><span class="s">&quot;Sat, 11 Aug 18 11:53:21 +0000&quot;</span>
+                <span class="na">attribution=</span><span class="s">&quot;Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright&quot;</span>
+                <span class="na">querystring=</span><span class="s">&quot;lat=48.400381&amp;lon=11.745876&amp;zoom=5&amp;format=xml&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;result</span> <span class="na">place_id=</span><span class="s">&quot;179509537&quot;</span> <span class="na">osm_type=</span><span class="s">&quot;relation&quot;</span> <span class="na">osm_id=</span><span class="s">&quot;2145268&quot;</span> <span class="na">ref=</span><span class="s">&quot;BY&quot;</span>
+          <span class="na">lat=</span><span class="s">&quot;48.9467562&quot;</span> <span class="na">lon=</span><span class="s">&quot;11.4038717&quot;</span>
+          <span class="na">boundingbox=</span><span class="s">&quot;47.2701114,50.5647142,8.9763497,13.8396373&quot;</span><span class="nt">&gt;</span>
        Bavaria, Germany
-  &lt;/result&gt;
-  &lt;addressparts&gt;
-     &lt;state&gt;Bavaria&lt;/state&gt;
-     &lt;country&gt;Germany&lt;/country&gt;
-     &lt;country_code&gt;de&lt;/country_code&gt;
-  &lt;/addressparts&gt;
-  &lt;extratags&gt;
-    &lt;tag key=&quot;place&quot; value=&quot;state&quot;/&gt;
-    &lt;tag key=&quot;wikidata&quot; value=&quot;Q980&quot;/&gt;
-    &lt;tag key=&quot;wikipedia&quot; value=&quot;de:Bayern&quot;/&gt;
-    &lt;tag key=&quot;population&quot; value=&quot;12520000&quot;/&gt;
-    &lt;tag key=&quot;name:prefix&quot; value=&quot;Freistaat&quot;/&gt;
-  &lt;/extratags&gt;
-&lt;/reversegeocode&gt;</code></pre>
+  <span class="nt">&lt;/result&gt;</span>
+  <span class="nt">&lt;addressparts&gt;</span>
+     <span class="nt">&lt;state&gt;</span>Bavaria<span class="nt">&lt;/state&gt;</span>
+     <span class="nt">&lt;country&gt;</span>Germany<span class="nt">&lt;/country&gt;</span>
+     <span class="nt">&lt;country_code&gt;</span>de<span class="nt">&lt;/country_code&gt;</span>
+  <span class="nt">&lt;/addressparts&gt;</span>
+  <span class="nt">&lt;extratags&gt;</span>
+    <span class="nt">&lt;tag</span> <span class="na">key=</span><span class="s">&quot;place&quot;</span> <span class="na">value=</span><span class="s">&quot;state&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;tag</span> <span class="na">key=</span><span class="s">&quot;wikidata&quot;</span> <span class="na">value=</span><span class="s">&quot;Q980&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;tag</span> <span class="na">key=</span><span class="s">&quot;wikipedia&quot;</span> <span class="na">value=</span><span class="s">&quot;de:Bayern&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;tag</span> <span class="na">key=</span><span class="s">&quot;population&quot;</span> <span class="na">value=</span><span class="s">&quot;12520000&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;tag</span> <span class="na">key=</span><span class="s">&quot;name:prefix&quot;</span> <span class="na">value=</span><span class="s">&quot;Freistaat&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/extratags&gt;</span>
+<span class="nt">&lt;/reversegeocode&gt;</span>
+</pre></div>
 
 
 <p>The attributes of the outer <code>reversegeocode</code> element return generic information
@@ -376,7 +379,7 @@ attribution to OSM and the original querystring.</p>
 <p>Additional information requested with <code>addressdetails=1</code>, <code>extratags=1</code> and
 <code>namedetails=1</code> can be found in extra elements.</p>
 <h4 id="search-and-lookup">Search and Lookup<a class="headerlink" href="#search-and-lookup" title="Permanent link"></a></h4>
-<pre class="codehilite"><code>&lt;searchresults timestamp=&quot;Sat, 11 Aug 18 11:55:35 +0000&quot;
+<div class="codehilite"><pre><span></span>&lt;searchresults timestamp=&quot;Sat, 11 Aug 18 11:55:35 +0000&quot;
                attribution=&quot;Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright&quot;
                querystring=&quot;london&quot; polygon=&quot;false&quot; exclude_place_ids=&quot;100149&quot;
                more_url=&quot;https://nominatim.openstreetmap.org/search.php?q=london&amp;addressdetails=1&amp;extratags=1&amp;exclude_place_ids=100149&amp;format=xml&amp;accept-language=en-US%2Cen%3Bq%3D0.7%2Cde%3Bq%3D0.3&quot;&gt;
@@ -399,7 +402,8 @@ attribution to OSM and the original querystring.</p>
     &lt;country&gt;United Kingdom&lt;/country&gt;
     &lt;country_code&gt;gb&lt;/country_code&gt;
   &lt;/place&gt;
-&lt;/searchresults&gt;</code></pre>
+&lt;/searchresults&gt;
+</pre></div>
 
 
 <p>The attributes of the outer <code>searchresults</code> or <code>lookupresults</code> element return

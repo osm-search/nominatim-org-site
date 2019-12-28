@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   <link href="../../extra.css" rel="stylesheet">
+  <link href="../../styles.css" rel="stylesheet">
   
   <script>
     // Current page data
@@ -253,7 +254,8 @@
 <p>These scripts extract and prepare both Wikipedia page rank and Wikidata links for use in Nominatim.  </p>
 <h4 id="create-a-new-postgres-db-for-processing">Create a new postgres DB for Processing<a class="headerlink" href="#create-a-new-postgres-db-for-processing" title="Permanent link"></a></h4>
 <p>Due to the size of initial and intermediate tables, processing can be done in an external database:</p>
-<pre class="codehilite"><code>CREATE DATABASE wikiprocessingdb;</code></pre>
+<div class="codehilite"><pre><span></span>CREATE DATABASE wikiprocessingdb;
+</pre></div>
 
 
 <hr />
@@ -270,7 +272,8 @@
 </li>
 </ul>
 <p>To download, convert, and import the data, then process summary statistics and compute importance scores, run:</p>
-<pre class="codehilite"><code>./wikipedia_import.sh</code></pre>
+<div class="codehilite"><pre><span></span>./wikipedia_import.sh
+</pre></div>
 
 
 <hr />
@@ -300,7 +303,8 @@
 </ul>
 <p>By including Wikidata in the wikipedia_articles table, new connections can be made on the fly from the Nominatim placex table to wikipedia_article importance scores. </p>
 <p>To download, convert, and import the data, then process required items, run:</p>
-<pre class="codehilite"><code>./wikidata_import.sh</code></pre>
+<div class="codehilite"><pre><span></span>./wikidata_import.sh
+</pre></div>
               
             </div>
           </div>

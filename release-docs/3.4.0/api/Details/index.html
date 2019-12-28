@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   <link href="../../extra.css" rel="stylesheet">
+  <link href="../../styles.css" rel="stylesheet">
   
   <script>
     // Current page data
@@ -237,7 +238,8 @@
 <p><strong>The details page (including JSON output) exists for debugging only and must not be downloaded automatically</strong>, see <a href="https://operations.osmfoundation.org/policies/nominatim/">Nominatim Usage Policy</a>.</p>
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link"></a></h2>
 <p>The details API supports the following two request formats:</p>
-<pre class="codehilite"><code>  https://nominatim.openstreetmap.org/details?osmtype=[N|W|R]&amp;osmid=&lt;value&gt;&amp;class=&lt;value&gt;</code></pre>
+<div class="codehilite"><pre><span></span>  https://nominatim.openstreetmap.org/details?osmtype=[N|W|R]&amp;osmid=&lt;value&gt;&amp;class=&lt;value&gt;
+</pre></div>
 
 
 <p><code>osmtype</code> and <code>osmid</code> are required parameter. The type is one of node (N), way (W)
@@ -249,7 +251,8 @@ restaurant, one for a hotel. You need to specify <code>class=tourism</code> or <
 to get exactly the one you want. If there are multiple places in the database
 but the <code>class</code> parameter is left out, then one of the places will be chosen
 at random and displayed.</p>
-<pre class="codehilite"><code>  https://nominatim.openstreetmap.org/details?place_id=&lt;value&gt;</code></pre>
+<div class="codehilite"><pre><span></span>  https://nominatim.openstreetmap.org/details?place_id=&lt;value&gt;
+</pre></div>
 
 
 <p>Placeids are assigned sequentially during Nominatim data import. The id for a place is different between Nominatim installation (servers) and changes when data gets reimported. Therefore it can't be used as permanent id and shouldn't be used in bug reports.</p>
@@ -306,59 +309,60 @@ comma-separated list of language codes.</p>
 <p><a href="https://nominatim.openstreetmap.org/details.php?osmtype=W&amp;osmid=38210407">https://nominatim.openstreetmap.org/details.php?osmtype=W&amp;osmid=38210407</a></p>
 <h5 id="json">JSON<a class="headerlink" href="#json" title="Permanent link"></a></h5>
 <p><a href="https://nominatim.openstreetmap.org/details.php?osmtype=W&amp;osmid=38210407&amp;format=json">https://nominatim.openstreetmap.org/details.php?osmtype=W&amp;osmid=38210407&amp;format=json</a></p>
-<pre class="codehilite"><code class="language-json">{
-  &quot;place_id&quot;: 85993608,
-  &quot;parent_place_id&quot;: 72765313,
-  &quot;osm_type&quot;: &quot;W&quot;,
-  &quot;osm_id&quot;: 38210407,
-  &quot;category&quot;: &quot;place&quot;,
-  &quot;type&quot;: &quot;square&quot;,
-  &quot;admin_level&quot;: &quot;15&quot;,
-  &quot;localname&quot;: &quot;Pariser Platz&quot;,
-  &quot;names&quot;: {
-    &quot;name&quot;: &quot;Pariser Platz&quot;,
-    &quot;name:be&quot;: &quot;Парыжская плошча&quot;,
-    &quot;name:de&quot;: &quot;Pariser Platz&quot;,
-    &quot;name:es&quot;: &quot;Plaza de París&quot;,
-    &quot;name:he&quot;: &quot;פאריזר פלאץ&quot;,
-    &quot;name:ko&quot;: &quot;파리저 광장&quot;,
-    &quot;name:la&quot;: &quot;Forum Parisinum&quot;,
-    &quot;name:ru&quot;: &quot;Парижская площадь&quot;,
-    &quot;name:uk&quot;: &quot;Паризька площа&quot;,
-    &quot;name:zh&quot;: &quot;巴黎廣場&quot;
-  },
-  &quot;addresstags&quot;: {
-    &quot;postcode&quot;: &quot;10117&quot;
-  },
-  &quot;housenumber&quot;: null,
-  &quot;calculated_postcode&quot;: &quot;10117&quot;,
-  &quot;country_code&quot;: &quot;de&quot;,
-  &quot;indexed_date&quot;: &quot;2018-08-18T17:02:45+00:00&quot;,
-  &quot;importance&quot;: 0.339401620591472,
-  &quot;calculated_importance&quot;: 0.339401620591472,
-  &quot;extratags&quot;: {
-    &quot;wikidata&quot;: &quot;Q156716&quot;,
-    &quot;wikipedia&quot;: &quot;de:Pariser Platz&quot;
-  },
-  &quot;calculated_wikipedia&quot;: &quot;de:Pariser_Platz&quot;,
-  &quot;rank_address&quot;: 30,
-  &quot;rank_search&quot;: 30,
-  &quot;isarea&quot;: true,
-  &quot;centroid&quot;: {
-    &quot;type&quot;: &quot;Point&quot;,
-    &quot;coordinates&quot;: [
-      13.3786822618517,
-      52.5163654
-    ]
-  },
-  &quot;geometry&quot;: {
-    &quot;type&quot;: &quot;Point&quot;,
-    &quot;coordinates&quot;: [
-      13.3786822618517,
-      52.5163654
-    ]
-  }
-}</code></pre>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;place_id&quot;</span><span class="p">:</span> <span class="mi">85993608</span><span class="p">,</span>
+  <span class="nt">&quot;parent_place_id&quot;</span><span class="p">:</span> <span class="mi">72765313</span><span class="p">,</span>
+  <span class="nt">&quot;osm_type&quot;</span><span class="p">:</span> <span class="s2">&quot;W&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;osm_id&quot;</span><span class="p">:</span> <span class="mi">38210407</span><span class="p">,</span>
+  <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;place&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;square&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;admin_level&quot;</span><span class="p">:</span> <span class="s2">&quot;15&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;localname&quot;</span><span class="p">:</span> <span class="s2">&quot;Pariser Platz&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;names&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Pariser Platz&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name:be&quot;</span><span class="p">:</span> <span class="s2">&quot;Парыжская плошча&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name:de&quot;</span><span class="p">:</span> <span class="s2">&quot;Pariser Platz&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name:es&quot;</span><span class="p">:</span> <span class="s2">&quot;Plaza de París&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name:he&quot;</span><span class="p">:</span> <span class="s2">&quot;פאריזר פלאץ&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name:ko&quot;</span><span class="p">:</span> <span class="s2">&quot;파리저 광장&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name:la&quot;</span><span class="p">:</span> <span class="s2">&quot;Forum Parisinum&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name:ru&quot;</span><span class="p">:</span> <span class="s2">&quot;Парижская площадь&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name:uk&quot;</span><span class="p">:</span> <span class="s2">&quot;Паризька площа&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name:zh&quot;</span><span class="p">:</span> <span class="s2">&quot;巴黎廣場&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;addresstags&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;10117&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;housenumber&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;calculated_postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;10117&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;country_code&quot;</span><span class="p">:</span> <span class="s2">&quot;de&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;indexed_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-08-18T17:02:45+00:00&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;importance&quot;</span><span class="p">:</span> <span class="mf">0.339401620591472</span><span class="p">,</span>
+  <span class="nt">&quot;calculated_importance&quot;</span><span class="p">:</span> <span class="mf">0.339401620591472</span><span class="p">,</span>
+  <span class="nt">&quot;extratags&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;wikidata&quot;</span><span class="p">:</span> <span class="s2">&quot;Q156716&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;wikipedia&quot;</span><span class="p">:</span> <span class="s2">&quot;de:Pariser Platz&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;calculated_wikipedia&quot;</span><span class="p">:</span> <span class="s2">&quot;de:Pariser_Platz&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;rank_address&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nt">&quot;rank_search&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nt">&quot;isarea&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;centroid&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="mf">13.3786822618517</span><span class="p">,</span>
+      <span class="mf">52.5163654</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="mf">13.3786822618517</span><span class="p">,</span>
+      <span class="mf">52.5163654</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
               
             </div>
           </div>

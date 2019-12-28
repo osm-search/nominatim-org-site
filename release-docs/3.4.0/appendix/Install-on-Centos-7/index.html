@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   <link href="../../extra.css" rel="stylesheet">
+  <link href="../../styles.css" rel="stylesheet">
   
   <script>
     // Current page data
@@ -253,32 +254,36 @@
 <h1 id="installing-the-required-software">Installing the Required Software<a class="headerlink" href="#installing-the-required-software" title="Permanent link"></a></h1>
 <p>These instructions expect that you have a freshly installed CentOS version 7.
 Make sure all packages are up-to-date by running:</p>
-<pre class="codehilite"><code>sudo yum update -y</code></pre>
+<div class="codehilite"><pre><span></span>sudo yum update -y
+</pre></div>
 
 
 <p>The standard CentOS repositories don't contain all the required packages,
 you need to enable the EPEL repository as well. To enable it on CentOS,
 install the epel-release RPM by running:</p>
-<pre class="codehilite"><code>sudo yum install -y epel-release</code></pre>
+<div class="codehilite"><pre><span></span>sudo yum install -y epel-release
+</pre></div>
 
 
 <p>Now you can install all packages needed for Nominatim:</p>
-<pre class="codehilite"><code class="language-sh">sudo yum install -y postgresql-server postgresql-contrib postgresql-devel \
-                    postgis postgis-utils \
-                    wget git cmake make gcc gcc-c++ libtool policycoreutils-python \
-                    php-pgsql php php-intl libpqxx-devel \
-                    proj-epsg bzip2-devel proj-devel libxml2-devel boost-devel \
-                    expat-devel zlib-devel</code></pre>
+<div class="codehilite"><pre><span></span>sudo yum install -y postgresql-server postgresql-contrib postgresql-devel <span class="se">\</span>
+                    postgis postgis-utils <span class="se">\</span>
+                    wget git cmake make gcc gcc-c++ libtool policycoreutils-python <span class="se">\</span>
+                    php-pgsql php php-intl libpqxx-devel <span class="se">\</span>
+                    proj-epsg bzip2-devel proj-devel libxml2-devel boost-devel <span class="se">\</span>
+                    expat-devel zlib-devel
+</pre></div>
 
 
 <p>If you want to run the test suite, you need to install the following
 additional packages:</p>
-<pre class="codehilite"><code class="language-sh">sudo yum install -y python34-pip python34-setuptools python34-devel \
+<div class="codehilite"><pre><span></span>sudo yum install -y python34-pip python34-setuptools python34-devel <span class="se">\</span>
                     php-phpunit-PHPUnit
 pip3 install --user behave nose pytidylib psycopg2
 
-composer global require &quot;squizlabs/php_codesniffer=*&quot;
-sudo ln -s ~/.config/composer/vendor/bin/phpcs /usr/bin/</code></pre>
+composer global require <span class="s2">&quot;squizlabs/php_codesniffer=*&quot;</span>
+sudo ln -s ~/.config/composer/vendor/bin/phpcs /usr/bin/
+</pre></div>
 
 
 <h1 id="system-configuration">System Configuration<a class="headerlink" href="#system-configuration" title="Permanent link"></a></h1>
@@ -290,26 +295,30 @@ OS already configured.</p>
 best to install it under its own separate user account. In the following
 we assume this user is called nominatim and the installation will be in
 /srv/nominatim. To create the user and directory run:</p>
-<pre class="codehilite"><code>sudo useradd -d /srv/nominatim -s /bin/bash -m nominatim</code></pre>
+<div class="codehilite"><pre><span></span>sudo useradd -d /srv/nominatim -s /bin/bash -m nominatim
+</pre></div>
 
 
 <p>You may find a more suitable location if you wish.</p>
 <p>To be able to copy and paste instructions from this manual, export
 user name and home directory now like this:</p>
-<pre class="codehilite"><code>export USERNAME=nominatim
-export USERHOME=/srv/nominatim</code></pre>
+<div class="codehilite"><pre><span></span>export USERNAME=nominatim
+export USERHOME=/srv/nominatim
+</pre></div>
 
 
 <p><strong>Never, ever run the installation as a root user.</strong> You have been warned.</p>
 <p>Make sure that system servers can read from the home directory:</p>
-<pre class="codehilite"><code>chmod a+x $USERHOME</code></pre>
+<div class="codehilite"><pre><span></span>chmod a+x $USERHOME
+</pre></div>
 
 
 <h2 id="setting-up-postgresql">Setting up PostgreSQL<a class="headerlink" href="#setting-up-postgresql" title="Permanent link"></a></h2>
 <p>CentOS does not automatically create a database cluster. Therefore, start
 with initializing the database, then enable the server to start at boot:</p>
-<pre class="codehilite"><code>sudo postgresql-setup initdb
-sudo systemctl enable postgresql</code></pre>
+<div class="codehilite"><pre><span></span>sudo postgresql-setup initdb
+sudo systemctl enable postgresql
+</pre></div>
 
 
 <p>Next tune the postgresql configuration, which is located in 
@@ -317,72 +326,80 @@ sudo systemctl enable postgresql</code></pre>
 <a href="../../admin/Installation/#postgresql-tuning">the installation page</a>
 for the parameters to change.</p>
 <p>Now start the postgresql service after updating this config file.</p>
-<pre class="codehilite"><code>sudo systemctl restart postgresql</code></pre>
+<div class="codehilite"><pre><span></span>sudo systemctl restart postgresql
+</pre></div>
 
 
 <p>Finally, we need to add two postgres users: one for the user that does
 the import and another for the webserver which should access the database
 only for reading:</p>
-<pre class="codehilite"><code>sudo -u postgres createuser -s $USERNAME
-sudo -u postgres createuser apache</code></pre>
+<div class="codehilite"><pre><span></span>sudo -u postgres createuser -s $USERNAME
+sudo -u postgres createuser apache
+</pre></div>
 
 
 <h2 id="setting-up-the-apache-webserver">Setting up the Apache Webserver<a class="headerlink" href="#setting-up-the-apache-webserver" title="Permanent link"></a></h2>
 <p>You need to create an alias to the website directory in your apache
 configuration. Add a separate nominatim configuration to your webserver:</p>
-<pre class="codehilite"><code class="language-sh">sudo tee /etc/httpd/conf.d/nominatim.conf &lt;&lt; EOFAPACHECONF
-&lt;Directory &quot;$USERHOME/build/website&quot;&gt;
-  Options FollowSymLinks MultiViews
-  AddType text/html   .php
-  DirectoryIndex search.php
-  Require all granted
-&lt;/Directory&gt;
+<div class="codehilite"><pre><span></span>sudo tee /etc/httpd/conf.d/nominatim.conf <span class="s">&lt;&lt; EOFAPACHECONF</span>
+<span class="s">&lt;Directory &quot;$USERHOME/build/website&quot;&gt;</span>
+<span class="s">  Options FollowSymLinks MultiViews</span>
+<span class="s">  AddType text/html   .php</span>
+<span class="s">  DirectoryIndex search.php</span>
+<span class="s">  Require all granted</span>
+<span class="s">&lt;/Directory&gt;</span>
 
-Alias /nominatim $USERHOME/build/website
-EOFAPACHECONF</code></pre>
+<span class="s">Alias /nominatim $USERHOME/build/website</span>
+<span class="s">EOFAPACHECONF</span>
+</pre></div>
 
 
 <p>Then reload apache</p>
-<pre class="codehilite"><code>sudo systemctl enable httpd
-sudo systemctl restart httpd</code></pre>
+<div class="codehilite"><pre><span></span>sudo systemctl enable httpd
+sudo systemctl restart httpd
+</pre></div>
 
 
 <h1 id="installing-nominatim">Installing Nominatim<a class="headerlink" href="#installing-nominatim" title="Permanent link"></a></h1>
 <h2 id="building-and-configuration">Building and Configuration<a class="headerlink" href="#building-and-configuration" title="Permanent link"></a></h2>
 <p>Get the source code for the release and change into the source directory</p>
-<pre class="codehilite"><code class="language-sh">cd $USERHOME
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$USERHOME</span>
 wget https://nominatim.org/release/Nominatim-3.4.0.tar.bz2
 tar xf Nominatim-3.4.0.tar.bz2
-cd Nominatim-3.4.0</code></pre>
+<span class="nb">cd</span> Nominatim-3.4.0
+</pre></div>
 
 
 <p>The code must be built in a separate directory. Create this directory,
 then configure and build Nominatim in there:</p>
-<pre class="codehilite"><code class="language-sh">cd $USERHOME
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$USERHOME</span>
 mkdir build
-cd build
-cmake $USERHOME/Nominatim-3.4.0
-make</code></pre>
+<span class="nb">cd</span> build
+cmake <span class="nv">$USERHOME</span>/Nominatim-3.4.0
+make
+</pre></div>
 
 
 <h2 id="adding-selinux-security-settings">Adding SELinux Security Settings<a class="headerlink" href="#adding-selinux-security-settings" title="Permanent link"></a></h2>
 <p>It is a good idea to leave SELinux enabled and enforcing, particularly
 with a web server accessible from the Internet. At a minimum the
 following SELinux labeling should be done for Nominatim:</p>
-<pre class="codehilite"><code>sudo semanage fcontext -a -t httpd_sys_content_t &quot;$USERHOME/Nominatim-3.4.0/(website|lib|settings)(/.*)?&quot;
+<div class="codehilite"><pre><span></span>sudo semanage fcontext -a -t httpd_sys_content_t &quot;$USERHOME/Nominatim-3.4.0/(website|lib|settings)(/.*)?&quot;
 sudo semanage fcontext -a -t httpd_sys_content_t &quot;$USERHOME/build/(website|lib|settings)(/.*)?&quot;
 sudo semanage fcontext -a -t lib_t &quot;$USERHOME/build/module/nominatim.so&quot;
 sudo restorecon -R -v $USERHOME/Nominatim-3.4.0
-sudo restorecon -R -v $USERHOME/build</code></pre>
+sudo restorecon -R -v $USERHOME/build
+</pre></div>
 
 
 <p>You need to create a minimal configuration file that tells nominatim
 the name of your webserver user and the URL of the website:</p>
-<pre class="codehilite"><code class="language-sh">tee settings/local.php &lt;&lt; EOF
-&lt;?php
- @define('CONST_Database_Web_User', 'apache');
- @define('CONST_Website_BaseURL', '/nominatim/');
-EOF</code></pre>
+<div class="codehilite"><pre><span></span>tee settings/local.php <span class="s">&lt;&lt; EOF</span>
+<span class="s">&lt;?php</span>
+<span class="s"> @define(&#39;CONST_Database_Web_User&#39;, &#39;apache&#39;);</span>
+<span class="s"> @define(&#39;CONST_Website_BaseURL&#39;, &#39;/nominatim/&#39;);</span>
+<span class="s">EOF</span>
+</pre></div>
 
 
 <p>Nominatim is now ready to use. Continue with
