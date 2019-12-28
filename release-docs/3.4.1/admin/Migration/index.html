@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Migration from older Versions - Nominatim 3.4.1</title>
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../extra.css" rel="stylesheet">
+  <link href="../../styles.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Migration from older Versions";
+    var mkdocs_page_input_path = "admin/Migration.md";
+    var mkdocs_page_url = "/admin/Migration/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 3.4.1</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../api/Overview/">Overview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/Search/">Search</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/Reverse/">Reverse</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/Lookup/">Address Lookup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/Details/">Details</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/Output/">Place Output Formats</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/Faq/">FAQ</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Administration Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../Installation/">Basic Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Import-and-Update/">Importing and Updating</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Migration from older Versions</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#database-migrations">Database Migrations</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#330-340">3.3.0 -&gt; 3.4.0</a></li>
+        
+            <li><a class="toctree-l4" href="#320-330">3.2.0 -&gt; 3.3.0</a></li>
+        
+            <li><a class="toctree-l4" href="#310-320">3.1.0 -&gt; 3.2.0</a></li>
+        
+            <li><a class="toctree-l4" href="#300-310">3.0.0 -&gt; 3.1.0</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Faq/">Troubleshooting</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developers Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../develop/overview/">Overview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Import/">OSM Data Import</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Ranking/">Place Ranking</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Postcodes/">Postcodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Documentation/">Documentation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">External Data Sources</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../data-sources/overview/">Overview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/Country-Grid/">Country Grid</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Appendix</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/Install-on-Ubuntu-16/">Installation on Ubuntu 16</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 3.4.1</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Administration Guide &raquo;</li>
+        
+      
+    
+    <li>Migration from older Versions</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/admin/Migration.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="database-migrations">Database Migrations<a class="headerlink" href="#database-migrations" title="Permanent link"></a></h1>
+<p>This page describes database migrations necessary to update existing databases
+to newer versions of Nominatim.</p>
+<p>SQL statements should be executed from the PostgreSQL commandline. Execute
+<code>psql nominatim</code> to enter command line mode.</p>
+<h2 id="330-340">3.3.0 -&gt; 3.4.0<a class="headerlink" href="#330-340" title="Permanent link"></a></h2>
+<h3 id="reorganisation-of-location_area_country-table">Reorganisation of location_area_country table<a class="headerlink" href="#reorganisation-of-location_area_country-table" title="Permanent link"></a></h3>
+<p>The table <code>location_area_country</code> has been optimized. You need to switch to the
+new format when you run updates. While updates are disabled, run the following
+SQL commands:</p>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">location_area_country_new</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">place_id</span><span class="p">,</span> <span class="n">country_code</span><span class="p">,</span> <span class="n">geometry</span> <span class="k">FROM</span> <span class="n">location_area_country</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">location_area_country</span><span class="p">;</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">location_area_country_new</span> <span class="k">RENAME</span> <span class="k">TO</span> <span class="n">location_area_country</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_location_area_country_geometry</span> <span class="k">ON</span> <span class="n">location_area_country</span> <span class="k">USING</span> <span class="n">GIST</span> <span class="p">(</span><span class="n">geometry</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_location_area_country_place_id</span> <span class="k">ON</span> <span class="n">location_area_country</span> <span class="k">USING</span> <span class="n">BTREE</span> <span class="p">(</span><span class="n">place_id</span><span class="p">);</span>
+</pre></div>
+
+
+<h2 id="320-330">3.2.0 -&gt; 3.3.0<a class="headerlink" href="#320-330" title="Permanent link"></a></h2>
+<h3 id="new-database-connection-string-dsn-format">New database connection string (DSN) format<a class="headerlink" href="#new-database-connection-string-dsn-format" title="Permanent link"></a></h3>
+<p>Previously database connection setting (<code>CONST_Database_DSN</code> in <code>settings/*.php</code>) had the format</p>
+<ul>
+<li>(simple) <code>pgsql://@/nominatim</code></li>
+<li>(complex) <code>pgsql://johndoe:secret@machine1.domain.com:1234/db1</code></li>
+</ul>
+<p>The new format is</p>
+<ul>
+<li>(simple) <code>pgsql:dbname=nominatim</code></li>
+<li>(complex) <code>pgsql:dbname=db1;host=machine1.domain.com;port=1234;user=johndoe;password=secret</code></li>
+</ul>
+<h3 id="natural-earth-country-boundaries-no-longer-needed-as-fallback">Natural Earth country boundaries no longer needed as fallback<a class="headerlink" href="#natural-earth-country-boundaries-no-longer-needed-as-fallback" title="Permanent link"></a></h3>
+<div class="codehilite"><pre><span></span>DROP TABLE country_naturalearthdata;
+</pre></div>
+
+
+<p>Finally, update all SQL functions:</p>
+<div class="codehilite"><pre><span></span>./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
+</pre></div>
+
+
+<h3 id="configurable-address-levels">Configurable Address Levels<a class="headerlink" href="#configurable-address-levels" title="Permanent link"></a></h3>
+<p>The new configurable address levels require a new table. Create it with the
+following command:</p>
+<div class="codehilite"><pre><span></span>./utils/update.php --update-address-levels
+</pre></div>
+
+
+<h2 id="310-320">3.1.0 -&gt; 3.2.0<a class="headerlink" href="#310-320" title="Permanent link"></a></h2>
+<h3 id="new-reverse-algorithm">New reverse algorithm<a class="headerlink" href="#new-reverse-algorithm" title="Permanent link"></a></h3>
+<p>The reverse algorithm has changed and requires new indexes. Run the following
+SQL statements to create the indexes:</p>
+<div class="codehilite"><pre><span></span>CREATE INDEX idx_placex_geometry_reverse_lookupPoint
+  ON placex USING gist (geometry)
+  WHERE (name is not null or housenumber is not null or rank_address between 26 and 27)
+    AND class not in (&#39;railway&#39;,&#39;tunnel&#39;,&#39;bridge&#39;,&#39;man_made&#39;)
+    AND rank_address &gt;= 26 AND indexed_status = 0 AND linked_place_id is null;
+CREATE INDEX idx_placex_geometry_reverse_lookupPolygon
+  ON placex USING gist (geometry)
+  WHERE St_GeometryType(geometry) in (&#39;ST_Polygon&#39;, &#39;ST_MultiPolygon&#39;)
+    AND rank_address between 4 and 25 AND type != &#39;postcode&#39;
+    AND name is not null AND indexed_status = 0 AND linked_place_id is null;
+CREATE INDEX idx_placex_geometry_reverse_placeNode
+  ON placex USING gist (geometry)
+  WHERE osm_type = &#39;N&#39; AND rank_search between 5 and 25
+    AND class = &#39;place&#39; AND type != &#39;postcode&#39;
+    AND name is not null AND indexed_status = 0 AND linked_place_id is null;
+</pre></div>
+
+
+<p>You also need to grant the website user access to the <code>country_osm_grid</code> table:</p>
+<div class="codehilite"><pre><span></span>GRANT SELECT ON table country_osm_grid to &quot;www-user&quot;;
+</pre></div>
+
+
+<p>Replace the <code>www-user</code> with the user name of your website server if necessary.</p>
+<p>You can now drop the unused indexes:</p>
+<div class="codehilite"><pre><span></span>DROP INDEX idx_placex_reverse_geometry;
+</pre></div>
+
+
+<p>Finally, update all SQL functions:</p>
+<div class="codehilite"><pre><span></span>./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
+</pre></div>
+
+
+<h2 id="300-310">3.0.0 -&gt; 3.1.0<a class="headerlink" href="#300-310" title="Permanent link"></a></h2>
+<h3 id="postcode-table">Postcode Table<a class="headerlink" href="#postcode-table" title="Permanent link"></a></h3>
+<p>A new separate table for artificially computed postcode centroids was introduced.
+Migration to the new format is possible but <strong>not recommended</strong>.</p>
+<p>Create postcode table and indexes, running the following SQL statements:</p>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">location_postcode</span>
+  <span class="p">(</span><span class="n">place_id</span> <span class="nb">BIGINT</span><span class="p">,</span> <span class="n">parent_place_id</span> <span class="nb">BIGINT</span><span class="p">,</span> <span class="n">rank_search</span> <span class="nb">SMALLINT</span><span class="p">,</span>
+   <span class="n">rank_address</span> <span class="nb">SMALLINT</span><span class="p">,</span> <span class="n">indexed_status</span> <span class="nb">SMALLINT</span><span class="p">,</span> <span class="n">indexed_date</span> <span class="k">TIMESTAMP</span><span class="p">,</span>
+   <span class="n">country_code</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">postcode</span> <span class="nb">TEXT</span><span class="p">,</span>
+   <span class="n">geometry</span> <span class="n">GEOMETRY</span><span class="p">(</span><span class="n">Geometry</span><span class="p">,</span> <span class="mi">4326</span><span class="p">));</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_postcode_geometry</span> <span class="k">ON</span> <span class="n">location_postcode</span> <span class="k">USING</span> <span class="n">GIST</span> <span class="p">(</span><span class="n">geometry</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">UNIQUE</span> <span class="k">INDEX</span> <span class="n">idx_postcode_id</span> <span class="k">ON</span> <span class="n">location_postcode</span> <span class="k">USING</span> <span class="n">BTREE</span> <span class="p">(</span><span class="n">place_id</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_postcode_postcode</span> <span class="k">ON</span> <span class="n">location_postcode</span> <span class="k">USING</span> <span class="n">BTREE</span> <span class="p">(</span><span class="n">postcode</span><span class="p">);</span>
+<span class="k">GRANT</span> <span class="k">SELECT</span> <span class="k">ON</span> <span class="n">location_postcode</span> <span class="k">TO</span> <span class="ss">&quot;www-data&quot;</span><span class="p">;</span>
+<span class="k">drop</span> <span class="k">type</span> <span class="k">if</span> <span class="k">exists</span> <span class="n">nearfeaturecentr</span> <span class="k">cascade</span><span class="p">;</span>
+<span class="k">create</span> <span class="k">type</span> <span class="n">nearfeaturecentr</span> <span class="k">as</span> <span class="p">(</span>
+  <span class="n">place_id</span> <span class="nb">BIGINT</span><span class="p">,</span>
+  <span class="n">keywords</span> <span class="nb">int</span><span class="p">[],</span>
+  <span class="n">rank_address</span> <span class="nb">smallint</span><span class="p">,</span>
+  <span class="n">rank_search</span> <span class="nb">smallint</span><span class="p">,</span>
+  <span class="n">distance</span> <span class="nb">float</span><span class="p">,</span>
+  <span class="n">isguess</span> <span class="nb">boolean</span><span class="p">,</span>
+  <span class="n">postcode</span> <span class="nb">TEXT</span><span class="p">,</span>
+  <span class="n">centroid</span> <span class="n">GEOMETRY</span>
+<span class="p">);</span>
+</pre></div>
+
+
+<p>Add postcode column to <code>location_area</code> tables with SQL statement:</p>
+<div class="codehilite"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">location_area</span> <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">postcode</span> <span class="nb">TEXT</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Then reimport the functions:</p>
+<div class="codehilite"><pre><span></span>./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
+</pre></div>
+
+
+<p>Create appropriate triggers with SQL:</p>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">location_postcode_before_update</span> <span class="k">BEFORE</span> <span class="k">UPDATE</span> <span class="k">ON</span> <span class="n">location_postcode</span>
+    <span class="k">FOR</span> <span class="k">EACH</span> <span class="k">ROW</span> <span class="k">EXECUTE</span> <span class="k">PROCEDURE</span> <span class="n">postcode_update</span><span class="p">();</span>
+</pre></div>
+
+
+<p>Finally populate the postcode table (will take a while):</p>
+<div class="codehilite"><pre><span></span>./utils/setup.php --calculate-postcodes --index --index-noanalyse
+</pre></div>
+
+
+<p>This will create a working database. You may also delete the old artificial
+postcodes now. Note that this may be expensive and is not absolutely necessary.
+The following SQL statement will remove them:</p>
+<div class="codehilite"><pre><span></span><span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">place_addressline</span> <span class="n">a</span> <span class="k">USING</span> <span class="n">placex</span> <span class="n">p</span>
+ <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">address_place_id</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">place_id</span> <span class="k">and</span> <span class="n">p</span><span class="p">.</span><span class="n">osm_type</span> <span class="o">=</span> <span class="s1">&#39;P&#39;</span><span class="p">;</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">placex</span> <span class="n">DISABLE</span> <span class="k">TRIGGER</span> <span class="k">USER</span><span class="p">;</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">placex</span> <span class="k">WHERE</span> <span class="n">osm_type</span> <span class="o">=</span> <span class="s1">&#39;P&#39;</span><span class="p">;</span>
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">placex</span> <span class="n">ENABLE</span> <span class="k">TRIGGER</span> <span class="k">USER</span><span class="p">;</span>
+</pre></div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Faq/" class="btn btn-neutral float-right" title="Troubleshooting">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Import-and-Update/" class="btn btn-neutral" title="Importing and Updating"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../Import-and-Update/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

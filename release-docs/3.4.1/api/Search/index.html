@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Search - Nominatim 3.4.1</title>
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../extra.css" rel="stylesheet">
+  <link href="../../styles.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Search";
+    var mkdocs_page_input_path = "api/Search.md";
+    var mkdocs_page_url = "/api/Search/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 3.4.1</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../Overview/">Overview</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Search</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#search-queries">Search queries</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#parameters">Parameters</a></li>
+        
+            <li><a class="toctree-l4" href="#examples">Examples</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reverse/">Reverse</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Lookup/">Address Lookup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Details/">Details</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Output/">Place Output Formats</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Faq/">FAQ</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Administration Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../admin/Installation/">Basic Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../admin/Import-and-Update/">Importing and Updating</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../admin/Migration/">Migration from older Versions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../admin/Faq/">Troubleshooting</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developers Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../develop/overview/">Overview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Import/">OSM Data Import</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Ranking/">Place Ranking</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Postcodes/">Postcodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Documentation/">Documentation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">External Data Sources</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../data-sources/overview/">Overview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/Country-Grid/">Country Grid</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Appendix</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/Install-on-Ubuntu-16/">Installation on Ubuntu 16</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 3.4.1</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>API Reference &raquo;</li>
+        
+      
+    
+    <li>Search</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/api/Search.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="search-queries">Search queries<a class="headerlink" href="#search-queries" title="Permanent link"></a></h1>
+<p>The search API allows you to look up a location from a textual description.
+Nominatim supports structured as well as free-form search queries.</p>
+<p>The search query may also contain
+<a href="https://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases">special phrases</a>
+which are translated into specific OpenStreetMap (OSM) tags (e.g. Pub =&gt; <code>amenity=pub</code>).
+Note that this only limits the items to be found, it's not suited to return complete
+lists of OSM objects of a specific type. For those use <a href="https://overpass-api.de/">Overpass API</a>.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link"></a></h2>
+<p>The search API has the following two formats:</p>
+<div class="codehilite"><pre><span></span>   https://nominatim.openstreetmap.org/search/&lt;query&gt;?&lt;params&gt;
+</pre></div>
+
+
+<p>This format only accepts a free-form query string where the
+parts of the query are separated by slashes.</p>
+<div class="codehilite"><pre><span></span>   https://nominatim.openstreetmap.org/search?&lt;params&gt;
+</pre></div>
+
+
+<p>In this form, the query may be given through two different sets of parameters:</p>
+<ul>
+<li>
+<p><code>q=&lt;query&gt;</code></p>
+<p>Free-form query string to search for.
+Free-form queries are processed first left-to-right and then right-to-left if that fails. So you may search for
+<a href="//nominatim.openstreetmap.org/search?q=pilkington+avenue,birmingham">pilkington avenue, birmingham</a> as well as for
+<a href="//nominatim.openstreetmap.org/search?q=birmingham,+pilkington+avenue">birmingham, pilkington avenue</a>.
+Commas are optional, but improve performance by reducing the complexity of the search.</p>
+</li>
+<li>
+<p><code>street=&lt;housenumber&gt; &lt;streetname&gt;</code></p>
+</li>
+<li><code>city=&lt;city&gt;</code></li>
+<li><code>county=&lt;county&gt;</code></li>
+<li><code>state=&lt;state&gt;</code></li>
+<li><code>country=&lt;country&gt;</code></li>
+<li>
+<p><code>postalcode=&lt;postalcode&gt;</code></p>
+<p>Alternative query string format split into several parameters for structured requests.
+Structured requests are faster but are less robust against alternative
+OSM tagging schemas. <strong>Do not combine with</strong> <code>q=&lt;query&gt;</code> <strong>parameter</strong>.</p>
+</li>
+</ul>
+<p>All three query forms accept the additional parameters listed below.</p>
+<h3 id="output-format">Output format<a class="headerlink" href="#output-format" title="Permanent link"></a></h3>
+<ul>
+<li><code>format=[html|xml|json|jsonv2|geojson|geocodejson]</code></li>
+</ul>
+<p>See <a href="../Output/">Place Output Formats</a> for details on each format. (Default: html)</p>
+<ul>
+<li><code>json_callback=&lt;string&gt;</code></li>
+</ul>
+<p>Wrap JSON output in a callback function (<a href="https://en.wikipedia.org/wiki/JSONP">JSONP</a>) i.e. <code>&lt;string&gt;(&lt;json&gt;)</code>.
+Only has an effect for JSON output formats.</p>
+<h3 id="output-details">Output details<a class="headerlink" href="#output-details" title="Permanent link"></a></h3>
+<ul>
+<li><code>addressdetails=[0|1]</code></li>
+</ul>
+<p>Include a breakdown of the address into elements. (Default: 0)</p>
+<ul>
+<li><code>extratags=[0|1]</code></li>
+</ul>
+<p>Include additional information in the result if available,
+e.g. wikipedia link, opening hours. (Default: 0)</p>
+<ul>
+<li><code>namedetails=[0|1]</code></li>
+</ul>
+<p>Include a list of alternative names in the results. These may include
+language variants, references, operator and brand. (Default: 0)</p>
+<h3 id="language-of-results">Language of results<a class="headerlink" href="#language-of-results" title="Permanent link"></a></h3>
+<ul>
+<li><code>accept-language=&lt;browser language string&gt;</code></li>
+</ul>
+<p>Preferred language order for showing search results, overrides the value
+specified in the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language">"Accept-Language" HTTP header</a>.
+Either use a standard RFC2616 accept-language string or a simple
+comma-separated list of language codes.</p>
+<h3 id="result-limitation">Result limitation<a class="headerlink" href="#result-limitation" title="Permanent link"></a></h3>
+<ul>
+<li><code>countrycodes=&lt;countrycode&gt;[,&lt;countrycode&gt;][,&lt;countrycode&gt;]...</code></li>
+</ul>
+<p>Limit search results to one or more countries. <code>&lt;countrycode&gt;</code> must be the
+ISO 3166-1alpha2 code, e.g. <code>gb</code> for the United Kingdom, <code>de</code> for Germany.</p>
+<ul>
+<li><code>exclude_place_ids=&lt;place_id,[place_id],[place_id]</code></li>
+</ul>
+<p>If you do not want certain OSM objects to appear in the search
+result, give a comma separated list of the <code>place_id</code>s you want to skip.
+This can be used to broaden search results. For example, if a previous
+query only returned a few results, then including those here would cause
+the search to return other, less accurate, matches (if possible).</p>
+<ul>
+<li><code>limit=&lt;integer&gt;</code></li>
+</ul>
+<p>Limit the number of returned results. (Default: 10, Maximum: 50)</p>
+<ul>
+<li><code>viewbox=&lt;x1&gt;,&lt;y1&gt;,&lt;x2&gt;,&lt;y2&gt;</code></li>
+</ul>
+<p>The preferred area to find search results. Any two corner points of the box
+are accepted in any order as long as they span a real box. <code>x</code> is longitude,
+<code>y</code> is latitude.</p>
+<ul>
+<li><code>bounded=[0|1]</code></li>
+</ul>
+<p>When a viewbox is given, restrict the result to items contained with that
+viewbox (see above). When <code>viewbox</code> and <code>bounded=1</code> are given, an amenity
+only search is allowed. In this case, give the special keyword for the
+amenity in square brackets, e.g. <code>[pub]</code>. (Default: 0)</p>
+<h3 id="polygon-output">Polygon output<a class="headerlink" href="#polygon-output" title="Permanent link"></a></h3>
+<ul>
+<li><code>polygon_geojson=1</code></li>
+<li><code>polygon_kml=1</code></li>
+<li><code>polygon_svg=1</code></li>
+<li><code>polygon_text=1</code></li>
+</ul>
+<p>Output geometry of results as a GeoJSON, KML, SVG or WKT. Only one of these
+options can be used at a time. (Default: 0)</p>
+<ul>
+<li><code>polygon_threshold=0.0</code></li>
+</ul>
+<p>Simplify the output geometry before returning. The parameter is the
+tolerance in degrees with which the geometry may differ from the original
+geometry. Topology is preserved in the result. (Default: 0.0)</p>
+<h3 id="other">Other<a class="headerlink" href="#other" title="Permanent link"></a></h3>
+<ul>
+<li><code>email=&lt;valid email address&gt;</code></li>
+</ul>
+<p>If you are making large numbers of request please include an appropriate email
+address to identify your requests. See Nominatim's <a href="https://operations.osmfoundation.org/policies/nominatim/">Usage Policy</a> for more details.</p>
+<ul>
+<li><code>dedupe=[0|1]</code></li>
+</ul>
+<p>Sometimes you have several objects in OSM identifying the same place or
+object in reality. The simplest case is a street being split in many
+different OSM ways due to different characteristics. Nominatim will
+attempt to detect such duplicates and only return one match unless
+this parameter is set to 0. (Default: 1)</p>
+<ul>
+<li><code>debug=[0|1]</code></li>
+</ul>
+<p>Output assorted developer debug information. Data on internals of Nominatim's
+"Search Loop" logic, and SQL queries. The output is (rough) HTML format.
+This overrides the specified machine readable format. (Default: 0)</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link"></a></h2>
+<h5 id="xml-with-polygon-points">XML with polygon points<a class="headerlink" href="#xml-with-polygon-points" title="Permanent link"></a></h5>
+<ul>
+<li><a href="https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&amp;format=xml&amp;polygon=1&amp;addressdetails=1">https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&amp;format=xml&amp;polygon=1&amp;addressdetails=1</a></li>
+<li><a href="https://nominatim.openstreetmap.org/search/gb/birmingham/pilkington%20avenue/135?format=xml&amp;polygon=1&amp;addressdetails=1">https://nominatim.openstreetmap.org/search/gb/birmingham/pilkington%20avenue/135?format=xml&amp;polygon=1&amp;addressdetails=1</a></li>
+<li><a href="https://nominatim.openstreetmap.org/search/135%20pilkington%20avenue,%20birmingham?format=xml&amp;polygon=1&amp;addressdetails=1">https://nominatim.openstreetmap.org/search/135%20pilkington%20avenue,%20birmingham?format=xml&amp;polygon=1&amp;addressdetails=1</a></li>
+</ul>
+<div class="codehilite"><pre><span></span>  <span class="nt">&lt;searchresults</span> <span class="na">timestamp=</span><span class="s">&quot;Sat, 07 Nov 09 14:42:10 +0000&quot;</span> <span class="na">querystring=</span><span class="s">&quot;135 pilkington, avenue birmingham&quot;</span> <span class="na">polygon=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;place</span>
+      <span class="na">place_id=</span><span class="s">&quot;1620612&quot;</span> <span class="na">osm_type=</span><span class="s">&quot;node&quot;</span> <span class="na">osm_id=</span><span class="s">&quot;452010817&quot;</span>
+      <span class="na">boundingbox=</span><span class="s">&quot;52.548641204834,52.5488433837891,-1.81612110137939,-1.81592094898224&quot;</span>
+      <span class="na">polygonpoints=</span><span class="s">&quot;[[&#39;-1.81592098644987&#39;,&#39;52.5487429714954&#39;],[&#39;-1.81592290792183&#39;,&#39;52.5487234624632&#39;],...]&quot;</span>
+      <span class="na">lat=</span><span class="s">&quot;52.5487429714954&quot;</span> <span class="na">lon=</span><span class="s">&quot;-1.81602098644987&quot;</span>
+      <span class="na">display_name=</span><span class="s">&quot;135, Pilkington Avenue, Wylde Green, City of Birmingham, West Midlands (county), B72, United Kingdom&quot;</span>
+      <span class="na">class=</span><span class="s">&quot;place&quot;</span> <span class="na">type=</span><span class="s">&quot;house&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;house_number&gt;</span>135<span class="nt">&lt;/house_number&gt;</span>
+      <span class="nt">&lt;road&gt;</span>Pilkington Avenue<span class="nt">&lt;/road&gt;</span>
+      <span class="nt">&lt;village&gt;</span>Wylde Green<span class="nt">&lt;/village&gt;</span>
+      <span class="nt">&lt;town&gt;</span>Sutton Coldfield<span class="nt">&lt;/town&gt;</span>
+      <span class="nt">&lt;city&gt;</span>City of Birmingham<span class="nt">&lt;/city&gt;</span>
+      <span class="nt">&lt;county&gt;</span>West Midlands (county)<span class="nt">&lt;/county&gt;</span>
+      <span class="nt">&lt;postcode&gt;</span>B72<span class="nt">&lt;/postcode&gt;</span>
+      <span class="nt">&lt;country&gt;</span>United Kingdom<span class="nt">&lt;/country&gt;</span>
+      <span class="nt">&lt;country_code&gt;</span>gb<span class="nt">&lt;/country_code&gt;</span>
+    <span class="nt">&lt;/place&gt;</span>
+  <span class="nt">&lt;/searchresults&gt;</span>
+</pre></div>
+
+
+<h5 id="json-with-svg-polygon">JSON with SVG polygon<a class="headerlink" href="#json-with-svg-polygon" title="Permanent link"></a></h5>
+<p><a href="https://nominatim.openstreetmap.org/search/Unter%20den%20Linden%201%20Berlin?format=json&amp;addressdetails=1&amp;limit=1&amp;polygon_svg=1">https://nominatim.openstreetmap.org/search/Unter%20den%20Linden%201%20Berlin?format=json&amp;addressdetails=1&amp;limit=1&amp;polygon_svg=1</a></p>
+<div class="codehilite"><pre><span></span>    <span class="p">{</span>
+        <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;city_district&quot;</span><span class="p">:</span> <span class="s2">&quot;Mitte&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;construction&quot;</span><span class="p">:</span> <span class="s2">&quot;Unter den Linden&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;continent&quot;</span><span class="p">:</span> <span class="s2">&quot;European Union&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Deutschland&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;country_code&quot;</span><span class="p">:</span> <span class="s2">&quot;de&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;house_number&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;neighbourhood&quot;</span><span class="p">:</span> <span class="s2">&quot;Scheunenviertel&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;10117&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;public_building&quot;</span><span class="p">:</span> <span class="s2">&quot;Kommandantenhaus&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;suburb&quot;</span><span class="p">:</span> <span class="s2">&quot;Mitte&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;boundingbox&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;52.5170783996582&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;52.5173187255859&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;13.3975105285645&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;13.3981599807739&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;amenity&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Kommandantenhaus, 1, Unter den Linden, Scheunenviertel, Mitte, Berlin, 10117, Deutschland, European Union&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;importance&quot;</span><span class="p">:</span> <span class="mf">0.73606775332943</span><span class="p">,</span>
+        <span class="nt">&quot;lat&quot;</span><span class="p">:</span> <span class="s2">&quot;52.51719785&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;licence&quot;</span><span class="p">:</span> <span class="s2">&quot;Data \u00a9 OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;lon&quot;</span><span class="p">:</span> <span class="s2">&quot;13.3978352028938&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;osm_id&quot;</span><span class="p">:</span> <span class="s2">&quot;15976890&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;osm_type&quot;</span><span class="p">:</span> <span class="s2">&quot;way&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;place_id&quot;</span><span class="p">:</span> <span class="s2">&quot;30848715&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;svg&quot;</span><span class="p">:</span> <span class="s2">&quot;M 13.397511 -52.517283599999999 L 13.397829400000001 -52.517299800000004 13.398131599999999 -52.517315099999998 13.398159400000001 -52.517112099999999 13.3975388 -52.517080700000001 Z&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;public_building&quot;</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<h5 id="json-with-address-details">JSON with address details<a class="headerlink" href="#json-with-address-details" title="Permanent link"></a></h5>
+<p><a href="https://nominatim.openstreetmap.org/?addressdetails=1&amp;q=bakery+in+berlin+wedding&amp;format=json&amp;limit=1">https://nominatim.openstreetmap.org/?addressdetails=1&amp;q=bakery+in+berlin+wedding&amp;format=json&amp;limit=1</a></p>
+<div class="codehilite"><pre><span></span>    <span class="p">{</span>
+        <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;bakery&quot;</span><span class="p">:</span> <span class="s2">&quot;B\u00e4cker Kamps&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;city_district&quot;</span><span class="p">:</span> <span class="s2">&quot;Mitte&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;continent&quot;</span><span class="p">:</span> <span class="s2">&quot;European Union&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Deutschland&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;country_code&quot;</span><span class="p">:</span> <span class="s2">&quot;de&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;footway&quot;</span><span class="p">:</span> <span class="s2">&quot;Bahnsteig U6&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;neighbourhood&quot;</span><span class="p">:</span> <span class="s2">&quot;Sprengelkiez&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;postcode&quot;</span><span class="p">:</span> <span class="s2">&quot;13353&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;suburb&quot;</span><span class="p">:</span> <span class="s2">&quot;Wedding&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;boundingbox&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;52.5460929870605&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;52.5460968017578&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;13.3591794967651&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;13.3591804504395&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;shop&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;B\u00e4cker Kamps, Bahnsteig U6, Sprengelkiez, Wedding, Mitte, Berlin, 13353, Deutschland, European Union&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://nominatim.openstreetmap.org/images/mapicons/shopping_bakery.p.20.png&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;importance&quot;</span><span class="p">:</span> <span class="mf">0.201</span><span class="p">,</span>
+        <span class="nt">&quot;lat&quot;</span><span class="p">:</span> <span class="s2">&quot;52.5460941&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;licence&quot;</span><span class="p">:</span> <span class="s2">&quot;Data \u00a9 OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;lon&quot;</span><span class="p">:</span> <span class="s2">&quot;13.35918&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;osm_id&quot;</span><span class="p">:</span> <span class="s2">&quot;317179427&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;osm_type&quot;</span><span class="p">:</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;place_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1453068&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bakery&quot;</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<h5 id="geojson">GeoJSON<a class="headerlink" href="#geojson" title="Permanent link"></a></h5>
+<p><a href="https://nominatim.openstreetmap.org/search?q=17+Strada+Pictor+Alexandru+Romano%2C+Bukarest&amp;format=geojson">https://nominatim.openstreetmap.org/search?q=17+Strada+Pictor+Alexandru+Romano%2C+Bukarest&amp;format=geojson</a></p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;licence&quot;</span><span class="p">:</span> <span class="s2">&quot;Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;place_id&quot;</span><span class="p">:</span> <span class="s2">&quot;35811445&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;osm_type&quot;</span><span class="p">:</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;osm_id&quot;</span><span class="p">:</span> <span class="s2">&quot;2846295644&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;17, Strada Pictor Alexandru Romano, Bukarest, Bucharest, Sector 2, Bucharest, 023964, Romania&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;place_rank&quot;</span><span class="p">:</span> <span class="s2">&quot;30&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;place&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;house&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;importance&quot;</span><span class="p">:</span> <span class="mf">0.62025</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mf">26.1156689</span><span class="p">,</span>
+        <span class="mf">44.4354754</span><span class="p">,</span>
+        <span class="mf">26.1157689</span><span class="p">,</span>
+        <span class="mf">44.4355754</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="mf">26.1157189</span><span class="p">,</span>
+          <span class="mf">44.4355254</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h5 id="geocodejson">GeocodeJSON<a class="headerlink" href="#geocodejson" title="Permanent link"></a></h5>
+<p><a href="https://nominatim.openstreetmap.org/search?q=%CE%91%CE%B3%CE%AF%CE%B1+%CE%A4%CF%81%CE%B9%CE%AC%CE%B4%CE%B1%2C+%CE%91%CE%B4%CF%89%CE%BD%CE%B9%CE%B4%CE%BF%CF%82%2C+Athens%2C+Greece&amp;format=geocodejson">https://nominatim.openstreetmap.org/search?q=%CE%91%CE%B3%CE%AF%CE%B1+%CE%A4%CF%81%CE%B9%CE%AC%CE%B4%CE%B1%2C+%CE%91%CE%B4%CF%89%CE%BD%CE%B9%CE%B4%CE%BF%CF%82%2C+Athens%2C+Greece&amp;format=geocodejson</a></p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;geocoding&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;attribution&quot;</span><span class="p">:</span> <span class="s2">&quot;Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;licence&quot;</span><span class="p">:</span> <span class="s2">&quot;ODbL&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;Αγία Τριάδα, Αδωνιδος, Athens, Greece&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;geocoding&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;place_of_worship&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Αγία Τριάδα, Αδωνιδος, Άγιος Νικόλαος, 5º Δημοτικό Διαμέρισμα Αθηνών, Athens, Municipality of Athens, Regional Unit of Central Athens, Region of Attica, Attica, 11472, Greece&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Αγία Τριάδα&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;admin&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="mf">23.72949633941</span><span class="p">,</span>
+          <span class="mf">38.0051697</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Reverse/" class="btn btn-neutral float-right" title="Reverse">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Overview/" class="btn btn-neutral" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../Overview/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Reverse/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
