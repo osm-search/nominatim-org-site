@@ -8,7 +8,7 @@ permalink: /
 ### Download
 
 You can download the latest development version from
-[github](https://github.com/openstreetmap/Nominatim).
+[github](https://github.com/osm-search/Nominatim).
 
 The latest release is [{{site.data.releases[0].name}}](http://www.nominatim.org/release/Nominatim-{{site.data.releases[0].name}}.tar.bz2).
 
