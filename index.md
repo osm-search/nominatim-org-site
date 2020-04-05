@@ -1,51 +1,112 @@
 ---
-layout: page
+layout: default
 permalink: /
 ---
 
-**Nominatim** (from the Latin, *by name*) is a tool to search OSM data by name and address and to generate synthetic addresses of OSM points (reverse geocoding).
+{::options parse_block_html="true" /}
 
-### Download
+<div class="section title-banner">
+<h1>Open-source geocoding</h1>
+<h3>with OpenStreetMap data</h3>
+</div>
 
-You can download the latest development version from
-[github](https://github.com/osm-search/Nominatim).
+<div class="section description">
+Nominatim uses OpenStreetMap data to find locations on Earth by name and
+address (geocoding). It can also do the reverse, find an address for any
+location on the planet.
+</div>
 
-The latest release is [{{site.data.releases[0].name}}](http://www.nominatim.org/release/Nominatim-{{site.data.releases[0].name}}.tar.bz2).
+<div class="section download-banner">
+<div class="two-column">
+<div class="column">
+*For occasional use*
+### ⯈ Use the API
 
-For older releases, see the [release history](release-history).
+[Usage policy](https://operations.osmfoundation.org/policies/nominatim/)
 
-### Documentation
+[API documentation](release-docs/develop/api/Overview/)
+</div>
 
-See the [documentation of the latest release](release-docs/latest/) for
+<div class="column">
+*For power users*
+### ⯈ Install your own
 
- * [API documentation](release-docs/latest/api/Overview/)
- * [Installation instructions](release-docs/latest/admin/Installation/)
+The latest release is [{{site.data.releases[0].name}}](https://www.nominatim.org/release/Nominatim-{{site.data.releases[0].name}}.tar.bz2).
 
-The documentation for the latest master branch from github (including the version
-running on [https://nominatim.openstreetmap.org](https://nominatim.openstreetmap.org)) can be found in the
-[development section](/release-docs/develop/).
+[Installation instructions](release-docs/latest/admin/Installation/)
 
-For older releases, check out the [release history](release-history).
+</div>
+</div>
+</div>
+
+<div class="section features">
+## Features
+
+<div class="two-column">
+
+<div class="featurebox">
+### Find places by name or adddress (Geocoding)
+
+Nominatim can power the search box on your website, allowing your users
+to type free-form queries ("Cafe Paris, New York"). It also offers
+a structured query mode ("postcode=12345", "city=London", "type=cafe")
+that helps you to automate geocoding of extensive address lists.
+</div>
 
 
-### Additional Files
+<div class="featurebox">
+### Look up addresses for a location (Reverse geocoding)
 
-The following is a list of additional data files useful for Nominatim
-installations:
+Given a latitude and longitude anywhere on the planet, Nominatim can find the
+nearest address. It can do the same for any OSM object
+given its ID.
+</div>
+</div>
 
- * [country_grid.sql.gz](data/country_grid.sql.gz) (mandatory from 3.0.0, included in release tar balls)
+<div class="two-column">
 
-    Base geometries for all countries.
+<div class="featurebox">
+### Scalable installation
 
- * [gb_postcode_data.sql.gz](data/gb_postcode_data.sql.gz)
+Nominatim scales with your needs. Run a search service for your city
+on a notebook or set up a larger server with data of the whole planet.
+</div>
 
-    Additional postcode data for Great Britain.
+<div class="featurebox">
+### Configurable setup
 
- * [us_postcode_data.sql.gz](data/us_postcode_data.sql.gz)
+You can decide which features of OpenStreetMap are important to you.
+Nominatim imports only what you tell it to.
+</div>
+</div>
 
-    Additional postcode data for the United States.
+<div class="two-column">
 
- * [wikipedia_article.sql.bin](data/wikipedia_article.sql.bin)
- * [wikipedia_redirect.sql.bin](data/wikipedia_redirect.sql.bin)
+<div class="featurebox">
+### Always up-to-date with OpenStreetMap
 
-    Data for result ranking based on Wikipedia.
+OpenStreetMap data is constantly improved by thousands of editors. Keep
+up to date with these changes through minutely updates.
+</div>
+
+<div class="featurebox">
+### Fast
+
+Nominatim is the geocoding software that powers the
+official OSM site [www.openstreetmap.org](https://www.openstreetmap.org/). It servers 30 million queries per
+day on a single server.
+
+
+</div>
+
+</div>
+</div>
+
+<div class="section supporters">
+## Supporters
+
+We thank the following companies for their support of parts of the
+Nominatim development:
+
+[![OpenCage](img/opencage.png)](https://opencagedata.com/)
+</div>

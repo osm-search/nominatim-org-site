@@ -8,10 +8,9 @@
 # Site settings
 title: Nominatim
 email: nominatim@lonvia.de
-description: > # this means to ignore newlines until "baseurl:"
-    Open source geocoding from OpenStreetMap data.
+description: Open source geocoding with OpenStreetMap data
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://nominatim.org" # the base hostname & protocol for your site
+url: "https://nominatim.org" # the base hostname & protocol for your site
 github_username: "osm-search/Nominatim"
 
 # Build settings
