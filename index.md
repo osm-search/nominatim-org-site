@@ -48,8 +48,9 @@ The latest release is [{{site.data.releases[0].name}}](https://www.nominatim.org
 ### Find places by name or adddress (Geocoding)
 
 Nominatim can power the search box on your website, allowing your users
-to type free-form queries ("Cafe Paris, New York"). It also offers
-a structured query mode ("postcode=12345", "city=London", "type=cafe")
+to type free-form queries ("Cafe Paris, New York") in any language.
+It also offers a structured query mode
+("postcode=12345", "city=London", "type=cafe")
 that helps you to automate geocoding of extensive address lists.
 </div>
 
@@ -69,7 +70,7 @@ given its ID.
 ### Scalable installation
 
 Nominatim scales with your needs. Run a search service for your city
-on a notebook or set up a larger server with data of the whole planet.
+on a laptop or set up a larger server with data of the whole planet.
 </div>
 
 <div class="featurebox">
@@ -108,5 +109,5 @@ day on a single server.
 We thank the following companies for their support of parts of the
 Nominatim development:
 
-[![OpenCage](img/opencage.png)](https://opencagedata.com/)
+[![OpenCage](img/opencage.svg)](https://opencagedata.com/)
 </div>

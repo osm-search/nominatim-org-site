@@ -244,16 +244,6 @@
 /**
  * Home page
  */
-/*
-.section, header .wrapper, footer .wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: 300px;
-    padding-left: 300px;
-}
-*/
 .section {
     h2 {
         font-weight: 600;
@@ -261,14 +251,22 @@
 }
 
 .title-banner {
-   h1 {
-       font-size: 50px;
-       padding-top: 40px;
-   }
-   h3 {
-       font-size: 45px;
-       padding-bottom: 40px;
-   }
+    h1 {
+        font-size: 50px;
+        padding-top: 40px;
+
+        @include media-query($on-laptop) {
+            font-size: 45px;
+        }
+    }
+    h3 {
+        font-size: 45px;
+        padding-bottom: 40px;
+
+        @include media-query($on-laptop) {
+            font-size: 40px;
+        }
+    }
 }
 
 .description {
@@ -293,6 +291,10 @@ div.two-column {
     width: calc(100% - 20px);
     margin: 10px;
     border-spacing: 10px;
+
+    @include media-query($on-palm) {
+        display: block;
+    }
 }
 
 div.two-column div {
@@ -301,6 +303,11 @@ div.two-column div {
     padding: 10px;
     border: 2px solid #e0e0e0;
     border-radius: 4px;
+
+    @include media-query($on-palm) {
+        display: block;
+        width: calc(100% - 20px);
+    }
 }
 
 div.two-column div p:nth-child(1) {
@@ -316,12 +323,6 @@ div.two-column div p:nth-child(1) {
         padding-left: 10px;
         max-width: 800px
     }
-
-    h3 {
-    /*    font-weight: bold;*/
-        margin-bottom: 0
-    }
-
 }
 
 .featurebox {
@@ -335,5 +336,9 @@ div.two-column div p:nth-child(1) {
 .supporters {
     padding-top: 50px;
     border-top: 1px solid #e0e0e0;
+
+    img {
+        height: 60px;
+    }
 }
 
