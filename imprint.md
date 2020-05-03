@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /imprint
+permalink: /imprint/
 ---
 
 ## Imprint/Contact
