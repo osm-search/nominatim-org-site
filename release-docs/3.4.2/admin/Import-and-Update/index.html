@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Importing and Updating - Nominatim 3.4.2</title>
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../../extra.css" rel="stylesheet">
+  <link href="../../styles.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Importing and Updating";
+    var mkdocs_page_input_path = "admin/Import-and-Update.md";
+    var mkdocs_page_url = "/admin/Import-and-Update/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 3.4.2</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../api/Overview/">Overview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/Search/">Search</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/Reverse/">Reverse</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/Lookup/">Address Lookup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/Details/">Details</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/Output/">Place Output Formats</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../api/Faq/">FAQ</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Administration Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../Installation/">Basic Installation</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Importing and Updating</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#importing-and-updating-the-database">Importing and Updating the Database</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#configuration-setup-in-settingslocalphp">Configuration setup in settings/local.php</a></li>
+        
+            <li><a class="toctree-l4" href="#downloading-additional-data">Downloading additional data</a></li>
+        
+            <li><a class="toctree-l4" href="#choosing-the-data-to-import">Choosing the Data to Import</a></li>
+        
+            <li><a class="toctree-l4" href="#initial-import-of-the-data">Initial import of the data</a></li>
+        
+            <li><a class="toctree-l4" href="#tuning-the-database">Tuning the database</a></li>
+        
+            <li><a class="toctree-l4" href="#installing-tiger-housenumber-data-for-the-us">Installing Tiger housenumber data for the US</a></li>
+        
+            <li><a class="toctree-l4" href="#updates">Updates</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Migration/">Migration from older Versions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Faq/">Troubleshooting</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Developers Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../develop/overview/">Overview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Import/">OSM Data Import</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Ranking/">Place Ranking</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Postcodes/">Postcodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../develop/Documentation/">Documentation</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">External Data Sources</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../data-sources/overview/">Overview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/Country-Grid/">Country Grid</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Appendix</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/Install-on-Ubuntu-16/">Installation on Ubuntu 16</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 3.4.2</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Administration Guide &raquo;</li>
+        
+      
+    
+    <li>Importing and Updating</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/admin/Import-and-Update.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="importing-and-updating-the-database">Importing and Updating the Database<a class="headerlink" href="#importing-and-updating-the-database" title="Permanent link"></a></h1>
+<p>The following instructions explain how to create a Nominatim database
+from an OSM planet file and how to keep the database up to date. It
+is assumed that you have already successfully installed the Nominatim
+software itself, if not return to the <a href="../Installation/">installation page</a>.</p>
+<h2 id="configuration-setup-in-settingslocalphp">Configuration setup in settings/local.php<a class="headerlink" href="#configuration-setup-in-settingslocalphp" title="Permanent link"></a></h2>
+<p>The Nominatim server can be customized via the file <code>settings/local.php</code>
+in the build directory. Note that this is a PHP file, so it must always
+start like this:</p>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
+</pre></div>
+
+
+<p>without any leading spaces.</p>
+<p>There are lots of configuration settings you can tweak. Have a look
+at <code>settings/default.php</code> for a full list. Most should have a sensible default.</p>
+<h4 id="flatnode-files">Flatnode files<a class="headerlink" href="#flatnode-files" title="Permanent link"></a></h4>
+<p>If you plan to import a large dataset (e.g. Europe, North America, planet),
+you should also enable flatnode storage of node locations. With this
+setting enabled, node coordinates are stored in a simple file instead
+of the database. This will save you import time and disk storage.
+Add to your <code>settings/local.php</code>:</p>
+<div class="codehilite"><pre><span></span>@define(&#39;CONST_Osm2pgsql_Flatnode_File&#39;, &#39;/path/to/flatnode.file&#39;);
+</pre></div>
+
+
+<p>Replace the second part with a suitable path on your system and make sure
+the directory exists. There should be at least 64GB of free space.</p>
+<h2 id="downloading-additional-data">Downloading additional data<a class="headerlink" href="#downloading-additional-data" title="Permanent link"></a></h2>
+<h3 id="wikipedia-rankings">Wikipedia rankings<a class="headerlink" href="#wikipedia-rankings" title="Permanent link"></a></h3>
+<p>Wikipedia can be used as an optional auxiliary data source to help indicate
+the importance of OSM features. Nominatim will work without this information
+but it will improve the quality of the results if this is installed.
+This data is available as a binary download:</p>
+<div class="codehilite"><pre><span></span>cd $NOMINATIM_SOURCE_DIR/data
+wget https://www.nominatim.org/data/wikipedia_article.sql.bin
+wget https://www.nominatim.org/data/wikipedia_redirect.sql.bin
+</pre></div>
+
+
+<p>Combined the 2 files are around 1.5GB and add around 30GB to the install
+size of Nominatim. They also increase the install time by an hour or so.</p>
+<p><em>NOTE:</em> you'll need to download the Wikipedia rankings before performing
+the initial import of the data if you want the rankings applied to the
+loaded data.</p>
+<h3 id="great-britain-usa-postcodes">Great Britain, USA postcodes<a class="headerlink" href="#great-britain-usa-postcodes" title="Permanent link"></a></h3>
+<p>Nominatim can use postcodes from an external source to improve searches that
+involve a GB or US postcode. This data can be optionally downloaded:</p>
+<div class="codehilite"><pre><span></span>cd $NOMINATIM_SOURCE_DIR/data
+wget https://www.nominatim.org/data/gb_postcode_data.sql.gz
+wget https://www.nominatim.org/data/us_postcode_data.sql.gz
+</pre></div>
+
+
+<h2 id="choosing-the-data-to-import">Choosing the Data to Import<a class="headerlink" href="#choosing-the-data-to-import" title="Permanent link"></a></h2>
+<p>In its default setup Nominatim is configured to import the full OSM data
+set for the entire planet. Such a setup requires a powerful machine with
+at least 64GB of RAM and around 800GB of SSD hard disks. Depending on your
+use case there are various ways to reduce the amount of data imported. This
+section discusses these methods. They can also be combined.</p>
+<h3 id="using-an-extract">Using an extract<a class="headerlink" href="#using-an-extract" title="Permanent link"></a></h3>
+<p>If you only need geocoding for a smaller region, then precomputed extracts
+are a good way to reduce the database size and import time.
+<a href="https://download.geofabrik.de">Geofabrik</a> offers extracts for most countries.
+They even have daily updates which can be used with the update process described
+below. There are also
+<a href="https://wiki.openstreetmap.org/wiki/Planet.osm#Downloading">other providers for extracts</a>.</p>
+<p>Please be aware that some extracts are not cut exactly along the country
+boundaries. As a result some parts of the boundary may be missing which means
+that Nominatim cannot compute the areas for some administrative areas.</p>
+<h3 id="dropping-data-required-for-dynamic-updates">Dropping Data Required for Dynamic Updates<a class="headerlink" href="#dropping-data-required-for-dynamic-updates" title="Permanent link"></a></h3>
+<p>About half of the data in Nominatim's database is not really used for serving
+the API. It is only there to allow the data to be updated from the latest
+changes from OSM. For many uses these dynamic updates are not really required.
+If you don't plan to apply updates, the dynamic part of the database can be
+safely dropped using the following command:</p>
+<div class="codehilite"><pre><span></span>./utils/setup.php --drop
+</pre></div>
+
+
+<p>Note that you still need to provide for sufficient disk space for the initial
+import. So this option is particularly interesting if you plan to transfer the
+database or reuse the space later.</p>
+<h3 id="reverse-only-imports">Reverse-only Imports<a class="headerlink" href="#reverse-only-imports" title="Permanent link"></a></h3>
+<p>If you only want to use the Nominatim database for reverse lookups or
+if you plan to use the installation only for exports to a
+<a href="https://photon.komoot.de/">photon</a> database, then you can set up a database
+without search indexes. Add <code>--reverse-only</code> to your setup command above.</p>
+<p>This saves about 5% of disk space.</p>
+<h3 id="filtering-imported-data">Filtering Imported Data<a class="headerlink" href="#filtering-imported-data" title="Permanent link"></a></h3>
+<p>Nominatim normally sets up a full search database containing administrative
+boundaries, places, streets, addresses and POI data. There are also other
+import styles available which only read selected data:</p>
+<ul>
+<li><strong>settings/import-admin.style</strong>
+  Only import administrative boundaries and places.</li>
+<li><strong>settings/import-street.style</strong>
+  Like the admin style but also adds streets.</li>
+<li><strong>settings/import-address.style</strong>
+  Import all data necessary to compute addresses down to house number level.</li>
+<li><strong>settings/import-full.style</strong>
+  Default style that also includes points of interest.</li>
+</ul>
+<p>The style can be changed with the configuration <code>CONST_Import_Style</code>.</p>
+<p>To give you an idea of the impact of using the different styles, the table
+below gives rough estimates of the final database size after import of a
+2018 planet and after using the <code>--drop</code> option. It also shows the time
+needed for the import on a machine with 64GB RAM, 4 CPUS and SSDs. Note that
+the given sizes are just an estimate meant for comparison of style requirements.
+Your planet import is likely to be larger as the OSM data grows with time.</p>
+<table>
+<thead>
+<tr>
+<th>style</th>
+<th>Import time</th>
+<th>DB size</th>
+<th>after drop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>admin</td>
+<td>5h</td>
+<td>190 GB</td>
+<td>20 GB</td>
+</tr>
+<tr>
+<td>street</td>
+<td>42h</td>
+<td>400 GB</td>
+<td>180 GB</td>
+</tr>
+<tr>
+<td>address</td>
+<td>59h</td>
+<td>500 GB</td>
+<td>260 GB</td>
+</tr>
+<tr>
+<td>full</td>
+<td>80h</td>
+<td>575 GB</td>
+<td>300 GB</td>
+</tr>
+</tbody>
+</table>
+<p>You can also customize the styles further. For a description of the
+style format see <a href="../../develop/Import/">the development section</a>.</p>
+<h2 id="initial-import-of-the-data">Initial import of the data<a class="headerlink" href="#initial-import-of-the-data" title="Permanent link"></a></h2>
+<p><strong>Important:</strong> first try the import with a small extract, for example from
+<a href="https://download.geofabrik.de">Geofabrik</a>.</p>
+<p>Download the data to import and load the data with the following command
+from the build directory:</p>
+<div class="codehilite"><pre><span></span>./utils/setup.php --osm-file &lt;data file&gt; --all <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee setup.log
+</pre></div>
+
+
+<p><strong><em>Note for full planet imports:</em></strong> Even on a perfectly configured machine
+the import of a full planet takes at least 2 days. Once you see messages
+with <code>Rank .. ETA</code> appear, the indexing process has started. This part takes
+the most time. There are 30 ranks to process. Rank 26 and 30 are the most complex.
+They take each about a third of the total import time. If you have not reached
+rank 26 after two days of import, it is worth revisiting your system
+configuration as it may not be optimal for the import.</p>
+<h3 id="notes-on-memory-usage">Notes on memory usage<a class="headerlink" href="#notes-on-memory-usage" title="Permanent link"></a></h3>
+<p>In the first step of the import Nominatim uses osm2pgsql to load the OSM data
+into the PostgreSQL database. This step is very demanding in terms of RAM usage.
+osm2pgsql and PostgreSQL are running in parallel at this point. PostgreSQL
+blocks at least the part of RAM that has been configured with the
+<code>shared_buffers</code> parameter during <a href="Installation#PostgreSQL_tuning">PostgreSQL tuning</a>
+and needs some memory on top of that. osm2pgsql needs at least 2GB of RAM for
+its internal data structures, potentially more when it has to process very large
+relations. In addition it needs to maintain a cache for node locations. The size
+of this cache can be configured with the parameter <code>--osm2pgsql-cache</code>.</p>
+<p>When importing with a flatnode file, it is best to disable the node cache
+completely and leave the memory for the flatnode file. Nominatim will do this
+by default, so you do not need to configure anything in this case.</p>
+<p>For imports without a flatnode file, set <code>--osm2pgsql-cache</code> approximately to
+the size of the OSM pbf file (in MB) you are importing. Make sure you leave
+enough RAM for PostgreSQL and osm2pgsql as mentioned above. If the system starts
+swapping or you are getting out-of-memory errors, reduce the cache size or
+even consider using a flatnode file.</p>
+<h2 id="tuning-the-database">Tuning the database<a class="headerlink" href="#tuning-the-database" title="Permanent link"></a></h2>
+<p>Accurate word frequency information for search terms helps PostgreSQL's query
+planner to make the right decisions. Recomputing them can improve the performance
+of forward geocoding in particular under high load. To recompute word counts run:</p>
+<div class="codehilite"><pre><span></span>./utils/update.php --recompute-word-counts
+</pre></div>
+
+
+<p>This will take a couple of hours for a full planet installation. You can
+also defer that step to a later point in time when you realise that
+performance becomes an issue. Just make sure that updates are stopped before
+running this function.</p>
+<p>If you want to be able to search for places by their type through
+<a href="https://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases">special key phrases</a>
+you also need to enable these key phrases like this:</p>
+<div class="codehilite"><pre><span></span><span class="o">./</span><span class="n">utils</span><span class="o">/</span><span class="n">specialphrases</span><span class="o">.</span><span class="n">php</span> <span class="o">--</span><span class="n">wiki</span><span class="o">-</span><span class="kn">import</span> <span class="o">&gt;</span> <span class="n">specialphrases</span><span class="o">.</span><span class="n">sql</span>
+<span class="n">psql</span> <span class="o">-</span><span class="n">d</span> <span class="n">nominatim</span> <span class="o">-</span><span class="n">f</span> <span class="n">specialphrases</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+
+
+<p>Note that this command downloads the phrases from the wiki link above. You
+need internet access for the step.</p>
+<h2 id="installing-tiger-housenumber-data-for-the-us">Installing Tiger housenumber data for the US<a class="headerlink" href="#installing-tiger-housenumber-data-for-the-us" title="Permanent link"></a></h2>
+<p>Nominatim is able to use the official <a href="https://www.census.gov/geo/maps-data/data/tiger.html">TIGER</a>
+address set to complement the OSM house number data in the US. You can add
+TIGER data to your own Nominatim instance by following these steps. The
+entire US adds about 10GB to your database.</p>
+<ol>
+<li>
+<p>Get preprocessed TIGER 2019 data and unpack it into the
+     data directory in your Nominatim sources:</p>
+<div class="codehilite"><pre><span></span>cd Nominatim/data
+wget https://nominatim.org/data/tiger2019-nominatim-preprocessed.tar.gz
+tar xf tiger2019-nominatim-preprocessed.tar.gz
+</pre></div>
+
+
+<p><code>data-source/us-tiger/README.md</code> explains how the data got preprocessed.</p>
+</li>
+<li>
+<p>Import the data into your Nominatim database:</p>
+<div class="codehilite"><pre><span></span>./utils/setup.php --import-tiger-data
+</pre></div>
+
+
+</li>
+<li>
+<p>Enable use of the Tiger data in your <code>settings/local.php</code> by adding:</p>
+<div class="codehilite"><pre><span></span> @define(&#39;CONST_Use_US_Tiger_Data&#39;, true);
+</pre></div>
+
+
+</li>
+<li>
+<p>Apply the new settings:</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span>    ./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
+</pre></div>
+
+
+<h2 id="updates">Updates<a class="headerlink" href="#updates" title="Permanent link"></a></h2>
+<p>There are many different ways to update your Nominatim database.
+The following section describes how to keep it up-to-date with Pyosmium.
+For a list of other methods see the output of <code>./utils/update.php --help</code>.</p>
+<h4 id="installing-the-newest-version-of-pyosmium">Installing the newest version of Pyosmium<a class="headerlink" href="#installing-the-newest-version-of-pyosmium" title="Permanent link"></a></h4>
+<p>It is recommended to install Pyosmium via pip. Make sure to use python3.
+Run (as the same user who will later run the updates):</p>
+<div class="codehilite"><pre><span></span>pip3 install --user osmium
+</pre></div>
+
+
+<p>Nominatim needs a tool called <code>pyosmium-get-updates</code> which comes with
+Pyosmium. You need to tell Nominatim where to find it. Add the
+following line to your <code>settings/local.php</code>:</p>
+<div class="codehilite"><pre><span></span>@define(&#39;CONST_Pyosmium_Binary&#39;, &#39;/home/user/.local/bin/pyosmium-get-changes&#39;);
+</pre></div>
+
+
+<p>The path above is fine if you used the <code>--user</code> parameter with pip.
+Replace <code>user</code> with your user name.</p>
+<h4 id="setting-up-the-update-process">Setting up the update process<a class="headerlink" href="#setting-up-the-update-process" title="Permanent link"></a></h4>
+<p>Next the update needs to be initialised. By default Nominatim is configured
+to update using the global minutely diffs.</p>
+<p>If you want a different update source you will need to add some settings
+to <code>settings/local.php</code>. For example, to use the daily country extracts
+diffs for Ireland from Geofabrik add the following:</p>
+<div class="codehilite"><pre><span></span><span class="o">//</span> <span class="nt">base</span> <span class="nt">URL</span> <span class="nt">of</span> <span class="nt">the</span> <span class="nt">replication</span> <span class="nt">service</span>
+<span class="p">@</span><span class="k">define</span><span class="o">(</span><span class="s1">&#39;CONST_Replication_Url&#39;</span><span class="o">,</span> <span class="s1">&#39;https://download.geofabrik.de/europe/ireland-and-northern-ireland-updates&#39;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">//</span> <span class="nt">How</span> <span class="nt">often</span> <span class="nt">upstream</span> <span class="nt">publishes</span> <span class="nt">diffs</span>
+<span class="p">@</span><span class="k">define</span><span class="o">(</span><span class="s1">&#39;CONST_Replication_Update_Interval&#39;</span><span class="o">,</span> <span class="s1">&#39;86400&#39;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">//</span> <span class="nt">How</span> <span class="nt">long</span> <span class="nt">to</span> <span class="nt">sleep</span> <span class="nt">if</span> <span class="nt">no</span> <span class="nt">update</span> <span class="nt">found</span> <span class="nt">yet</span>
+<span class="p">@</span><span class="k">define</span><span class="o">(</span><span class="s1">&#39;CONST_Replication_Recheck_Interval&#39;</span><span class="o">,</span> <span class="s1">&#39;900&#39;</span><span class="o">)</span><span class="p">;</span>
+</pre></div>
+
+
+<p>To set up the update process now run the following command:</p>
+<div class="codehilite"><pre><span></span>./utils/update.php --init-updates
+</pre></div>
+
+
+<p>It outputs the date where updates will start. Recheck that this date is
+what you expect.</p>
+<p>The <code>--init-updates</code> command needs to be rerun whenever the replication service
+is changed.</p>
+<h4 id="updating-nominatim">Updating Nominatim<a class="headerlink" href="#updating-nominatim" title="Permanent link"></a></h4>
+<p>The following command will keep your database constantly up to date:</p>
+<div class="codehilite"><pre><span></span>./utils/update.php --import-osmosis-all
+</pre></div>
+
+
+<p>(Note that even though the old name "import-osmosis-all" has been kept for compatibility reasons, Osmosis is not required to run this - it uses pyosmium behind the scenes.)</p>
+<p>If you have imported multiple country extracts and want to keep them
+up-to-date, have a look at the script in
+<a href="https://github.com/openstreetmap/Nominatim/issues/60">issue #60</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Migration/" class="btn btn-neutral float-right" title="Migration from older Versions">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Installation/" class="btn btn-neutral" title="Basic Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../Installation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Migration/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
