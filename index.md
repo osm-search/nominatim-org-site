@@ -110,4 +110,5 @@ We thank the following companies for their support of parts of the
 Nominatim development:
 
 [![OpenCage](img/opencage.svg)](https://opencagedata.com/)
+[![Graphhopper](img/graphhopper.png)](https://www.graphhopper.com/)
 </div>
