@@ -20,7 +20,7 @@ location on the planet.
 <div class="two-column">
 <div class="column">
 *For occasional use*
-### ⯈ Use the API
+### ![black pointer](img/black_pointer.svg) Use the API
 
 [Usage policy](https://operations.osmfoundation.org/policies/nominatim/)
 
@@ -29,7 +29,7 @@ location on the planet.
 
 <div class="column">
 *For power users*
-### ⯈ Install your own
+### ![black pointer](img/black_pointer.svg) Install your own
 
 The latest release is [{{site.data.releases[0].name}}](https://www.nominatim.org/release/Nominatim-{{site.data.releases[0].name}}.tar.bz2).
 
