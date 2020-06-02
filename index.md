@@ -94,7 +94,7 @@ up to date with these changes through minutely updates.
 ### Fast
 
 Nominatim is the geocoding software that powers the
-official OSM site [www.openstreetmap.org](https://www.openstreetmap.org/). It servers 30 million queries per
+official OSM site [www.openstreetmap.org](https://www.openstreetmap.org/). It serves 30 million queries per
 day on a single server.
 
 
