@@ -119,6 +119,7 @@ Nominatim development:
 We welcome your code contributions and bug reports. 
 
 [Nominatim repository on Github](https://github.com/osm-search/Nominatim)
+
 [Contribution guidelines](https://github.com/osm-search/Nominatim/blob/master/CONTRIBUTING.md)
 
 </div>
