@@ -112,3 +112,13 @@ Nominatim development:
 [![OpenCage](img/opencage.svg)](https://opencagedata.com/)
 [![Graphhopper](img/graphhopper.png)](https://www.graphhopper.com/)
 </div>
+
+<div class="section contributing">
+## Contributing
+
+We welcome your code contributions and bug reports. 
+
+[Nominatim repository on Github](https://github.com/osm-search/Nominatim)
+[Contribution guidelines](https://github.com/osm-search/Nominatim/blob/master/CONTRIBUTING.md)
+
+</div>
