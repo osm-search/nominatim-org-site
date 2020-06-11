@@ -7,13 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  <link rel="canonical" href="https://nominatim.org/admin/Faq/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>Troubleshooting - Nominatim 3.5.0</title>
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  <link href="../../extra.css" rel="stylesheet">
-  <link href="../../styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -24,7 +27,7 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -35,6 +38,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href="../.." class="icon icon-home"> Nominatim 3.5.0</a>
         <div role="search">
@@ -45,174 +49,125 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../..">Introduction</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">API Reference</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../api/Overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Search/">Search</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Reverse/">Reverse</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Lookup/">Address Lookup</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Details/">Details</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Status/">Status</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Output/">Place Output Formats</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Faq/">FAQ</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Administration Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../Installation/">Basic Installation</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Import-and-Update/">Importing and Updating</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Advanced-Installations/">Advanced Installations</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Migration/">Migration from older Versions</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Troubleshooting</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#troubleshooting-nominatim-installations">Troubleshooting Nominatim Installations</a></li>
-    
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Installation/">Basic Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Import-and-Update/">Importing and Updating</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Troubleshooting</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation-issues">Installation Issues</a>
         <ul>
-        
-            <li><a class="toctree-l4" href="#installation-issues">Installation Issues</a></li>
-        
-            <li><a class="toctree-l4" href="#running-your-own-instance">Running your own instance</a></li>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#can-a-stoppedkilled-import-process-be-resumed">Can a stopped/killed import process be resumed?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#php-open_basedir-restriction-in-effect-warnings">PHP "open_basedir restriction in effect" warnings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#php-timzeone-warnings">PHP timzeone warnings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nominatimso-version-mismatch">nominatim.so version mismatch</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#i-see-the-error-error-permission-denied-for-language-c">I see the error "ERROR: permission denied for language c"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#i-see-the-error-function-transliterationtext-does-not-exist">I see the error: "function transliteration(text) does not exist"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#i-see-the-error-error-mmap-remap-failed">I see the error: "ERROR: mmap (remap) failed"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#i-see-the-error-clang-command-not-found-on-centos">I see the error: "clang: Command not found" on CentOS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nominatim-update-failed-error-buffer-179261-is-not-owned-by-resource-owner-portal">nominatim UPDATE failed: ERROR: buffer 179261 is not owned by resource owner Portal</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-website-shows-could-not-get-word-tokens">The website shows: "Could not get word tokens"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#on-centos-the-website-shows-could-not-connect-to-server">On CentOS the website shows "Could not connect to server"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#website-reports-db-error-insufficient-permissions">Website reports "DB Error: insufficient permissions"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#website-reports-could-not-load-library-nominatimso">Website reports "Could not load library "nominatim.so"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setupphp-fails-with-db-error-extension-not-found">Setup.php fails with "DB Error: extension not found"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#i-forgot-to-delete-the-flatnodes-file-before-starting-an-import">I forgot to delete the flatnodes file before starting an import.</a>
+    </li>
         </ul>
-    
-
-    </ul>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Developers Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../develop/overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Import/">OSM Data Import</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Ranking/">Place Ranking</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Postcodes/">Postcodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Documentation/">Documentation</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">External Data Sources</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../data-sources/overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/Country-Grid/">Country Grid</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Appendix</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
-                </li>
-    </ul>
-	    </li>
-          
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#running-your-own-instance">Running your own instance</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#can-i-import-negative-osm-ids-into-nominatim">Can I import negative OSM ids into Nominatim?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#missing-xml-or-text-declaration">Missing XML or text declaration</a>
+    </li>
         </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Import/">OSM Data Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Ranking/">Place Ranking</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Postcodes/">Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">External Data Sources</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/Country-Grid/">Country Grid</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -244,6 +199,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -256,27 +212,27 @@
 <p>It is possible if the import already got to the indexing stage.
 Check the last line of output that was logged before the process
 was killed. If it looks like this:</p>
-<div class="codehilite"><pre><span></span>Done 844 in 13 @ 64.923080 per second - Rank 26 ETA (seconds): 7.886255
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">Done 844 in 13 @ 64.923080 per second - Rank 26 ETA (seconds): 7.886255</span>
+</code></pre></div>
 
 
 <p>then you can resume with the following command:</p>
-<div class="codehilite"><pre><span></span>./utils/setup.php --index --create-search-indices --create-country-names
-</pre></div>
+<div class="codehilite"><pre><span></span><code>./utils/setup.php --index --create-search-indices --create-country-names
+</code></pre></div>
 
 
 <p>If the reported rank is 26 or higher, you can also safely add <code>--index-noanalyse</code>.</p>
 <h3 id="php-open_basedir-restriction-in-effect-warnings">PHP "open_basedir restriction in effect" warnings<a class="headerlink" href="#php-open_basedir-restriction-in-effect-warnings" title="Permanent link"></a></h3>
-<div class="codehilite"><pre><span></span>PHP Warning:  file_get_contents(): open_basedir restriction in effect.
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">PHP Warning:  file_get_contents(): open_basedir restriction in effect.</span>
+</code></pre></div>
 
 
 <p>You need to adjust the
 <a href="https://www.php.net/manual/en/ini.core.php#ini.open-basedir">open_basedir</a>
 setting in your PHP configuration (<code>php.ini</code> file). By default this setting may
 look like this:</p>
-<div class="codehilite"><pre><span></span>open_basedir = /srv/http/:/home/:/tmp/:/usr/share/pear/
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">open_basedir = /srv/http/:/home/:/tmp/:/usr/share/pear/</span>
+</code></pre></div>
 
 
 <p>Either add reported directories to the list or disable this setting temporarily
@@ -288,15 +244,15 @@ again once you are done with the PHP command line operations.</p>
 <p>You should set the default time zone as instructed in the warning in
 your <code>php.ini</code> file. Find the entry about timezone and set it to
 something like this:</p>
-<div class="codehilite"><pre><span></span>; Defines the default timezone used by the date functions
-; https://php.net/date.timezone
-date.timezone = &#39;America/Denver&#39;
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">; Defines the default timezone used by the date functions</span>
+<span class="err">; https://php.net/date.timezone</span>
+<span class="err">date.timezone = &#39;America/Denver&#39;</span>
+</code></pre></div>
 
 
 <p>Or</p>
-<div class="codehilite"><pre><span></span>echo &quot;date.timezone = &#39;America/Denver&#39;&quot; &gt; /etc/php.d/timezone.ini
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">echo &quot;date.timezone = &#39;America/Denver&#39;&quot; &gt; /etc/php.d/timezone.ini</span>
+</code></pre></div>
 
 
 <h3 id="nominatimso-version-mismatch">nominatim.so version mismatch<a class="headerlink" href="#nominatimso-version-mismatch" title="Permanent link"></a></h3>
@@ -341,9 +297,9 @@ so then Apache cannot see the <code>/tmp/.s.PGSQL.5432</code> file. It's a good 
 feature, so use the
 <a href="../appendix/Install-on-Centos-7/#adding-selinux-security-settings">preferred solution</a>.</p>
 <p>However, you can solve this the quick and dirty way by commenting out that line and then run</p>
-<div class="codehilite"><pre><span></span>sudo systemctl daemon-reload
-sudo systemctl restart httpd
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo systemctl daemon-reload</span>
+<span class="err">sudo systemctl restart httpd</span>
+</code></pre></div>
 
 
 <h3 id="website-reports-db-error-insufficient-permissions">Website reports "DB Error: insufficient permissions"<a class="headerlink" href="#website-reports-db-error-insufficient-permissions" title="Permanent link"></a></h3>
@@ -359,25 +315,25 @@ for default Ubuntu operating system for example it's <code>www-data</code>.</p>
 <p>Give the user permission to existing tables</p>
 </li>
 </ol>
-<div class="codehilite"><pre><span></span>   GRANT usage ON SCHEMA public TO &quot;www-data&quot;;
-   GRANT SELECT ON ALL TABLES IN SCHEMA public TO &quot;www-data&quot;;
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">   GRANT usage ON SCHEMA public TO &quot;www-data&quot;;</span>
+<span class="err">   GRANT SELECT ON ALL TABLES IN SCHEMA public TO &quot;www-data&quot;;</span>
+</code></pre></div>
 
 
 <h3 id="website-reports-could-not-load-library-nominatimso">Website reports "Could not load library "nominatim.so"<a class="headerlink" href="#website-reports-could-not-load-library-nominatimso" title="Permanent link"></a></h3>
 <p>Example error message</p>
-<div class="codehilite"><pre><span></span>   SELECT make_standard_name(&#39;3039 E MEADOWLARK LN&#39;) [nativecode=ERROR: could not
-   load library &quot;/srv/nominatim/Nominatim-3.1.0/build/module/nominatim.so&quot;:
-   /srv/nominatim/Nominatim-3.1.0/build/module/nominatim.so: cannot open shared
-   object file: Permission denied
-   CONTEXT: PL/pgSQL function make_standard_name(text) line 5 at assignment]
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">   SELECT make_standard_name(&#39;3039 E MEADOWLARK LN&#39;) [nativecode=ERROR: could not</span>
+<span class="err">   load library &quot;/srv/nominatim/Nominatim-3.1.0/build/module/nominatim.so&quot;:</span>
+<span class="err">   /srv/nominatim/Nominatim-3.1.0/build/module/nominatim.so: cannot open shared</span>
+<span class="err">   object file: Permission denied</span>
+<span class="err">   CONTEXT: PL/pgSQL function make_standard_name(text) line 5 at assignment]</span>
+</code></pre></div>
 
 
 <p>The PostgreSQL database, i.e. user <code>postgres</code>, needs to have access to that file.</p>
 <p>The permission need to be read &amp; executable by everybody, e.g.</p>
-<div class="codehilite"><pre><span></span>   -rwxr-xr-x 1 nominatim nominatim 297984 build/module/nominatim.so
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">   -rwxr-xr-x 1 nominatim nominatim 297984 build/module/nominatim.so</span>
+</code></pre></div>
 
 
 <p>Try <code>chmod a+r nominatim.so; chmod a+x nominatim.so</code>.</p>
@@ -418,7 +374,7 @@ for more information.</p>
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -428,7 +384,7 @@ for more information.</p>
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -444,6 +400,11 @@ for more information.</p>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

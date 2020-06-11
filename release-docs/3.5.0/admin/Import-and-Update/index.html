@@ -7,13 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  <link rel="canonical" href="https://nominatim.org/admin/Import-and-Update/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>Importing and Updating - Nominatim 3.5.0</title>
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  <link href="../../extra.css" rel="stylesheet">
-  <link href="../../styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -24,7 +27,7 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -35,6 +38,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href="../.." class="icon icon-home"> Nominatim 3.5.0</a>
         <div role="search">
@@ -45,184 +49,131 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../..">Introduction</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">API Reference</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../api/Overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Search/">Search</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Reverse/">Reverse</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Lookup/">Address Lookup</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Details/">Details</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Status/">Status</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Output/">Place Output Formats</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Faq/">FAQ</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Administration Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../Installation/">Basic Installation</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Importing and Updating</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#importing-and-updating-the-database">Importing and Updating the Database</a></li>
-    
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Installation/">Basic Installation</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Importing and Updating</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#configuration-setup-in-settingslocalphp">Configuration setup in settings/local.php</a>
         <ul>
-        
-            <li><a class="toctree-l4" href="#configuration-setup-in-settingslocalphp">Configuration setup in settings/local.php</a></li>
-        
-            <li><a class="toctree-l4" href="#downloading-additional-data">Downloading additional data</a></li>
-        
-            <li><a class="toctree-l4" href="#choosing-the-data-to-import">Choosing the Data to Import</a></li>
-        
-            <li><a class="toctree-l4" href="#initial-import-of-the-data">Initial import of the data</a></li>
-        
-            <li><a class="toctree-l4" href="#tuning-the-database">Tuning the database</a></li>
-        
-            <li><a class="toctree-l4" href="#installing-tiger-housenumber-data-for-the-us">Installing Tiger housenumber data for the US</a></li>
-        
-            <li><a class="toctree-l4" href="#updates">Updates</a></li>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#flatnode-files">Flatnode files</a>
+    </li>
         </ul>
-    
-
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Advanced-Installations/">Advanced Installations</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Migration/">Migration from older Versions</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Faq/">Troubleshooting</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Developers Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../develop/overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Import/">OSM Data Import</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Ranking/">Place Ranking</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Postcodes/">Postcodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Documentation/">Documentation</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">External Data Sources</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../data-sources/overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/Country-Grid/">Country Grid</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Appendix</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
-                </li>
-    </ul>
-	    </li>
-          
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#downloading-additional-data">Downloading additional data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#wikipediawikidata-rankings">Wikipedia/Wikidata rankings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#great-britain-usa-postcodes">Great Britain, USA postcodes</a>
+    </li>
         </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#choosing-the-data-to-import">Choosing the Data to Import</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#using-an-extract">Using an extract</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dropping-data-required-for-dynamic-updates">Dropping Data Required for Dynamic Updates</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reverse-only-imports">Reverse-only Imports</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filtering-imported-data">Filtering Imported Data</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#initial-import-of-the-data">Initial import of the data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#notes-on-memory-usage">Notes on memory usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#verify-import-finished">Verify import finished</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tuning-the-database">Tuning the database</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installing-tiger-housenumber-data-for-the-us">Installing Tiger housenumber data for the US</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#updates">Updates</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installing-the-newest-version-of-pyosmium">Installing the newest version of Pyosmium</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-up-the-update-process">Setting up the update process</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#updating-nominatim">Updating Nominatim</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Faq/">Troubleshooting</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Import/">OSM Data Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Ranking/">Place Ranking</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Postcodes/">Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">External Data Sources</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/Country-Grid/">Country Grid</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -254,6 +205,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -268,8 +220,8 @@ software itself, if not return to the <a href="../Installation/">installation pa
 <p>The Nominatim server can be customized via the file <code>settings/local.php</code>
 in the build directory. Note that this is a PHP file, so it must always
 start like this:</p>
-<div class="codehilite"><pre><span></span><span class="cp">&lt;?php</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+</code></pre></div>
 
 
 <p>without any leading spaces.</p>
@@ -281,8 +233,8 @@ you should also enable flatnode storage of node locations. With this
 setting enabled, node coordinates are stored in a simple file instead
 of the database. This will save you import time and disk storage.
 Add to your <code>settings/local.php</code>:</p>
-<div class="codehilite"><pre><span></span>@define(&#39;CONST_Osm2pgsql_Flatnode_File&#39;, &#39;/path/to/flatnode.file&#39;);
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">@define(&#39;CONST_Osm2pgsql_Flatnode_File&#39;, &#39;/path/to/flatnode.file&#39;);</span>
+</code></pre></div>
 
 
 <p>Replace the second part with a suitable path on your system and make sure
@@ -293,9 +245,9 @@ the directory exists. There should be at least 64GB of free space.</p>
 the importance of OSM features. Nominatim will work without this information
 but it will improve the quality of the results if this is installed.
 This data is available as a binary download:</p>
-<div class="codehilite"><pre><span></span>cd $NOMINATIM_SOURCE_DIR/data
-wget https://www.nominatim.org/data/wikimedia-importance.sql.gz
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">cd $NOMINATIM_SOURCE_DIR/data</span>
+<span class="err">wget https://www.nominatim.org/data/wikimedia-importance.sql.gz</span>
+</code></pre></div>
 
 
 <p>The file is about 400MB and adds around 4GB to Nominatim database.</p>
@@ -309,10 +261,10 @@ and <code>./utils/update.php --recompute-importance</code>.</p>
 <h3 id="great-britain-usa-postcodes">Great Britain, USA postcodes<a class="headerlink" href="#great-britain-usa-postcodes" title="Permanent link"></a></h3>
 <p>Nominatim can use postcodes from an external source to improve searches that
 involve a GB or US postcode. This data can be optionally downloaded:</p>
-<div class="codehilite"><pre><span></span>cd $NOMINATIM_SOURCE_DIR/data
-wget https://www.nominatim.org/data/gb_postcode_data.sql.gz
-wget https://www.nominatim.org/data/us_postcode_data.sql.gz
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">cd $NOMINATIM_SOURCE_DIR/data</span>
+<span class="err">wget https://www.nominatim.org/data/gb_postcode_data.sql.gz</span>
+<span class="err">wget https://www.nominatim.org/data/us_postcode_data.sql.gz</span>
+</code></pre></div>
 
 
 <h2 id="choosing-the-data-to-import">Choosing the Data to Import<a class="headerlink" href="#choosing-the-data-to-import" title="Permanent link"></a></h2>
@@ -337,8 +289,8 @@ the API. It is only there to allow the data to be updated from the latest
 changes from OSM. For many uses these dynamic updates are not really required.
 If you don't plan to apply updates, the dynamic part of the database can be
 safely dropped using the following command:</p>
-<div class="codehilite"><pre><span></span>./utils/setup.php --drop
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">./utils/setup.php --drop</span>
+</code></pre></div>
 
 
 <p>Note that you still need to provide for sufficient disk space for the initial
@@ -426,8 +378,8 @@ style format see <a href="../../develop/Import/">the development section</a>.</p
 </div>
 <p>Download the data to import and load the data with the following command
 from the build directory:</p>
-<div class="codehilite"><pre><span></span>./utils/setup.php --osm-file &lt;data file&gt; --all <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee setup.log
-</pre></div>
+<div class="codehilite"><pre><span></span><code>./utils/setup.php --osm-file &lt;data file&gt; --all <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee setup.log
+</code></pre></div>
 
 
 <p><strong><em>Note for full planet imports:</em></strong> Even on a perfectly configured machine
@@ -457,16 +409,16 @@ swapping or you are getting out-of-memory errors, reduce the cache size or
 even consider using a flatnode file.</p>
 <h3 id="verify-import-finished">Verify import finished<a class="headerlink" href="#verify-import-finished" title="Permanent link"></a></h3>
 <p>Run this script to verify all required tables and indices got created successfully.</p>
-<div class="codehilite"><pre><span></span>./utils/check_import_finished.php
-</pre></div>
+<div class="codehilite"><pre><span></span><code>./utils/check_import_finished.php
+</code></pre></div>
 
 
 <h2 id="tuning-the-database">Tuning the database<a class="headerlink" href="#tuning-the-database" title="Permanent link"></a></h2>
 <p>Accurate word frequency information for search terms helps PostgreSQL's query
 planner to make the right decisions. Recomputing them can improve the performance
 of forward geocoding in particular under high load. To recompute word counts run:</p>
-<div class="codehilite"><pre><span></span>./utils/update.php --recompute-word-counts
-</pre></div>
+<div class="codehilite"><pre><span></span><code>./utils/update.php --recompute-word-counts
+</code></pre></div>
 
 
 <p>This will take a couple of hours for a full planet installation. You can
@@ -476,9 +428,9 @@ running this function.</p>
 <p>If you want to be able to search for places by their type through
 <a href="https://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases">special key phrases</a>
 you also need to enable these key phrases like this:</p>
-<div class="codehilite"><pre><span></span><span class="o">./</span><span class="n">utils</span><span class="o">/</span><span class="n">specialphrases</span><span class="o">.</span><span class="n">php</span> <span class="o">--</span><span class="n">wiki</span><span class="o">-</span><span class="kn">import</span> <span class="o">&gt;</span> <span class="n">specialphrases</span><span class="o">.</span><span class="n">sql</span>
+<div class="codehilite"><pre><span></span><code><span class="o">./</span><span class="n">utils</span><span class="o">/</span><span class="n">specialphrases</span><span class="o">.</span><span class="n">php</span> <span class="o">--</span><span class="n">wiki</span><span class="o">-</span><span class="kn">import</span> <span class="o">&gt;</span> <span class="n">specialphrases</span><span class="o">.</span><span class="n">sql</span>
 <span class="n">psql</span> <span class="o">-</span><span class="n">d</span> <span class="n">nominatim</span> <span class="o">-</span><span class="n">f</span> <span class="n">specialphrases</span><span class="o">.</span><span class="n">sql</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Note that this command downloads the phrases from the wiki link above. You
@@ -492,25 +444,25 @@ entire US adds about 10GB to your database.</p>
 <li>
 <p>Get preprocessed TIGER 2019 data and unpack it into the
      data directory in your Nominatim sources:</p>
-<div class="codehilite"><pre><span></span>cd Nominatim/data
-wget https://nominatim.org/data/tiger2019-nominatim-preprocessed.tar.gz
-tar xf tiger2019-nominatim-preprocessed.tar.gz
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">cd Nominatim/data</span>
+<span class="err">wget https://nominatim.org/data/tiger2019-nominatim-preprocessed.tar.gz</span>
+<span class="err">tar xf tiger2019-nominatim-preprocessed.tar.gz</span>
+</code></pre></div>
 
 
 <p><code>data-source/us-tiger/README.md</code> explains how the data got preprocessed.</p>
 </li>
 <li>
 <p>Import the data into your Nominatim database:</p>
-<div class="codehilite"><pre><span></span>./utils/setup.php --import-tiger-data
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">./utils/setup.php --import-tiger-data</span>
+</code></pre></div>
 
 
 </li>
 <li>
 <p>Enable use of the Tiger data in your <code>settings/local.php</code> by adding:</p>
-<div class="codehilite"><pre><span></span> @define(&#39;CONST_Use_US_Tiger_Data&#39;, true);
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err"> @define(&#39;CONST_Use_US_Tiger_Data&#39;, true);</span>
+</code></pre></div>
 
 
 </li>
@@ -518,8 +470,8 @@ tar xf tiger2019-nominatim-preprocessed.tar.gz
 <p>Apply the new settings:</p>
 </li>
 </ol>
-<div class="codehilite"><pre><span></span>    ./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
-</pre></div>
+<div class="codehilite"><pre><span></span><code>    ./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
+</code></pre></div>
 
 
 <h2 id="updates">Updates<a class="headerlink" href="#updates" title="Permanent link"></a></h2>
@@ -534,15 +486,15 @@ need to keep this flatnode file around for updates as well.</p>
 <h4 id="installing-the-newest-version-of-pyosmium">Installing the newest version of Pyosmium<a class="headerlink" href="#installing-the-newest-version-of-pyosmium" title="Permanent link"></a></h4>
 <p>It is recommended to install Pyosmium via pip. Make sure to use python3.
 Run (as the same user who will later run the updates):</p>
-<div class="codehilite"><pre><span></span>pip3 install --user osmium
-</pre></div>
+<div class="codehilite"><pre><span></span><code>pip3 install --user osmium
+</code></pre></div>
 
 
 <p>Nominatim needs a tool called <code>pyosmium-get-updates</code> which comes with
 Pyosmium. You need to tell Nominatim where to find it. Add the
 following line to your <code>settings/local.php</code>:</p>
-<div class="codehilite"><pre><span></span>@define(&#39;CONST_Pyosmium_Binary&#39;, &#39;/home/user/.local/bin/pyosmium-get-changes&#39;);
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">@define(&#39;CONST_Pyosmium_Binary&#39;, &#39;/home/user/.local/bin/pyosmium-get-changes&#39;);</span>
+</code></pre></div>
 
 
 <p>The path above is fine if you used the <code>--user</code> parameter with pip.
@@ -553,18 +505,18 @@ to update using the global minutely diffs.</p>
 <p>If you want a different update source you will need to add some settings
 to <code>settings/local.php</code>. For example, to use the daily country extracts
 diffs for Ireland from Geofabrik add the following:</p>
-<div class="codehilite"><pre><span></span><span class="o">//</span> <span class="nt">base</span> <span class="nt">URL</span> <span class="nt">of</span> <span class="nt">the</span> <span class="nt">replication</span> <span class="nt">service</span>
-<span class="p">@</span><span class="k">define</span><span class="o">(</span><span class="s1">&#39;CONST_Replication_Url&#39;</span><span class="o">,</span> <span class="s1">&#39;https://download.geofabrik.de/europe/ireland-and-northern-ireland-updates&#39;</span><span class="o">)</span><span class="p">;</span>
-<span class="o">//</span> <span class="nt">How</span> <span class="nt">often</span> <span class="nt">upstream</span> <span class="nt">publishes</span> <span class="nt">diffs</span>
-<span class="p">@</span><span class="k">define</span><span class="o">(</span><span class="s1">&#39;CONST_Replication_Update_Interval&#39;</span><span class="o">,</span> <span class="s1">&#39;86400&#39;</span><span class="o">)</span><span class="p">;</span>
-<span class="o">//</span> <span class="nt">How</span> <span class="nt">long</span> <span class="nt">to</span> <span class="nt">sleep</span> <span class="nt">if</span> <span class="nt">no</span> <span class="nt">update</span> <span class="nt">found</span> <span class="nt">yet</span>
-<span class="p">@</span><span class="k">define</span><span class="o">(</span><span class="s1">&#39;CONST_Replication_Recheck_Interval&#39;</span><span class="o">,</span> <span class="s1">&#39;900&#39;</span><span class="o">)</span><span class="p">;</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">// base URL of the replication service</span>
+<span class="err">@define(&#39;CONST_Replication_Url&#39;, &#39;https://download.geofabrik.de/europe/ireland-and-northern-ireland-updates&#39;);</span>
+<span class="err">// How often upstream publishes diffs</span>
+<span class="err">@define(&#39;CONST_Replication_Update_Interval&#39;, &#39;86400&#39;);</span>
+<span class="err">// How long to sleep if no update found yet</span>
+<span class="err">@define(&#39;CONST_Replication_Recheck_Interval&#39;, &#39;900&#39;);</span>
+</code></pre></div>
 
 
 <p>To set up the update process now run the following command:</p>
-<div class="codehilite"><pre><span></span>./utils/update.php --init-updates
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">./utils/update.php --init-updates</span>
+</code></pre></div>
 
 
 <p>It outputs the date where updates will start. Recheck that this date is
@@ -573,8 +525,8 @@ what you expect.</p>
 is changed.</p>
 <h4 id="updating-nominatim">Updating Nominatim<a class="headerlink" href="#updating-nominatim" title="Permanent link"></a></h4>
 <p>The following command will keep your database constantly up to date:</p>
-<div class="codehilite"><pre><span></span>./utils/update.php --import-osmosis-all
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">./utils/update.php --import-osmosis-all</span>
+</code></pre></div>
 
 
 <p>(Note that even though the old name "import-osmosis-all" has been kept for
@@ -605,7 +557,7 @@ to set up and update multiple country extracts.</p>
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -615,7 +567,7 @@ to set up and update multiple country extracts.</p>
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -631,6 +583,11 @@ to set up and update multiple country extracts.</p>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

@@ -7,13 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  <link rel="canonical" href="https://nominatim.org/admin/Installation/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>Basic Installation - Nominatim 3.5.0</title>
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  <link href="../../extra.css" rel="stylesheet">
-  <link href="../../styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -24,7 +27,7 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -35,6 +38,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href="../.." class="icon icon-home"> Nominatim 3.5.0</a>
         <div role="search">
@@ -45,174 +49,105 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../..">Introduction</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">API Reference</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../api/Overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Search/">Search</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Reverse/">Reverse</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Lookup/">Address Lookup</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Details/">Details</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Status/">Status</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Output/">Place Output Formats</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/Faq/">FAQ</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Administration Guide</span>
-    <ul class="subnav">
-                <li class=" current">
-                    
-    <a class="current" href="./">Basic Installation</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#basic-installation">Basic Installation</a></li>
-    
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Basic Installation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a>
         <ul>
-        
-            <li><a class="toctree-l4" href="#prerequisites">Prerequisites</a></li>
-        
-            <li><a class="toctree-l4" href="#setup-of-the-server">Setup of the server</a></li>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#software">Software</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hardware">Hardware</a>
+    </li>
         </ul>
-    
-
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Import-and-Update/">Importing and Updating</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Advanced-Installations/">Advanced Installations</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Migration/">Migration from older Versions</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Faq/">Troubleshooting</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Developers Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../develop/overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Import/">OSM Data Import</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Ranking/">Place Ranking</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Postcodes/">Postcodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Documentation/">Documentation</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">External Data Sources</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../data-sources/overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/Country-Grid/">Country Grid</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Appendix</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
-                </li>
-    </ul>
-	    </li>
-          
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup-of-the-server">Setup of the server</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#postgresql-tuning">PostgreSQL tuning</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#webserver-setup">Webserver setup</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#configure-for-use-with-apache">Configure for use with Apache</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configure-for-use-with-nginx">Configure for use with Nginx</a>
+    </li>
         </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Import-and-Update/">Importing and Updating</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Faq/">Troubleshooting</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Import/">OSM Data Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Ranking/">Place Ranking</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Postcodes/">Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">External Data Sources</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/Country-Grid/">Country Grid</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -244,6 +179,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -316,17 +252,17 @@ at least 2 days. Without SSDs 7-8 days are more realistic.</p>
 <p>You might want to tune your PostgreSQL installation so that the later steps
 make best use of your hardware. You should tune the following parameters in
 your <code>postgresql.conf</code> file.</p>
-<div class="codehilite"><pre><span></span>shared_buffers = 2GB
-maintenance_work_mem = (10GB)
-autovacuum_work_mem = 2GB
-work_mem = (50MB)
-effective_cache_size = (24GB)
-synchronous_commit = off
-checkpoint_segments = 100 # only for postgresql &lt;= 9.4
-max_wal_size = 1GB # postgresql &gt; 9.4
-checkpoint_timeout = 10min
-checkpoint_completion_target = 0.9
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">shared_buffers = 2GB</span>
+<span class="err">maintenance_work_mem = (10GB)</span>
+<span class="err">autovacuum_work_mem = 2GB</span>
+<span class="err">work_mem = (50MB)</span>
+<span class="err">effective_cache_size = (24GB)</span>
+<span class="err">synchronous_commit = off</span>
+<span class="err">checkpoint_segments = 100 # only for postgresql &lt;= 9.4</span>
+<span class="err">max_wal_size = 1GB # postgresql &gt; 9.4</span>
+<span class="err">checkpoint_timeout = 10min</span>
+<span class="err">checkpoint_completion_target = 0.9</span>
+</code></pre></div>
 
 
 <p>The numbers in brackets behind some parameters seem to work fine for
@@ -336,16 +272,16 @@ the additional space on your disk.</p>
 <p>Autovacuum must not be switched off because it ensures that the
 tables are frequently analysed. If your machine has very little memory,
 you might consider setting:</p>
-<div class="codehilite"><pre><span></span>autovacuum_max_workers = 1
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">autovacuum_max_workers = 1</span>
+</code></pre></div>
 
 
 <p>and even reduce <code>autovacuum_work_mem</code> further. This will reduce the amount
 of memory that autovacuum takes away from the import process.</p>
 <p>For the initial import, you should also set:</p>
-<div class="codehilite"><pre><span></span>fsync = off
-full_page_writes = off
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">fsync = off</span>
+<span class="err">full_page_writes = off</span>
+</code></pre></div>
 
 
 <p>Don't forget to reenable them after the initial import or you risk database
@@ -357,14 +293,14 @@ from there.</p>
 <h4 id="configure-for-use-with-apache">Configure for use with Apache<a class="headerlink" href="#configure-for-use-with-apache" title="Permanent link"></a></h4>
 <p>Make sure your Apache configuration contains the required permissions for the
 directory and create an alias:</p>
-<div class="codehilite"><pre><span></span><span class="nt">&lt;Directory</span> <span class="s">&quot;/srv/nominatim/build/website&quot;</span><span class="nt">&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;Directory</span> <span class="s">&quot;/srv/nominatim/build/website&quot;</span><span class="nt">&gt;</span>
   <span class="nb">Options</span> FollowSymLinks MultiViews
   <span class="nb">AddType</span> text/html   .php
   <span class="nb">DirectoryIndex</span> search.php
   <span class="nb">Require</span> <span class="k">all</span> granted
 <span class="nt">&lt;/Directory&gt;</span>
 <span class="nb">Alias</span> <span class="sx">/nominatim</span> <span class="sx">/srv/nominatim/build/website</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><code>/srv/nominatim/build</code> should be replaced with the location of your
@@ -376,20 +312,20 @@ The website should now be available on http://localhost/nominatim.</p>
 <p>By default php listens on a network socket. If you want it to listen to a
 Unix socket instead, change the pool configuration (<code>pool.d/www.conf</code>) as
 follows:</p>
-<div class="codehilite"><pre><span></span>; Comment out the tcp listener and add the unix socket
-;listen = 127.0.0.1:9000
-listen = /var/run/php5-fpm.sock
+<div class="codehilite"><pre><span></span><code><span class="p">;</span> <span class="k">Comment</span> <span class="k">out</span> <span class="n">the</span> <span class="n">tcp</span> <span class="n">listener</span> <span class="k">and</span> <span class="k">add</span> <span class="n">the</span> <span class="n">unix</span> <span class="n">socket</span>
+<span class="p">;</span><span class="k">listen</span> <span class="o">=</span> <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">:</span><span class="mi">9000</span>
+<span class="k">listen</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">php5</span><span class="o">-</span><span class="n">fpm</span><span class="p">.</span><span class="n">sock</span>
 
-; Ensure that the daemon runs as the correct user
-listen.owner = www-data
-listen.group = www-data
-listen.mode = 0666
-</pre></div>
+<span class="p">;</span> <span class="n">Ensure</span> <span class="n">that</span> <span class="n">the</span> <span class="n">daemon</span> <span class="n">runs</span> <span class="k">as</span> <span class="n">the</span> <span class="n">correct</span> <span class="k">user</span>
+<span class="k">listen</span><span class="p">.</span><span class="k">owner</span> <span class="o">=</span> <span class="n">www</span><span class="o">-</span><span class="k">data</span>
+<span class="k">listen</span><span class="p">.</span><span class="k">group</span> <span class="o">=</span> <span class="n">www</span><span class="o">-</span><span class="k">data</span>
+<span class="k">listen</span><span class="p">.</span><span class="k">mode</span> <span class="o">=</span> <span class="mi">0666</span>
+</code></pre></div>
 
 
 <p>Tell nginx that php files are special and to fastcgi_pass to the php-fpm
 unix socket by adding the location definition to the default configuration.</p>
-<div class="codehilite"><pre><span></span><span class="k">root</span> <span class="s">/srv/nominatim/build/website</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">root</span> <span class="s">/srv/nominatim/build/website</span><span class="p">;</span>
 <span class="k">index</span> <span class="s">search.php</span><span class="p">;</span>
 <span class="k">location</span> <span class="s">/</span> <span class="p">{</span>
     <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">@php</span><span class="p">;</span>
@@ -413,7 +349,7 @@ unix socket by adding the location definition to the default configuration.</p>
     <span class="kn">fastcgi_index</span> <span class="s">search.php</span><span class="p">;</span>
     <span class="kn">include</span> <span class="s">fastcgi.conf</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Restart the nginx and php5-fpm services and the website should now be available
@@ -441,7 +377,7 @@ at <code>http://localhost/</code>.</p>
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -451,7 +387,7 @@ at <code>http://localhost/</code>.</p>
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -467,6 +403,11 @@ at <code>http://localhost/</code>.</p>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

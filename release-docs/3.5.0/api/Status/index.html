@@ -7,13 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  <link rel="canonical" href="https://nominatim.org/api/Status/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>Status - Nominatim 3.5.0</title>
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  <link href="../../extra.css" rel="stylesheet">
-  <link href="../../styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -24,7 +27,7 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -35,6 +38,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href="../.." class="icon icon-home"> Nominatim 3.5.0</a>
         <div role="search">
@@ -45,174 +49,93 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../..">Introduction</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">API Reference</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../Overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Search/">Search</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Reverse/">Reverse</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Lookup/">Address Lookup</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Details/">Details</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Status</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#status">Status</a></li>
-    
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Search/">Search</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Status</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#output">Output</a>
         <ul>
-        
-            <li><a class="toctree-l4" href="#parameters">Parameters</a></li>
-        
-            <li><a class="toctree-l4" href="#output">Output</a></li>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#text-format">Text format</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#json-format">JSON format</a>
+    </li>
         </ul>
-    
-
+    </li>
     </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Output/">Place Output Formats</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Faq/">FAQ</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Administration Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../admin/Installation/">Basic Installation</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../admin/Import-and-Update/">Importing and Updating</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../admin/Advanced-Installations/">Advanced Installations</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../admin/Migration/">Migration from older Versions</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../admin/Faq/">Troubleshooting</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Developers Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../develop/overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Import/">OSM Data Import</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Ranking/">Place Ranking</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Postcodes/">Postcodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Documentation/">Documentation</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">External Data Sources</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../data-sources/overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/Country-Grid/">Country Grid</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Appendix</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
-                </li>
-    </ul>
-	    </li>
-          
-        </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Installation/">Basic Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Import-and-Update/">Importing and Updating</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Faq/">Troubleshooting</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Import/">OSM Data Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Ranking/">Place Ranking</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Postcodes/">Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">External Data Sources</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/Country-Grid/">Country Grid</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -244,6 +167,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -258,34 +182,34 @@ when the database was last updated.</p>
 </ul>
 <h2 id="output">Output<a class="headerlink" href="#output" title="Permanent link"></a></h2>
 <h4 id="text-format">Text format<a class="headerlink" href="#text-format" title="Permanent link"></a></h4>
-<div class="codehilite"><pre><span></span>   https://nominatim.openstreetmap.org/status.php
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">   https://nominatim.openstreetmap.org/status.php</span>
+</code></pre></div>
 
 
 <p>will return HTTP status code 200 and print <code>OK</code>.</p>
 <p>On error it will return HTTP status code 500 and print a message, e.g.
 <code>ERROR: Database connection failed</code>.</p>
 <h4 id="json-format">JSON format<a class="headerlink" href="#json-format" title="Permanent link"></a></h4>
-<div class="codehilite"><pre><span></span>   https://nominatim.openstreetmap.org/status.php?format=json
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">   https://nominatim.openstreetmap.org/status.php?format=json</span>
+</code></pre></div>
 
 
 <p>will return HTTP code 200 and a structure</p>
-<div class="codehilite"><pre><span></span>  <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code>  <span class="p">{</span>
       <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
       <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
       <span class="nt">&quot;data_updated&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-05-04T14:47:00+00:00&quot;</span>
   <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>On error will also return HTTP status code 200 and a structure with error
 code and message, e.g.</p>
-<div class="codehilite"><pre><span></span>   <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code>   <span class="p">{</span>
        <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">700</span><span class="p">,</span>
        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Database connection failed&quot;</span>
    <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Possible status codes are</p>
@@ -347,7 +271,7 @@ code and message, e.g.</p>
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -357,7 +281,7 @@ code and message, e.g.</p>
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -373,6 +297,11 @@ code and message, e.g.</p>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

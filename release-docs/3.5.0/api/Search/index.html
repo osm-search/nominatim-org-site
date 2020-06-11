@@ -7,13 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  <link rel="canonical" href="https://nominatim.org/api/Search/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>Search - Nominatim 3.5.0</title>
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  <link href="../../extra.css" rel="stylesheet">
-  <link href="../../styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -24,7 +27,7 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -35,6 +38,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href="../.." class="icon icon-home"> Nominatim 3.5.0</a>
         <div role="search">
@@ -45,174 +49,113 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../..">Introduction</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">API Reference</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../Overview/">Overview</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Search</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#search-queries">Search queries</a></li>
-    
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Search</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
         <ul>
-        
-            <li><a class="toctree-l4" href="#parameters">Parameters</a></li>
-        
-            <li><a class="toctree-l4" href="#examples">Examples</a></li>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#output-format">Output format</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#output-details">Output details</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#language-of-results">Language of results</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#result-limitation">Result limitation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#polygon-output">Polygon output</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#other">Other</a>
+    </li>
         </ul>
-    
-
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Reverse/">Reverse</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Lookup/">Address Lookup</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Details/">Details</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Status/">Status</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Output/">Place Output Formats</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../Faq/">FAQ</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Administration Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../admin/Installation/">Basic Installation</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../admin/Import-and-Update/">Importing and Updating</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../admin/Advanced-Installations/">Advanced Installations</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../admin/Migration/">Migration from older Versions</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../admin/Faq/">Troubleshooting</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Developers Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../develop/overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Import/">OSM Data Import</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Ranking/">Place Ranking</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Postcodes/">Postcodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../develop/Documentation/">Documentation</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">External Data Sources</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../data-sources/overview/">Overview</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/Country-Grid/">Country Grid</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Appendix</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
-                </li>
-    </ul>
-	    </li>
-          
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#xml-with-kml-polygon">XML with kml polygon</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#json-with-svg-polygon">JSON with SVG polygon</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#json-with-address-details">JSON with address details</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#geojson">GeoJSON</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#geocodejson">GeocodeJSON</a>
+    </li>
         </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Status/">Status</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Installation/">Basic Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Import-and-Update/">Importing and Updating</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Faq/">Troubleshooting</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Import/">OSM Data Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Ranking/">Place Ranking</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Postcodes/">Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">External Data Sources</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/US-Tiger/">US Census (Tiger)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/GB-Postcodes/">GB Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/Country-Grid/">Country Grid</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data-sources/Wikipedia-Wikidata/">Wikipedia & Wikidata</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -244,6 +187,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -259,14 +203,14 @@ Note that this only limits the items to be found, it's not suited to return comp
 lists of OSM objects of a specific type. For those use <a href="https://overpass-api.de/">Overpass API</a>.</p>
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link"></a></h2>
 <p>The search API has the following two formats:</p>
-<div class="codehilite"><pre><span></span>   https://nominatim.openstreetmap.org/search/&lt;query&gt;?&lt;params&gt;
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">   https://nominatim.openstreetmap.org/search/&lt;query&gt;?&lt;params&gt;</span>
+</code></pre></div>
 
 
 <p>This format only accepts a free-form query string where the
 parts of the query are separated by slashes.</p>
-<div class="codehilite"><pre><span></span>   https://nominatim.openstreetmap.org/search?&lt;params&gt;
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">   https://nominatim.openstreetmap.org/search?&lt;params&gt;</span>
+</code></pre></div>
 
 
 <p>In this form, the query may be given through two different sets of parameters:</p>
@@ -402,7 +346,7 @@ This overrides the specified machine readable format. (Default: 0)</p>
 <ul>
 <li><a href="https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&amp;format=xml&amp;polygon_geojson=1&amp;addressdetails=1">https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&amp;format=xml&amp;polygon_geojson=1&amp;addressdetails=1</a></li>
 </ul>
-<div class="codehilite"><pre><span></span>  <span class="nt">&lt;searchresults</span> <span class="na">timestamp=</span><span class="s">&quot;Sat, 07 Nov 09 14:42:10 +0000&quot;</span> <span class="na">querystring=</span><span class="s">&quot;135 pilkington, avenue birmingham&quot;</span> <span class="na">polygon=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<div class="codehilite"><pre><span></span><code>  <span class="nt">&lt;searchresults</span> <span class="na">timestamp=</span><span class="s">&quot;Sat, 07 Nov 09 14:42:10 +0000&quot;</span> <span class="na">querystring=</span><span class="s">&quot;135 pilkington, avenue birmingham&quot;</span> <span class="na">polygon=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;place</span>
       <span class="na">place_id=</span><span class="s">&quot;1620612&quot;</span> <span class="na">osm_type=</span><span class="s">&quot;node&quot;</span> <span class="na">osm_id=</span><span class="s">&quot;452010817&quot;</span>
       <span class="na">boundingbox=</span><span class="s">&quot;52.548641204834,52.5488433837891,-1.81612110137939,-1.81592094898224&quot;</span>
@@ -429,12 +373,12 @@ This overrides the specified machine readable format. (Default: 0)</p>
       <span class="nt">&lt;country_code&gt;</span>gb<span class="nt">&lt;/country_code&gt;</span>
     <span class="nt">&lt;/place&gt;</span>
   <span class="nt">&lt;/searchresults&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h5 id="json-with-svg-polygon">JSON with SVG polygon<a class="headerlink" href="#json-with-svg-polygon" title="Permanent link"></a></h5>
 <p><a href="https://nominatim.openstreetmap.org/search/Unter%20den%20Linden%201%20Berlin?format=json&amp;addressdetails=1&amp;limit=1&amp;polygon_svg=1">https://nominatim.openstreetmap.org/search/Unter%20den%20Linden%201%20Berlin?format=json&amp;addressdetails=1&amp;limit=1&amp;polygon_svg=1</a></p>
-<div class="codehilite"><pre><span></span>    <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code>    <span class="p">{</span>
         <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">,</span>
             <span class="nt">&quot;city_district&quot;</span><span class="p">:</span> <span class="s2">&quot;Mitte&quot;</span><span class="p">,</span>
@@ -467,12 +411,12 @@ This overrides the specified machine readable format. (Default: 0)</p>
         <span class="nt">&quot;svg&quot;</span><span class="p">:</span> <span class="s2">&quot;M 13.397511 -52.517283599999999 L 13.397829400000001 -52.517299800000004 13.398131599999999 -52.517315099999998 13.398159400000001 -52.517112099999999 13.3975388 -52.517080700000001 Z&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;public_building&quot;</span>
     <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <h5 id="json-with-address-details">JSON with address details<a class="headerlink" href="#json-with-address-details" title="Permanent link"></a></h5>
 <p><a href="https://nominatim.openstreetmap.org/?addressdetails=1&amp;q=bakery+in+berlin+wedding&amp;format=json&amp;limit=1">https://nominatim.openstreetmap.org/?addressdetails=1&amp;q=bakery+in+berlin+wedding&amp;format=json&amp;limit=1</a></p>
-<div class="codehilite"><pre><span></span>    <span class="p">{</span>
+<div class="codehilite"><pre><span></span><code>    <span class="p">{</span>
         <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;bakery&quot;</span><span class="p">:</span> <span class="s2">&quot;B\u00e4cker Kamps&quot;</span><span class="p">,</span>
             <span class="nt">&quot;city_district&quot;</span><span class="p">:</span> <span class="s2">&quot;Mitte&quot;</span><span class="p">,</span>
@@ -503,12 +447,12 @@ This overrides the specified machine readable format. (Default: 0)</p>
         <span class="nt">&quot;place_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1453068&quot;</span><span class="p">,</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bakery&quot;</span>
     <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <h5 id="geojson">GeoJSON<a class="headerlink" href="#geojson" title="Permanent link"></a></h5>
 <p><a href="https://nominatim.openstreetmap.org/search?q=17+Strada+Pictor+Alexandru+Romano%2C+Bukarest&amp;format=geojson">https://nominatim.openstreetmap.org/search?q=17+Strada+Pictor+Alexandru+Romano%2C+Bukarest&amp;format=geojson</a></p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
   <span class="nt">&quot;licence&quot;</span><span class="p">:</span> <span class="s2">&quot;Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright&quot;</span><span class="p">,</span>
   <span class="nt">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -540,12 +484,12 @@ This overrides the specified machine readable format. (Default: 0)</p>
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <h5 id="geocodejson">GeocodeJSON<a class="headerlink" href="#geocodejson" title="Permanent link"></a></h5>
 <p><a href="https://nominatim.openstreetmap.org/search?q=%CE%91%CE%B3%CE%AF%CE%B1+%CE%A4%CF%81%CE%B9%CE%AC%CE%B4%CE%B1%2C+%CE%91%CE%B4%CF%89%CE%BD%CE%B9%CE%B4%CE%BF%CF%82%2C+Athens%2C+Greece&amp;format=geocodejson">https://nominatim.openstreetmap.org/search?q=%CE%91%CE%B3%CE%AF%CE%B1+%CE%A4%CF%81%CE%B9%CE%AC%CE%B4%CE%B1%2C+%CE%91%CE%B4%CF%89%CE%BD%CE%B9%CE%B4%CE%BF%CF%82%2C+Athens%2C+Greece&amp;format=geocodejson</a></p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
   <span class="nt">&quot;geocoding&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
@@ -574,7 +518,7 @@ This overrides the specified machine readable format. (Default: 0)</p>
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
               
             </div>
           </div>
@@ -597,7 +541,7 @@ This overrides the specified machine readable format. (Default: 0)</p>
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -607,7 +551,7 @@ This overrides the specified machine readable format. (Default: 0)</p>
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -623,6 +567,11 @@ This overrides the specified machine readable format. (Default: 0)</p>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>
