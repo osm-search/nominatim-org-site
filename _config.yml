@@ -15,3 +15,6 @@ github_username: "osm-search/Nominatim"
 
 # Build settings
 markdown: kramdown
+
+plugins:
+  - jekyll-feed
