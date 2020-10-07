@@ -110,6 +110,7 @@ We thank the following companies for their support of parts of the
 Nominatim development:
 
 <div class="big-supporter">
+[![OpenStreetMap Foundation](img/osmfoundation.png)](https://osmfoundation.org/)
 [![OpenCage](img/opencage.svg)](https://opencagedata.com/)
 [![Graphhopper](img/graphhopper.png)](https://www.graphhopper.com/)
 </div>
