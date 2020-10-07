@@ -215,7 +215,7 @@
 
 .post-content {
     margin-bottom: $spacing-unit;
-    max-width: 600px;
+    max-width: 650px;
 
     h2 {
         font-size: 32px;
@@ -244,16 +244,25 @@
     .bigskip {
         padding: 3pt;
     }
+
+    .tag {
+        background-color: #f5f5f5;
+    }
+
+    .footnotes {
+        font-size: smaller
+    }
 }
 
 .post-link-footer {
-    width: 600px;
+    width: 650px;
     display: flex;
 
     .post-next {
         margin-left: auto;
     }
 }
+
 
 /**
  * Home page
@@ -378,3 +387,4 @@ div.two-column div p:nth-child(1) {
        padding-top: 40px;
     }
 }
+
