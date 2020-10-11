@@ -1,123 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://nominatim.org/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/api/Overview/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/api/Search/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/api/Reverse/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/api/Lookup/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/api/Details/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/api/Status/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/api/Output/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/api/Faq/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/admin/Installation/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/admin/Import/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/admin/Update/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/admin/Advanced-Installations/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/admin/Migration/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/admin/Faq/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/develop/overview/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/develop/Import/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/develop/Ranking/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/develop/Postcodes/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/develop/Setup/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/develop/Documentation/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/data-sources/overview/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/data-sources/US-Tiger/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/data-sources/GB-Postcodes/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/data-sources/Country-Grid/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/data-sources/Wikipedia-Wikidata/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/appendix/Install-on-Centos-7/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/appendix/Install-on-Centos-8/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/appendix/Install-on-Ubuntu-18/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nominatim.org/appendix/Install-on-Ubuntu-20/</loc>
-     <lastmod>2020-09-25</lastmod>
+     <lastmod>2020-10-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

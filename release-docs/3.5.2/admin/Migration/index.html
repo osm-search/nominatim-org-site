@@ -215,6 +215,15 @@ follows:</p>
 <li>download the new Wikipedia tables as described in the import section</li>
 <li>reimport the tables: <code>./utils/setup.php --import-wikipedia-articles</code></li>
 <li>update the functions: <code>./utils/setup.php --create-functions --enable-diff-updates</code></li>
+<li>create a new lookup index:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">CREATE INDEX idx_placex_wikidata on placex</span>
+<span class="err">USING BTREE ((extratags -&gt; &#39;wikidata&#39;))</span>
+<span class="err">WHERE extratags ? &#39;wikidata&#39; and class = &#39;place&#39; and osm_type = &#39;N&#39; and rank_search &lt; 26</span>
+</code></pre></div>
+
+
+<ul>
 <li>compute importance: <code>./utils/update.php --recompute-importance</code></li>
 </ul>
 <p>The last step takes about 10 hours on the full planet.</p>
