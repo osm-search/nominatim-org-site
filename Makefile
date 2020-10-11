@@ -4,4 +4,4 @@ build:
 	jekyll build
 
 export:
-	scp -r _site/* wyre:/mnt/nominatim-org-data/site/
+	rsync -e ssh -avzF --exclude '/release-docs/develop' --exclude '/data' --exclude '/release' --delete _site/ wyre:/mnt/nominatim-org-data/site/
