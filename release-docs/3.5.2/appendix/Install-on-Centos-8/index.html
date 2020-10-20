@@ -292,11 +292,12 @@ tar xf Nominatim-3.5.2.tar.bz2
 
 
 <p>The code must be built in a separate directory. Create this directory,
-then configure and build Nominatim in there:</p>
+then configure and build Nominatim in there. Note that you need to
+tell cmake about the more recent Postgresql version that you use:</p>
 <div class="codehilite"><pre><span></span><code><span class="nb">cd</span> <span class="nv">$USERHOME</span>
 mkdir build
 <span class="nb">cd</span> build
-cmake <span class="nv">$USERHOME</span>/Nominatim-3.5.2
+cmake -DPostgreSQL_ADDITIONAL_VERSIONS<span class="o">=</span><span class="m">12</span> <span class="nv">$USERHOME</span>/Nominatim-3.5.2
 make
 </code></pre></div>
 
