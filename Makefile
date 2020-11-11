@@ -1,5 +1,8 @@
 all: build
 
+serve:
+	jekyll serve --future
+
 build:
 	jekyll build
 
