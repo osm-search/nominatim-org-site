@@ -6,7 +6,7 @@ author: Sarah Hoffmann (lonvia)
 
 Geocoding doesn't just mean to throw a number of place names into a database
 and then search for them. To make search truly useful, the geocoder needs to
-add to add some context to each place, commonly referred to as the place's
+add some context to each place, commonly referred to as the place's
 address. In the past year, we have gradually reworked how Nominatim determines
 the address of a place going from an unstructured to a more structured approach.
 This post describes how the new algorithm works and what that means for the
@@ -15,7 +15,7 @@ places you have mapped in OSM.
 
 The address of a place has two functions in geocoding. It is very important to
 help narrow down a search: 'I mean the Main St in Lyons, Colorado, not the one
-in Alta Loma, California'. It also used to present you a meaningful list
+in Alta Loma, California.' It is also used to present you a meaningful list
 of results so that you can choose the right one, just like the
 [osm.org](https://openstreetmap.org?query=Alta Loma) website does.
 
@@ -27,8 +27,8 @@ places. And indeed, in a nutshell, that's what Nominatim has been doing for many
 It works but doesn't always get you the best answer. The results can be long and
 contain irrelevant names. What you really want to do is build a structured
 address for your place, something of the form: 'place A is in suburb B,
-city C, province P in country Neverland'. With structured addresses we can
-format our results in the same way as you would habitually put an address on
+city C, province P in country Neverland.' With structured addresses we can
+format our results in the same way you would habitually put an address on
 a letter. That greatly improves readability. Structured addresses are also useful
 for finding the most relevant search. When looking for 'Amalienstr, Karlsruhe'
 it is much more likely that you mean the street in the city of Karlsruhe than
@@ -36,7 +36,7 @@ the one in Ettlingen in the county of Karlsruhe.
 
 ### Address context in the OpenStreetMap data
 
-There are three futures in OSM data that lend themselves as candidates for
+There are three features in OSM data that are suitable candidates for
 creating an address: address tags, place nodes and administrative boundaries.
 [Address tags](https://wiki.openstreetmap.org/wiki/Key:addr) are simple and
 obvious to use. However, not each object in OSM has them, so a fallback is
@@ -46,7 +46,7 @@ needed.
 perfect for structured addressing. They have a name and a type: city, town,
 village etc. The problem is that reality turns out to be more messy and
 tagging in OSM is not universally consistent. Two place nodes of the same
-type do not necessarily translate to the same thing in a structured addresses.
+type do not necessarily translate to the same thing in a structured address.
 For example, `place=village` is usually used for
 [independent small villages](https://www.openstreetmap.org/node/293132236),
 but you'll find it just as often being the 
@@ -54,7 +54,7 @@ but you'll find it just as often being the
 It makes sense from a mappers point of view.
 These 'villages' used to be independent until got 'eaten up' by the ever growing
 main town. They might still have their traditional village square and often
-are even referred to as 'Village soandso'. So it might quack like a village
+are even referred to as 'Village So-and-so'. It might quack like a village
 but it is still a suburb or neighbourhood in terms of addressing.
 
 The other issue with place nodes
@@ -65,7 +65,7 @@ address.
 
 Administrative boundaries are nicer. They have a well defined area that clearly
 spells in or out[^1]. They also have a clear hierarchy, the admin_level.
-Unfortunately, the admin_levels are not easily assigned to a place type because
+Unfortunately, admin_levels are not easily assigned to a place type because
 there is no 1:1 relation between admin_levels and place types.
 Take for example Poland. The admin_level=6 in Poland usually designates a
 county. However, some cities like Warsaw or Krakow have a county status in
@@ -86,14 +86,14 @@ This brings us to the algorithm that Nominatim uses to determine the structured
 address. This part is fairly technical, so feel free to skip over it.
 
 Nominatim starts out with defining its own system for the address hierarchy,
-the _address ranks_. This is a numerical value between 4 and 30 which then
+the _address ranks._ This is a numerical value between 4 and 30 which then
 can be translated back into a fixed part of a structural address. The smallest
 level 4 corresponds to a country, the largest level 30 designates a POI or
 housenumber. The documentation has a
 [table of address ranks](https://nominatim.org/release-docs/develop/develop/Ranking/#address-rank)
 with the full list of translations into address function.
 
-Next each OSM object that can be used as address context, gets assigned an
+Next, each OSM object that can be used as address context, gets assigned an
 address rank like this:
 
 1. Take all administrative boundaries and assign them an address function based
@@ -147,11 +147,11 @@ geocoders like Nominatim. Here are a couple of hints:
   administrative level is not a clear indicator what the place type might be.
 
 * Review the free place nodes in your area and check that they are used
-  consistently. Within a city, don't mix place=suburb, place=village etc. if
+  consistently. Within a city, don't mix place=suburb, place=village, etc. if
   they should refer to the same level of hierarchy. Conversely, if there are
   different levels like suburb and neighbourhood, make sure to use different
   place types for them. The same is true for rural areas. The distinction
-  if hamlets are just suburbs of a village or independent is very difficult to
+  whether hamlets are just suburbs of a village or independent is very difficult to
   make with today's OSM data.
 
 * Try to complete administrative boundaries for your area. If there are no
@@ -160,5 +160,5 @@ geocoders like Nominatim. Here are a couple of hints:
 These changes are already live on [nominatim.openstreetmap.org](https://nominatim.openstreetmap.org) and
 [openstreetmap.org](https://openstreetmap.org). However, they only affect
 newly changed data, while we are still busy ironing out the last kinks in the
-implementation. Once this is done, the database will be reimported so
+implementation. Once this is done, the database will be re-imported so
 that all data follows this new scheme.
