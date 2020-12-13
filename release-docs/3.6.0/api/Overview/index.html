@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://nominatim.org/api/Overview/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Overview - Nominatim 3.6.0</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Overview";
+    var mkdocs_page_input_path = "api/Overview.md";
+    var mkdocs_page_url = "/api/Overview/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 3.6.0</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Overview</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Search/">Search</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Status/">Status</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Installation/">Basic Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Import/">Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Update/">Update</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Deployment/">Deploy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Setup-Nominatim-UI/">Nominatim UI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Faq/">Troubleshooting</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Development-Environment/">Setup for Development</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Architecture Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Import/">OSM Data Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Ranking/">Place Ranking</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Postcodes/">Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Testing/">Testing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/data-sources/">External Data Sources</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 3.6.0</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>API Reference &raquo;</li>
+        
+      
+    
+    <li>Overview</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/api/Overview.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="nominatim-api">Nominatim API<a class="headerlink" href="#nominatim-api" title="Permanent link"></a></h3>
+<p>Nominatim indexes named (or numbered) features within the OpenStreetMap (OSM) dataset and a subset of other unnamed features (pubs, hotels, churches, etc).</p>
+<p>Its API has the following endpoints for querying the data:</p>
+<ul>
+<li><strong><a href="../Search/">/search</a></strong> - search OSM objects by name or type</li>
+<li><strong><a href="../Reverse/">/reverse</a></strong> - search OSM object by their location</li>
+<li><strong><a href="../Lookup/">/lookup</a></strong> - look up address details for OSM objects by their ID</li>
+<li><strong><a href="../Status/">/status</a></strong> - query the status of the server</li>
+<li><strong>/deletable</strong> - list objects that have been deleted in OSM but are held
+                    back in Nominatim in case the deletion was accidental</li>
+<li><strong>/polygons</strong> - list of broken polygons detected by Nominatim</li>
+<li><strong><a href="../Details/">/details</a></strong> - show internal details for an object (for debugging only)</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Search/" class="btn btn-neutral float-right" title="Search">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../.." class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Search/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
