@@ -38,7 +38,15 @@ development is sustainable over long-term. Please contact
 [nominatim@lonvia.de](mailto:nominatim@lonvia.de)
 for details about a regular contribution.
 
-## Funding of particular features
+### Support contracts
+
+You can also regularly support development through a support contract.
+Purchase a monthly quota of hours you can use
+to ask questions about your own installation or the software in general. Any
+unused hours go in full into maintaining and improving Nominatim.
+
+
+## Funding of specific features
 
 There are some items on the wish list for Nominatim that would
 fit well into the software but are not a priority for its use as a search
