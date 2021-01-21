@@ -113,6 +113,7 @@ Nominatim development:
 [![OpenStreetMap Foundation](img/osmfoundation.png)](https://osmfoundation.org/)
 [![OpenCage](img/opencage.svg)](https://opencagedata.com/)
 [![Graphhopper](img/graphhopper.png)](https://www.graphhopper.com/)
+[![Komoot](img/komoot.png)](https://www.komoot.de/)
 </div>
 
 <div class="small-supporter">
