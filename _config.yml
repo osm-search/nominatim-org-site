@@ -7,6 +7,7 @@
 
 # Site settings
 title: Nominatim
+name: Nominatim
 email: nominatim@lonvia.de
 description: Open source geocoding with OpenStreetMap data
 baseurl: "" # the subpath of your site, e.g. /blog
