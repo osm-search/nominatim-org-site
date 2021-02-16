@@ -249,6 +249,15 @@ then configure and build Nominatim in there:</p>
 <a href="../../admin/Import/">importing a database from OSM data</a>. If you want to set up
 a webserver first, continue reading.</p>
 <h1 id="setting-up-a-webserver">Setting up a webserver<a class="headerlink" href="#setting-up-a-webserver" title="Permanent link"></a></h1>
+<p>Before you can set up the webserver, the directory <code>build/website</code> needs
+to be available. This is normally set up on import. If you want to set
+up the webserver before the import, create the website directory now
+by running</p>
+<div class="codehilite"><pre><span></span><code><span class="err">cd $USERHOME/build</span>
+<span class="err">./utils/setup.php --setup-website</span>
+</code></pre></div>
+
+
 <h2 id="option-1-using-apache">Option 1: Using Apache<a class="headerlink" href="#option-1-using-apache" title="Permanent link"></a></h2>
 <p>Apache has a PHP module that can be used to serve Nominatim. To install them
 run:</p>
@@ -257,7 +266,7 @@ run:</p>
 
 
 <p>You need to create an alias to the website directory in your apache
-configuration. Add a separate nominatim configuration to your webserver:</p>
+configuration. Add a separate Nominatim configuration to your webserver:</p>
 <div class="codehilite"><pre><span></span><code>sudo tee /etc/apache2/conf-available/nominatim.conf <span class="s">&lt;&lt; EOFAPACHECONF</span>
 <span class="s">&lt;Directory &quot;$USERHOME/build/website&quot;&gt;</span>
 <span class="s">  Options FollowSymLinks MultiViews</span>
