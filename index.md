@@ -110,13 +110,14 @@ We thank the following companies for their support of parts of the
 Nominatim development:
 
 <div class="big-supporter">
-[![OpenStreetMap Foundation](img/osmfoundation.png)](https://osmfoundation.org/)
+[![NLNet Foundation](img/nlnet.svg)](https://nlnet.nl/)
 [![OpenCage](img/opencage.svg)](https://opencagedata.com/)
 [![Graphhopper](img/graphhopper.png)](https://www.graphhopper.com/)
 [![Komoot](img/komoot.png)](https://www.komoot.de/)
 </div>
 
 <div class="small-supporter">
+[OpenStreetMap Foundation](https://osmfoundation.org/)<br />
 [LocationIQ](https://locationiq.com/)
 </div>
 </div>
