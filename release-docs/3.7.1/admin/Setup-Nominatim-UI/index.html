@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://nominatim.org/admin/Setup-Nominatim-UI/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Nominatim UI - Nominatim 3.7.1</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Nominatim UI";
+    var mkdocs_page_input_path = "admin/Setup-Nominatim-UI.md";
+    var mkdocs_page_url = "/admin/Setup-Nominatim-UI/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 3.7.1</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Installation/">Basic Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Import/">Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Update/">Update</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Deployment/">Deploy</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Nominatim UI</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installing-nominatim-ui">Installing nominatim-ui</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#forwarding-searches-to-nominatim-ui">Forwarding searches to nominatim-ui</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-up-forwarding-in-nginx">Setting up forwarding in Nginx</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-up-forwarding-in-apache">Setting up forwarding in Apache</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Faq/">Troubleshooting</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Development-Environment/">Setup for Development</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Architecture Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Import/">OSM Data Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Ranking/">Place Ranking</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Postcodes/">Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Testing/">Testing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/data-sources/">External Data Sources</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 3.7.1</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Administration Guide &raquo;</li>
+        
+      
+    
+    <li>Nominatim UI</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/admin/Setup-Nominatim-UI.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="setting-up-the-nominatim-ui">Setting up the Nominatim UI<a class="headerlink" href="#setting-up-the-nominatim-ui" title="Permanent link"></a></h1>
+<p>Nominatim is a search API, it does not provide a website interface on its
+own. <a href="https://github.com/osm-search/nominatim-ui">nominatim-ui</a> offers a
+small website for testing your setup and inspecting the database content.</p>
+<p>This section provides a quick start how to use nominatim-ui with your
+installation. For more details, please also have a look at the
+<a href="https://github.com/osm-search/nominatim-ui/blob/master/README.md">README of nominatim-ui</a>.</p>
+<h2 id="installing-nominatim-ui">Installing nominatim-ui<a class="headerlink" href="#installing-nominatim-ui" title="Permanent link"></a></h2>
+<p>nominatim-ui does not need any special installation, just download, configure
+and run it.</p>
+<p>Clone the source from github:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">git clone https://github.com/osm-search/nominatim-ui</span>
+</code></pre></div>
+
+
+<p>Copy the example configuration into the right place:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">cd nominatim-ui</span>
+<span class="err">cp dist/config.example.js dist/config.js</span>
+</code></pre></div>
+
+
+<p>Now adapt the configuration to your needs. You need at least
+to change the <code>Nominatim_API_Endpoint</code> to point to your Nominatim installation.</p>
+<p>Then you can just test it locally by spinning up a webserver in the <code>dist</code>
+directory. For example, with Python:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">cd nominatim-ui/dist</span>
+<span class="err">python3 -m http.server 8765</span>
+</code></pre></div>
+
+
+<p>The website is now available at <code>http://localhost:8765</code>.</p>
+<h2 id="forwarding-searches-to-nominatim-ui">Forwarding searches to nominatim-ui<a class="headerlink" href="#forwarding-searches-to-nominatim-ui" title="Permanent link"></a></h2>
+<p>Nominatim used to provide the search interface directly by itself when
+<code>format=html</code> was requested. For all endpoints except for <code>/reverse</code> and
+<code>/lookup</code> this even used to be the default.</p>
+<p>The following section describes how to set up Apache or nginx, so that your
+users are forwarded to nominatim-ui when they go to URL that formerly presented
+the UI.</p>
+<h3 id="setting-up-forwarding-in-nginx">Setting up forwarding in Nginx<a class="headerlink" href="#setting-up-forwarding-in-nginx" title="Permanent link"></a></h3>
+<p>First of all make nominatim-ui available under <code>/ui</code> on your webserver:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">server</span> <span class="p">{</span>
+
+    <span class="c1"># Here is the Nominatim setup as described in the Installation section</span>
+
+    <span class="kn">location</span> <span class="s">/ui/</span> <span class="p">{</span>
+        <span class="kn">alias</span> <span class="s">&lt;full</span> <span class="s">path</span> <span class="s">to</span> <span class="s">the</span> <span class="s">nominatim-ui</span> <span class="s">directory&gt;/dist/</span><span class="p">;</span>
+        <span class="kn">index</span> <span class="s">index.html</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Now we need to find out if a URL should be forwarded to the UI. Add the
+following <code>map</code> commands <em>outside</em> the server section:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Inspect the format parameter in the query arguments. We are interested</span>
+<span class="c1"># if it is set to html or something else or if it is missing completely.</span>
+<span class="k">map</span> <span class="nv">$args</span> <span class="nv">$format</span> <span class="p">{</span>
+    <span class="kn">default</span>                  <span class="s">default</span><span class="p">;</span>
+    <span class="kn">~(^|&amp;)format=html(&amp;|$)</span>   <span class="s">html</span><span class="p">;</span>
+    <span class="kn">~(^|&amp;)format=</span>            <span class="s">other</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1"># Determine from the URI and the format parameter above if forwarding is needed.</span>
+<span class="k">map</span> <span class="nv">$uri/$format</span> <span class="nv">$forward_to_ui</span> <span class="p">{</span>
+    <span class="kn">default</span>               <span class="mi">1</span><span class="p">;</span>   <span class="c1"># The default is to forward.</span>
+    <span class="kn">~^/ui</span>                 <span class="mi">0</span><span class="p">;</span>   <span class="c1"># If the URI point to the UI already, we are done.</span>
+    <span class="kn">~/other$</span>              <span class="mi">0</span><span class="p">;</span>   <span class="c1"># An explicit non-html format parameter. No forwarding.</span>
+    <span class="kn">~/reverse.*/default</span>   <span class="mi">0</span><span class="p">;</span>   <span class="c1"># Reverse and lookup assume xml format when</span>
+    <span class="kn">~/lookup.*/default</span>    <span class="mi">0</span><span class="p">;</span>   <span class="c1">#   no format parameter is given. No forwarding.</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>The <code>$forward_to_ui</code> parameter can now be used to conditionally forward the
+calls:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="k">When</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="n">endpoint</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">given</span><span class="p">,</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">search</span><span class="p">.</span><span class="w"></span>
+<span class="err">#</span><span class="w"> </span><span class="n">Need</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">add</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">rewrite</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">rewrite</span><span class="w"> </span><span class="n">rules</span><span class="w"> </span><span class="n">below</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">correctly</span><span class="p">.</span><span class="w"></span>
+<span class="n">rewrite</span><span class="w"> </span><span class="o">^/</span><span class="err">$</span><span class="w"> </span><span class="o">/</span><span class="k">search</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">location</span><span class="w"> </span><span class="nv">@php</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">fastcgi</span><span class="w"> </span><span class="nf">stuff</span><span class="p">..</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="err">$</span><span class="n">forward_to_ui</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">rewrite</span><span class="w"> </span><span class="o">^</span><span class="p">(</span><span class="o">/[</span><span class="n">^/</span><span class="o">]*</span><span class="p">)</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">yourserver</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">ui</span><span class="err">$</span><span class="mf">1.</span><span class="n">html</span><span class="w"> </span><span class="n">redirect</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+
+<span class="n">location</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="o">[</span><span class="n">^/</span><span class="o">]</span><span class="err">\</span><span class="p">.</span><span class="n">php</span><span class="p">(</span><span class="o">/|</span><span class="err">$</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">fastcgi</span><span class="w"> </span><span class="nf">stuff</span><span class="p">..</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="err">$</span><span class="n">forward_to_ui</span><span class="p">)</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">rewrite</span><span class="w"> </span><span class="p">(.</span><span class="o">*</span><span class="p">).</span><span class="n">php</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">yourserver</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">ui</span><span class="err">$</span><span class="mf">1.</span><span class="n">html</span><span class="w"> </span><span class="n">redirect</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+</code></pre></div>
+
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be aware that the rewrite commands are slightly different for URIs with and
+without the .php suffix.</p>
+</div>
+<p>Reload nginx and the UI should be available.</p>
+<h3 id="setting-up-forwarding-in-apache">Setting up forwarding in Apache<a class="headerlink" href="#setting-up-forwarding-in-apache" title="Permanent link"></a></h3>
+<p>First of all make nominatim-ui available in the <code>ui/</code> subdirectory where
+Nominatim is installed. For example, given you have set up an alias under
+<code>nominatim</code> like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">Alias</span> <span class="sx">/nominatim</span> <span class="sx">/home/vagrant/build/website</span>
+</code></pre></div>
+
+
+<p>you need to insert the following rules for nominatim-ui before that alias:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;Directory</span> <span class="err">&quot;/home/vagrant/nominatim-ui/dist&quot;</span><span class="nt">&gt;</span>
+  DirectoryIndex search.html
+  Require all granted
+<span class="nt">&lt;/Directory&gt;</span>
+
+Alias /nominatim/ui /home/vagrant/nominatim-ui/dist
+</code></pre></div>
+
+
+<p>Replace <code>/home/vagrant/nominatim-ui</code> with the directory where you have cloned
+nominatim-ui.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The alias for nominatim-ui must come before the alias for the Nominatim
+website directory.</p>
+</div>
+<p>To set up forwarding, the Apache rewrite module is needed. Enable it with:</p>
+<div class="codehilite"><pre><span></span><code>sudo a2enmod rewrite
+</code></pre></div>
+
+
+<p>Then add rewrite rules to the <code>Directory</code> directive of the Nominatim website
+directory like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;Directory</span> <span class="s">&quot;/home/vagrant/build/website&quot;</span><span class="nt">&gt;</span>
+  <span class="nb">Options</span> FollowSymLinks MultiViews
+  <span class="nb">AddType</span> text/html   .php
+  <span class="nb">Require</span> <span class="k">all</span> granted
+
+  <span class="nb">RewriteEngine</span> <span class="k">On</span>
+
+  <span class="c"># This must correspond to the URL where nominatim can be found.</span>
+  <span class="nb">RewriteBase</span> <span class="s2">&quot;/nominatim/&quot;</span>
+
+  <span class="c"># If no endpoint is given, then use search.</span>
+  <span class="nb">RewriteRule</span> ^(/|$)   <span class="s2">&quot;search.php&quot;</span>
+
+  <span class="c"># If format-html is explicity requested, forward to the UI.</span>
+  <span class="nb">RewriteCond</span> %{QUERY_STRING} <span class="s2">&quot;format=html&quot;</span>
+  <span class="nb">RewriteRule</span> ^([^/]+).php ui/$1.html [R,END]
+  <span class="c"># Same but .php suffix is missing.</span>
+  <span class="nb">RewriteCond</span> %{QUERY_STRING} <span class="s2">&quot;format=html&quot;</span>
+  <span class="nb">RewriteRule</span> ^([^/]+) ui/$1.html [R,END]
+
+  <span class="c"># If no format parameter is there then forward anything</span>
+  <span class="c"># but /reverse and /lookup to the UI.</span>
+  <span class="nb">RewriteCond</span> %{QUERY_STRING} <span class="s2">&quot;!format=&quot;</span>
+  <span class="nb">RewriteCond</span> %{REQUEST_URI}  <span class="s2">&quot;!/lookup&quot;</span>
+  <span class="nb">RewriteCond</span> %{REQUEST_URI}  <span class="s2">&quot;!/reverse&quot;</span>
+  <span class="nb">RewriteRule</span> ^([^/]+).php ui/$1.html [R,END]
+  <span class="c"># Same but .php suffix is missing.</span>
+  <span class="nb">RewriteCond</span> %{QUERY_STRING} <span class="s2">&quot;!format=&quot;</span>
+  <span class="nb">RewriteCond</span> %{REQUEST_URI}  <span class="s2">&quot;!/lookup&quot;</span>
+  <span class="nb">RewriteCond</span> %{REQUEST_URI}  <span class="s2">&quot;!/reverse&quot;</span>
+  <span class="nb">RewriteRule</span> ^([^/]+) ui/$1.html [R,END]
+<span class="nt">&lt;/Directory&gt;</span>
+</code></pre></div>
+
+
+<p>Restart Apache and the UI should be available.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Advanced-Installations/" class="btn btn-neutral float-right" title="Advanced Installations">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Deployment/" class="btn btn-neutral" title="Deploy"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../Deployment/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Advanced-Installations/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://nominatim.org/admin/Faq/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Troubleshooting - Nominatim 3.7.1</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Troubleshooting";
+    var mkdocs_page_input_path = "admin/Faq.md";
+    var mkdocs_page_url = "/admin/Faq/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 3.7.1</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Installation/">Basic Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Import/">Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Update/">Update</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Deployment/">Deploy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Setup-Nominatim-UI/">Nominatim UI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Troubleshooting</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation-issues">Installation Issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#can-a-stoppedkilled-import-process-be-resumed">Can a stopped/killed import process be resumed?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#postgresql-crashed-invalid-page-in-block">PostgreSQL crashed "invalid page in block"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#php-open_basedir-restriction-in-effect-warnings">PHP "open_basedir restriction in effect" warnings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#php-timezeone-warnings">PHP timezeone warnings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nominatimso-version-mismatch">nominatim.so version mismatch</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#i-see-the-error-error-permission-denied-for-language-c">I see the error "ERROR: permission denied for language c"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#i-see-the-error-function-transliterationtext-does-not-exist">I see the error: "function transliteration(text) does not exist"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#i-see-the-error-error-mmap-remap-failed">I see the error: "ERROR: mmap (remap) failed"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#i-see-the-error-clang-command-not-found-on-centos">I see the error: "clang: Command not found" on CentOS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nominatim-update-failed-error-buffer-179261-is-not-owned-by-resource-owner-portal">nominatim UPDATE failed: ERROR: buffer 179261 is not owned by resource owner Portal</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-website-shows-could-not-get-word-tokens">The website shows: "Could not get word tokens"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#on-centos-the-website-shows-could-not-connect-to-server">On CentOS the website shows "Could not connect to server"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#website-reports-db-error-insufficient-permissions">Website reports "DB Error: insufficient permissions"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#website-reports-could-not-load-library-nominatimso">Website reports "Could not load library "nominatim.so"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setupphp-fails-with-db-error-extension-not-found">Setup.php fails with "DB Error: extension not found"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#i-forgot-to-delete-the-flatnodes-file-before-starting-an-import">I forgot to delete the flatnodes file before starting an import.</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#running-your-own-instance">Running your own instance</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#can-i-import-negative-osm-ids-into-nominatim">Can I import negative OSM ids into Nominatim?</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Development-Environment/">Setup for Development</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Architecture Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Import/">OSM Data Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Ranking/">Place Ranking</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Postcodes/">Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Testing/">Testing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/data-sources/">External Data Sources</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 3.7.1</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Administration Guide &raquo;</li>
+        
+      
+    
+    <li>Troubleshooting</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/admin/Faq.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="troubleshooting-nominatim-installations">Troubleshooting Nominatim Installations<a class="headerlink" href="#troubleshooting-nominatim-installations" title="Permanent link"></a></h1>
+<h2 id="installation-issues">Installation Issues<a class="headerlink" href="#installation-issues" title="Permanent link"></a></h2>
+<h3 id="can-a-stoppedkilled-import-process-be-resumed">Can a stopped/killed import process be resumed?<a class="headerlink" href="#can-a-stoppedkilled-import-process-be-resumed" title="Permanent link"></a></h3>
+<p>"I accidentally killed the import process after it has been running for many hours. Can it be resumed?"</p>
+<p>It is possible if the import already got to the indexing stage.
+Check the last line of output that was logged before the process
+was killed. If it looks like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Done 844 in 13 @ 64.923080 per second - Rank 26 ETA (seconds): 7.886255</span>
+</code></pre></div>
+
+
+<p>then you can resume with the following command:</p>
+<div class="codehilite"><pre><span></span><code>nominatim import --continue indexing
+</code></pre></div>
+
+
+<p>If the reported rank is 26 or higher, you can also safely add <code>--index-noanalyse</code>.</p>
+<h3 id="postgresql-crashed-invalid-page-in-block">PostgreSQL crashed "invalid page in block"<a class="headerlink" href="#postgresql-crashed-invalid-page-in-block" title="Permanent link"></a></h3>
+<p>Usually serious problem, can be a hardware issue, not all data written to disc
+for example. Check PostgreSQL log file and search PostgreSQL issues/mailing
+list for hints.</p>
+<p>If it happened during index creation you can try rerunning the step with</p>
+<div class="codehilite"><pre><span></span><code>nominatim import --continue indexing
+</code></pre></div>
+
+
+<p>Otherwise it's best to start the full setup from the beginning.</p>
+<h3 id="php-open_basedir-restriction-in-effect-warnings">PHP "open_basedir restriction in effect" warnings<a class="headerlink" href="#php-open_basedir-restriction-in-effect-warnings" title="Permanent link"></a></h3>
+<div class="codehilite"><pre><span></span><code><span class="err">PHP Warning:  file_get_contents(): open_basedir restriction in effect.</span>
+</code></pre></div>
+
+
+<p>You need to adjust the
+<a href="https://www.php.net/manual/en/ini.core.php#ini.open-basedir">open_basedir</a>
+setting in your PHP configuration (<code>php.ini</code> file). By default this setting may
+look like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">open_basedir = /srv/http/:/home/:/tmp/:/usr/share/pear/</span>
+</code></pre></div>
+
+
+<p>Either add reported directories to the list or disable this setting temporarily
+by adding ";" at the beginning of the line. Don't forget to enable this setting
+again once you are done with the PHP command line operations.</p>
+<h3 id="php-timezeone-warnings">PHP timezeone warnings<a class="headerlink" href="#php-timezeone-warnings" title="Permanent link"></a></h3>
+<p>The Apache log may contain lots of PHP warnings like this:
+    <code>PHP Warning:  date_default_timezone_set() function.</code></p>
+<p>You should set the default time zone as instructed in the warning in
+your <code>php.ini</code> file. Find the entry about timezone and set it to
+something like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">; Defines the default timezone used by the date functions</span>
+<span class="err">; https://php.net/date.timezone</span>
+<span class="err">date.timezone = &#39;America/Denver&#39;</span>
+</code></pre></div>
+
+
+<p>Or</p>
+<div class="codehilite"><pre><span></span><code><span class="err">echo &quot;date.timezone = &#39;America/Denver&#39;&quot; &gt; /etc/php.d/timezone.ini</span>
+</code></pre></div>
+
+
+<h3 id="nominatimso-version-mismatch">nominatim.so version mismatch<a class="headerlink" href="#nominatimso-version-mismatch" title="Permanent link"></a></h3>
+<p>When running the import you may get a version mismatch:
+<code>COPY_END for place failed: ERROR: incompatible library "/srv/Nominatim/nominatim/build/module/nominatim.so": version mismatch</code></p>
+<p>pg_config seems to use bad includes sometimes when multiple versions
+of PostgreSQL are available in the system. Make sure you remove the
+server development libraries (<code>postgresql-server-dev-9.5</code> on Ubuntu)
+and recompile (<code>cmake .. &amp;&amp; make</code>).</p>
+<h3 id="i-see-the-error-error-permission-denied-for-language-c">I see the error "ERROR: permission denied for language c"<a class="headerlink" href="#i-see-the-error-error-permission-denied-for-language-c" title="Permanent link"></a></h3>
+<p><code>nominatim.so</code>, written in C, is required to be installed on the database
+server. Some managed database (cloud) services like Amazon RDS do not allow
+this. There is currently no work-around other than installing a database
+on a non-managed machine.</p>
+<h3 id="i-see-the-error-function-transliterationtext-does-not-exist">I see the error: "function transliteration(text) does not exist"<a class="headerlink" href="#i-see-the-error-function-transliterationtext-does-not-exist" title="Permanent link"></a></h3>
+<p>Reinstall the nominatim functions with <code>nominatim refresh --functions</code>
+and check for any errors, e.g. a missing <code>nominatim.so</code> file.</p>
+<h3 id="i-see-the-error-error-mmap-remap-failed">I see the error: "ERROR: mmap (remap) failed"<a class="headerlink" href="#i-see-the-error-error-mmap-remap-failed" title="Permanent link"></a></h3>
+<p>This may be a simple out-of-memory error. Try reducing the memory used
+for <code>--osm2pgsql-cache</code>. Also make sure that overcommitting memory is
+allowed: <code>cat /proc/sys/vm/overcommit_memory</code> should print 0 or 1.</p>
+<p>If you are using a flatnode file, then it may also be that the underlying
+filesystem does not fully support 'mmap'. A notable candidate is virtualbox's
+vboxfs.</p>
+<h3 id="i-see-the-error-clang-command-not-found-on-centos">I see the error: "clang: Command not found" on CentOS<a class="headerlink" href="#i-see-the-error-clang-command-not-found-on-centos" title="Permanent link"></a></h3>
+<p>On CentOS 7 users reported <code>/opt/rh/llvm-toolset-7/root/usr/bin/clang: Command not found</code>.
+Double-check clang is installed. Instead of <code>make</code> try running <code>make CLANG=true</code>.</p>
+<h3 id="nominatim-update-failed-error-buffer-179261-is-not-owned-by-resource-owner-portal">nominatim UPDATE failed: ERROR: buffer 179261 is not owned by resource owner Portal<a class="headerlink" href="#nominatim-update-failed-error-buffer-179261-is-not-owned-by-resource-owner-portal" title="Permanent link"></a></h3>
+<p>Several users <a href="https://github.com/openstreetmap/Nominatim/issues/1168">reported this</a>
+during the initial import of the database. It's
+something PostgreSQL internal Nominatim doesn't control. And PostgreSQL forums
+suggest it's threading related but definitely some kind of crash of a process.
+Users reported either rebooting the server, different hardware or just trying
+the import again worked.</p>
+<h3 id="the-website-shows-could-not-get-word-tokens">The website shows: "Could not get word tokens"<a class="headerlink" href="#the-website-shows-could-not-get-word-tokens" title="Permanent link"></a></h3>
+<p>The server cannot access your database. Add <code>&amp;debug=1</code> to your URL
+to get the full error message.</p>
+<h3 id="on-centos-the-website-shows-could-not-connect-to-server">On CentOS the website shows "Could not connect to server"<a class="headerlink" href="#on-centos-the-website-shows-could-not-connect-to-server" title="Permanent link"></a></h3>
+<p><code>could not connect to server: No such file or directory</code></p>
+<p>On CentOS v7 the PostgreSQL server is started with <code>systemd</code>. Check if
+<code>/usr/lib/systemd/system/httpd.service</code> contains a line <code>PrivateTmp=true</code>. If
+so then Apache cannot see the <code>/tmp/.s.PGSQL.5432</code> file. It's a good security
+feature, so use the
+<a href="../appendix/Install-on-Centos-7/#adding-selinux-security-settings">preferred solution</a>.</p>
+<p>However, you can solve this the quick and dirty way by commenting out that line and then run</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo systemctl daemon-reload</span>
+<span class="err">sudo systemctl restart httpd</span>
+</code></pre></div>
+
+
+<h3 id="website-reports-db-error-insufficient-permissions">Website reports "DB Error: insufficient permissions"<a class="headerlink" href="#website-reports-db-error-insufficient-permissions" title="Permanent link"></a></h3>
+<p>The user the webserver, e.g. Apache, runs under needs to have access to the
+Nominatim database. You can find the user like
+<a href="https://serverfault.com/questions/125865/finding-out-what-user-apache-is-running-as">this</a>,
+for default Ubuntu operating system for example it's <code>www-data</code>.</p>
+<ol>
+<li>
+<p>Repeat the <code>createuser</code> step of the installation instructions.</p>
+</li>
+<li>
+<p>Give the user permission to existing tables</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="err">   GRANT usage ON SCHEMA public TO &quot;www-data&quot;;</span>
+<span class="err">   GRANT SELECT ON ALL TABLES IN SCHEMA public TO &quot;www-data&quot;;</span>
+</code></pre></div>
+
+
+<h3 id="website-reports-could-not-load-library-nominatimso">Website reports "Could not load library "nominatim.so"<a class="headerlink" href="#website-reports-could-not-load-library-nominatimso" title="Permanent link"></a></h3>
+<p>Example error message</p>
+<div class="codehilite"><pre><span></span><code><span class="err">   SELECT make_standard_name(&#39;3039 E MEADOWLARK LN&#39;) [nativecode=ERROR: could not</span>
+<span class="err">   load library &quot;/srv/nominatim/Nominatim-3.1.0/build/module/nominatim.so&quot;:</span>
+<span class="err">   /srv/nominatim/Nominatim-3.1.0/build/module/nominatim.so: cannot open shared</span>
+<span class="err">   object file: Permission denied</span>
+<span class="err">   CONTEXT: PL/pgSQL function make_standard_name(text) line 5 at assignment]</span>
+</code></pre></div>
+
+
+<p>The PostgreSQL database, i.e. user <code>postgres</code>, needs to have access to that file.</p>
+<p>The permission need to be read &amp; executable by everybody, but not writeable
+by everybody, e.g.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">   -rwxr-xr-x 1 nominatim nominatim 297984 build/module/nominatim.so</span>
+</code></pre></div>
+
+
+<p>Try <code>chmod a+r nominatim.so; chmod a+x nominatim.so</code>.</p>
+<p>When running SELinux, make sure that the
+<a href="../appendix/Install-on-Centos-7/#adding-selinux-security-settings">context is set up correctly</a>.</p>
+<p>When you recently updated your operating system, updated PostgreSQL to
+a new version or moved files (e.g. the build directory) you should
+recreate <code>nominatim.so</code>. Try</p>
+<div class="codehilite"><pre><span></span><code><span class="err">   cd build</span>
+<span class="err">   rm -r module/</span>
+<span class="err">   cmake $main_Nominatim_path &amp;&amp; make</span>
+</code></pre></div>
+
+
+<h3 id="setupphp-fails-with-db-error-extension-not-found">Setup.php fails with "DB Error: extension not found"<a class="headerlink" href="#setupphp-fails-with-db-error-extension-not-found" title="Permanent link"></a></h3>
+<p>Make sure you have the PostgreSQL extensions "hstore" and "postgis" installed.
+See the installation instructions for a full list of required packages.</p>
+<h3 id="i-forgot-to-delete-the-flatnodes-file-before-starting-an-import">I forgot to delete the flatnodes file before starting an import.<a class="headerlink" href="#i-forgot-to-delete-the-flatnodes-file-before-starting-an-import" title="Permanent link"></a></h3>
+<p>That's fine. For each import the flatnodes file get overwritten.
+See <a href="https://help.openstreetmap.org/questions/52419/nominatim-flatnode-storage">https://help.openstreetmap.org/questions/52419/nominatim-flatnode-storage</a>
+for more information.</p>
+<h2 id="running-your-own-instance">Running your own instance<a class="headerlink" href="#running-your-own-instance" title="Permanent link"></a></h2>
+<h3 id="can-i-import-negative-osm-ids-into-nominatim">Can I import negative OSM ids into Nominatim?<a class="headerlink" href="#can-i-import-negative-osm-ids-into-nominatim" title="Permanent link"></a></h3>
+<p>See <a href="https://help.openstreetmap.org/questions/64662/nominatim-flatnode-with-negative-id">this question of Stackoverflow</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../develop/Development-Environment/" class="btn btn-neutral float-right" title="Setup for Development">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Migration/" class="btn btn-neutral" title="Migration from older Versions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../Migration/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../develop/Development-Environment/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
