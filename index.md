@@ -45,7 +45,7 @@ The latest release is [{{site.data.releases[0].name}}](https://www.nominatim.org
 <div class="two-column">
 
 <div class="featurebox">
-### Find places by name or adddress (Geocoding)
+### Find places by name or address (Geocoding)
 
 Nominatim can power the search box on your website, allowing your users
 to type free-form queries ("Cafe Paris, New York") in any language.
