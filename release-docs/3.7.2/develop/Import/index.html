@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://nominatim.org/develop/Import/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>OSM Data Import - Nominatim 3.7.2</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "OSM Data Import";
+    var mkdocs_page_input_path = "develop/Import.md";
+    var mkdocs_page_url = "/develop/Import/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 3.7.2</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Installation/">Basic Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Import/">Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Update/">Update</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Deployment/">Deploy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Setup-Nominatim-UI/">Nominatim UI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Faq/">Troubleshooting</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Development-Environment/">Setup for Development</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">Architecture Overview</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">OSM Data Import</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#database-layout">Database Layout</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuring-the-import">Configuring the Import</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration-rules">Configuration Rules</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tag-properties">Tag Properties</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#changing-the-style-of-existing-databases">Changing the Style of Existing Databases</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Ranking/">Place Ranking</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Postcodes/">Postcodes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Testing/">Testing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../data-sources/">External Data Sources</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-7/">Installation on CentOS 7</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Centos-8/">Installation on CentOS 8</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 3.7.2</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Developers Guide &raquo;</li>
+        
+      
+    
+    <li>OSM Data Import</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/develop/Import.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="osm-data-import">OSM Data Import<a class="headerlink" href="#osm-data-import" title="Permanent link"></a></h1>
+<p>OSM data is initially imported using <a href="https://osm2pgsql.org">osm2pgsql</a>.
+Nominatim uses its own data output style 'gazetteer', which differs from the
+output style created for map rendering.</p>
+<h2 id="database-layout">Database Layout<a class="headerlink" href="#database-layout" title="Permanent link"></a></h2>
+<p>The gazetteer style produces a single table <code>place</code> with the following rows:</p>
+<ul>
+<li><code>osm_type</code> - kind of OSM object (<strong>N</strong> - node, <strong>W</strong> - way, <strong>R</strong> - relation)</li>
+<li><code>osm_id</code> - original OSM ID</li>
+<li><code>class</code> - key of principal tag defining the object type</li>
+<li><code>type</code> - value of principal tag defining the object type</li>
+<li><code>name</code> - collection of tags that contain a name or reference</li>
+<li><code>admin_level</code> - numerical value of the tagged administrative level</li>
+<li><code>address</code> - collection of tags defining the address of an object</li>
+<li><code>extratags</code> - collection of additional interesting tags that are not
+                 directly relevant for searching</li>
+<li><code>geometry</code> - geometry of the object (in WGS84)</li>
+</ul>
+<p>A single OSM object may appear multiple times in this table when it is tagged
+with multiple tags that may constitute a principal tag. Take for example a
+motorway bridge. In OSM, this would be a way which is tagged with
+<code>highway=motorway</code> and <code>bridge=yes</code>. This way would appear in the <code>place</code> table
+once with <code>class</code> of <code>highway</code> and once with a <code>class</code> of <code>bridge</code>. Thus the
+<em>unique key</em> for <code>place</code> is (<code>osm_type</code>, <code>osm_id</code>, <code>class</code>).</p>
+<h2 id="configuring-the-import">Configuring the Import<a class="headerlink" href="#configuring-the-import" title="Permanent link"></a></h2>
+<p>How tags are interpreted and assigned to the different <code>place</code> columns can be
+configured via the import style configuration file (<code>NOMINATIM_IMPORT_STYLE</code>). This
+is a JSON file which contains a list of rules which are matched against every
+tag of every object and then assign the tag its specific role.</p>
+<h3 id="configuration-rules">Configuration Rules<a class="headerlink" href="#configuration-rules" title="Permanent link"></a></h3>
+<p>A single rule looks like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;keys&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">,</span> <span class="err">...</span><span class="p">],</span>
+    <span class="nt">&quot;values&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;value1&quot;</span> <span class="p">:</span> <span class="s2">&quot;prop&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;value2&quot;</span> <span class="p">:</span> <span class="s2">&quot;prop1,prop2&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>A rule first defines a list of keys to apply the rule to. This is always a list
+of strings. The string may have four forms. An empty string matches against
+any key. A string that ends in an asterisk <code>*</code> is a prefix match and accordingly
+matches against any key that starts with the given string (minus the <code>*</code>). A
+suffix match can be defined similarly with a string that starts with a <code>*</code>. Any
+other string constitutes an exact match.</p>
+<p>The second part of the rules defines a list of values and the properties that
+apply to a successful match. Value strings may be either empty, which
+means that they match any value, or describe an exact match. Prefix
+or suffix matching of values is not possible.</p>
+<p>For a rule to match, it has to find a valid combination of keys and values. The
+resulting property is that of the matched values.</p>
+<p>The rules in a configuration file are processed sequentially and the first
+match for each tag wins.</p>
+<p>A rule where key and value are the empty string is special. This defines the
+fallback when none of the rules match. The fallback is always used as a last
+resort when nothing else matches, no matter where the rule appears in the file.
+Defining multiple fallback rules is not allowed. What happens in this case,
+is undefined.</p>
+<h3 id="tag-properties">Tag Properties<a class="headerlink" href="#tag-properties" title="Permanent link"></a></h3>
+<p>One or more of the following properties may be given for each tag:</p>
+<ul>
+<li>
+<p><code>main</code></p>
+<p>A principal tag. A new row will be added for the object with key and value
+as <code>class</code> and <code>type</code>.</p>
+</li>
+<li>
+<p><code>with_name</code></p>
+<p>When the tag is a principal tag (<code>main</code> property set): only really add a new
+row, if there is any name tag found (a reference tag is not sufficient, see
+below).</p>
+</li>
+<li>
+<p><code>with_name_key</code></p>
+<p>When the tag is a principal tag (<code>main</code> property set): only really add a new
+row, if there is also a name tag that matches the key of the principal tag.
+For example, if the main tag is <code>bridge=yes</code>, then it will only be added as
+an extra row, if there is a tag <code>bridge:name[:XXX]</code> for the same object.
+If this property is set, all other names that are not domain-specific are
+ignored.</p>
+</li>
+<li>
+<p><code>fallback</code></p>
+<p>When the tag is a principal tag (<code>main</code> property set): only really add a new
+row, when no other principal tags for this object have been found. Only one
+fallback tag can win for an object.</p>
+</li>
+<li>
+<p><code>operator</code></p>
+<p>When the tag is a principal tag (<code>main</code> property set): also include the
+<code>operator</code> tag in the list of names. This is a special construct for an
+out-dated tagging practise in OSM. Fuel stations and chain restaurants
+in particular used to have the name of the chain tagged as <code>operator</code>.
+These days the chain can be more commonly found in the <code>brand</code> tag but
+there is still enough old data around to warrant this special case.</p>
+</li>
+<li>
+<p><code>name</code></p>
+<p>Add tag to the list of names.</p>
+</li>
+<li>
+<p><code>ref</code></p>
+<p>Add tag to the list of names as a reference. At the moment this only means
+that the object is not considered to be named for <code>with_name</code>.</p>
+</li>
+<li>
+<p><code>address</code></p>
+<p>Add tag to the list of address tags. If the tag starts with <code>addr:</code> or
+<code>is_in:</code>, then this prefix is cut off before adding it to the list.</p>
+</li>
+<li>
+<p><code>postcode</code></p>
+<p>Add the value as a postcode to the address tags. If multiple tags are
+candidate for postcodes, one wins out and the others are dropped.</p>
+</li>
+<li>
+<p><code>country</code></p>
+<p>Add the value as a country code to the address tags. The value must be a
+two letter country code, otherwise it is ignored. If there are multiple
+tags that match, then one wins out and the others are dropped.</p>
+</li>
+<li>
+<p><code>house</code></p>
+<p>If no principle tags can be found for the object, still add the object with
+<code>class</code>=<code>place</code> and <code>type</code>=<code>house</code>. Use this for address nodes that have no
+other function.</p>
+</li>
+<li>
+<p><code>interpolation</code></p>
+<p>Add this object as an address interpolation (appears as <code>class</code>=<code>place</code> and
+<code>type</code>=<code>houses</code> in the database).</p>
+</li>
+<li>
+<p><code>extra</code></p>
+<p>Add tag to the list of extra tags.</p>
+</li>
+<li>
+<p><code>skip</code></p>
+<p>Skip the tag completely. Useful when a custom default fallback is defined
+or to define exceptions to rules.</p>
+</li>
+</ul>
+<p>A rule can define as many of these properties for one match as it likes. For
+example, if the property is <code>"main,extra"</code> then the tag will open a new row
+but also have the tag appear in the list of extra tags.</p>
+<p>There are a number of pre-defined styles in the <code>settings/</code> directory. It is
+advisable to start from one of these styles when defining your own.</p>
+<h3 id="changing-the-style-of-existing-databases">Changing the Style of Existing Databases<a class="headerlink" href="#changing-the-style-of-existing-databases" title="Permanent link"></a></h3>
+<p>There is normally no issue changing the style of a database that is already
+imported and now kept up-to-date with change files. Just be aware that any
+change in the style applies to updates only. If you want to change the data
+that is already in the database, then a reimport is necessary.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Ranking/" class="btn btn-neutral float-right" title="Place Ranking">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../overview/" class="btn btn-neutral" title="Architecture Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../overview/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Ranking/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
