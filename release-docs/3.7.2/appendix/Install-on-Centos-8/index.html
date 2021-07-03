@@ -180,6 +180,7 @@ related redhat-hardened-cc1 package. To enable it on CentOS run:</p>
 and PostGIS 2.4/2.5/3.0 are availble from postgresql.org</p>
 <div class="codehilite"><pre><span></span><code><span class="err">sudo dnf -qy module disable postgresql</span>
 <span class="err">sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm</span>
+<span class="err">export PATH=/usr/pgsql-12/bin/:$PATH</span>
 </code></pre></div>
 
 
@@ -191,9 +192,9 @@ and PostGIS 2.4/2.5/3.0 are availble from postgresql.org</p>
                     php-pgsql php php-intl php-json libpq-devel <span class="se">\</span>
                     bzip2-devel proj-devel boost-devel <span class="se">\</span>
                     python3-pip python3-setuptools python3-devel <span class="se">\</span>
-                    expat-devel zlib-devel libicu-dev
+                    expat-devel zlib-devel libicu-devel
 
-pip3 install --user psycopg2 python-dotenv psutil Jinja2 PyICU
+pip3 install --user psycopg2-binary python-dotenv psutil Jinja2 PyICU
 </code></pre></div>
 
 
@@ -262,7 +263,11 @@ tar xf Nominatim-3.7.2.tar.bz2
 then configure and build Nominatim in there:</p>
 <div class="codehilite"><pre><span></span><code>mkdir <span class="nv">$USERHOME</span>/build
 <span class="nb">cd</span> <span class="nv">$USERHOME</span>/build
+
 cmake <span class="nv">$USERHOME</span>/Nominatim-3.7.2
+
+cmake /home/vagrant/Nominatim
+
 make
 sudo make install
 </code></pre></div>
@@ -303,10 +308,10 @@ configuration. Add a separate nominatim configuration to your webserver:</p>
 <p>It is a good idea to leave SELinux enabled and enforcing, particularly
 with a web server accessible from the Internet. At a minimum the
 following SELinux labeling should be done for Nominatim:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">sudo semanage fcontext -a -t httpd_sys_content_t &quot;/usr/local/nominatim/lib/lib-php(/.*)?&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo semanage fcontext -a -t httpd_sys_content_t &quot;/usr/local/lib/nominatim/lib-php(/.*)?&quot;</span>
 <span class="err">sudo semanage fcontext -a -t httpd_sys_content_t &quot;$USERHOME/nominatim-project/website(/.*)?&quot;</span>
 <span class="err">sudo semanage fcontext -a -t lib_t &quot;$USERHOME/nominatim-project/module/nominatim.so&quot;</span>
-<span class="err">sudo restorecon -R -v /usr/local/lib/nominatim</span>
+<span class="err">sudo restorecon -R -v /usr/local/lib64/nominatim</span>
 <span class="err">sudo restorecon -R -v $USERHOME/nominatim-project</span>
 </code></pre></div>
 
