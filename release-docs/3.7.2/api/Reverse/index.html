@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   <link href="../../extra.css" rel="stylesheet" />
   <link href="../../styles.css" rel="stylesheet" />
   
@@ -27,9 +27,8 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -43,7 +42,7 @@
         <a href="../.." class="icon icon-home"> Nominatim 3.7.2</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -185,6 +184,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -206,7 +206,6 @@ example, in dense city areas it may belong to a completely different street.</p>
 <p>The main format of the reverse API is</p>
 <div class="codehilite"><pre><span></span><code><span class="c">https://nominatim.openstreetmap.org/reverse?lat=&lt;value&gt;&amp;lon=&lt;value&gt;&amp;&lt;params&gt;</span>
 </code></pre></div>
-
 
 <p>where <code>lat</code> and <code>lon</code> are latitude and longitutde of a coordinate in WGS84
 projection. The API returns exactly one result or an error when the coordinate
@@ -350,7 +349,6 @@ This overrides the specified machine readable format. (Default: 0)</p>
   <span class="nt">&lt;/reversegeocode&gt;</span>
 </code></pre></div>
 
-
 <h5 id="example-with-formatjsonv2">Example with <code>format=jsonv2</code><a class="headerlink" href="#example-with-formatjsonv2" title="Permanent link"></a></h5>
 <ul>
 <li><a href="https://nominatim.openstreetmap.org/reverse?format=jsonv2&amp;lat=-34.44076&amp;lon=-58.70521">https://nominatim.openstreetmap.org/reverse?format=jsonv2&amp;lat=-34.44076&amp;lon=-58.70521</a></li>
@@ -381,7 +379,6 @@ This overrides the specified machine readable format. (Default: 0)</p>
   <span class="nt">&quot;boundingbox&quot;</span><span class="p">:[</span><span class="s2">&quot;-34.44159&quot;</span><span class="p">,</span><span class="s2">&quot;-34.4370994&quot;</span><span class="p">,</span><span class="s2">&quot;-58.7086067&quot;</span><span class="p">,</span><span class="s2">&quot;-58.7044712&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <h5 id="example-with-formatgeojson">Example with <code>format=geojson</code><a class="headerlink" href="#example-with-formatgeojson" title="Permanent link"></a></h5>
 <ul>
@@ -433,7 +430,6 @@ This overrides the specified machine readable format. (Default: 0)</p>
   <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <h5 id="example-with-formatgeocodejson">Example with <code>format=geocodejson</code><a class="headerlink" href="#example-with-formatgeocodejson" title="Permanent link"></a></h5>
 <p><a href="https://nominatim.openstreetmap.org/reverse?format=geocodejson&amp;lat=60.2299&amp;lon=11.1663">https://nominatim.openstreetmap.org/reverse?format=geocodejson&amp;lat=60.2299&amp;lon=11.1663</a></p>
@@ -511,19 +507,22 @@ This overrides the specified machine readable format. (Default: 0)</p>
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../Search/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../Lookup/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Search/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Lookup/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>

@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   <link href="../../extra.css" rel="stylesheet" />
   <link href="../../styles.css" rel="stylesheet" />
   
@@ -27,9 +27,8 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -43,7 +42,7 @@
         <a href="../.." class="icon icon-home"> Nominatim 3.7.2</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -167,6 +166,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -182,14 +182,12 @@ when the database was last updated.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">   https://nominatim.openstreetmap.org/status.php</span>
 </code></pre></div>
 
-
 <p>will return HTTP status code 200 and print <code>OK</code>.</p>
 <p>On error it will return HTTP status code 500 and print a message, e.g.
 <code>ERROR: Database connection failed</code>.</p>
 <h4 id="json-format">JSON format<a class="headerlink" href="#json-format" title="Permanent link"></a></h4>
 <div class="codehilite"><pre><span></span><code><span class="err">   https://nominatim.openstreetmap.org/status.php?format=json</span>
 </code></pre></div>
-
 
 <p>will return HTTP code 200 and a structure</p>
 <div class="codehilite"><pre><span></span><code>  <span class="p">{</span>
@@ -201,7 +199,6 @@ when the database was last updated.</p>
   <span class="p">}</span>
 </code></pre></div>
 
-
 <p>The <code>software_version</code> field contains the version of Nominatim used to serve
 the API. The <code>database_version</code> field contains the version of the data format
 in the database.</p>
@@ -212,7 +209,6 @@ code and message, e.g.</p>
        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Database connection failed&quot;</span>
    <span class="p">}</span>
 </code></pre></div>
-
 
 <p>Possible status codes are</p>
 <table>
@@ -284,19 +280,22 @@ code and message, e.g.</p>
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../Details/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../Output/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Details/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Output/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>

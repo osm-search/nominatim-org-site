@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   <link href="../../extra.css" rel="stylesheet" />
   <link href="../../styles.css" rel="stylesheet" />
   
@@ -27,9 +27,8 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -43,7 +42,7 @@
         <a href="../.." class="icon icon-home"> Nominatim 3.7.2</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -187,6 +186,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -207,7 +207,6 @@ download OSM data by object type, use the <a href="https://overpass-api.de/">Ove
 <p>The search API has the following format:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">   https://nominatim.openstreetmap.org/search?&lt;params&gt;</span>
 </code></pre></div>
-
 
 <p>The search term may be specified with two different sets of parameters:</p>
 <ul>
@@ -372,7 +371,6 @@ This overrides the specified machine readable format. (Default: 0)</p>
   <span class="nt">&lt;/searchresults&gt;</span>
 </code></pre></div>
 
-
 <h5 id="json-with-svg-polygon">JSON with SVG polygon<a class="headerlink" href="#json-with-svg-polygon" title="Permanent link"></a></h5>
 <p><a href="https://nominatim.openstreetmap.org/search/Unter%20den%20Linden%201%20Berlin?format=json&amp;addressdetails=1&amp;limit=1&amp;polygon_svg=1">https://nominatim.openstreetmap.org/search/Unter%20den%20Linden%201%20Berlin?format=json&amp;addressdetails=1&amp;limit=1&amp;polygon_svg=1</a></p>
 <div class="codehilite"><pre><span></span><code>    <span class="p">{</span>
@@ -410,7 +408,6 @@ This overrides the specified machine readable format. (Default: 0)</p>
     <span class="p">}</span>
 </code></pre></div>
 
-
 <h5 id="json-with-address-details">JSON with address details<a class="headerlink" href="#json-with-address-details" title="Permanent link"></a></h5>
 <p><a href="https://nominatim.openstreetmap.org/?addressdetails=1&amp;q=bakery+in+berlin+wedding&amp;format=json&amp;limit=1">https://nominatim.openstreetmap.org/?addressdetails=1&amp;q=bakery+in+berlin+wedding&amp;format=json&amp;limit=1</a></p>
 <div class="codehilite"><pre><span></span><code>    <span class="p">{</span>
@@ -445,7 +442,6 @@ This overrides the specified machine readable format. (Default: 0)</p>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bakery&quot;</span>
     <span class="p">}</span>
 </code></pre></div>
-
 
 <h5 id="geojson">GeoJSON<a class="headerlink" href="#geojson" title="Permanent link"></a></h5>
 <p><a href="https://nominatim.openstreetmap.org/search?q=17+Strada+Pictor+Alexandru+Romano%2C+Bukarest&amp;format=geojson">https://nominatim.openstreetmap.org/search?q=17+Strada+Pictor+Alexandru+Romano%2C+Bukarest&amp;format=geojson</a></p>
@@ -482,7 +478,6 @@ This overrides the specified machine readable format. (Default: 0)</p>
   <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <h5 id="geocodejson">GeocodeJSON<a class="headerlink" href="#geocodejson" title="Permanent link"></a></h5>
 <p><a href="https://nominatim.openstreetmap.org/search?q=%CE%91%CE%B3%CE%AF%CE%B1+%CE%A4%CF%81%CE%B9%CE%AC%CE%B4%CE%B1%2C+%CE%91%CE%B4%CF%89%CE%BD%CE%B9%CE%B4%CE%BF%CF%82%2C+Athens%2C+Greece&amp;format=geocodejson">https://nominatim.openstreetmap.org/search?q=%CE%91%CE%B3%CE%AF%CE%B1+%CE%A4%CF%81%CE%B9%CE%AC%CE%B4%CE%B1%2C+%CE%91%CE%B4%CF%89%CE%BD%CE%B9%CE%B4%CE%BF%CF%82%2C+Athens%2C+Greece&amp;format=geocodejson</a></p>
@@ -549,19 +544,22 @@ This overrides the specified machine readable format. (Default: 0)</p>
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../Overview/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../Reverse/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Overview/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Reverse/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>

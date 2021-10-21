@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   <link href="../../extra.css" rel="stylesheet" />
   <link href="../../styles.css" rel="stylesheet" />
   
@@ -27,9 +27,8 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -43,7 +42,7 @@
         <a href="../.." class="icon icon-home"> Nominatim 3.7.2</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -163,6 +162,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -183,26 +183,23 @@ Run (as the same user who will later run the updates):</p>
 <div class="codehilite"><pre><span></span><code>pip3 install --user osmium
 </code></pre></div>
 
-
 <h4 id="setting-up-the-update-process">Setting up the update process<a class="headerlink" href="#setting-up-the-update-process" title="Permanent link"></a></h4>
 <p>Next the update needs to be initialised. By default Nominatim is configured
 to update using the global minutely diffs.</p>
 <p>If you want a different update source you will need to add some settings
 to <code>.env</code>. For example, to use the daily country extracts
 diffs for Ireland from Geofabrik add the following:</p>
-<div class="codehilite"><pre><span></span><code><span class="err"># base URL of the replication service</span>
-<span class="err">NOMINATIM_REPLICATION_URL=&quot;https://download.geofabrik.de/europe/ireland-and-northern-ireland-updates&quot;</span>
-<span class="err"># How often upstream publishes diffs</span>
-<span class="err">NOMINATIM_REPLICATION_UPDATE_INTERVAL=86400</span>
-<span class="err"># How long to sleep if no update found yet</span>
-<span class="err">NOMINATIM_REPLICATION_RECHECK_INTERVAL=900</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># base URL of the replication service</span>
+<span class="n">NOMINATIM_REPLICATION_URL</span><span class="o">=</span><span class="s2">&quot;https://download.geofabrik.de/europe/ireland-and-northern-ireland-updates&quot;</span>
+<span class="c1"># How often upstream publishes diffs</span>
+<span class="n">NOMINATIM_REPLICATION_UPDATE_INTERVAL</span><span class="o">=</span><span class="mi">86400</span>
+<span class="c1"># How long to sleep if no update found yet</span>
+<span class="n">NOMINATIM_REPLICATION_RECHECK_INTERVAL</span><span class="o">=</span><span class="mi">900</span>
 </code></pre></div>
-
 
 <p>To set up the update process now run the following command:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">nominatim replication --init</span>
 </code></pre></div>
-
 
 <p>It outputs the date where updates will start. Recheck that this date is
 what you expect.</p>
@@ -212,7 +209,6 @@ service is changed.</p>
 <p>The following command will keep your database constantly up to date:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">nominatim replication</span>
 </code></pre></div>
-
 
 <p>If you have imported multiple country extracts and want to keep them
 up-to-date, <a href="../Advanced-Installations/">Advanced installations section</a> contains instructions 
@@ -250,19 +246,22 @@ to set up and update multiple country extracts.</p>
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../Import/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../Deployment/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Import/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Deployment/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>

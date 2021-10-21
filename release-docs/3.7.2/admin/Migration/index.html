@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   <link href="../../extra.css" rel="stylesheet" />
   <link href="../../styles.css" rel="stylesheet" />
   
@@ -27,9 +27,8 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -43,7 +42,7 @@
         <a href="../.." class="icon icon-home"> Nominatim 3.7.2</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -217,6 +216,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -282,7 +282,6 @@ indexes using the following shell script:</p>
 <span class="k">done</span>
 </code></pre></div>
 
-
 <h3 id="removal-of-html-output">Removal of html output<a class="headerlink" href="#removal-of-html-output" title="Permanent link"></a></h3>
 <p>The debugging UI is no longer directly provided with Nominatim. Instead we
 now provide a simple Javascript application. Please refer to
@@ -301,17 +300,14 @@ which needs a different database index. Create it with the following SQL command
   <span class="k">WHERE</span> <span class="n">indexed_status</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
 </code></pre></div>
 
-
 <p>You can then drop the old index with:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">DROP</span> <span class="k">INDEX</span> <span class="n">idx_placex_pendingsector</span><span class="p">;</span>
 </code></pre></div>
-
 
 <h3 id="unused-index">Unused index<a class="headerlink" href="#unused-index" title="Permanent link"></a></h3>
 <p>This index has been unused ever since the query using it was changed two years ago. Saves about 12GB on a planet installation.</p>
 <div class="codehilite"><pre><span></span><code><span class="k">DROP</span> <span class="k">INDEX</span> <span class="n">idx_placex_geometry_reverse_lookupPoint</span><span class="p">;</span>
 </code></pre></div>
-
 
 <h3 id="switching-to-dotenv">Switching to dotenv<a class="headerlink" href="#switching-to-dotenv" title="Permanent link"></a></h3>
 <p>As part of the work changing the configuration format, the configuration for
@@ -319,7 +315,6 @@ the website is now using a separate configuration file. To create the
 configuration file, run the following command after updating:</p>
 <div class="codehilite"><pre><span></span><code>./utils/setup.php --setup-website
 </code></pre></div>
-
 
 <h2 id="340-350">3.4.0 -&gt; 3.5.0<a class="headerlink" href="#340-350" title="Permanent link"></a></h2>
 <h3 id="new-wikipediawikidata-importance-tables">New Wikipedia/Wikidata importance tables<a class="headerlink" href="#new-wikipediawikidata-importance-tables" title="Permanent link"></a></h3>
@@ -341,7 +336,6 @@ follows:</p>
     <span class="k">AND</span> <span class="n">rank_search</span> <span class="o">&lt;</span> <span class="mi">26</span><span class="p">;</span>
 </code></pre></div>
 
-
 <ul>
 <li>compute importance: <code>./utils/update.php --recompute-importance</code></li>
 </ul>
@@ -350,11 +344,9 @@ follows:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">DROP</span> <span class="k">FUNCTION</span> <span class="n">create_country</span><span class="p">(</span><span class="n">hstore</span><span class="p">,</span><span class="nb">character</span> <span class="nb">varying</span><span class="p">);</span>
 </code></pre></div>
 
-
 <p>Finally, update all SQL functions:</p>
 <div class="codehilite"><pre><span></span><code>./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
 </code></pre></div>
-
 
 <h2 id="330-340">3.3.0 -&gt; 3.4.0<a class="headerlink" href="#330-340" title="Permanent link"></a></h2>
 <h3 id="reorganisation-of-location_area_country-table">Reorganisation of location_area_country table<a class="headerlink" href="#reorganisation-of-location_area_country-table" title="Permanent link"></a></h3>
@@ -369,11 +361,9 @@ SQL commands:</p>
 <span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">idx_location_area_country_place_id</span> <span class="k">ON</span> <span class="n">location_area_country</span> <span class="k">USING</span> <span class="n">BTREE</span> <span class="p">(</span><span class="n">place_id</span><span class="p">);</span>
 </code></pre></div>
 
-
 <p>Finally, update all SQL functions:</p>
 <div class="codehilite"><pre><span></span><code>./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
 </code></pre></div>
-
 
 <h2 id="320-330">3.2.0 -&gt; 3.3.0<a class="headerlink" href="#320-330" title="Permanent link"></a></h2>
 <h3 id="new-database-connection-string-dsn-format">New database connection string (DSN) format<a class="headerlink" href="#new-database-connection-string-dsn-format" title="Permanent link"></a></h3>
@@ -391,18 +381,15 @@ SQL commands:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">country_naturalearthdata</span><span class="p">;</span>
 </code></pre></div>
 
-
 <p>Finally, update all SQL functions:</p>
 <div class="codehilite"><pre><span></span><code>./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
 </code></pre></div>
-
 
 <h3 id="configurable-address-levels">Configurable Address Levels<a class="headerlink" href="#configurable-address-levels" title="Permanent link"></a></h3>
 <p>The new configurable address levels require a new table. Create it with the
 following command:</p>
 <div class="codehilite"><pre><span></span><code>./utils/update.php --update-address-levels
 </code></pre></div>
-
 
 <h2 id="310-320">3.1.0 -&gt; 3.2.0<a class="headerlink" href="#310-320" title="Permanent link"></a></h2>
 <h3 id="new-reverse-algorithm">New reverse algorithm<a class="headerlink" href="#new-reverse-algorithm" title="Permanent link"></a></h3>
@@ -435,22 +422,18 @@ SQL statements to create the indexes:</p>
     <span class="k">AND</span> <span class="n">linked_place_id</span> <span class="k">is</span> <span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 
-
 <p>You also need to grant the website user access to the <code>country_osm_grid</code> table:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">GRANT</span> <span class="k">SELECT</span> <span class="k">ON</span> <span class="k">table</span> <span class="n">country_osm_grid</span> <span class="k">to</span> <span class="ss">&quot;www-user&quot;</span><span class="p">;</span>
 </code></pre></div>
-
 
 <p>Replace the <code>www-user</code> with the user name of your website server if necessary.</p>
 <p>You can now drop the unused indexes:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">DROP</span> <span class="k">INDEX</span> <span class="n">idx_placex_reverse_geometry</span><span class="p">;</span>
 </code></pre></div>
 
-
 <p>Finally, update all SQL functions:</p>
 <div class="codehilite"><pre><span></span><code>./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
 </code></pre></div>
-
 
 <h2 id="300-310">3.0.0 -&gt; 3.1.0<a class="headerlink" href="#300-310" title="Permanent link"></a></h2>
 <h3 id="postcode-table">Postcode Table<a class="headerlink" href="#postcode-table" title="Permanent link"></a></h3>
@@ -479,27 +462,22 @@ Migration to the new format is possible but <strong>not recommended</strong>.</p
 <span class="p">);</span>
 </code></pre></div>
 
-
 <p>Add postcode column to <code>location_area</code> tables with SQL statement:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">location_area</span> <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">postcode</span> <span class="nb">TEXT</span><span class="p">;</span>
 </code></pre></div>
 
-
 <p>Then reimport the functions:</p>
 <div class="codehilite"><pre><span></span><code>./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
 </code></pre></div>
-
 
 <p>Create appropriate triggers with SQL:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">location_postcode_before_update</span> <span class="k">BEFORE</span> <span class="k">UPDATE</span> <span class="k">ON</span> <span class="n">location_postcode</span>
     <span class="k">FOR</span> <span class="k">EACH</span> <span class="k">ROW</span> <span class="k">EXECUTE</span> <span class="k">PROCEDURE</span> <span class="n">postcode_update</span><span class="p">();</span>
 </code></pre></div>
 
-
 <p>Finally populate the postcode table (will take a while):</p>
 <div class="codehilite"><pre><span></span><code>./utils/setup.php --calculate-postcodes --index --index-noanalyse
 </code></pre></div>
-
 
 <p>This will create a working database. You may also delete the old artificial
 postcodes now. Note that this may be expensive and is not absolutely necessary.
@@ -543,19 +521,22 @@ The following SQL statement will remove them:</p>
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../Advanced-Installations/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../Faq/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Advanced-Installations/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>

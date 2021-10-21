@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   <link href="../../extra.css" rel="stylesheet" />
   <link href="../../styles.css" rel="stylesheet" />
   
@@ -27,9 +27,8 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -43,7 +42,7 @@
         <a href="../.." class="icon icon-home"> Nominatim 3.7.2</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -88,6 +87,8 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#importing-multiple-regions">Importing multiple regions</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installing-php-prerequisites">Installing PHP prerequisites</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#configuring-multiple-regions">Configuring multiple regions</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#setting-up-multiple-regions">Setting up multiple regions</a>
@@ -181,6 +182,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -204,8 +206,14 @@ installed the Nominatim software itself, if not return to the
                 └── monaco-latest.osm.pbf
 </code></pre></div>
 
-
 <p>The <code>sequence.state</code> files will contain the sequence ID, which will be used by pyosmium to get updates. The tmp folder is used for import dump.</p>
+<h3 id="installing-php-prerequisites">Installing PHP prerequisites<a class="headerlink" href="#installing-php-prerequisites" title="Permanent link"></a></h3>
+<p>The scripts this section still use the old PHP utils. They require
+the <a href="https://symfony.com/doc/4.1/components/dotenv.html">Symphony dotenv</a>
+parser to work. To install it on Ubuntu/Debian, run:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo apt install php-symfony-dotenv</span>
+</code></pre></div>
+
 <h3 id="configuring-multiple-regions">Configuring multiple regions<a class="headerlink" href="#configuring-multiple-regions" title="Permanent link"></a></h3>
 <p>The file <code>import_multiple_regions.sh</code> needs to be edited as per your requirement:</p>
 <ol>
@@ -214,13 +222,11 @@ installed the Nominatim software itself, if not return to the
 <div class="codehilite"><pre><span></span><code><span class="err">COUNTRIES=&quot;europe/monaco europe/andorra&quot;</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Path to Build directory. eg:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">NOMINATIMBUILD=&quot;/srv/nominatim/build&quot;</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -228,14 +234,12 @@ installed the Nominatim software itself, if not return to the
 <div class="codehilite"><pre><span></span><code><span class="err">UPDATEDIR=&quot;/srv/nominatim/update&quot;</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Replication URL. eg:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">BASEURL=&quot;https://download.geofabrik.de&quot;</span>
-<span class="err">DOWNCOUNTRYPOSTFIX=&quot;-latest.osm.pbf&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="n">BASEURL</span><span class="o">=</span><span class="s2">&quot;https://download.geofabrik.de&quot;</span>
+<span class="n">DOWNCOUNTRYPOSTFIX</span><span class="o">=</span><span class="s2">&quot;-latest.osm.pbf&quot;</span>
 </code></pre></div>
-
 
 </li>
 </ol>
@@ -251,7 +255,6 @@ where N is the numbers of CPUs in your system.</p>
 <p>Run the following command from your Nominatim directory after configuring the file.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">bash ./utils/import_multiple_regions.sh</span>
 </code></pre></div>
-
 
 <div class="admonition danger">
 <p class="admonition-title">Important<p>This file uses osmium-tool. It must be installed before executing the import script.
@@ -269,13 +272,11 @@ This uses the update directory set up while setting up the DB.   </p>
 <div class="codehilite"><pre><span></span><code><span class="err">COUNTRIES=&quot;europe/monaco europe/andorra&quot;</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Path to Build directory. eg:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">NOMINATIMBUILD=&quot;/srv/nominatim/build&quot;</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -283,21 +284,18 @@ This uses the update directory set up while setting up the DB.   </p>
 <div class="codehilite"><pre><span></span><code><span class="err">UPDATEDIR=&quot;/srv/nominatim/update&quot;</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Replication URL. eg:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">BASEURL=&quot;https://download.geofabrik.de&quot;</span>
-<span class="err">DOWNCOUNTRYPOSTFIX=&quot;-updates&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="n">BASEURL</span><span class="o">=</span><span class="s2">&quot;https://download.geofabrik.de&quot;</span>
+<span class="n">DOWNCOUNTRYPOSTFIX</span><span class="o">=</span><span class="s2">&quot;-updates&quot;</span>
 </code></pre></div>
-
 
 </li>
 <li>
 <p>Followup can be set according to your installation. eg: For Photon,</p>
 <div class="codehilite"><pre><span></span><code><span class="err">FOLLOWUP=&quot;curl http://localhost:2322/nominatim-update&quot;</span>
 </code></pre></div>
-
 
 <p>will handle the indexing.</p>
 </li>
@@ -306,7 +304,6 @@ This uses the update directory set up while setting up the DB.   </p>
 <p>Run the following command from your Nominatim directory after configuring the file.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">bash ./utils/update_database.sh</span>
 </code></pre></div>
-
 
 <p>This will get diffs from the replication server, import diffs and index the database. The default replication server in the script(<a href="https://download.geofabrik.de">Geofabrik</a>) provides daily updates.</p>
 <h2 id="importing-nominatim-to-an-external-postgresql-database">Importing Nominatim to an external PostgreSQL database<a class="headerlink" href="#importing-nominatim-to-an-external-postgresql-database" title="Permanent link"></a></h2>
@@ -326,12 +323,10 @@ mkdir build
 <span class="nb">cd</span> build
 </code></pre></div>
 
-
 <p>Now configure cmake to only build the PostgreSQL module and build it:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">cmake -DBUILD_IMPORTER=off -DBUILD_API=off -DBUILD_TESTS=off -DBUILD_DOCS=off -DBUILD_OSM2PGSQL=off ..</span>
 <span class="err">make</span>
 </code></pre></div>
-
 
 <p>When done, you find the normalization library in <code>build/module/nominatim.so</code>.
 Copy it to a place where it is readable and executable by the PostgreSQL server
@@ -359,7 +354,6 @@ correct location of the library <strong>on the database server</strong>. Add the
 line to your your <code>.env</code> file:</p>
 <div class="codehilite"><pre><span></span><code><span class="x">NOMINATIM_DATABASE_MODULE_PATH=&quot;&lt;directory on the database server where nominatim.so resides&gt;&quot;</span>
 </code></pre></div>
-
 
 <p>Now change the <code>NOMINATIM_DATABASE_DSN</code> to point to your remote server and continue
 to follow the <a href="/admin/Import">standard instructions for importing</a>.</p>
@@ -396,19 +390,22 @@ to follow the <a href="/admin/Import">standard instructions for importing</a>.</
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../Setup-Nominatim-UI/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../Migration/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Setup-Nominatim-UI/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Migration/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>

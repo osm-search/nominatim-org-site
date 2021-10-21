@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   <link href="../../extra.css" rel="stylesheet" />
   <link href="../../styles.css" rel="stylesheet" />
   
@@ -27,9 +27,8 @@
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
   <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -43,7 +42,7 @@
         <a href="../.." class="icon icon-home"> Nominatim 3.7.2</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -201,6 +200,7 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -219,12 +219,10 @@ directory apart from the Nominatim software and change into the directory:</p>
 <span class="err">cd ~/nominatim-planet</span>
 </code></pre></div>
 
-
 <p>In the following, we refer to the project directory as <code>$PROJECT_DIR</code>. To be
 able to copy&amp;paste instructions, you can export the appropriate variable:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">export PROJECT_DIR=~/nominatim-planet</span>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">PROJECT_DIR</span><span class="o">=~/</span><span class="n">nominatim</span><span class="o">-</span><span class="n">planet</span>
 </code></pre></div>
-
 
 <p>The Nominatim tool assumes per default that the current working directory is
 the project directory but you may explicitly state a different directory using
@@ -256,7 +254,6 @@ Add to your <code>.env</code>:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">NOMINATIM_FLATNODE_FILE=&quot;/path/to/flatnode.file&quot;</span>
 </code></pre></div>
 
-
 <p>Replace the second part with a suitable path on your system and make sure
 the directory exists. There should be at least 75GB of free space.</p>
 <h2 id="downloading-additional-data">Downloading additional data<a class="headerlink" href="#downloading-additional-data" title="Permanent link"></a></h2>
@@ -268,7 +265,6 @@ This data is available as a binary download. Put it into your project directory:
 <div class="codehilite"><pre><span></span><code><span class="err">cd $PROJECT_DIR</span>
 <span class="err">wget https://www.nominatim.org/data/wikimedia-importance.sql.gz</span>
 </code></pre></div>
-
 
 <p>The file is about 400MB and adds around 4GB to the Nominatim database.</p>
 <div class="admonition tip">
@@ -286,7 +282,6 @@ project directory:</p>
 <span class="err">wget https://www.nominatim.org/data/gb_postcode_data.sql.gz</span>
 <span class="err">wget https://www.nominatim.org/data/us_postcode_data.sql.gz</span>
 </code></pre></div>
-
 
 <h2 id="choosing-the-data-to-import">Choosing the data to import<a class="headerlink" href="#choosing-the-data-to-import" title="Permanent link"></a></h2>
 <p>In its default setup Nominatim is configured to import the full OSM data
@@ -314,7 +309,6 @@ soon as it is not required anymore.</p>
 <p>You can also drop the dynamic part later using the following command:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">nominatim freeze</span>
 </code></pre></div>
-
 
 <p>Note that you still need to provide for sufficient disk space for the initial
 import. So this option is particularly interesting if you plan to transfer the
@@ -406,7 +400,6 @@ from the <strong>build directory</strong> to start the import:</p>
 <div class="codehilite"><pre><span></span><code>nominatim import --osm-file &lt;data file&gt; <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee setup.log
 </code></pre></div>
 
-
 <h3 id="notes-on-full-planet-imports">Notes on full planet imports<a class="headerlink" href="#notes-on-full-planet-imports" title="Permanent link"></a></h3>
 <p>Even on a perfectly configured machine
 the import of a full planet takes around 2 days. Once you see messages
@@ -439,11 +432,9 @@ reduce the cache size or even consider using a flatnode file.</p>
 <div class="codehilite"><pre><span></span><code>nominatim admin --check-database
 </code></pre></div>
 
-
 <p>Now you can try out your installation by running:</p>
 <div class="codehilite"><pre><span></span><code>nominatim serve
 </code></pre></div>
-
 
 <p>This runs a small test server normally used for development. You can use it
 to verify that your installation is working. Go to
@@ -458,7 +449,6 @@ of forward geocoding in particular under high load. To recompute word counts run
 <div class="codehilite"><pre><span></span><code>nominatim refresh --word-counts
 </code></pre></div>
 
-
 <p>This will take a couple of hours for a full planet installation. You can
 also defer that step to a later point in time when you realise that
 performance becomes an issue. Just make sure that updates are stopped before
@@ -468,7 +458,6 @@ running this function.</p>
 you also need to import these key phrases like this:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">nominatim special-phrases --import-from-wiki</span>
 </code></pre></div>
-
 
 <p>Note that this command downloads the phrases from the wiki link above. You
 need internet access for the step.</p>
@@ -484,13 +473,11 @@ entire US adds about 10GB to your database.</p>
 <span class="err">wget https://nominatim.org/data/tiger2020-nominatim-preprocessed.tar.gz</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Import the data into your Nominatim database:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">nominatim add-data --tiger-data tiger2020-nominatim-preprocessed.tar.gz</span>
 </code></pre></div>
-
 
 </li>
 <li>
@@ -498,13 +485,11 @@ entire US adds about 10GB to your database.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">echo NOMINATIM_USE_US_TIGER_DATA=yes &gt;&gt; .env</span>
 </code></pre></div>
 
-
 </li>
 <li>
 <p>Apply the new settings:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">nominatim refresh --functions</span>
 </code></pre></div>
-
 
 </li>
 </ol>
@@ -543,19 +528,22 @@ information on how the data got preprocessed.</p>
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../Installation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../Update/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Update/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>
