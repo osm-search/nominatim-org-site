@@ -1,0 +1,23 @@
+.toctree-l3 {
+    display: none!important
+}
+
+table {
+    margin-bottom: 12pt
+}
+
+th, td {
+    padding: 1pt 12pt;
+}
+
+th {
+    background-color: #eee;
+}
+
+/* Indentation for mkdocstrings.
+div.doc-contents:not(.first) {
+  padding-left: 25px;
+  border-left: 4px solid rgba(230, 230, 230);
+  margin-bottom: 60px;
+}*/
+
