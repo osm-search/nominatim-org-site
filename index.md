@@ -122,7 +122,7 @@ Nominatim development:
 </div>
 </div>
 
-Are you interested in supporting Nominatim? Please see the [Funding](/funding)
+Are you interested in supporting Nominatim? Please see the [Funding]({% link funding.md %})
 page for details.
 
 <div class="section contributing">
