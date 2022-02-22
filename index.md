@@ -117,8 +117,6 @@ Nominatim development:
 </div>
 
 <div class="small-supporter">
-[OpenStreetMap Foundation](https://osmfoundation.org/)<br />
-[LocationIQ](https://locationiq.com/)
 </div>
 </div>
 
