@@ -106,19 +106,7 @@ day on a single server.
 <div class="section supporters">
 ## Supporters
 
-We thank the following companies for their support of parts of the
-Nominatim development:
-
-<div class="big-supporter">
-[![NLNet Foundation](img/nlnet.svg)](https://nlnet.nl/)
-[![OpenCage](img/opencage.svg)](https://opencagedata.com/)
-[![Graphhopper](img/graphhopper.png)](https://www.graphhopper.com/)
-[![Komoot](img/komoot.png)](https://www.komoot.de/)
-</div>
-
-<div class="small-supporter">
-</div>
-</div>
+{% include sponsors.html %}
 
 Are you interested in supporting Nominatim? Please see the [Funding]({% link funding.md %})
 page for details.

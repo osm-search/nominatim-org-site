@@ -58,3 +58,12 @@ engine on the OpenStreetMap website. Here is a non-exhaustive list:
 If you are interested in funding one of these features or have other features
 that you require for your use of Nominatim, please get in contact at
 [nominatim@lonvia.de](mailto:nominatim@lonvia.de).
+
+# Our supporters
+
+{% include sponsors.html %}
+
+### Former Supporters
+
+* 2020: [LocationIQ](https://locationiq.com/)
+* 2020: [OpenStreetMap Foundation](https://osmfoundation.org)
