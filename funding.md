@@ -54,6 +54,7 @@ engine on the OpenStreetMap website. Here is a non-exhaustive list:
 
 * include external house number data, e.g. from OpenAddresses
 * running Nominatim on a shared database with a Mapnik renderer
+* running Nominatim imports and updates without supervisor rights
 
 If you are interested in funding one of these features or have other features
 that you require for your use of Nominatim, please get in contact at
