@@ -22,15 +22,19 @@ installations:
 
     Base geometries for all countries.
 
- * [gb_postcode_data.sql.gz](/data/gb_postcode_data.sql.gz)
+ * [gb_postcodes.csv.gz](/data/gb_postcodes.csv.gz)
+ * [gb_postcodes_with_ni.csv.gz](/data/gb_postcodes_with_ni.csv.gz)
 
-    Additional postcode data for Great Britain.
+    Additional postcode data for Great Britain (without and with Northern Ireland).
 
- * [us_postcode_data.sql.gz](/data/us_postcode_data.sql.gz)
+ * [us_postcodes.csv.gz](/data/us_postcodes.csv.gz)
 
     Additional postcode data for the United States.
 
- * [wikipedia_article.sql.bin](/data/wikipedia_article.sql.bin)
- * [wikipedia_redirect.sql.bin](/data/wikipedia_redirect.sql.bin)
+ * [wikimedia-importance.sql.gz](/data/wikimedia-importance.sql.gz)
 
-    Data for result ranking based on Wikipedia.
+    Data for result ranking based on Wikipedia/Wikidata.
+
+ * [tiger-nominatim-preprocessed-latest.csv.tar.gz](/data/tiger-nominatim-preprocessed-latest.csv.tar.gz)
+
+   TIGER housenumber data (latest version).
