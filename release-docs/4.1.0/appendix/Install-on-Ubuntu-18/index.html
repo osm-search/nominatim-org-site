@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://nominatim.org/appendix/Install-on-Ubuntu-18/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Installation on Ubuntu 18 - Nominatim 4.1.0</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Installation on Ubuntu 18";
+    var mkdocs_page_input_path = "appendix/Install-on-Ubuntu-18.md";
+    var mkdocs_page_url = "/appendix/Install-on-Ubuntu-18/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 4.1.0</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Installation/">Basic Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Import/">Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Update/">Update</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Deployment/">Deploy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Setup-Nominatim-UI/">Nominatim UI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Maintenance/">Maintenance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Faq/">Troubleshooting</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Customization Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Import-Styles/">Import Styles</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Settings/">Configuration Settings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Country-Settings/">Per-Country Data</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Ranking/">Place Ranking</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Tokenizers/">Tokenizers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Special-Phrases/">Special Phrases</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Tiger/">External data: US housenumbers from TIGER</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Postcodes/">External data: Postcodes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Architecture Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Database-Layout/">Database Layout</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Indexing/">Indexing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Tokenizers/">Tokenizers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/ICU-Tokenizer-Modules/">Custom modules for ICU tokenizer</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Development-Environment/">Setup for Development</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Testing/">Testing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/data-sources/">External Data Sources</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Installation on Ubuntu 18</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Install-on-Ubuntu-22/">Installation on Ubuntu 22</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 4.1.0</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Appendix &raquo;</li>
+        
+      
+    
+    <li>Installation on Ubuntu 18</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/appendix/Install-on-Ubuntu-18.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <p><em>Note:</em> these installation instructions are also available in executable
+        form for use with vagrant under vagrant/Install-on-Ubuntu-18.sh.</p>
+<h1 id="installing-the-required-software">Installing the Required Software<a class="headerlink" href="#installing-the-required-software" title="Permanent link"></a></h1>
+<p>These instructions expect that you have a freshly installed Ubuntu 18.04.</p>
+<p>Make sure all packages are up-to-date by running:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo apt update -qq</span>
+</code></pre></div>
+
+<p>Now you can install all packages needed for Nominatim:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo apt install -y php-cgi</span>
+<span class="err">sudo apt install -y build-essential cmake g++ libboost-dev libboost-system-dev \</span>
+<span class="err">                    libboost-filesystem-dev libexpat1-dev zlib1g-dev\</span>
+<span class="err">                    libbz2-dev libpq-dev \</span>
+<span class="err">                    postgresql-10-postgis-2.4 \</span>
+<span class="err">                    postgresql-contrib-10 postgresql-10-postgis-scripts \</span>
+<span class="err">                    php-cli php-pgsql php-intl libicu-dev python3-pip \</span>
+<span class="err">                    python3-psutil python3-jinja2 python3-yaml python3-icu</span>
+</code></pre></div>
+
+<p>Some of the Python packages that come with Ubuntu 18.04 are too old, so
+install the latest version from pip:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">pip3 install --user python-dotenv datrie pyyaml psycopg2-binary</span>
+</code></pre></div>
+
+<h1 id="system-configuration">System Configuration<a class="headerlink" href="#system-configuration" title="Permanent link"></a></h1>
+<p>The following steps are meant to configure a fresh Ubuntu installation
+for use with Nominatim. You may skip some of the steps if you have your
+OS already configured.</p>
+<h2 id="creating-dedicated-user-accounts">Creating Dedicated User Accounts<a class="headerlink" href="#creating-dedicated-user-accounts" title="Permanent link"></a></h2>
+<p>Nominatim will run as a global service on your machine. It is therefore
+best to install it under its own separate user account. In the following
+we assume this user is called nominatim and the installation will be in
+/srv/nominatim. To create the user and directory run:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo useradd -d /srv/nominatim -s /bin/bash -m nominatim</span>
+</code></pre></div>
+
+<p>You may find a more suitable location if you wish.</p>
+<p>To be able to copy and paste instructions from this manual, export
+user name and home directory now like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">USERNAME</span><span class="o">=</span><span class="n">nominatim</span>
+<span class="k">export</span> <span class="n">USERHOME</span><span class="o">=/</span><span class="n">srv</span><span class="o">/</span><span class="n">nominatim</span>
+</code></pre></div>
+
+<p><strong>Never, ever run the installation as a root user.</strong> You have been warned.</p>
+<p>Make sure that system servers can read from the home directory:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">chmod a+x $USERHOME</span>
+</code></pre></div>
+
+<h2 id="setting-up-postgresql">Setting up PostgreSQL<a class="headerlink" href="#setting-up-postgresql" title="Permanent link"></a></h2>
+<p>Tune the postgresql configuration, which is located in 
+<code>/etc/postgresql/10/main/postgresql.conf</code>. See section <em>Postgres Tuning</em> in
+<a href="../../admin/Installation/#postgresql-tuning">the installation page</a>
+for the parameters to change.</p>
+<p>Restart the postgresql service after updating this config file.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo systemctl restart postgresql</span>
+</code></pre></div>
+
+<p>Finally, we need to add two postgres users: one for the user that does
+the import and another for the webserver which should access the database
+for reading only:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo -u postgres createuser -s $USERNAME</span>
+<span class="err">sudo -u postgres createuser www-data</span>
+</code></pre></div>
+
+<h1 id="installing-nominatim">Installing Nominatim<a class="headerlink" href="#installing-nominatim" title="Permanent link"></a></h1>
+<h2 id="building-and-configuration">Building and Configuration<a class="headerlink" href="#building-and-configuration" title="Permanent link"></a></h2>
+<p>Get the source code from Github and change into the source directory</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> <span class="nv">$USERHOME</span>
+wget https://nominatim.org/release/Nominatim-4.1.0.tar.bz2
+tar xf Nominatim-4.1.0.tar.bz2
+</code></pre></div>
+
+<p>The code must be built in a separate directory. Create this directory,
+then configure and build Nominatim in there:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">mkdir $USERHOME/build</span>
+<span class="err">cd $USERHOME/build</span>
+<span class="err">cmake $USERHOME/Nominatim-4.1.0</span>
+<span class="err">make</span>
+<span class="err">sudo make install</span>
+</code></pre></div>
+
+<p>Nominatim is now ready to use. You can continue with
+<a href="../../admin/Import/">importing a database from OSM data</a>. If you want to set up
+a webserver first, continue reading.</p>
+<h1 id="setting-up-a-webserver">Setting up a webserver<a class="headerlink" href="#setting-up-a-webserver" title="Permanent link"></a></h1>
+<p>The webserver should serve the php scripts from the website directory of your
+<a href="../../admin/Import/#creating-the-project-directory">project directory</a>.
+This directory needs to exist when being configured.
+Therefore set up a project directory and create the website directory:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">mkdir $USERHOME/nominatim-project</span>
+<span class="err">mkdir $USERHOME/nominatim-project/website</span>
+</code></pre></div>
+
+<p>The import process will populate the directory later.</p>
+<h2 id="option-1-using-apache">Option 1: Using Apache<a class="headerlink" href="#option-1-using-apache" title="Permanent link"></a></h2>
+<p>Apache has a PHP module that can be used to serve Nominatim. To install them
+run:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo apt install -y apache2 libapache2-mod-php</span>
+</code></pre></div>
+
+<p>You need to create an alias to the website directory in your apache
+configuration. Add a separate nominatim configuration to your webserver:</p>
+<div class="codehilite"><pre><span></span><code>sudo tee /etc/apache2/conf-available/nominatim.conf <span class="s">&lt;&lt; EOFAPACHECONF</span>
+<span class="s">&lt;Directory &quot;$USERHOME/nominatim-project/website&quot;&gt;</span>
+<span class="s">  Options FollowSymLinks MultiViews</span>
+<span class="s">  AddType text/html   .php</span>
+<span class="s">  DirectoryIndex search.php</span>
+<span class="s">  Require all granted</span>
+<span class="s">&lt;/Directory&gt;</span>
+
+<span class="s">Alias /nominatim $USERHOME/nominatim-project/website</span>
+<span class="s">EOFAPACHECONF</span>
+</code></pre></div>
+
+<p>Then enable the configuration with</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo a2enconf nominatim</span>
+</code></pre></div>
+
+<p>and restart apache:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo systemctl restart apache2</span>
+</code></pre></div>
+
+<p>The Nominatim API is now available at <code>http://localhost/nominatim/</code>.</p>
+<h2 id="option-2-using-nginx">Option 2: Using nginx<a class="headerlink" href="#option-2-using-nginx" title="Permanent link"></a></h2>
+<p>Nginx has no native support for php scripts. You need to set up php-fpm for
+this purpose. First install nginx and php-fpm:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo apt install -y nginx php-fpm</span>
+</code></pre></div>
+
+<p>You need to configure php-fpm to listen on a Unix socket.</p>
+<div class="codehilite"><pre><span></span><code>sudo tee /etc/php/7.2/fpm/pool.d/www.conf <span class="s">&lt;&lt; EOF_PHP_FPM_CONF</span>
+<span class="s">[www]</span>
+<span class="s">; Replace the tcp listener and add the unix socket</span>
+<span class="s">listen = /var/run/php7.2-fpm.sock</span>
+
+<span class="s">; Ensure that the daemon runs as the correct user</span>
+<span class="s">listen.owner = www-data</span>
+<span class="s">listen.group = www-data</span>
+<span class="s">listen.mode = 0666</span>
+
+<span class="s">; Unix user of FPM processes</span>
+<span class="s">user = www-data</span>
+<span class="s">group = www-data</span>
+
+<span class="s">; Choose process manager type (static, dynamic, ondemand)</span>
+<span class="s">pm = ondemand</span>
+<span class="s">pm.max_children = 5</span>
+<span class="s">EOF_PHP_FPM_CONF</span>
+</code></pre></div>
+
+<p>Then create a Nginx configuration to forward http requests to that socket.</p>
+<div class="codehilite"><pre><span></span><code>sudo tee /etc/nginx/sites-available/default <span class="s">&lt;&lt; EOF_NGINX_CONF</span>
+<span class="s">server {</span>
+<span class="s">    listen 80 default_server;</span>
+<span class="s">    listen [::]:80 default_server;</span>
+
+<span class="s">    root $USERHOME/nominatim-project/website;</span>
+<span class="s">    index search.php index.html;</span>
+<span class="s">    location / {</span>
+<span class="s">        try_files \$uri \$uri/ @php;</span>
+<span class="s">    }</span>
+
+<span class="s">    location @php {</span>
+<span class="s">        fastcgi_param SCRIPT_FILENAME &quot;\$document_root\$uri.php&quot;;</span>
+<span class="s">        fastcgi_param PATH_TRANSLATED &quot;\$document_root\$uri.php&quot;;</span>
+<span class="s">        fastcgi_param QUERY_STRING    \$args;</span>
+<span class="s">        fastcgi_pass unix:/var/run/php7.2-fpm.sock;</span>
+<span class="s">        fastcgi_index index.php;</span>
+<span class="s">        include fastcgi_params;</span>
+<span class="s">    }</span>
+
+<span class="s">    location ~ [^/]\.php(/|$) {</span>
+<span class="s">        fastcgi_split_path_info ^(.+?\.php)(/.*)$;</span>
+<span class="s">        if (!-f \$document_root\$fastcgi_script_name) {</span>
+<span class="s">            return 404;</span>
+<span class="s">        }</span>
+<span class="s">        fastcgi_pass unix:/var/run/php7.2-fpm.sock;</span>
+<span class="s">        fastcgi_index search.php;</span>
+<span class="s">        include fastcgi.conf;</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+<span class="s">EOF_NGINX_CONF</span>
+</code></pre></div>
+
+<p>Enable the configuration and restart Nginx</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo systemctl restart php7.2-fpm nginx</span>
+</code></pre></div>
+
+<p>The Nominatim API is now available at <code>http://localhost/</code>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Install-on-Ubuntu-20/" class="btn btn-neutral float-right" title="Installation on Ubuntu 20">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../develop/data-sources/" class="btn btn-neutral" title="External Data Sources"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../develop/data-sources/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Install-on-Ubuntu-20/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
