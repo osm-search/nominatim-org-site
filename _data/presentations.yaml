@@ -1,0 +1,107 @@
+ - title: "Boundaries, Places and the Future of Tagging"
+   lang: EN
+   date: 2021-09-21
+   place: State of the Map
+   link: https://www.youtube.com/watch?v=NAzljx1ewZ0
+   description: |
+     One of the fundamental steps of preparing OSM data for searching is the extraction
+     of information about their location, commonly known as their address. This is not
+     a simple task because OSM data is much less structured than traditional databases
+     and many users revert to using external data for this reason. However, the data
+     is there and should therefore be usable. In the course of the last year the
+     address algorithm of Nominatim received a major overhaul to improve how addresses
+     are generated from OpenStreetMap data.
+
+     The first part of the talk introduces the new algorithm and how it came to be.
+     We'll look into the current state of tagging of boundaries, the problem of
+     the urban/rural divide and the difficulties of country-specific mapping.
+
+     The second part of the talk deals with the more general question what the
+     evolving tagging schema of the OpenStreetMap database means for data users.
+     The free-form tagging is one of the big strengths of OpenStreetMap. But the
+     lack of rules does not necessarily have to mean lack of order. Using the
+     example of address extraction, I'd like to discuss the future of the tagging
+     schema from the point of view of a data user.
+
+ - title: "Finding places: an introduction to Nominatim"
+   lang: EN
+   date: 2021-04-23
+   place: CodeOp
+   link: https://www.youtube.com/watch?v=Q4zgDWY8ng0
+   description: |
+     This talk dives into the details of Nominatim, looking into both the general
+     architecture of the software and the design decisions behind it,
+     as well as the specific challenges of searching through a huge
+     geographical database. We'll close with some insights into practical
+     aspects of open-source development and advice on how to get involved.
+
+ - title: "Nominatim für den Hausgebrauch"
+   lang: DE
+   date: 2021-06-07
+   place: FossGIS conference
+   link: https://www.youtube.com/watch?v=Z_GgCGHeKWI
+   description: |
+     In den letzten Jahren hat sich viel getan, um die Installation von
+     Nominatim einfacher zu machen. In dieser Demo-Session zeige ich, wie
+     man in nur 20 Minuten seinen eigene Installation von Nominatim aufsetzen,
+     Daten einer Region importieren und eine erste Liste von Adressen
+     geocodieren kann.
+
+ - title: "Customizing Search for Special-Interest Maps"
+   lang: EN
+   date: 2019-09-22
+   place: State of the Map
+   link: https://www.youtube.com/watch?v=_Jj1N9Mz7cw
+   description: |
+     This talk explores ways to improve the search experience for
+     special-interest maps. We start with simple approaches to boost results
+     using existing web APIs and then look into different ways for creating a
+     small custom domain-specific search engine. We discuss advantages and disadvantages
+     of the different approaches and show common pitfalls for implementations.
+     Although some knowledge in system administration and programming is expected,
+     the focus is on solutions for small and medium projects that are realized
+     with limited resources.
+
+ - title: "Addressing addresses"
+   lang: EN
+   date: 2018-07-28
+   place: State of the Map
+   link: https://www.youtube.com/watch?v=gP4HP6b-Zys
+   description: |
+     We are all used to describe locations with words. The concept is
+     universally known as addresses. You put them on postcards and letters
+     and expect that you find the right places on the map when you put them
+     in the search box on openstreetmap.org. For a computer this can be
+     surprisingly challenging because addresses can take many shapes and
+     forms in different regions of the world. This talk looks into different
+     address formats in the real world, the different ways addresses can be
+     tagged in OSM and how they can be efficiently processed.
+
+ - title: "Nominatim: Behind the scenes"
+   lang: EN
+   date: 2013-09-08
+   place: State of the Map
+   link: https://vimeo.com/79526203
+   description: |
+     This talk takes a look inside OSM's main search engine. It explains how
+     the raw OSM data is processed into a huge address database and how a
+     search query is turned into the right answer (or not on some occasions).
+     The focus is less on the technical details but more on the general
+     principles, clearing up some of the mysteries and misconceptions around
+     Nominatim, helping the interested mapper to better understand how their
+     carefully mapped areas are turned into something that can be found by others.
+
+ - title: Der OpenStreetMap-Geocoder Nominatim
+   lang: DE
+   date: 2013-06-14
+   place: FossGIS conference
+   link: https://www.youtube.com/watch?v=f-lGGpuUtOw
+   description: |
+     Dieser Vortrag gibt einen kurzen Einblick ins Innere von Nominatim.
+     Es wird erklärt, wie die OSM-Daten vorverarbeiten werden, wie ein Ort
+     seine Adresse erhält und wie schlussendlich die Suche selber funktioniert.
+     Der Schwerpunkt liegt dabei weniger auf technischen Details sondern der
+     Vortrag wird mehr die grundlegenden Prinzipien erklären, die der Suche
+     zugrunde liegen. Damit soll dem interessierten Mapper geholfen werden,
+     besser zu verstehen, wie die sorgfältig in OSM erfassten Daten verarbeitet
+     werden, damit sie von anderen gefunden werden können.

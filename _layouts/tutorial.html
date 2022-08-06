@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+  </header>
+
+  <div class="tutorial-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  <div class="post-link-footer">
+  {% if page.previous %}<span class="post-prev"><a href="{{ page.previous.url }}">← {{ page.previous.title }}</a></span>{% endif %}
+  {% if page.next %}<span class="post-next"><a href="{{ page.next.url }}">{{ page.next.title }} →</a></span>{% endif %}
+  </div>
+
+</article>
