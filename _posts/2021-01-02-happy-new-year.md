@@ -56,5 +56,5 @@ there is always room for improvement to make it more detailed and accessible for
 everybody.
 
 There is a lot of work to be done and you can help to speed up development by
-becoming a supporter yourself. Have a looked at the [funding page](/funding)
+becoming a supporter yourself. Have a looked at the [funding page]({% link funding.md %})
 to learn about the different options to support Nominatim.

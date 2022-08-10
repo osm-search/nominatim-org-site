@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Supporting Development"
+permalink: /funding/
 ---
 
 # Supporting Nominatim Development
