@@ -108,8 +108,9 @@ day on a single server.
 
 {% include sponsors.html %}
 
-Are you interested in supporting Nominatim? Please see the [Funding]({% link funding.md %})
-page for details.
+Are you interested in supporting Nominatim?
+Support us through [Github Sponsors](https://github.com/sponsors/lonvia)
+or check out the [Funding]({% link funding.md %}) page for other options.
 
 <div class="section contributing">
 ## Contributing

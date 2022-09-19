@@ -19,9 +19,10 @@ You can make a one-time donation or become a regular supporter.
 
 ## One-time donations
 
-You can make a one-time donation via the PayPal link below. If you prefer
-to make a donation via bank transfer or need an invoice, please contact
-[nominatim@lonvia.de](mailto:nominatim@lonvia.de).
+You can make a one-time donation via the PayPal link below or
+via [Github Sponsors](https://github.com/sponsors/lonvia?frequency=one-time).
+If you prefer to make a donation via bank transfer or need an invoice,
+please contact [nominatim@lonvia.de](mailto:nominatim@lonvia.de).
 
 <center>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -32,12 +33,11 @@ to make a donation via bank transfer or need an invoice, please contact
 </form>
 </center>
 
-## Regular supporter
+## Regular supporters
 
-With a regular monthly or quarterly contribution you can ensure that
-development is sustainable over long-term. Please contact
-[nominatim@lonvia.de](mailto:nominatim@lonvia.de)
-for details about a regular contribution.
+With a regular contribution you can ensure that development is sustainable
+over a long term. You can set up monthly contributions via
+[Github Sponsors](https://github.com/sponsors/lonvia).
 
 ### Support contracts
 
