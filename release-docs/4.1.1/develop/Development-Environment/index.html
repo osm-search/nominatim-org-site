@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://nominatim.org/develop/Development-Environment/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Setup for Development - Nominatim 4.1.1</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Setup for Development";
+    var mkdocs_page_input_path = "develop/Development-Environment.md";
+    var mkdocs_page_url = "/develop/Development-Environment/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 4.1.1</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Installation/">Basic Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Import/">Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Update/">Update</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Deployment/">Deploy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Setup-Nominatim-UI/">Nominatim UI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Maintenance/">Maintenance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Faq/">Troubleshooting</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Customization Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Import-Styles/">Import Styles</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Settings/">Configuration Settings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Country-Settings/">Per-Country Data</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Ranking/">Place Ranking</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Tokenizers/">Tokenizers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Special-Phrases/">Special Phrases</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Tiger/">External data: US housenumbers from TIGER</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Postcodes/">External data: Postcodes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">Architecture Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Database-Layout/">Database Layout</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Indexing/">Indexing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Tokenizers/">Tokenizers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ICU-Tokenizer-Modules/">Custom modules for ICU tokenizer</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Setup for Development</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installing-nominatim">Installing Nominatim</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prerequisites-for-testing-and-documentation">Prerequisites for testing and documentation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installing-prerequisites-on-ubuntudebian">Installing prerequisites on Ubuntu/Debian</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#executing-tests">Executing Tests</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#documentation-pages">Documentation Pages</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Testing/">Testing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../data-sources/">External Data Sources</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-22/">Installation on Ubuntu 22</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 4.1.1</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Developers Guide &raquo;</li>
+        
+      
+    
+    <li>Setup for Development</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/develop/Development-Environment.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="setting-up-nominatim-for-development">Setting up Nominatim for Development<a class="headerlink" href="#setting-up-nominatim-for-development" title="Permanent link"></a></h1>
+<p>This chapter gives an overview how to set up Nominatim for development
+and how to run tests.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This guide assumes that you develop under the latest version of Ubuntu. You
+can of course also use your favourite distribution. You just might have to
+adapt the commands below slightly, in particular the commands for installing
+additional software.</p>
+</div>
+<h2 id="installing-nominatim">Installing Nominatim<a class="headerlink" href="#installing-nominatim" title="Permanent link"></a></h2>
+<p>The first step is to install Nominatim itself. Please follow the installation
+instructions in the <a href="../../admin/Installation/">Admin section</a>. You don't need
+to set up a webserver for development, the webserver that is included with PHP
+is sufficient.</p>
+<p>If you want to run Nominatim in a VM via Vagrant, use the default <code>ubuntu</code> setup.
+Vagrant's libvirt provider runs out-of-the-box under Ubuntu. You also need to
+install an NFS daemon to enable directory sharing between host and guest. The
+following packages should get you started:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo apt install vagrant vagrant-libvirt libvirt-daemon nfs-kernel-server</span>
+</code></pre></div>
+
+<h2 id="prerequisites-for-testing-and-documentation">Prerequisites for testing and documentation<a class="headerlink" href="#prerequisites-for-testing-and-documentation" title="Permanent link"></a></h2>
+<p>The Nominatim test suite consists of behavioural tests (using behave) and
+unit tests (using PHPUnit for PHP code and pytest for Python code).
+It has the following additional requirements:</p>
+<ul>
+<li><a href="https://behave.readthedocs.io">behave test framework</a> &gt;= 1.2.6</li>
+<li><a href="https://phpunit.de">phpunit</a> (9.5 is known to work)</li>
+<li><a href="https://github.com/squizlabs/PHP_CodeSniffer">PHP CodeSniffer</a></li>
+<li><a href="https://pylint.org/">Pylint</a> (CI always runs the latest version from pip)</li>
+<li><a href="http://mypy-lang.org/">mypy</a> (plus typing information for external libs)</li>
+<li><a href="https://github.com/python/typing_extensions">Python Typing Extensions</a> (for Python &lt; 3.9)</li>
+<li><a href="https://pytest.org">pytest</a></li>
+</ul>
+<p>The documentation is built with mkdocs:</p>
+<ul>
+<li><a href="https://www.mkdocs.org/">mkdocs</a> &gt;= 1.1.2</li>
+<li><a href="https://mkdocstrings.github.io/">mkdocstrings</a> &gt;= 0.16</li>
+<li><a href="https://mkdocstrings.github.io/python-legacy/">mkdocstrings-python-legacy</a></li>
+</ul>
+<h3 id="installing-prerequisites-on-ubuntudebian">Installing prerequisites on Ubuntu/Debian<a class="headerlink" href="#installing-prerequisites-on-ubuntudebian" title="Permanent link"></a></h3>
+<p>Some of the Python packages require the newest version which is not yet
+available with the current distributions. Therefore it is recommended to
+install pip to get the newest versions.</p>
+<p>To install all necessary packages run:</p>
+<div class="codehilite"><pre><span></span><code>sudo apt install php-cgi phpunit php-codesniffer <span class="se">\</span>
+                 python3-pip python3-setuptools python3-dev
+
+pip3 install --user behave mkdocs mkdocstrings pytest pylint <span class="se">\</span>
+                    mypy types-PyYAML types-jinja2 types-psycopg2 types-psutil
+</code></pre></div>
+
+<p>The <code>mkdocs</code> executable will be located in <code>.local/bin</code>. You may have to add
+this directory to your path, for example by running:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">echo</span> <span class="s1">&#39;export PATH=~/.local/bin:$PATH&#39;</span> <span class="o">&gt;</span> <span class="o">~/.</span><span class="n">profile</span>
+</code></pre></div>
+
+<p>If your distribution does not have PHPUnit 7.3+, you can install it (as well
+as CodeSniffer) via composer:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">sudo apt-get install composer</span>
+<span class="err">composer global require &quot;squizlabs/php_codesniffer=*&quot;</span>
+<span class="err">composer global require &quot;phpunit/phpunit=8.*&quot;</span>
+</code></pre></div>
+
+<p>The binaries are found in <code>.config/composer/vendor/bin</code>. You need to add this
+to your PATH as well:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">echo</span> <span class="s1">&#39;export PATH=~/.config/composer/vendor/bin:$PATH&#39;</span> <span class="o">&gt;</span> <span class="o">~/.</span><span class="n">profile</span>
+</code></pre></div>
+
+<h2 id="executing-tests">Executing Tests<a class="headerlink" href="#executing-tests" title="Permanent link"></a></h2>
+<p>All tests are located in the <code>/test</code> directory.</p>
+<p>To run all tests just go to the build directory and run make:</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> build
+make <span class="nb">test</span>
+</code></pre></div>
+
+<p>For more information about the structure of the tests and how to change and
+extend the test suite, see the <a href="../Testing/">Testing chapter</a>.</p>
+<h2 id="documentation-pages">Documentation Pages<a class="headerlink" href="#documentation-pages" title="Permanent link"></a></h2>
+<p>The <a href="https://nominatim.org/release-docs/develop/">Nominatim documentation</a> is
+built using the <a href="https://www.mkdocs.org/">MkDocs</a> static site generation
+framework. The master branch is automatically deployed every night on
+<a href="https://nominatim.org/release-docs/develop/">https://nominatim.org/release-docs/develop/</a></p>
+<p>To build the documentation, go to the build directory and run</p>
+<div class="codehilite"><pre><span></span><code><span class="err">make doc</span>
+<span class="err">INFO - Cleaning site directory</span>
+<span class="err">INFO - Building documentation to directory: /home/vagrant/build/site-html</span>
+</code></pre></div>
+
+<p>This runs <code>mkdocs build</code> plus extra transformation of some files and adds
+symlinks (see <code>CMakeLists.txt</code> for the exact steps).</p>
+<p>Now you can start webserver for local testing</p>
+<div class="codehilite"><pre><span></span><code><span class="err">build&gt; make serve-doc</span>
+<span class="err">[server:296] Serving on http://127.0.0.1:8000</span>
+<span class="err">[handlers:62] Start watching changes</span>
+</code></pre></div>
+
+<p>If you develop inside a Vagrant virtual machine, use a port that is forwarded
+to your host:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">build&gt; PYTHONPATH=$SRCDIR mkdocs serve --dev-addr 0.0.0.0:8088</span>
+<span class="err">[server:296] Serving on http://0.0.0.0:8088</span>
+<span class="err">[handlers:62] Start watching changes</span>
+</code></pre></div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Testing/" class="btn btn-neutral float-right" title="Testing">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ICU-Tokenizer-Modules/" class="btn btn-neutral" title="Custom modules for ICU tokenizer"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../ICU-Tokenizer-Modules/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Testing/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://nominatim.org/develop/Testing/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Testing - Nominatim 4.1.1</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Testing";
+    var mkdocs_page_input_path = "develop/Testing.md";
+    var mkdocs_page_url = "/develop/Testing/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 4.1.1</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Installation/">Basic Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Import/">Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Update/">Update</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Deployment/">Deploy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Setup-Nominatim-UI/">Nominatim UI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Maintenance/">Maintenance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Faq/">Troubleshooting</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Customization Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Import-Styles/">Import Styles</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Settings/">Configuration Settings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Country-Settings/">Per-Country Data</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Ranking/">Place Ranking</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Tokenizers/">Tokenizers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Special-Phrases/">Special Phrases</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Tiger/">External data: US housenumbers from TIGER</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Postcodes/">External data: Postcodes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">Architecture Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Database-Layout/">Database Layout</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Indexing/">Indexing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Tokenizers/">Tokenizers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ICU-Tokenizer-Modules/">Custom modules for ICU tokenizer</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Development-Environment/">Setup for Development</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Testing</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overall-structure">Overall structure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#php-unit-tests-testphp">PHP Unit Tests (test/php)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#python-unit-tests-testpython">Python Unit Tests (test/python)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bdd-functional-tests-testbdd">BDD Functional Tests (test/bdd)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#general-usage">General Usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#api-tests-testbddapi">API Tests (test/bdd/api)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#code-coverage">Code Coverage</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#db-creation-tests-testbdddb">DB Creation Tests (test/bdd/db)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#import-tests-testbddosm2pgsql">Import Tests (test/bdd/osm2pgsql)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../data-sources/">External Data Sources</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-22/">Installation on Ubuntu 22</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 4.1.1</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Developers Guide &raquo;</li>
+        
+      
+    
+    <li>Testing</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/develop/Testing.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="nominatim-test-suite">Nominatim Test Suite<a class="headerlink" href="#nominatim-test-suite" title="Permanent link"></a></h1>
+<p>This chapter describes the tests in the <code>/test</code> directory, how they are
+structured and how to extend them. For a quick introduction on how to run
+the tests, see the <a href="../Development-Environment/">Development setup chapter</a>.</p>
+<h2 id="overall-structure">Overall structure<a class="headerlink" href="#overall-structure" title="Permanent link"></a></h2>
+<p>There are two kind of tests in this test suite. There are functional tests
+which test the API interface using a BDD test framework and there are unit
+tests for specific PHP functions.</p>
+<p>This test directory is sturctured as follows:</p>
+<div class="codehilite"><pre><span></span><code> <span class="o">-+-</span>   <span class="n">bdd</span>         <span class="n">Functional</span> <span class="n">API</span> <span class="n">tests</span>
+  <span class="o">|</span> \
+  <span class="o">|</span> <span class="o">+-</span>  <span class="n">steps</span>      <span class="n">Step</span> <span class="n">implementations</span> <span class="k">for</span> <span class="n">test</span> <span class="n">descriptions</span>
+  <span class="o">|</span> <span class="o">+-</span>  <span class="n">osm2pgsql</span>  <span class="n">Tests</span> <span class="k">for</span> <span class="n">data</span> <span class="kn">import</span> <span class="nn">via</span> <span class="nn">osm2pgsql</span>
+  <span class="o">|</span> <span class="o">+-</span>  <span class="n">db</span>         <span class="n">Tests</span> <span class="k">for</span> <span class="n">internal</span> <span class="n">data</span> <span class="n">processing</span> <span class="n">on</span> <span class="kn">import</span> <span class="nn">and</span> <span class="nn">update</span>
+  <span class="o">|</span> <span class="o">+-</span>  <span class="n">api</span>        <span class="n">Tests</span> <span class="k">for</span> <span class="n">API</span> <span class="n">endpoints</span> <span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">reverse</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span><span class="p">)</span>
+  <span class="o">|</span>
+  <span class="o">+-</span>   <span class="n">php</span>         <span class="n">PHP</span> <span class="n">unit</span> <span class="n">tests</span>
+  <span class="o">+-</span>   <span class="n">python</span>      <span class="n">Python</span> <span class="n">unit</span> <span class="n">tests</span>
+  <span class="o">+-</span>   <span class="n">testdb</span>      <span class="n">Base</span> <span class="n">data</span> <span class="k">for</span> <span class="n">generating</span> <span class="n">API</span> <span class="n">test</span> <span class="n">database</span>
+  <span class="o">+-</span>   <span class="n">testdata</span>    <span class="n">Additional</span> <span class="n">test</span> <span class="n">data</span> <span class="n">used</span> <span class="n">by</span> <span class="n">unit</span> <span class="n">tests</span>
+</code></pre></div>
+
+<h2 id="php-unit-tests-testphp">PHP Unit Tests (<code>test/php</code>)<a class="headerlink" href="#php-unit-tests-testphp" title="Permanent link"></a></h2>
+<p>Unit tests for PHP code can be found in the <code>php/</code> directory. They test selected
+PHP functions. Very low coverage.</p>
+<p>To execute the test suite run</p>
+<div class="codehilite"><pre><span></span><code><span class="err">cd test/php</span>
+<span class="err">UNIT_TEST_DSN=&#39;pgsql:dbname=nominatim_unit_tests&#39; phpunit ../</span>
+</code></pre></div>
+
+<p>It will read phpunit.xml which points to the library, test path, bootstrap
+strip and sets other parameters.</p>
+<p>It will use (and destroy) a local database 'nominatim_unit_tests'. You can set
+a different connection string with e.g. UNIT_TEST_DSN='pgsql:dbname=foo_unit_tests'.</p>
+<h2 id="python-unit-tests-testpython">Python Unit Tests (<code>test/python</code>)<a class="headerlink" href="#python-unit-tests-testpython" title="Permanent link"></a></h2>
+<p>Unit tests for Python code can be found in the <code>python/</code> directory. The goal is
+to have complete coverage of the Python library in <code>nominatim</code>.</p>
+<p>To execute the tests run</p>
+<div class="codehilite"><pre><span></span><code><span class="err">py.test-3 test/python</span>
+</code></pre></div>
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><code><span class="err">pytest test/python</span>
+</code></pre></div>
+
+<p>The name of the pytest binary depends on your installation.</p>
+<h2 id="bdd-functional-tests-testbdd">BDD Functional Tests (<code>test/bdd</code>)<a class="headerlink" href="#bdd-functional-tests-testbdd" title="Permanent link"></a></h2>
+<p>Functional tests are written as BDD instructions. For more information on
+the philosophy of BDD testing, see the
+<a href="http://pythonhosted.org/behave/philosophy.html">Behave manual</a>.</p>
+<p>The following explanation assume that the reader is familiar with the BDD
+notations of features, scenarios and steps.</p>
+<p>All possible steps can be found in the <code>steps</code> directory and should ideally
+be documented.</p>
+<h3 id="general-usage">General Usage<a class="headerlink" href="#general-usage" title="Permanent link"></a></h3>
+<p>To run the functional tests, do</p>
+<div class="codehilite"><pre><span></span><code><span class="err">cd test/bdd</span>
+<span class="err">behave</span>
+</code></pre></div>
+
+<p>The tests can be configured with a set of environment variables (<code>behave -D key=val</code>):</p>
+<ul>
+<li><code>BUILDDIR</code> - build directory of Nominatim installation to test</li>
+<li><code>TEMPLATE_DB</code> - name of template database used as a skeleton for
+                   the test databases (db tests)</li>
+<li><code>TEST_DB</code> - name of test database (db tests)</li>
+<li><code>API_TEST_DB</code> - name of the database containing the API test data (api tests)</li>
+<li><code>API_TEST_FILE</code> - OSM file to be imported into the API test database (api tests)</li>
+<li><code>DB_HOST</code> - (optional) hostname of database host</li>
+<li><code>DB_PORT</code> - (optional) port of database on host</li>
+<li><code>DB_USER</code> - (optional) username of database login</li>
+<li><code>DB_PASS</code> - (optional) password for database login</li>
+<li><code>SERVER_MODULE_PATH</code> - (optional) path on the Postgres server to Nominatim
+                          module shared library file</li>
+<li><code>REMOVE_TEMPLATE</code> - if true, the template and API database will not be reused
+                       during the next run. Reusing the base templates speeds
+                       up tests considerably but might lead to outdated errors
+                       for some changes in the database layout.</li>
+<li><code>KEEP_TEST_DB</code> - if true, the test database will not be dropped after a test
+                    is finished. Should only be used if one single scenario is
+                    run, otherwise the result is undefined.</li>
+</ul>
+<p>Logging can be defined through command line parameters of behave itself. Check
+out <code>behave --help</code> for details. Also have a look at the 'work-in-progress'
+feature of behave which comes in handy when writing new tests.</p>
+<h3 id="api-tests-testbddapi">API Tests (<code>test/bdd/api</code>)<a class="headerlink" href="#api-tests-testbddapi" title="Permanent link"></a></h3>
+<p>These tests are meant to test the different API endpoints and their parameters.
+They require to import several datasets into a test database. This is normally
+done automatically during setup of the test. The API test database is then
+kept around and reused in subsequent runs of behave. Use <code>behave -DREMOVE_TEMPLATE</code>
+to force a reimport of the database.</p>
+<p>The official test dataset is saved in the file <code>test/testdb/apidb-test-data.pbf</code>
+and compromises the following data:</p>
+<ul>
+<li>Geofabrik extract of Liechtenstein</li>
+<li>extract of Autauga country, Alabama, US (for tests against Tiger data)</li>
+<li>additional data from <code>test/testdb/additional_api_test.data.osm</code></li>
+</ul>
+<p>API tests should only be testing the functionality of the website PHP code.
+Most tests should be formulated as BDD DB creation tests (see below) instead.</p>
+<h4 id="code-coverage">Code Coverage<a class="headerlink" href="#code-coverage" title="Permanent link"></a></h4>
+<p>The API tests also support code coverage tests. You need to install
+<a href="https://github.com/sebastianbergmann/php-code-coverage">PHP_CodeCoverage</a>.
+On Debian/Ubuntu run:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">apt-get install php-codecoverage php-xdebug</span>
+</code></pre></div>
+
+<p>Then run the API tests as follows:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">behave api -DPHPCOV=&lt;coverage output dir&gt;</span>
+</code></pre></div>
+
+<p>The output directory must be an absolute path. To generate reports, you can use
+the <a href="https://github.com/sebastianbergmann/phpcov">phpcov</a> tool:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">phpcov merge --html=&lt;report output dir&gt; &lt;coverage output dir&gt;</span>
+</code></pre></div>
+
+<h3 id="db-creation-tests-testbdddb">DB Creation Tests (<code>test/bdd/db</code>)<a class="headerlink" href="#db-creation-tests-testbdddb" title="Permanent link"></a></h3>
+<p>These tests check the import and update of the Nominatim database. They do not
+test the correctness of osm2pgsql. Each test will write some data into the <code>place</code>
+table (and optionally the <code>planet_osm_*</code> tables if required) and then run
+Nominatim's processing functions on that.</p>
+<p>These tests need to create their own test databases. By default they will be
+called <code>test_template_nominatim</code> and <code>test_nominatim</code>. Names can be changed with
+the environment variables <code>TEMPLATE_DB</code> and <code>TEST_DB</code>. The user running the tests
+needs superuser rights for postgres.</p>
+<h3 id="import-tests-testbddosm2pgsql">Import Tests (<code>test/bdd/osm2pgsql</code>)<a class="headerlink" href="#import-tests-testbddosm2pgsql" title="Permanent link"></a></h3>
+<p>These tests check that data is imported correctly into the place table. They
+use the same template database as the DB Creation tests, so the same remarks apply.</p>
+<p>Note that most testing of the gazetteer output of osm2pgsql is done in the tests
+of osm2pgsql itself. The BDD tests are just there to ensure compatibility of
+the osm2pgsql and Nominatim code.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../data-sources/" class="btn btn-neutral float-right" title="External Data Sources">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Development-Environment/" class="btn btn-neutral" title="Setup for Development"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Development-Environment/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../data-sources/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

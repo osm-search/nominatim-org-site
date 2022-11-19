@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://nominatim.org/admin/Update/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Update - Nominatim 4.1.1</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Update";
+    var mkdocs_page_input_path = "admin/Update.md";
+    var mkdocs_page_url = "/admin/Update/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 4.1.1</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Installation/">Basic Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Import/">Import</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Update</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installing-the-newest-version-of-pyosmium">Installing the newest version of Pyosmium</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setting-up-the-update-process">Setting up the update process</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#updating-nominatim">Updating Nominatim</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#continuous-updates">Continuous updates</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#one-time-mode">One-time mode</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#one-time-mode-with-systemd">One-time mode with systemd</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#catch-up-mode">Catch-up mode</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Deployment/">Deploy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Setup-Nominatim-UI/">Nominatim UI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Maintenance/">Maintenance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Faq/">Troubleshooting</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Customization Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Import-Styles/">Import Styles</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Settings/">Configuration Settings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Country-Settings/">Per-Country Data</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Ranking/">Place Ranking</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Tokenizers/">Tokenizers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Special-Phrases/">Special Phrases</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Tiger/">External data: US housenumbers from TIGER</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Postcodes/">External data: Postcodes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Architecture Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Database-Layout/">Database Layout</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Indexing/">Indexing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Tokenizers/">Tokenizers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/ICU-Tokenizer-Modules/">Custom modules for ICU tokenizer</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Development-Environment/">Setup for Development</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Testing/">Testing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/data-sources/">External Data Sources</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-22/">Installation on Ubuntu 22</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 4.1.1</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Administration Guide &raquo;</li>
+        
+      
+    
+    <li>Update</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/admin/Update.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="updating-the-database">Updating the Database<a class="headerlink" href="#updating-the-database" title="Permanent link"></a></h1>
+<p>There are many different ways to update your Nominatim database.
+The following section describes how to keep it up-to-date using
+an <a href="https://wiki.openstreetmap.org/wiki/Planet.osm/diffs">online replication service for OpenStreetMap data</a>
+For a list of other methods to add or update data see the output of
+<code>nominatim add-data --help</code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you have configured a flatnode file for the import, then you
+need to keep this flatnode file around for updates.</p>
+</div>
+<h3 id="installing-the-newest-version-of-pyosmium">Installing the newest version of Pyosmium<a class="headerlink" href="#installing-the-newest-version-of-pyosmium" title="Permanent link"></a></h3>
+<p>The replication process uses
+<a href="https://docs.osmcode.org/pyosmium/latest/updating_osm_data.html">Pyosmium</a>
+to download update data from the server.
+It is recommended to install Pyosmium via pip.
+Run (as the same user who will later run the updates):</p>
+<div class="codehilite"><pre><span></span><code>pip3 install --user osmium
+</code></pre></div>
+
+<h3 id="setting-up-the-update-process">Setting up the update process<a class="headerlink" href="#setting-up-the-update-process" title="Permanent link"></a></h3>
+<p>Next the update process needs to be initialised. By default Nominatim is configured
+to update using the global minutely diffs.</p>
+<p>If you want a different update source you will need to add some settings
+to <code>.env</code>. For example, to use the daily country extracts
+diffs for Ireland from Geofabrik add the following:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># base URL of the replication service</span>
+<span class="n">NOMINATIM_REPLICATION_URL</span><span class="o">=</span><span class="s2">&quot;https://download.geofabrik.de/europe/ireland-and-northern-ireland-updates&quot;</span>
+<span class="c1"># How often upstream publishes diffs (in seconds)</span>
+<span class="n">NOMINATIM_REPLICATION_UPDATE_INTERVAL</span><span class="o">=</span><span class="mi">86400</span>
+<span class="c1"># How long to sleep if no update found yet (in seconds)</span>
+<span class="n">NOMINATIM_REPLICATION_RECHECK_INTERVAL</span><span class="o">=</span><span class="mi">900</span>
+</code></pre></div>
+
+<p>To set up the update process now run the following command:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">nominatim replication --init</span>
+</code></pre></div>
+
+<p>It outputs the date where updates will start. Recheck that this date is
+what you expect.</p>
+<p>The <code>replication --init</code> command needs to be rerun whenever the replication
+service is changed.</p>
+<h3 id="updating-nominatim">Updating Nominatim<a class="headerlink" href="#updating-nominatim" title="Permanent link"></a></h3>
+<p>Nominatim supports different modes how to retrieve the update data from the
+server. Which one you want to use depends on your exact setup and how often you
+want to retrieve updates.</p>
+<p>These instructions are for using a single source of updates. If you have
+imported multiple country extracts and want to keep them
+up-to-date, <a href="../Advanced-Installations/">Advanced installations section</a>
+contains instructions to set up and update multiple country extracts.</p>
+<h4 id="continuous-updates">Continuous updates<a class="headerlink" href="#continuous-updates" title="Permanent link"></a></h4>
+<p>This is the easiest mode. Simply run the replication command without any
+parameters:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">nominatim replication</span>
+</code></pre></div>
+
+<p>The update application keeps running forever and retrieves and applies
+new updates from the server as they are published.</p>
+<p>You can run this command as a simple systemd service. Create a service
+description like that in <code>/etc/systemd/system/nominatim-updates.service</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Continuous updates of Nominatim</span>
+
+<span class="k">[Service]</span>
+<span class="na">WorkingDirectory</span><span class="o">=</span><span class="s">/srv/nominatim</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">nominatim replication</span>
+<span class="na">StandardOutput</span><span class="o">=</span><span class="s">append:/var/log/nominatim-updates.log</span>
+<span class="na">StandardError</span><span class="o">=</span><span class="s">append:/var/log/nominatim-updates.error.log</span>
+<span class="na">User</span><span class="o">=</span><span class="s">nominatim</span>
+<span class="na">Group</span><span class="o">=</span><span class="s">nominatim</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">simple</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</code></pre></div>
+
+<p>Replace the <code>WorkingDirectory</code> with your project directory. Also adapt user
+and group names as required.</p>
+<p>Now activate the service and start the updates:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">daemon</span><span class="o">-</span><span class="n">reload</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">nominatim</span><span class="o">-</span><span class="n">updates</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">nominatim</span><span class="o">-</span><span class="n">updates</span>
+</code></pre></div>
+
+<h4 id="one-time-mode">One-time mode<a class="headerlink" href="#one-time-mode" title="Permanent link"></a></h4>
+<p>When the <code>--once</code> parameter is given, then Nominatim will download exactly one
+batch of updates and then exit. This one-time mode still respects the
+<code>NOMINATIM_REPLICATION_UPDATE_INTERVAL</code> that you have set. If according to
+the update interval no new data has been published yet, it will go to sleep
+until the next expected update and only then attempt to download the next batch.</p>
+<p>The one-time mode is particularly useful if you want to run updates continuously
+but need to schedule other work in between updates. For example, the main
+service at osm.org uses it, to regularly recompute postcodes -- a process that
+must not be run while updates are in progress. Its update script
+looks like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Switch to your project directory.</span>
+<span class="nb">cd</span> /srv/nominatim
+
+<span class="k">while</span> true<span class="p">;</span> <span class="k">do</span>
+  nominatim replication --once
+  <span class="k">if</span> <span class="o">[</span> -f <span class="s2">&quot;/srv/nominatim/schedule-maintenance&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    rm /srv/nominatim/schedule-maintenance
+    nominatim refresh --postcodes
+  <span class="k">fi</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<p>A cron job then creates the file <code>/srv/nominatim/schedule-maintenance</code> once per night.</p>
+<h5 id="one-time-mode-with-systemd">One-time mode with systemd<a class="headerlink" href="#one-time-mode-with-systemd" title="Permanent link"></a></h5>
+<p>You can run the one-time mode with a systemd timer &amp; service.</p>
+<p>Create a timer description like <code>/etc/systemd/system/nominatim-updates.timer</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Timer to start updates of Nominatim</span>
+
+<span class="k">[Timer]</span>
+<span class="na">OnActiveSec</span><span class="o">=</span><span class="s">2</span>
+<span class="na">OnUnitActiveSec</span><span class="o">=</span><span class="s">1min</span>
+<span class="na">Unit</span><span class="o">=</span><span class="s">nominatim-updates.service</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</code></pre></div>
+
+<p>And then a similar service definition: <code>/etc/systemd/system/nominatim-updates.service</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Single updates of Nominatim</span>
+
+<span class="k">[Service]</span>
+<span class="na">WorkingDirectory</span><span class="o">=</span><span class="s">/srv/nominatim</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">nominatim replication --once</span>
+<span class="na">StandardOutput</span><span class="o">=</span><span class="s">append:/var/log/nominatim-updates.log</span>
+<span class="na">StandardError</span><span class="o">=</span><span class="s">append:/var/log/nominatim-updates.error.log</span>
+<span class="na">User</span><span class="o">=</span><span class="s">nominatim</span>
+<span class="na">Group</span><span class="o">=</span><span class="s">nominatim</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">simple</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</code></pre></div>
+
+<p>Replace the <code>WorkingDirectory</code> with your project directory. Also adapt user and
+group names as required. <code>OnUnitActiveSec</code> defines how often the individual
+update command is run.</p>
+<p>Now activate the service and start the updates:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">daemon</span><span class="o">-</span><span class="n">reload</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">nominatim</span><span class="o">-</span><span class="n">updates</span><span class="o">.</span><span class="n">timer</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">nominatim</span><span class="o">-</span><span class="n">updates</span><span class="o">.</span><span class="n">timer</span>
+</code></pre></div>
+
+<p>You can stop future data updates, while allowing any current, in-progress
+update steps to finish, by running <code>sudo systemctl stop
+nominatim-updates.timer</code> and waiting until <code>nominatim-updates.service</code> isn't
+running (<code>sudo systemctl is-active nominatim-updates.service</code>). Current output
+from the update can be seen like above (<code>systemctl status
+nominatim-updates.service</code>).</p>
+<h4 id="catch-up-mode">Catch-up mode<a class="headerlink" href="#catch-up-mode" title="Permanent link"></a></h4>
+<p>With the <code>--catch-up</code> parameter, Nominatim will immediately try to download
+all changes from the server until the database is up-to-date. The catch-up mode
+still respects the parameter <code>NOMINATIM_REPLICATION_MAX_DIFF</code>. It downloads and
+applies the changes in appropriate batches until all is done.</p>
+<p>The catch-up mode is foremost useful to bring the database up to speed after the
+initial import. Give that the service usually is not in production at this
+point, you can temporarily be a bit more generous with the batch size and
+number of threads you use for the updates by running catch-up like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">cd /srv/nominatim</span>
+<span class="err">NOMINATIM_REPLICATION_MAX_DIFF=5000 nominatim replication --catch-up --threads 15</span>
+</code></pre></div>
+
+<p>The catch-up mode is also useful when you want to apply updates at a lower
+frequency than what the source publishes. You can set up a cron job to run
+replication catch-up at whatever interval you desire.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>When running scheduled updates with catch-up, it is a good idea to choose
+a replication source with an update frequency that is an order of magnitude
+lower. For example, if you want to update once a day, use an hourly updated
+source. This makes sure that you don't miss an entire day of updates when
+the source is unexpectedly late to publish its update.</p>
+<p>If you want to use the source with the same update frequency (e.g. a daily
+updated source with daily updates), use the
+continuous update mode. It ensures to re-request the newest update until it
+is published.</p>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Deployment/" class="btn btn-neutral float-right" title="Deploy">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Import/" class="btn btn-neutral" title="Import"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Import/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Deployment/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
