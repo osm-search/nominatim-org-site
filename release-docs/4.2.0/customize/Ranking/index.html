@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://nominatim.org/customize/Ranking/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Place Ranking - Nominatim 4.2.0</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+  <link href="../../extra.css" rel="stylesheet" />
+  <link href="../../styles.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Place Ranking";
+    var mkdocs_page_input_path = "customize/Ranking.md";
+    var mkdocs_page_url = "/customize/Ranking/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Nominatim 4.2.0</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Reference</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Administration Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Installation/">Basic Installation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Import/">Import</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Update/">Update</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Deployment/">Deploy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Setup-Nominatim-UI/">Nominatim UI</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Advanced-Installations/">Advanced Installations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Maintenance/">Maintenance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Migration/">Migration from older Versions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Faq/">Troubleshooting</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Customization Guide</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../Overview/">Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Import-Styles/">Import Styles</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Settings/">Configuration Settings</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Country-Settings/">Per-Country Data</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Place Ranking</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#search-rank">Search rank</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#address-rank">Address rank</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rank-configuration">Rank configuration</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Importance/">Importance</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Tokenizers/">Tokenizers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Special-Phrases/">Special Phrases</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Tiger/">External data: US housenumbers from TIGER</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Postcodes/">External data: Postcodes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Developers Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Architecture Overview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Database-Layout/">Database Layout</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Indexing/">Indexing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Tokenizers/">Tokenizers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/ICU-Tokenizer-Modules/">Custom modules for ICU tokenizer</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Development-Environment/">Setup for Development</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Testing/">Testing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../develop/data-sources/">External Data Sources</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Appendix</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-22/">Installation on Ubuntu 22</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Nominatim 4.2.0</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Customization Guide &raquo;</li>
+        
+      
+    
+    <li>Place Ranking</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/customize/Ranking.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="place-ranking-in-nominatim">Place Ranking in Nominatim<a class="headerlink" href="#place-ranking-in-nominatim" title="Permanent link"></a></h1>
+<p>Nominatim uses two metrics to rank a place: search rank and address rank.
+This chapter explains what place ranking means and how it can be customized.</p>
+<h2 id="search-rank">Search rank<a class="headerlink" href="#search-rank" title="Permanent link"></a></h2>
+<p>The search rank describes the extent and importance of a place. It is used
+when ranking search results. Simply put, if there are two results for a
+search query which are otherwise equal, then the result with the <em>lower</em>
+search rank will be appear higher in the result list.</p>
+<p>Search ranks are not so important these days because many well-known
+places use the Wikipedia importance ranking instead.</p>
+<p>The following table gives an overview of the kind of features that Nominatim
+expects for each rank:</p>
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>typical place types</th>
+<th>extent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-3</td>
+<td>oceans, continents</td>
+<td>-</td>
+</tr>
+<tr>
+<td>4</td>
+<td>countries</td>
+<td>-</td>
+</tr>
+<tr>
+<td>5-9</td>
+<td>states, regions, provinces</td>
+<td>-</td>
+</tr>
+<tr>
+<td>10-12</td>
+<td>counties</td>
+<td>-</td>
+</tr>
+<tr>
+<td>13-16</td>
+<td>cities, municipalities, islands</td>
+<td>15 km</td>
+</tr>
+<tr>
+<td>17-18</td>
+<td>towns, boroughs</td>
+<td>4 km</td>
+</tr>
+<tr>
+<td>19</td>
+<td>villages, suburbs</td>
+<td>2 km</td>
+</tr>
+<tr>
+<td>20</td>
+<td>hamlets, farms, neighbourhoods</td>
+<td>1 km</td>
+</tr>
+<tr>
+<td>21-25</td>
+<td>isolated dwellings, city blocks</td>
+<td>500 m</td>
+</tr>
+</tbody>
+</table>
+<p>The extent column describes how far a feature is assumed to reach when it
+is mapped only as a point. Larger features like countries and states are usually
+available with their exact area in the OpenStreetMap data. That is why no extent
+is given.</p>
+<h2 id="address-rank">Address rank<a class="headerlink" href="#address-rank" title="Permanent link"></a></h2>
+<p>The address rank describes where a place shows up in an address hierarchy.
+Usually only administrative boundaries and place nodes and areas are
+eligible to be part of an address. Places that should not appear in the
+address must have an address rank of 0.</p>
+<p>The following table gives an overview how ranks are mapped to address parts:</p>
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>address part</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-3</td>
+<td><em>unused</em></td>
+</tr>
+<tr>
+<td>4</td>
+<td>country</td>
+</tr>
+<tr>
+<td>5-9</td>
+<td>state</td>
+</tr>
+<tr>
+<td>10-12</td>
+<td>county</td>
+</tr>
+<tr>
+<td>13-16</td>
+<td>city</td>
+</tr>
+<tr>
+<td>17-21</td>
+<td>suburb</td>
+</tr>
+<tr>
+<td>22-24</td>
+<td>neighbourhood</td>
+</tr>
+<tr>
+<td>25</td>
+<td>squares, farms, localities</td>
+</tr>
+<tr>
+<td>26-27</td>
+<td>street</td>
+</tr>
+<tr>
+<td>28-30</td>
+<td>POI/house number</td>
+</tr>
+</tbody>
+</table>
+<p>The country rank 4 usually doesn't show up in the address parts of an object.
+The country is determined indirectly from the country code.</p>
+<p>Ranks 5-24 can be assigned more or less freely. They make up the major part
+of the address.</p>
+<p>Rank 25 is also an addressing rank but it is special because while it can be
+the parent to a POI with an addr:place of the same name, it cannot be a parent
+to streets. Use it for place features that are technically on the same level
+as a street (e.g. squares, city blocks) or for places that should not normally
+appear in an address unless explicitly tagged so (e.g place=locality which
+should be uninhabited and as such not addressable).</p>
+<p>The street ranks 26 and 27 are handled slightly differently. Only one object
+from these ranks shows up in an address.</p>
+<p>For POI level objects like shops, buildings or house numbers always use rank 30.
+Ranks 28 is reserved for house number interpolations. 29 is for internal use
+only.</p>
+<h2 id="rank-configuration">Rank configuration<a class="headerlink" href="#rank-configuration" title="Permanent link"></a></h2>
+<p>Search and address ranks are assigned to a place when it is first imported
+into the database. There are a few hard-coded rules for the assignment:</p>
+<ul>
+<li>postcodes follow special rules according to their length</li>
+<li>boundaries that are not areas and railway=rail are dropped completely</li>
+<li>the following are always search rank 30 and address rank 0:<ul>
+<li>highway nodes</li>
+<li>landuse that is not an area</li>
+</ul>
+</li>
+</ul>
+<p>Other than that, the ranks can be freely assigned via the JSON file according
+to their type and the country they are in. The name of the config file to be
+used can be changed with the setting <code>NOMINATIM_ADDRESS_LEVEL_CONFIG</code>.</p>
+<p>The address level configuration must consist of an array of configuration
+entries, each containing a tag definition and an optional country array:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">[ {</span>
+<span class="err">    &quot;tags&quot; : {</span>
+<span class="err">      &quot;place&quot; : {</span>
+<span class="err">        &quot;county&quot; : 12,</span>
+<span class="err">        &quot;city&quot; : 16,</span>
+<span class="err">      },</span>
+<span class="err">      &quot;landuse&quot; : {</span>
+<span class="err">        &quot;residential&quot; : 22,</span>
+<span class="err">        &quot;&quot; : 30</span>
+<span class="err">      }</span>
+<span class="err">    }</span>
+<span class="err">  },</span>
+<span class="err">  {</span>
+<span class="err">    &quot;countries&quot; : [ &quot;ca&quot;, &quot;us&quot; ],</span>
+<span class="err">    &quot;tags&quot; : {</span>
+<span class="err">      &quot;boundary&quot; : {</span>
+<span class="err">        &quot;administrative8&quot; : 18,</span>
+<span class="err">        &quot;administrative9&quot; : 20</span>
+<span class="err">      },</span>
+<span class="err">      &quot;landuse&quot; : {</span>
+<span class="err">        &quot;residential&quot; : [22, 0]</span>
+<span class="err">      }</span>
+<span class="err">    }</span>
+<span class="err">  }</span>
+<span class="err">]</span>
+</code></pre></div>
+
+<p>The <code>countries</code> field contains a list of countries (as ISO 3166-1 alpha 2 code)
+for which the definition applies. When the field is omitted, then the
+definition is used as a fallback, when nothing more specific for a given
+country exists.</p>
+<p><code>tags</code> contains the ranks for key/value pairs. The ranks can be either a
+single number, in which case they are the search and address rank, or an array
+of search and address rank (in that order). The value may be left empty.
+Then the rank is used when no more specific value is found for the given
+key.</p>
+<p>Countries and key/value combination may appear in multiple definitions. Just
+make sure that each combination of country/key/value appears only once per
+file. Otherwise the import will fail with a UNIQUE INDEX constraint violation
+on import.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Importance/" class="btn btn-neutral float-right" title="Importance">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Country-Settings/" class="btn btn-neutral" title="Per-Country Data"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Country-Settings/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Importance/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
