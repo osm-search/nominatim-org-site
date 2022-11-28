@@ -433,3 +433,15 @@ div.two-column div p:nth-child(1) {
     padding: 0.2em;
     background: rgb(245, 245, 245)
 }
+
+.warning {
+    border: 1px solid #ffa0a0;
+    border-radius: 2px;
+    background-image: url('/img/warning.png');
+    background-repeat: no-repeat;
+    background-position: 8px 8px;
+    background-size: 20px 20px;
+    background-color: #fff0f0;
+    padding: 0 10px 0 40px;
+}
+
