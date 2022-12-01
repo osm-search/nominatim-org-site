@@ -5,10 +5,8 @@ author: Sarah Hoffmann (lonvia)
 tags: import flex-output
 ---
 
-This tutorial uses an **experimental** feature of Nominatim. You will need
-the latest release to make it work. Please use with care and be aware that
-details of the process may change in the future.
-{:.warning}
+This tutorial shows how to set up a custom import style which creates a
+rendering database next to the geocoding database.
 
 Since version 4.2.0 Nominatim allows to use osm2pgsql's
 [flex output](https://osm2pgsql.org/doc/manual.html#the-flex-output)
@@ -20,8 +18,10 @@ additional tables next to the ones needed by Nominatim. This paves the road
 to a much requested feature: running geocoding and rendering maps from the
 very same database.
 
-This tutorial shows how to set up a custom import style which creates a
-rendering database next to the geocoding database.
+This tutorial uses an **experimental** feature of Nominatim. You will need
+the latest release to make it work. Please use with care and be aware that
+details of the process may change in the future.
+{:.warning}
 
 ## Choosing the import styles
 
