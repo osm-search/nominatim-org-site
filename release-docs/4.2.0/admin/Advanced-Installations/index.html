@@ -1,90 +1,84 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  <link rel="canonical" href="https://nominatim.org/admin/Advanced-Installations/">
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Advanced Installations - Nominatim 4.2.0</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
-
-  <link rel="stylesheet" href="../../css/theme.css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
-  <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
-  <link href="../../extra.css" rel="stylesheet" />
-  <link href="../../styles.css" rel="stylesheet" />
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Advanced Installations";
-    var mkdocs_page_input_path = "admin/Advanced-Installations.md";
-    var mkdocs_page_url = "/admin/Advanced-Installations/";
-  </script>
-  
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nominatim.org/admin/Advanced-Installations/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Advanced Installations - Nominatim 4.2.0</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../extra.css" rel="stylesheet" />
+        <link href="../../styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Advanced Installations";
+        var mkdocs_page_input_path = "admin/Advanced-Installations.md";
+        var mkdocs_page_url = "/admin/Advanced-Installations/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> Nominatim 4.2.0</a>
-        <div role="search">
+          <a href="../.." class="icon icon-home"> Nominatim 4.2.0
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">API Reference</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Administration Guide</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../Installation/">Basic Installation</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../Import/">Import</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../Update/">Update</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../Deployment/">Deploy</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../Setup-Nominatim-UI/">Nominatim UI</a>
-                    </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Advanced Installations</a>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Administration Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Installation/">Basic Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Import/">Import</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Update/">Update</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Deployment/">Deploy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Setup-Nominatim-UI/">Nominatim UI</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Advanced Installations</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#importing-multiple-regions-without-updates">Importing multiple regions (without updates)</a>
     </li>
@@ -109,104 +103,89 @@
     <li class="toctree-l2"><a class="reference internal" href="#moving-the-database-to-another-machine">Moving the database to another machine</a>
     </li>
     </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../Maintenance/">Maintenance</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../Migration/">Migration from older Versions</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../Faq/">Troubleshooting</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Customization Guide</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Overview/">Overview</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Import-Styles/">Import Styles</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Settings/">Configuration Settings</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Country-Settings/">Per-Country Data</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Ranking/">Place Ranking</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Importance/">Importance</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Tokenizers/">Tokenizers</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Special-Phrases/">Special Phrases</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Tiger/">External data: US housenumbers from TIGER</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Postcodes/">External data: Postcodes</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Developers Guide</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Architecture Overview</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Database-Layout/">Database Layout</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Indexing/">Indexing</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Tokenizers/">Tokenizers</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../develop/ICU-Tokenizer-Modules/">Custom modules for ICU tokenizer</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Development-Environment/">Setup for Development</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../develop/Testing/">Testing</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../develop/data-sources/">External Data Sources</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Appendix</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-22/">Installation on Ubuntu 22</a>
-                    </li>
-                </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Maintenance/">Maintenance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Migration/">Migration from older Versions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Faq/">Troubleshooting</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Customization Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Import-Styles/">Import Styles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Settings/">Configuration Settings</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Country-Settings/">Per-Country Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Ranking/">Place Ranking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Importance/">Importance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Tokenizers/">Tokenizers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Special-Phrases/">Special Phrases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Tiger/">External data: US housenumbers from TIGER</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Postcodes/">External data: Postcodes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Architecture Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Database-Layout/">Database Layout</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Indexing/">Indexing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Tokenizers/">Tokenizers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/ICU-Tokenizer-Modules/">Custom modules for ICU tokenizer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Development-Environment/">Setup for Development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Testing/">Testing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/data-sources/">External Data Sources</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-22/">Installation on Ubuntu 22</a>
+                  </li>
+              </ul>
       </div>
     </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">Nominatim 4.2.0</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Nominatim 4.2.0</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
-    
-      
-        
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Administration Guide &raquo;</li>
-        
-      
-    
-    <li>Advanced Installations</li>
+      <li>Advanced Installations</li>
     <li class="wy-breadcrumbs-aside">
-      
-        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/admin/Advanced-Installations.md"
-          class="icon icon-github"> Edit on GitHub</a>
-      
+          <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/admin/Advanced-Installations.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
-  
   <hr/>
 </div>
-
-          <div role="main">
-            <div class="section">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
                 <h1 id="advanced-installations">Advanced installations<a class="headerlink" href="#advanced-installations" title="Permanent link"></a></h1>
 <p>This page contains instructions for setting up multiple countries in 
@@ -216,14 +195,14 @@ installed the Nominatim software itself, if not return to the
 <h2 id="importing-multiple-regions-without-updates">Importing multiple regions (without updates)<a class="headerlink" href="#importing-multiple-regions-without-updates" title="Permanent link"></a></h2>
 <p>To import multiple regions in your database you can simply give multiple
 OSM files to the import command:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">nominatim</span> <span class="kn">import</span> <span class="o">--</span><span class="n">osm</span><span class="o">-</span><span class="nb">file</span> <span class="n">file1</span><span class="o">.</span><span class="n">pbf</span> <span class="o">--</span><span class="n">osm</span><span class="o">-</span><span class="nb">file</span> <span class="n">file2</span><span class="o">.</span><span class="n">pbf</span>
+<div class="codehilite"><pre><span></span><code><span class="n">nominatim</span> <span class="kn">import</span> <span class="o">--</span><span class="n">osm</span><span class="o">-</span><span class="n">file</span> <span class="n">file1</span><span class="o">.</span><span class="n">pbf</span> <span class="o">--</span><span class="n">osm</span><span class="o">-</span><span class="n">file</span> <span class="n">file2</span><span class="o">.</span><span class="n">pbf</span>
 </code></pre></div>
 
 <p>If you already have imported a file and want to add another one, you can
 use the add-data function to import the additional data as follows:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">nominatim add-data --file &lt;FILE&gt;</span>
-<span class="err">nominatim refresh --postcodes</span>
-<span class="err">nominatim index -j &lt;NUMBER OF THREADS&gt;</span>
+<div class="codehilite"><pre><span></span><code>nominatim add-data --file &lt;FILE&gt;
+nominatim refresh --postcodes
+nominatim index -j &lt;NUMBER OF THREADS&gt;
 </code></pre></div>
 
 <p>Please note that adding additional data is always significantly slower than
@@ -234,15 +213,15 @@ with updates, then you can use the scripts provided in the <code>utils</code> di
 <p>These scripts will set up an <code>update</code> directory in your project directory,
 which has the following structure:</p>
 <div class="codehilite"><pre><span></span><code>update
-    ├── europe
-    │   ├── andorra
-    │   │   └── sequence.state
-    │   └── monaco
-    │       └── sequence.state
-    └── tmp
-        └── europe
-                ├── andorra-latest.osm.pbf
-                └── monaco-latest.osm.pbf
+<span class="w">    </span>├──<span class="w"> </span>europe
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>andorra
+<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>sequence.state
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>monaco
+<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>sequence.state
+<span class="w">    </span>└──<span class="w"> </span>tmp
+<span class="w">        </span>└──<span class="w"> </span>europe
+<span class="w">                </span>├──<span class="w"> </span>andorra-latest.osm.pbf
+<span class="w">                </span>└──<span class="w"> </span>monaco-latest.osm.pbf
 </code></pre></div>
 
 <p>The <code>sequence.state</code> files contain the sequence ID for each region. They will
@@ -261,7 +240,7 @@ into the project directory.</p>
 <ol>
 <li>
 <p>List of countries. e.g.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">COUNTRIES=&quot;europe/monaco europe/andorra&quot;</span>
+<div class="codehilite"><pre><span></span><code>COUNTRIES=&quot;europe/monaco europe/andorra&quot;
 </code></pre></div>
 
 </li>
@@ -275,19 +254,19 @@ into the project directory.</p>
 <li>
 <p>Followup in the update script can be set according to your installation.
    E.g. for Photon,</p>
-<div class="codehilite"><pre><span></span><code><span class="err">FOLLOWUP=&quot;curl http://localhost:2322/nominatim-update&quot;</span>
+<div class="codehilite"><pre><span></span><code>FOLLOWUP=&quot;curl http://localhost:2322/nominatim-update&quot;
 </code></pre></div>
 
 <p>will handle the indexing.</p>
 </li>
 </ol>
 <p>To start the initial import, change into the project directory and run</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    bash import_multiple_regions.sh</span>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">bash</span><span class="w"> </span><span class="n">import_multiple_regions</span><span class="p">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <h3 id="updating-the-database">Updating the database<a class="headerlink" href="#updating-the-database" title="Permanent link"></a></h3>
 <p>Change into the project directory and run the following command:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">bash update_database.sh</span>
+<div class="codehilite"><pre><span></span><code>bash update_database.sh
 </code></pre></div>
 
 <p>This will get diffs from the replication server, import diffs and index
@@ -311,14 +290,14 @@ server. From the prerequisites you need at least cmake, gcc and the
 PostgreSQL server package.</p>
 <p>Clone or unpack the Nominatim source code, enter the source directory and
 create and enter a build directory.</p>
-<div class="codehilite"><pre><span></span><code><span class="nb">cd</span> Nominatim
-mkdir build
-<span class="nb">cd</span> build
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>Nominatim
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
 </code></pre></div>
 
 <p>Now configure cmake to only build the PostgreSQL module and build it:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">cmake -DBUILD_IMPORTER=off -DBUILD_API=off -DBUILD_TESTS=off -DBUILD_DOCS=off -DBUILD_OSM2PGSQL=off ..</span>
-<span class="err">make</span>
+<div class="codehilite"><pre><span></span><code>cmake -DBUILD_IMPORTER=off -DBUILD_API=off -DBUILD_TESTS=off -DBUILD_DOCS=off -DBUILD_OSM2PGSQL=off ..
+make
 </code></pre></div>
 
 <p>When done, you find the normalization library in <code>build/module/nominatim.so</code>.
@@ -374,7 +353,7 @@ of a full database.</p>
 instructions. Again, make sure to use the same version as the source machine.</p>
 <p>Create a project directory on your destination machine and set up the <code>.env</code>
 file to match the configuration on the source machine. Finally run</p>
-<div class="codehilite"><pre><span></span><code><span class="err">nominatim refresh --website</span>
+<div class="codehilite"><pre><span></span><code>nominatim refresh --website
 </code></pre></div>
 
 <p>to make sure that the local installation of Nominatim will be used.</p>
@@ -385,29 +364,21 @@ that PostgreSQL cannot find or access <code>nominatim.so</code> then rerun</p>
 <p>on the target machine to update the the location of the module.</p>
               
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Setup-Nominatim-UI/" class="btn btn-neutral float-left" title="Nominatim UI"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../Maintenance/" class="btn btn-neutral float-right" title="Maintenance">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../Setup-Nominatim-UI/" class="btn btn-neutral" title="Nominatim UI"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+          
         </div>
       </div>
 
@@ -415,11 +386,11 @@ that PostgreSQL cannot find or access <code>nominatim.so</code> then rerun</p>
 
   </div>
 
-  <div class="rst-versions" role="note" aria-label="versions">
+  <div class="rst-versions" role="note" aria-label="Versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     
         <span>
-          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/openstreetmap/Nominatim" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
         </span>
     
     

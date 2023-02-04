@@ -1,130 +1,124 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  <link rel="canonical" href="https://nominatim.org/develop/Tokenizers/">
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Tokenizers - Nominatim 4.2.0</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
-
-  <link rel="stylesheet" href="../../css/theme.css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
-  <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
-  <link href="../../extra.css" rel="stylesheet" />
-  <link href="../../styles.css" rel="stylesheet" />
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Tokenizers";
-    var mkdocs_page_input_path = "develop/Tokenizers.md";
-    var mkdocs_page_url = "/develop/Tokenizers/";
-  </script>
-  
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nominatim.org/develop/Tokenizers/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Tokenizers - Nominatim 4.2.0</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../extra.css" rel="stylesheet" />
+        <link href="../../styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Tokenizers";
+        var mkdocs_page_input_path = "develop/Tokenizers.md";
+        var mkdocs_page_url = "/develop/Tokenizers/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> Nominatim 4.2.0</a>
-        <div role="search">
+          <a href="../.." class="icon icon-home"> Nominatim 4.2.0
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">API Reference</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Administration Guide</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Installation/">Basic Installation</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Import/">Import</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Update/">Update</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Deployment/">Deploy</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Setup-Nominatim-UI/">Nominatim UI</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Advanced-Installations/">Advanced Installations</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Maintenance/">Maintenance</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Migration/">Migration from older Versions</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../admin/Faq/">Troubleshooting</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Customization Guide</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Overview/">Overview</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Import-Styles/">Import Styles</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Settings/">Configuration Settings</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Country-Settings/">Per-Country Data</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Ranking/">Place Ranking</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Importance/">Importance</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Tokenizers/">Tokenizers</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Special-Phrases/">Special Phrases</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Tiger/">External data: US housenumbers from TIGER</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../customize/Postcodes/">External data: Postcodes</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Developers Guide</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../overview/">Architecture Overview</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../Database-Layout/">Database Layout</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../Indexing/">Indexing</a>
-                    </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Tokenizers</a>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Administration Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Installation/">Basic Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Import/">Import</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Update/">Update</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Deployment/">Deploy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Setup-Nominatim-UI/">Nominatim UI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Advanced-Installations/">Advanced Installations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Maintenance/">Maintenance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Migration/">Migration from older Versions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Faq/">Troubleshooting</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Customization Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Import-Styles/">Import Styles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Settings/">Configuration Settings</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Country-Settings/">Per-Country Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Ranking/">Place Ranking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Importance/">Importance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Tokenizers/">Tokenizers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Special-Phrases/">Special Phrases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Tiger/">External data: US housenumbers from TIGER</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../customize/Postcodes/">External data: Postcodes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../overview/">Architecture Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Database-Layout/">Database Layout</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Indexing/">Indexing</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Tokenizers</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#generic-architecture">Generic Architecture</a>
         <ul>
@@ -193,64 +187,49 @@
         </ul>
     </li>
     </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../ICU-Tokenizer-Modules/">Custom modules for ICU tokenizer</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../Development-Environment/">Setup for Development</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../Testing/">Testing</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../data-sources/">External Data Sources</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Appendix</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-22/">Installation on Ubuntu 22</a>
-                    </li>
-                </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ICU-Tokenizer-Modules/">Custom modules for ICU tokenizer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Development-Environment/">Setup for Development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Testing/">Testing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../data-sources/">External Data Sources</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-22/">Installation on Ubuntu 22</a>
+                  </li>
+              </ul>
       </div>
     </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">Nominatim 4.2.0</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Nominatim 4.2.0</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
-    
-      
-        
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Developers Guide &raquo;</li>
-        
-      
-    
-    <li>Tokenizers</li>
+      <li>Tokenizers</li>
     <li class="wy-breadcrumbs-aside">
-      
-        <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/develop/Tokenizers.md"
-          class="icon icon-github"> Edit on GitHub</a>
-      
+          <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/develop/Tokenizers.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
-  
   <hr/>
 </div>
-
-          <div role="main">
-            <div class="section">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
                 <h1 id="tokenizers">Tokenizers<a class="headerlink" href="#tokenizers" title="Permanent link"></a></h1>
 <p>The tokenizer is the component of Nominatim that is responsible for
@@ -375,14 +354,14 @@ active at any time.</p>
         <details class="quote">
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">AbstractTokenizer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; The tokenizer instance is the central instance of the tokenizer in</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; The tokenizer instance is the central instance of the tokenizer in</span>
 <span class="sd">        the system. There will only be a single instance of the tokenizer</span>
 <span class="sd">        active at any time.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">init_new_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">,</span> <span class="n">init_db</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Set up a new tokenizer for the database.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Set up a new tokenizer for the database.</span>
 
 <span class="sd">            The function should copy all necessary data into the project</span>
 <span class="sd">            directory or save it in the property table to make sure that</span>
@@ -402,7 +381,7 @@ active at any time.</p>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">init_from_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Initialise the tokenizer from an existing database setup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Initialise the tokenizer from an existing database setup.</span>
 
 <span class="sd">            The function should load all previously saved configuration from</span>
 <span class="sd">            the project directory and/or the property table.</span>
@@ -414,7 +393,7 @@ active at any time.</p>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">finalize_import</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; This function is called at the very end of an import when all</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; This function is called at the very end of an import when all</span>
 <span class="sd">            data has been imported and indexed. The tokenizer may create</span>
 <span class="sd">            at this point any additional indexes and data structures needed</span>
 <span class="sd">            during query time.</span>
@@ -426,7 +405,7 @@ active at any time.</p>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">update_sql_functions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Update the SQL part of the tokenizer. This function is called</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Update the SQL part of the tokenizer. This function is called</span>
 <span class="sd">            automatically on migrations or may be called explicitly by the</span>
 <span class="sd">            user through the `nominatim refresh --functions` command.</span>
 
@@ -440,7 +419,7 @@ active at any time.</p>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">check_database</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot; Check that the database is set up correctly and ready for being</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Check that the database is set up correctly and ready for being</span>
 <span class="sd">            queried.</span>
 
 <span class="sd">            Arguments:</span>
@@ -455,7 +434,7 @@ active at any time.</p>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">update_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Recompute any tokenizer statistics necessary for efficient lookup.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Recompute any tokenizer statistics necessary for efficient lookup.</span>
 <span class="sd">            This function is meant to be called from time to time by the user</span>
 <span class="sd">            to improve performance. However, the tokenizer must not depend on</span>
 <span class="sd">            it to be called in order to work.</span>
@@ -464,14 +443,14 @@ active at any time.</p>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">update_word_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Do house-keeping on the tokenizers internal data structures.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Do house-keeping on the tokenizers internal data structures.</span>
 <span class="sd">            Remove unused word tokens, resort data etc.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">name_analyzer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbstractAnalyzer</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Create a new analyzer for tokenizing names and queries</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Create a new analyzer for tokenizing names and queries</span>
 <span class="sd">            using this tokinzer. Analyzers are context managers and should</span>
 <span class="sd">            be used accordingly:</span>
 
@@ -551,7 +530,7 @@ how to resolve the issue. If everything is okay, return <code>None</code>.</p></
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">check_database</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot; Check that the database is set up correctly and ready for being</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Check that the database is set up correctly and ready for being</span>
 <span class="sd">        queried.</span>
 
 <span class="sd">        Arguments:</span>
@@ -607,7 +586,7 @@ during query time.</p>
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">finalize_import</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; This function is called at the very end of an import when all</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; This function is called at the very end of an import when all</span>
 <span class="sd">        data has been imported and indexed. The tokenizer may create</span>
 <span class="sd">        at this point any additional indexes and data structures needed</span>
 <span class="sd">        during query time.</span>
@@ -659,7 +638,7 @@ the project directory and/or the property table.</p>
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">init_from_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Initialise the tokenizer from an existing database setup.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Initialise the tokenizer from an existing database setup.</span>
 
 <span class="sd">        The function should load all previously saved configuration from</span>
 <span class="sd">        the project directory and/or the property table.</span>
@@ -717,7 +696,7 @@ tokenizers.</p></li>
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">init_new_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">,</span> <span class="n">init_db</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Set up a new tokenizer for the database.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Set up a new tokenizer for the database.</span>
 
 <span class="sd">        The function should copy all necessary data into the project</span>
 <span class="sd">        directory or save it in the property table to make sure that</span>
@@ -756,8 +735,8 @@ tokenizers.</p></li>
       <p>Create a new analyzer for tokenizing names and queries
 using this tokinzer. Analyzers are context managers and should
 be used accordingly:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">with tokenizer.name_analyzer() as analyzer:</span>
-<span class="err">    analyser.tokenize()</span>
+<div class="codehilite"><pre><span></span><code>with tokenizer.name_analyzer() as analyzer:
+    analyser.tokenize()
 </code></pre></div>
 
 <p>When used outside the with construct, the caller must ensure to
@@ -767,7 +746,7 @@ call the close() function before destructing the analyzer.</p>
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">name_analyzer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbstractAnalyzer</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Create a new analyzer for tokenizing names and queries</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a new analyzer for tokenizing names and queries</span>
 <span class="sd">        using this tokinzer. Analyzers are context managers and should</span>
 <span class="sd">        be used accordingly:</span>
 
@@ -825,7 +804,7 @@ data structures or data itself must not be changed by this function.</p>
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">update_sql_functions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Update the SQL part of the tokenizer. This function is called</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Update the SQL part of the tokenizer. This function is called</span>
 <span class="sd">        automatically on migrations or may be called explicitly by the</span>
 <span class="sd">        user through the `nominatim refresh --functions` command.</span>
 
@@ -864,7 +843,7 @@ it to be called in order to work.</p>
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">update_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Recompute any tokenizer statistics necessary for efficient lookup.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Recompute any tokenizer statistics necessary for efficient lookup.</span>
 <span class="sd">        This function is meant to be called from time to time by the user</span>
 <span class="sd">        to improve performance. However, the tokenizer must not depend on</span>
 <span class="sd">        it to be called in order to work.</span>
@@ -896,7 +875,7 @@ Remove unused word tokens, resort data etc.</p>
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">update_word_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Do house-keeping on the tokenizers internal data structures.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Do house-keeping on the tokenizers internal data structures.</span>
 <span class="sd">        Remove unused word tokens, resort data etc.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
@@ -931,7 +910,7 @@ structures must be synchronised accordingly.</p>
         <details class="quote">
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">AbstractAnalyzer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; The analyzer provides the functions for analysing names and building</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; The analyzer provides the functions for analysing names and building</span>
 <span class="sd">        the token database.</span>
 
 <span class="sd">        Analyzers are instantiated on a per-thread base. Access to global data</span>
@@ -948,13 +927,13 @@ structures must be synchronised accordingly.</p>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Free all resources used by the analyzer.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Free all resources used by the analyzer.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">get_word_token_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">words</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot; Return token information for the given list of words.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return token information for the given list of words.</span>
 
 <span class="sd">            The function is used for testing and debugging only</span>
 <span class="sd">            and does not need to be particularly efficient.</span>
@@ -973,7 +952,7 @@ structures must be synchronised accordingly.</p>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">normalize_postcode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">postcode</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Convert the postcode to its standardized form.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Convert the postcode to its standardized form.</span>
 
 <span class="sd">            This function must yield exactly the same result as the SQL function</span>
 <span class="sd">            `token_normalized_postcode()`.</span>
@@ -988,7 +967,7 @@ structures must be synchronised accordingly.</p>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">update_postcodes_from_db</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Update the tokenizer&#39;s postcode tokens from the current content</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Update the tokenizer&#39;s postcode tokens from the current content</span>
 <span class="sd">            of the `location_postcode` table.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -997,7 +976,7 @@ structures must be synchronised accordingly.</p>
     <span class="k">def</span> <span class="nf">update_special_phrases</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                                <span class="n">phrases</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span>
                                <span class="n">should_replace</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Update the tokenizer&#39;s special phrase tokens from the given</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Update the tokenizer&#39;s special phrase tokens from the given</span>
 <span class="sd">            list of special phrases.</span>
 
 <span class="sd">            Arguments:</span>
@@ -1011,7 +990,7 @@ structures must be synchronised accordingly.</p>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">add_country_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">country_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">names</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Add the given names to the tokenizer&#39;s list of country tokens.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Add the given names to the tokenizer&#39;s list of country tokens.</span>
 
 <span class="sd">            Arguments:</span>
 <span class="sd">                country_code: two-letter country code for the country the names</span>
@@ -1022,7 +1001,7 @@ structures must be synchronised accordingly.</p>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">process_place</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">place</span><span class="p">:</span> <span class="n">PlaceInfo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; Extract tokens for the given place and compute the</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Extract tokens for the given place and compute the</span>
 <span class="sd">            information to be handed to the PL/pgSQL processor for building</span>
 <span class="sd">            the search index.</span>
 
@@ -1086,7 +1065,7 @@ structures must be synchronised accordingly.</p>
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">add_country_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">country_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">names</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Add the given names to the tokenizer&#39;s list of country tokens.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Add the given names to the tokenizer&#39;s list of country tokens.</span>
 
 <span class="sd">        Arguments:</span>
 <span class="sd">            country_code: two-letter country code for the country the names</span>
@@ -1119,7 +1098,7 @@ structures must be synchronised accordingly.</p>
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Free all resources used by the analyzer.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Free all resources used by the analyzer.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
         </details>
@@ -1185,7 +1164,7 @@ found for the given words. Each list entry is a tuple of
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">get_word_token_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">words</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
-    <span class="sd">&quot;&quot;&quot; Return token information for the given list of words.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Return token information for the given list of words.</span>
 
 <span class="sd">        The function is used for testing and debugging only</span>
 <span class="sd">        and does not need to be particularly efficient.</span>
@@ -1260,7 +1239,7 @@ found for the given words. Each list entry is a tuple of
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">normalize_postcode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">postcode</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Convert the postcode to its standardized form.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Convert the postcode to its standardized form.</span>
 
 <span class="sd">        This function must yield exactly the same result as the SQL function</span>
 <span class="sd">        `token_normalized_postcode()`.</span>
@@ -1332,7 +1311,7 @@ the database via the <code>token_info</code> field.</p></li>
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">process_place</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">place</span><span class="p">:</span> <span class="n">PlaceInfo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Extract tokens for the given place and compute the</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Extract tokens for the given place and compute the</span>
 <span class="sd">        information to be handed to the PL/pgSQL processor for building</span>
 <span class="sd">        the search index.</span>
 
@@ -1370,7 +1349,7 @@ of the <code>location_postcode</code> table.</p>
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">update_postcodes_from_db</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Update the tokenizer&#39;s postcode tokens from the current content</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Update the tokenizer&#39;s postcode tokens from the current content</span>
 <span class="sd">        of the `location_postcode` table.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
@@ -1422,7 +1401,7 @@ list of special phrases.</p>
 <span class="k">def</span> <span class="nf">update_special_phrases</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                            <span class="n">phrases</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span>
                            <span class="n">should_replace</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; Update the tokenizer&#39;s special phrase tokens from the given</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Update the tokenizer&#39;s special phrase tokens from the given</span>
 <span class="sd">        list of special phrases.</span>
 
 <span class="sd">        Arguments:</span>
@@ -1455,14 +1434,14 @@ search tables. If the tokenizer needs additional SQL functions for private
 use, then these functions must be prefixed with <code>token_</code> in order to ensure
 that there are no naming conflicts with the SQL indexer code.</p>
 <p>The following functions are expected:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span> <span class="n">token_get_name_search_tokens</span><span class="p">(</span><span class="n">info</span> <span class="n">JSONB</span><span class="p">)</span> <span class="k">RETURNS</span> <span class="nb">INTEGER</span><span class="p">[]</span>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">token_get_name_search_tokens</span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="n">JSONB</span><span class="p">)</span><span class="w"> </span><span class="k">RETURNS</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">[]</span>
 </code></pre></div>
 
 <p>Return an array of token IDs of search terms that should match
 the name(s) for the given place. These tokens are used to look up the place
 by name and, where the place functions as part of an address for another place,
 by address. Must return NULL when the place has no name.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span> <span class="n">token_get_name_match_tokens</span><span class="p">(</span><span class="n">info</span> <span class="n">JSONB</span><span class="p">)</span> <span class="k">RETURNS</span> <span class="nb">INTEGER</span><span class="p">[]</span>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">token_get_name_match_tokens</span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="n">JSONB</span><span class="p">)</span><span class="w"> </span><span class="k">RETURNS</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">[]</span>
 </code></pre></div>
 
 <p>Return an array of token IDs of full names of the place that should be used
@@ -1470,44 +1449,44 @@ to match addresses. The list of match tokens is usually more strict than
 search tokens as it is used to find a match between two OSM tag values which
 are expected to contain matching full names. Partial terms should not be
 used for match tokens. Must return NULL when the place has no name.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span> <span class="n">token_get_housenumber_search_tokens</span><span class="p">(</span><span class="n">info</span> <span class="n">JSONB</span><span class="p">)</span> <span class="k">RETURNS</span> <span class="nb">INTEGER</span><span class="p">[]</span>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">token_get_housenumber_search_tokens</span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="n">JSONB</span><span class="p">)</span><span class="w"> </span><span class="k">RETURNS</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">[]</span>
 </code></pre></div>
 
 <p>Return an array of token IDs of house number tokens that apply to the place.
 Note that a place may have multiple house numbers, for example when apartments
 each have their own number. Must be NULL when the place has no house numbers.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span> <span class="n">token_normalized_housenumber</span><span class="p">(</span><span class="n">info</span> <span class="n">JSONB</span><span class="p">)</span> <span class="k">RETURNS</span> <span class="nb">TEXT</span>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">token_normalized_housenumber</span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="n">JSONB</span><span class="p">)</span><span class="w"> </span><span class="k">RETURNS</span><span class="w"> </span><span class="nb">TEXT</span>
 </code></pre></div>
 
 <p>Return the house number(s) in the normalized form that can be matched against
 a house number token text. If a place has multiple house numbers they must
 be listed with a semicolon as delimiter. Must be NULL when the place has no
 house numbers.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span> <span class="n">token_matches_street</span><span class="p">(</span><span class="n">info</span> <span class="n">JSONB</span><span class="p">,</span> <span class="n">street_tokens</span> <span class="nb">INTEGER</span><span class="p">[])</span> <span class="k">RETURNS</span> <span class="nb">BOOLEAN</span>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">token_matches_street</span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="n">JSONB</span><span class="p">,</span><span class="w"> </span><span class="n">street_tokens</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">[])</span><span class="w"> </span><span class="k">RETURNS</span><span class="w"> </span><span class="nb">BOOLEAN</span>
 </code></pre></div>
 
 <p>Check if the given tokens (previously saved from <code>token_get_name_match_tokens()</code>)
 match against the <code>addr:street</code> tag name. Must return either NULL or FALSE
 when the place has no <code>addr:street</code> tag.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span> <span class="n">token_matches_place</span><span class="p">(</span><span class="n">info</span> <span class="n">JSONB</span><span class="p">,</span> <span class="n">place_tokens</span> <span class="nb">INTEGER</span><span class="p">[])</span> <span class="k">RETURNS</span> <span class="nb">BOOLEAN</span>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">token_matches_place</span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="n">JSONB</span><span class="p">,</span><span class="w"> </span><span class="n">place_tokens</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">[])</span><span class="w"> </span><span class="k">RETURNS</span><span class="w"> </span><span class="nb">BOOLEAN</span>
 </code></pre></div>
 
 <p>Check if the given tokens (previously saved from <code>token_get_name_match_tokens()</code>)
 match against the <code>addr:place</code> tag name. Must return either NULL or FALSE
 when the place has no <code>addr:place</code> tag.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span> <span class="n">token_addr_place_search_tokens</span><span class="p">(</span><span class="n">info</span> <span class="n">JSONB</span><span class="p">)</span> <span class="k">RETURNS</span> <span class="nb">INTEGER</span><span class="p">[]</span>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">token_addr_place_search_tokens</span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="n">JSONB</span><span class="p">)</span><span class="w"> </span><span class="k">RETURNS</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">[]</span>
 </code></pre></div>
 
 <p>Return the search token IDs extracted from the <code>addr:place</code> tag. These tokens
 are used for searches by address when no matching place can be found in the
 database. Must be NULL when the place has no <code>addr:place</code> tag.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span> <span class="n">token_get_address_keys</span><span class="p">(</span><span class="n">info</span> <span class="n">JSONB</span><span class="p">)</span> <span class="k">RETURNS</span> <span class="k">SETOF</span> <span class="nb">TEXT</span>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">token_get_address_keys</span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="n">JSONB</span><span class="p">)</span><span class="w"> </span><span class="k">RETURNS</span><span class="w"> </span><span class="k">SETOF</span><span class="w"> </span><span class="nb">TEXT</span>
 </code></pre></div>
 
 <p>Return the set of keys for which address information is provided. This
 should correspond to the list of (relevant) <code>addr:*</code> tags with the <code>addr:</code>
 prefix removed or the keys used in the <code>address</code> dictionary of the place info.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span> <span class="n">token_get_address_search_tokens</span><span class="p">(</span><span class="n">info</span> <span class="n">JSONB</span><span class="p">,</span> <span class="k">key</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="k">RETURNS</span> <span class="nb">INTEGER</span><span class="p">[]</span>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">token_get_address_search_tokens</span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="n">JSONB</span><span class="p">,</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">)</span><span class="w"> </span><span class="k">RETURNS</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">[]</span>
 </code></pre></div>
 
 <p>Return the array of search tokens for the given address part. <code>key</code> can be
@@ -1515,7 +1494,7 @@ expected to be one of those returned with <code>token_get_address_keys()</code>.
 search tokens are added to the address search vector of the place, when no
 corresponding OSM object could be found for the given address part from which
 to copy the name information.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span> <span class="n">token_matches_address</span><span class="p">(</span><span class="n">info</span> <span class="n">JSONB</span><span class="p">,</span> <span class="k">key</span> <span class="nb">TEXT</span><span class="p">,</span> <span class="n">tokens</span> <span class="nb">INTEGER</span><span class="p">[])</span>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">token_matches_address</span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="n">JSONB</span><span class="p">,</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">tokens</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">[])</span>
 </code></pre></div>
 
 <p>Check if the given tokens match against the address part <code>key</code>.</p>
@@ -1524,12 +1503,12 @@ from <code>token_get_name_search_tokens()</code>, <em>not</em> from the match to
 is an historical oddity which will be fixed at some point in the future.
 Currently, tokenizers are encouraged to make sure that matching works against
 both the search token list and the match token list.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span> <span class="n">token_get_postcode</span><span class="p">(</span><span class="n">info</span> <span class="n">JSONB</span><span class="p">)</span> <span class="k">RETURNS</span> <span class="nb">TEXT</span>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">token_get_postcode</span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="n">JSONB</span><span class="p">)</span><span class="w"> </span><span class="k">RETURNS</span><span class="w"> </span><span class="nb">TEXT</span>
 </code></pre></div>
 
 <p>Return the postcode for the object, if any exists. The postcode must be in
 the form that should also be presented to the end-user.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span> <span class="n">token_strip_info</span><span class="p">(</span><span class="n">info</span> <span class="n">JSONB</span><span class="p">)</span> <span class="k">RETURNS</span> <span class="n">JSONB</span>
+<div class="codehilite"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="n">token_strip_info</span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="n">JSONB</span><span class="p">)</span><span class="w"> </span><span class="k">RETURNS</span><span class="w"> </span><span class="n">JSONB</span>
 </code></pre></div>
 
 <p>Return the part of the <code>token_info</code> field that should be stored in the database
@@ -1592,29 +1571,21 @@ strings given in the word sets. The value is a list of search tokens. Thus
 a single string in the list of word sets may refer to multiple search tokens.</p>
               
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Indexing/" class="btn btn-neutral float-left" title="Indexing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../ICU-Tokenizer-Modules/" class="btn btn-neutral float-right" title="Custom modules for ICU tokenizer">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../Indexing/" class="btn btn-neutral" title="Indexing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+          
         </div>
       </div>
 
@@ -1622,11 +1593,11 @@ a single string in the list of word sets may refer to multiple search tokens.</p
 
   </div>
 
-  <div class="rst-versions" role="note" aria-label="versions">
+  <div class="rst-versions" role="note" aria-label="Versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     
         <span>
-          <a href="https://github.com/openstreetmap/Nominatim/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/openstreetmap/Nominatim" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
         </span>
     
     
