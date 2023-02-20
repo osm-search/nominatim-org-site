@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nominatim.org/customize/Country-Settings/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Per-Country Data - Nominatim 4.2.1</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../extra.css" rel="stylesheet" />
+        <link href="../../styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Per-Country Data";
+        var mkdocs_page_input_path = "customize/Country-Settings.md";
+        var mkdocs_page_url = "/customize/Country-Settings/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Nominatim 4.2.1
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Administration Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Installation/">Basic Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Import/">Import</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Update/">Update</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Deployment/">Deploy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Setup-Nominatim-UI/">Nominatim UI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Advanced-Installations/">Advanced Installations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Maintenance/">Maintenance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Migration/">Migration from older Versions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Faq/">Troubleshooting</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Customization Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Import-Styles/">Import Styles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Settings/">Configuration Settings</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Per-Country Data</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#country-assignment">Country assignment</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#per-country-settings">Per-country settings</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#global-country-settings">Global country settings</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#partition">partition</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#languages">languages</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#names">names</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#postcode">postcode</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#other-country-specific-configuration">Other country-specific configuration</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Ranking/">Place Ranking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Importance/">Importance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Tokenizers/">Tokenizers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Special-Phrases/">Special Phrases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Tiger/">External data: US housenumbers from TIGER</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Postcodes/">External data: Postcodes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Architecture Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Database-Layout/">Database Layout</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Indexing/">Indexing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Tokenizers/">Tokenizers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/ICU-Tokenizer-Modules/">Custom modules for ICU tokenizer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Development-Environment/">Setup for Development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Testing/">Testing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/data-sources/">External Data Sources</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-22/">Installation on Ubuntu 22</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Nominatim 4.2.1</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Customization Guide &raquo;</li>
+      <li>Per-Country Data</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/customize/Country-Settings.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="customizing-per-country-data">Customizing Per-Country Data<a class="headerlink" href="#customizing-per-country-data" title="Permanent link"></a></h1>
+<p>Whenever an OSM is imported into Nominatim, the object is first assigned
+a country. Nominatim can use this information to adapt various aspects of
+the address computation to the local customs of the country. This section
+explains how country assignment works and the principal per-country
+localizations.</p>
+<h2 id="country-assignment">Country assignment<a class="headerlink" href="#country-assignment" title="Permanent link"></a></h2>
+<p>Countries are assigned on the basis of country data from the OpenStreetMap
+input data itself. Countries are expected to be tagged according to the
+<a href="https://wiki.openstreetmap.org/wiki/Tag:boundary%3Dadministrative">administrative boundary schema</a>:
+a OSM relation with <code>boundary=administrative</code> and <code>admin_level=2</code>. Nominatim
+uses the country code to distinguish the countries.</p>
+<p>If there is no country data available for a point, then Nominatim uses the
+fallback data imported from <code>data/country_osm_grid.sql.gz</code>. This was computed
+from OSM data as well but is guaranteed to cover all countries.</p>
+<p>Some OSM objects may also be located outside any country, for example a buoy
+in the middle of the ocean. These object do not get any country assigned and
+get a default treatment when it comes to localized handling of data.</p>
+<h2 id="per-country-settings">Per-country settings<a class="headerlink" href="#per-country-settings" title="Permanent link"></a></h2>
+<h3 id="global-country-settings">Global country settings<a class="headerlink" href="#global-country-settings" title="Permanent link"></a></h3>
+<p>The main place to configure settings per country is the file
+<code>settings/country_settings.yaml</code>. This file has one section per country that
+is recognised by Nominatim. Each section is tagged with the country code
+(in lower case) and contains the different localization information. Only
+countries which are listed in this file are taken into account for computations.</p>
+<p>For example, the section for Andorra looks like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">partition</span>:<span class="w"> </span><span class="mi">35</span>
+<span class="w">    </span><span class="nv">languages</span>:<span class="w"> </span><span class="nv">ca</span>
+<span class="w">    </span><span class="nv">names</span>:<span class="w"> </span><span class="o">!</span><span class="k">include</span><span class="w"> </span><span class="nv">country</span><span class="o">-</span><span class="nv">names</span><span class="o">/</span><span class="nv">ad</span>.<span class="nv">yaml</span>
+<span class="w">    </span><span class="nv">postcode</span>:
+<span class="w">      </span><span class="nv">pattern</span>:<span class="w"> </span><span class="s2">&quot;(ddd)&quot;</span>
+<span class="w">      </span><span class="nv">output</span>:<span class="w"> </span><span class="nv">AD</span>\<span class="mi">1</span>
+</code></pre></div>
+
+<p>The individual settings are described below.</p>
+<h4 id="partition"><code>partition</code><a class="headerlink" href="#partition" title="Permanent link"></a></h4>
+<p>Nominatim internally splits the data into multiple tables to improve
+performance. The partition number tells Nominatim into which table to put
+the country. This is purely internal management and has no effect on the
+output data.</p>
+<p>The default is to have one partition per country.</p>
+<h4 id="languages"><code>languages</code><a class="headerlink" href="#languages" title="Permanent link"></a></h4>
+<p>A comma-separated list of ISO-639 language codes of default languages in the
+country. These are the languages used in name tags without a language suffix.
+Note that this is not necessarily the same as the list of official languages
+in the country. There may be officially recognised languages in a country
+which are only ever used in name tags with the appropriate language suffixes.
+Conversely, a non-official language may appear a lot in the name tags, for
+example when used as an unofficial Lingua Franca.</p>
+<p>List the languages in order of frequency of appearance with the most frequently
+used language first. It is not recommended to add languages when there are only
+very few occurrences.</p>
+<p>If only one language is listed, then Nominatim will 'auto-complete' the
+language of names without an explicit language-suffix.</p>
+<h4 id="names"><code>names</code><a class="headerlink" href="#names" title="Permanent link"></a></h4>
+<p>List of names of the country and its translations. These names are used as
+a baseline. It is always possible to search countries by the given names, no
+matter what other names are in the OSM data. They are also used as a fallback
+when a needed translation is not available.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The list of names per country is currently fairly large because Nominatim
+supports translations in many languages per default. That is why the
+name lists have been separated out into extra files. You can find the
+name lists in the file <code>settings/country-names/&lt;country code&gt;.yaml</code>.
+The names section in the main country settings file only refers to these
+files via the special <code>!include</code> directive.</p>
+</div>
+<h4 id="postcode"><code>postcode</code><a class="headerlink" href="#postcode" title="Permanent link"></a></h4>
+<p>Describes the format of the postcode that is in use in the country.</p>
+<p>When a country has no official postcodes, set this to no. Example:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">ae</span><span class="o">:</span>
+<span class="w">    </span><span class="n">postcode</span><span class="o">:</span><span class="w"> </span><span class="n">no</span>
+</code></pre></div>
+
+<p>When a country has a postcode, you need to state the postcode pattern and
+the default output format. Example:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">bm</span><span class="o">:</span>
+<span class="w">    </span><span class="n">postcode</span><span class="o">:</span>
+<span class="w">      </span><span class="n">pattern</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;(ll)[ -]?(dd)&quot;</span>
+<span class="w">      </span><span class="n">output</span><span class="o">:</span><span class="w"> </span><span class="o">\</span><span class="mi">1</span><span class="w"> </span><span class="o">\</span><span class="mi">2</span>
+</code></pre></div>
+
+<p>The <strong>pattern</strong> is a regular expression that describes the possible formats
+accepted as a postcode. The pattern follows the standard syntax for
+<a href="https://docs.python.org/3/library/re.html#regular-expression-syntax">regular expressions in Python</a>
+with two extra shortcuts: <code>d</code> is a shortcut for a single digit([0-9])
+and <code>l</code> for a single ASCII letter ([A-Z]).</p>
+<p>Use match groups to indicate groups in the postcode that may optionally be
+separated with a space or a hyphen.</p>
+<p>For example, the postcode for Bermuda above always consists of two letters
+and two digits. They may optionally be separated by a space or hyphen. That
+means that Nominatim will consider <code>AB56</code>, <code>AB 56</code> and <code>AB-56</code> spelling variants
+for one and the same postcode.</p>
+<p>Never add the country code in front of the postcode pattern. Nominatim will
+automatically accept variants with a country code prefix for all postcodes.</p>
+<p>The <strong>output</strong> field is an optional field that describes what the canonical
+spelling of the postcode should be. The format is the
+<a href="https://docs.python.org/3/library/re.html#re.Match.expand">regular expression expand syntax</a> referring back to the bracket groups in the pattern.</p>
+<p>Most simple postcodes only have one spelling variant. In that case, the
+<strong>output</strong> can be omitted. The postcode will simply be used as is.</p>
+<p>In the Bermuda example above, the canonical spelling would be to have a space
+between letters and digits.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When your postcode pattern covers multiple variants of the postcode, then
+you must explicitly state the canonical output or Nominatim will not
+handle the variations correctly.</p>
+</div>
+<h3 id="other-country-specific-configuration">Other country-specific configuration<a class="headerlink" href="#other-country-specific-configuration" title="Permanent link"></a></h3>
+<p>There are some other configuration files where you can set localized settings
+according to the assigned country. These are:</p>
+<ul>
+<li><a href="../Ranking/">Place ranking configuration</a></li>
+</ul>
+<p>Please see the linked documentation sections for more information.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Settings/" class="btn btn-neutral float-left" title="Configuration Settings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Ranking/" class="btn btn-neutral float-right" title="Place Ranking">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Settings/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Ranking/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nominatim.org/customize/Settings/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Configuration Settings - Nominatim 4.2.1</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../../extra.css" rel="stylesheet" />
+        <link href="../../styles.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Configuration Settings";
+        var mkdocs_page_input_path = "customize/Settings.md";
+        var mkdocs_page_url = "/customize/Settings/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Nominatim 4.2.1
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Introduction</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Search/">Search</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Reverse/">Reverse</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Lookup/">Address Lookup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Details/">Details</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Status/">Status</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Output/">Place Output Formats</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/Faq/">FAQ</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Administration Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Installation/">Basic Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Import/">Import</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Update/">Update</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Deployment/">Deploy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Setup-Nominatim-UI/">Nominatim UI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Advanced-Installations/">Advanced Installations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Maintenance/">Maintenance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Migration/">Migration from older Versions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../admin/Faq/">Troubleshooting</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Customization Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Import-Styles/">Import Styles</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Configuration Settings</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#configuration-parameter-reference">Configuration Parameter Reference</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#import-and-database-settings">Import and Database Settings</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_database_dsn">NOMINATIM_DATABASE_DSN</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_database_webuser">NOMINATIM_DATABASE_WEBUSER</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_database_module_path">NOMINATIM_DATABASE_MODULE_PATH</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_tokenizer">NOMINATIM_TOKENIZER</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_tokenizer_config">NOMINATIM_TOKENIZER_CONFIG</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_max_word_frequency">NOMINATIM_MAX_WORD_FREQUENCY</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_limit_reindexing">NOMINATIM_LIMIT_REINDEXING</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_update_forward_dependencies">NOMINATIM_UPDATE_FORWARD_DEPENDENCIES</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_languages">NOMINATIM_LANGUAGES</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_term_normalization">NOMINATIM_TERM_NORMALIZATION</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_use_us_tiger_data">NOMINATIM_USE_US_TIGER_DATA</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_use_aux_location_data">NOMINATIM_USE_AUX_LOCATION_DATA</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_http_proxy">NOMINATIM_HTTP_PROXY</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_http_proxy_host">NOMINATIM_HTTP_PROXY_HOST</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_http_proxy_port">NOMINATIM_HTTP_PROXY_PORT</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_http_proxy_login">NOMINATIM_HTTP_PROXY_LOGIN</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_http_proxy_password">NOMINATIM_HTTP_PROXY_PASSWORD</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_osm2pgsql_binary">NOMINATIM_OSM2PGSQL_BINARY</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_wikipedia_data_path">NOMINATIM_WIKIPEDIA_DATA_PATH</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_address_level_config">NOMINATIM_ADDRESS_LEVEL_CONFIG</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_import_style">NOMINATIM_IMPORT_STYLE</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_flatnode_file">NOMINATIM_FLATNODE_FILE</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_tablespace_">NOMINATIM_TABLESPACE_*</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#replication-update-settings">Replication Update Settings</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_replication_url">NOMINATIM_REPLICATION_URL</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_replication_max_diff">NOMINATIM_REPLICATION_MAX_DIFF</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_replication_update_interval">NOMINATIM_REPLICATION_UPDATE_INTERVAL</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_replication_recheck_interval">NOMINATIM_REPLICATION_RECHECK_INTERVAL</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#api-settings">API Settings</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_cors_noaccesscontrol">NOMINATIM_CORS_NOACCESSCONTROL</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_mapicon_url">NOMINATIM_MAPICON_URL</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_default_language">NOMINATIM_DEFAULT_LANGUAGE</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_search_batch_mode">NOMINATIM_SEARCH_BATCH_MODE</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_search_name_only_threshold">NOMINATIM_SEARCH_NAME_ONLY_THRESHOLD</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_lookup_max_count">NOMINATIM_LOOKUP_MAX_COUNT</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_polygon_output_max_types">NOMINATIM_POLYGON_OUTPUT_MAX_TYPES</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#logging-settings">Logging Settings</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_log_db">NOMINATIM_LOG_DB</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nominatim_log_file">NOMINATIM_LOG_FILE</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Country-Settings/">Per-Country Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Ranking/">Place Ranking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Importance/">Importance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Tokenizers/">Tokenizers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Special-Phrases/">Special Phrases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Tiger/">External data: US housenumbers from TIGER</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Postcodes/">External data: Postcodes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developers Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/overview/">Architecture Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Database-Layout/">Database Layout</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Indexing/">Indexing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Tokenizers/">Tokenizers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/ICU-Tokenizer-Modules/">Custom modules for ICU tokenizer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Development-Environment/">Setup for Development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/Testing/">Testing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../develop/data-sources/">External Data Sources</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-18/">Installation on Ubuntu 18</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-20/">Installation on Ubuntu 20</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix/Install-on-Ubuntu-22/">Installation on Ubuntu 22</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Nominatim 4.2.1</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Customization Guide &raquo;</li>
+      <li>Configuration Settings</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/customize/Settings.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>This section provides a reference of all configuration parameters that can
+be used with Nominatim.</p>
+<h1 id="configuring-nominatim">Configuring Nominatim<a class="headerlink" href="#configuring-nominatim" title="Permanent link"></a></h1>
+<p>Nominatim uses <a href="https://github.com/theskumar/python-dotenv">dotenv</a> to manage
+its configuration settings. There are two means to set configuration
+variables: through an <code>.env</code> configuration file or through an environment
+variable.</p>
+<p>The <code>.env</code> configuration file needs to be placed into the
+<a href="../../admin/Import/#creating-the-project-directory">project directory</a>. It
+must contain configuration parameters in <code>&lt;parameter&gt;=&lt;value&gt;</code> format.
+Please refer to the dotenv documentation for details.</p>
+<p>The configuration options may also be set in the form of shell environment
+variables. This is particularly useful, when you want to temporarily change
+a configuration option. For example, to force the replication serve to
+download the next change, you can temporarily disable the update interval:</p>
+<div class="codehilite"><pre><span></span><code>NOMINATIM_REPLICATION_UPDATE_INTERVAL=0 nominatim replication --once
+</code></pre></div>
+
+<p>If a configuration option is defined through .env file and environment
+variable, then the latter takes precedence. </p>
+<h2 id="configuration-parameter-reference">Configuration Parameter Reference<a class="headerlink" href="#configuration-parameter-reference" title="Permanent link"></a></h2>
+<h3 id="import-and-database-settings">Import and Database Settings<a class="headerlink" href="#import-and-database-settings" title="Permanent link"></a></h3>
+<h4 id="nominatim_database_dsn">NOMINATIM_DATABASE_DSN<a class="headerlink" href="#nominatim_database_dsn" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Database connection string</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string: <code>pgsql:&lt;param1&gt;=&lt;value1&gt;;&lt;param2&gt;=&lt;value2&gt;;...</code></td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>pgsql:dbname=nominatim</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>Sets the connection parameters for the Nominatim database. At a minimum
+the name of the database (<code>dbname</code>) is required. You can set any additional
+parameter that is understood by libpq. See the <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS">Postgres documentation</a> for a full list.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is usually recommended not to set the password directly in this
+configuration parameter. Use a
+<a href="https://www.postgresql.org/docs/current/libpq-pgpass.html">password file</a>
+instead.</p>
+</div>
+<h4 id="nominatim_database_webuser">NOMINATIM_DATABASE_WEBUSER<a class="headerlink" href="#nominatim_database_webuser" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Database query user</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>www-data</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>cannot be changed after import</td>
+</tr>
+</tbody>
+</table>
+<p>Defines the name of the database user that will run search queries. Usually
+this is the user under which the webserver is executed. When running Nominatim
+via php-fpm, you can also define a separate query user. The Postgres user
+needs to be set up before starting the import.</p>
+<p>Nominatim grants minimal rights to this user to all tables that are needed
+for running geocoding queries.</p>
+<h4 id="nominatim_database_module_path">NOMINATIM_DATABASE_MODULE_PATH<a class="headerlink" href="#nominatim_database_module_path" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Directory where to find the PostgreSQL server module</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (use <code>&lt;project_directory&gt;/module</code>)</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --functions</code></td>
+</tr>
+<tr>
+<td><strong>Comment:</strong></td>
+<td>Legacy tokenizer only</td>
+</tr>
+</tbody>
+</table>
+<p>Defines the directory in which the PostgreSQL server module <code>nominatim.so</code>
+is stored. The directory and module must be accessible by the PostgreSQL
+server.</p>
+<p>For information on how to use this setting when working with external databases,
+see <a href="../../admin/Advanced-Installations/">Advanced Installations</a>.</p>
+<p>The option is only used by the Legacy tokenizer and ignored otherwise.</p>
+<h4 id="nominatim_tokenizer">NOMINATIM_TOKENIZER<a class="headerlink" href="#nominatim_tokenizer" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Tokenizer used for normalizing and parsing queries and names</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>legacy</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>cannot be changed after import</td>
+</tr>
+</tbody>
+</table>
+<p>Sets the tokenizer type to use for the import. For more information on
+available tokenizers and how they are configured, see
+<a href="../Tokenizers/">Tokenizers</a>.</p>
+<h4 id="nominatim_tokenizer_config">NOMINATIM_TOKENIZER_CONFIG<a class="headerlink" href="#nominatim_tokenizer_config" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Configuration file for the tokenizer</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (default file depends on tokenizer)</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>see documentation for each tokenizer</td>
+</tr>
+</tbody>
+</table>
+<p>Points to the file with additional configuration for the tokenizer.
+See the <a href="../Tokenizers/">Tokenizer</a> descriptions for details
+on the file format.</p>
+<p>If a relative path is given, then the file is searched first relative to the
+project directory and then in the global settings directory.</p>
+<h4 id="nominatim_max_word_frequency">NOMINATIM_MAX_WORD_FREQUENCY<a class="headerlink" href="#nominatim_max_word_frequency" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Number of occurrences before a word is considered frequent</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>int</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>50000</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>cannot be changed after import</td>
+</tr>
+<tr>
+<td><strong>Comment:</strong></td>
+<td>Legacy tokenizer only</td>
+</tr>
+</tbody>
+</table>
+<p>The word frequency count is used by the Legacy tokenizer to automatically
+identify <em>stop words</em>. Any partial term that occurs more often then what
+is defined in this setting, is effectively ignored during search.</p>
+<h4 id="nominatim_limit_reindexing">NOMINATIM_LIMIT_REINDEXING<a class="headerlink" href="#nominatim_limit_reindexing" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Avoid invalidating large areas</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>bool</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p>Nominatim computes the address of each place at indexing time. This has the
+advantage to make search faster but also means that more objects needs to
+be invalidated when the data changes. For example, changing the name of
+the state of Florida would require recomputing every single address point
+in the state to make the new name searchable in conjunction with addresses.</p>
+<p>Setting this option to 'yes' means that Nominatim skips reindexing of contained
+objects when the area becomes too large.</p>
+<h4 id="nominatim_update_forward_dependencies">NOMINATIM_UPDATE_FORWARD_DEPENDENCIES<a class="headerlink" href="#nominatim_update_forward_dependencies" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Forward geometry changes to dependet objects</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>bool</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>no</td>
+</tr>
+<tr>
+<td><strong>Comment:</strong></td>
+<td>EXPERT ONLY. Must not be enabled after import.</td>
+</tr>
+</tbody>
+</table>
+<p>The geometry of OSM ways and relations may change when a node that is part
+of the object is moved around. These changes are not propagated per default.
+The geometry of ways/relations is only updated the next time that the object
+itself is touched. When enabling this option, then dependent objects will
+be marked for update when one of its member objects changes.</p>
+<p>Enabling this option may slow down updates significantly.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you want to enable this option, it must be set already on import.
+Do not enable this option on an existing database that was imported with
+NOMINATIM_UPDATE_FORWARD_DEPENDENCIES=no.
+Updates will become unusably slow.</p>
+</div>
+<h4 id="nominatim_languages">NOMINATIM_LANGUAGES<a class="headerlink" href="#nominatim_languages" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Restrict search languages</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string: comma-separated list of language codes</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em></td>
+</tr>
+</tbody>
+</table>
+<p>Normally Nominatim will include all language variants of name:XX
+in the search index. Set this to a comma separated list of language
+codes, to restrict import to a subset of languages.</p>
+<p>Currently only affects the initial import of country names and special phrases.</p>
+<h4 id="nominatim_term_normalization">NOMINATIM_TERM_NORMALIZATION<a class="headerlink" href="#nominatim_term_normalization" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Rules for normalizing terms for comparisons</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string: semicolon-separated list of ICU rules</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>:: NFD (); [[:Nonspacing Mark:][:Cf:]] &gt;;  :: lower (); [[:Punctuation:][:Space:]]+ &gt; ' '; :: NFC ();</td>
+</tr>
+<tr>
+<td><strong>Comment:</strong></td>
+<td>Legacy tokenizer only</td>
+</tr>
+</tbody>
+</table>
+<p><a href="../Special-Phrases/">Special phrases</a> have stricter matching requirements than
+normal search terms. They must appear exactly in the query after this term
+normalization has been applied.</p>
+<p>Only has an effect on the Legacy tokenizer. For the ICU tokenizer the rules
+defined in the
+<a href="../Tokenizers/#normalization-and-transliteration">normalization section</a>
+will be used.</p>
+<h4 id="nominatim_use_us_tiger_data">NOMINATIM_USE_US_TIGER_DATA<a class="headerlink" href="#nominatim_use_us_tiger_data" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Enable searching for Tiger house number data</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>no</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --functions</code></td>
+</tr>
+</tbody>
+</table>
+<p>When this setting is enabled, search and reverse queries also take data
+from <a href="../Tiger/">Tiger house number data</a> into account.</p>
+<h4 id="nominatim_use_aux_location_data">NOMINATIM_USE_AUX_LOCATION_DATA<a class="headerlink" href="#nominatim_use_aux_location_data" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Enable searching in external house number tables</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>no</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --functions</code></td>
+</tr>
+<tr>
+<td><strong>Comment:</strong></td>
+<td>Do not use.</td>
+</tr>
+</tbody>
+</table>
+<p>When this setting is enabled, search queries also take data from external
+house number tables into account.</p>
+<p><em>Warning:</em> This feature is currently unmaintained and should not be used.</p>
+<h4 id="nominatim_http_proxy">NOMINATIM_HTTP_PROXY<a class="headerlink" href="#nominatim_http_proxy" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Use HTTP proxy when downloading data</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p>When this setting is enabled and at least
+<a href="#nominatim_http_proxy_host">NOMINATIM_HTTP_PROXY_HOST</a> and
+<a href="#nominatim_http_proxy_port">NOMINATIM_HTTP_PROXY_PORT</a> are set, the
+configured proxy will be used, when downloading external data like
+replication diffs.</p>
+<h4 id="nominatim_http_proxy_host">NOMINATIM_HTTP_PROXY_HOST<a class="headerlink" href="#nominatim_http_proxy_host" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Host name of the proxy to use</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em></td>
+</tr>
+</tbody>
+</table>
+<p>When <a href="#nominatim_http_proxy">NOMINATIM_HTTP_PROXY</a> is enabled, this setting
+configures the proxy host name.</p>
+<h4 id="nominatim_http_proxy_port">NOMINATIM_HTTP_PROXY_PORT<a class="headerlink" href="#nominatim_http_proxy_port" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Port number of the proxy to use</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>3128</td>
+</tr>
+</tbody>
+</table>
+<p>When <a href="#nominatim_http_proxy">NOMINATIM_HTTP_PROXY</a> is enabled, this setting
+configures the port number to use with the proxy.</p>
+<h4 id="nominatim_http_proxy_login">NOMINATIM_HTTP_PROXY_LOGIN<a class="headerlink" href="#nominatim_http_proxy_login" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Username for proxies that require login</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em></td>
+</tr>
+</tbody>
+</table>
+<p>When <a href="#nominatim_http_proxy">NOMINATIM_HTTP_PROXY</a> is enabled, use this
+setting to define the username for proxies that require a login.</p>
+<h4 id="nominatim_http_proxy_password">NOMINATIM_HTTP_PROXY_PASSWORD<a class="headerlink" href="#nominatim_http_proxy_password" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Password for proxies that require login</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em></td>
+</tr>
+</tbody>
+</table>
+<p>When <a href="#nominatim_http_proxy">NOMINATIM_HTTP_PROXY</a> is enabled, use this
+setting to define the password for proxies that require a login.</p>
+<h4 id="nominatim_osm2pgsql_binary">NOMINATIM_OSM2PGSQL_BINARY<a class="headerlink" href="#nominatim_osm2pgsql_binary" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Location of the osm2pgsql binary</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (use binary shipped with Nominatim)</td>
+</tr>
+<tr>
+<td><strong>Comment:</strong></td>
+<td>EXPERT ONLY</td>
+</tr>
+</tbody>
+</table>
+<p>Nominatim uses <a href="https://osm2pgsql.org">osm2pgsql</a> to load the OSM data
+initially into the database. Nominatim comes bundled with a version of
+osm2pgsql that is guaranteed to be compatible. Use this setting to use
+a different binary instead. You should do this only when you know exactly
+what you are doing. If the osm2pgsql version is not compatible, then the
+result is undefined.</p>
+<h4 id="nominatim_wikipedia_data_path">NOMINATIM_WIKIPEDIA_DATA_PATH<a class="headerlink" href="#nominatim_wikipedia_data_path" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Directory with the wikipedia importance data</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (project directory)</td>
+</tr>
+</tbody>
+</table>
+<p>Set a custom location for the
+<a href="../../admin/Import/#wikipediawikidata-rankings">wikipedia ranking file</a>. When
+unset, Nominatim expects the data to be saved in the project directory.</p>
+<h4 id="nominatim_address_level_config">NOMINATIM_ADDRESS_LEVEL_CONFIG<a class="headerlink" href="#nominatim_address_level_config" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Configuration file for rank assignments</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>address-levels.json</td>
+</tr>
+</tbody>
+</table>
+<p>The <em>address level configuration</em> defines the rank assignments for places. See
+<a href="../Ranking/">Place Ranking</a> for a detailed explanation what rank assignments
+are and what the configuration file must look like.</p>
+<p>When a relative path is given, then the file is searched first relative to the
+project directory and then in the global settings directory.</p>
+<h4 id="nominatim_import_style">NOMINATIM_IMPORT_STYLE<a class="headerlink" href="#nominatim_import_style" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Configuration to use for the initial OSM data import</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string or path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>extratags</td>
+</tr>
+</tbody>
+</table>
+<p>The <em>style configuration</em> describes which OSM objects and tags are taken
+into consideration for the search database. Nominatim comes with a set
+of pre-configured styles, that may be configured here.</p>
+<p>You can also write your own custom style and point the setting to the file
+with the style. When a relative path is given, then the style file is searched
+first relative to the project directory and then in the global settings
+directory.</p>
+<p>See <a href="../Import-Styles/">Import Styles</a>
+for more information on the available internal styles and the format of the
+configuration file.</p>
+<h4 id="nominatim_flatnode_file">NOMINATIM_FLATNODE_FILE<a class="headerlink" href="#nominatim_flatnode_file" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Location of osm2pgsql flatnode file</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (do not use a flatnote file)</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>Only change when moving the file physically.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>osm2pgsql flatnode file</code> is file that efficiently stores geographic
+location for OSM nodes. For larger imports it can significantly speed up
+the import. When this option is unset, then osm2pgsql uses a PsotgreSQL table
+to store the locations.</p>
+<p>When a relative path is given, then the flatnode file is created/searched
+relative to the project directory.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The flatnode file is not only used during the initial import but also
+when adding new data with <code>nominatim add-data</code> or <code>nominatim replication</code>.
+Make sure you keep the flatnode file around and this setting unmodified,
+if you plan to add more data or run regular updates.</p>
+</div>
+<h4 id="nominatim_tablespace_">NOMINATIM_TABLESPACE_*<a class="headerlink" href="#nominatim_tablespace_" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Group of settings for distributing the database over tablespaces</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (do not use a table space)</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>no effect after initial import</td>
+</tr>
+</tbody>
+</table>
+<p>Nominatim allows to distribute the search database over up to 10 different
+<a href="https://www.postgresql.org/docs/current/manage-ag-tablespaces.html">PostgreSQL tablespaces</a>.
+If you use this option, make sure that the tablespaces exist before starting
+the import.</p>
+<p>The available tablespace groups are:</p>
+<dl>
+<dt>NOMINATIM_TABLESPACE_SEARCH_DATA</dt>
+<dd>Data used by the geocoding frontend.</dd>
+<dt>NOMINATIM_TABLESPACE_SEARCH_INDEX</dt>
+<dd>Indexes used by the geocoding frontend.</dd>
+<dt>NOMINATIM_TABLESPACE_OSM_DATA</dt>
+<dd>Raw OSM data cache used for import and updates.</dd>
+<dt>NOMINATIM_TABLESPACE_OSM_DATA</dt>
+<dd>Indexes on the raw OSM data cache.</dd>
+<dt>NOMINATIM_TABLESPACE_PLACE_DATA</dt>
+<dd>Data table with the pre-filtered but still unprocessed OSM data.
+ Used only during imports and updates.</dd>
+<dt>NOMINATIM_TABLESPACE_PLACE_INDEX</dt>
+<dd>Indexes on raw data table. Used only during imports and updates.</dd>
+<dt>NOMINATIM_TABLESPACE_ADDRESS_DATA</dt>
+<dd>Data tables used for computing search terms and addresses of places
+ during import and updates.</dd>
+<dt>NOMINATIM_TABLESPACE_ADDRESS_INDEX</dt>
+<dd>Indexes on the data tables for search term and address computation.
+ Used only for import and updates.</dd>
+<dt>NOMINATIM_TABLESPACE_AUX_DATA</dt>
+<dd>Auxiliary data tables for non-OSM data, e.g. for Tiger house number data.</dd>
+<dt>NOMINATIM_TABLESPACE_AUX_INDEX</dt>
+<dd>Indexes on auxiliary data tables.</dd>
+</dl>
+<h3 id="replication-update-settings">Replication Update Settings<a class="headerlink" href="#replication-update-settings" title="Permanent link"></a></h3>
+<h4 id="nominatim_replication_url">NOMINATIM_REPLICATION_URL<a class="headerlink" href="#nominatim_replication_url" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Base URL of the replication service</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>url</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>https://planet.openstreetmap.org/replication/minute</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim replication --init</code></td>
+</tr>
+</tbody>
+</table>
+<p>Replication services deliver updates to OSM data. Use this setting to choose
+which replication service to use. See <a href="../../admin/Update/">Updates</a> for more
+information on how to set up regular updates.</p>
+<h4 id="nominatim_replication_max_diff">NOMINATIM_REPLICATION_MAX_DIFF<a class="headerlink" href="#nominatim_replication_max_diff" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Maximum amount of data to download per update cycle (in MB)</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>50</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>restart the replication process</td>
+</tr>
+</tbody>
+</table>
+<p>At each update cycle Nominatim downloads diffs until either no more diffs
+are available on the server (i.e. the database is up-to-date) or the limit
+given in this setting is exceeded. Nominatim guarantees to downloads at least
+one diff, if one is available, no matter how small the setting.</p>
+<p>The default for this setting is fairly conservative because Nominatim keeps
+all data downloaded in one cycle in RAM. Using large values in a production
+server may interfere badly with the search frontend because it evicts data
+from RAM that is needed for speedy answers to incoming requests. It is usually
+a better idea to keep this setting lower and run multiple update cycles
+to catch up with updates.</p>
+<p>When catching up in non-production mode, for example after the initial import,
+the setting can easily be changed temporarily on the command line:</p>
+<div class="codehilite"><pre><span></span><code>NOMINATIM_REPLICATION_MAX_DIFF=3000 nominatim replication
+</code></pre></div>
+
+<h4 id="nominatim_replication_update_interval">NOMINATIM_REPLICATION_UPDATE_INTERVAL<a class="headerlink" href="#nominatim_replication_update_interval" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Publication interval of the replication service (in seconds)</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>75</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>restart the replication process</td>
+</tr>
+</tbody>
+</table>
+<p>This setting determines when Nominatim will attempt to download again a new
+update. The time is computed from the publication date of the last diff
+downloaded. Setting this to a slightly higher value than the actual
+publication interval avoids unnecessary rechecks.</p>
+<h4 id="nominatim_replication_recheck_interval">NOMINATIM_REPLICATION_RECHECK_INTERVAL<a class="headerlink" href="#nominatim_replication_recheck_interval" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Wait time to recheck for a pending update (in seconds)</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>60</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>restart the replication process</td>
+</tr>
+</tbody>
+</table>
+<p>When replication updates are run in continuous mode (using <code>nominatim replication</code>),
+this setting determines how long Nominatim waits until it looks for updates
+again when updates were not available on the server.</p>
+<p>Note that this is different from
+<a href="#nominatim_replication_update_interval">NOMINATIM_REPLICATION_UPDATE_INTERVAL</a>.
+Nominatim will never attempt to query for new updates for UPDATE_INTERVAL
+seconds after the current database date. Only after the update interval has
+passed it asks for new data. If then no new data is found, it waits for
+RECHECK_INTERVAL seconds before it attempts again.</p>
+<h3 id="api-settings">API Settings<a class="headerlink" href="#api-settings" title="Permanent link"></a></h3>
+<h4 id="nominatim_cors_noaccesscontrol">NOMINATIM_CORS_NOACCESSCONTROL<a class="headerlink" href="#nominatim_cors_noaccesscontrol" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Send permissive CORS access headers</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>When this setting is enabled, API HTTP responses include the HTTP
+<a href="https://en.wikipedia.org/wiki/CORS">CORS</a> headers
+<code>access-control-allow-origin: *</code> and <code>access-control-allow-methods: OPTIONS,GET</code>.</p>
+<h4 id="nominatim_mapicon_url">NOMINATIM_MAPICON_URL<a class="headerlink" href="#nominatim_mapicon_url" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>URL prefix for static icon images</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>url</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em></td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>When a mapicon URL is configured, then Nominatim includes an additional <code>icon</code>
+field in the responses, pointing to an appropriate icon for the place type.</p>
+<p>Map icons used to be included in Nominatim itself but now have moved to the
+<a href="https://github.com/osm-search/nominatim-ui/">nominatim-ui</a> project. If you
+want the URL to be included in API responses, make the <code>/mapicon</code>
+directory of the project available under a public URL and point this setting
+to the directory.</p>
+<h4 id="nominatim_default_language">NOMINATIM_DEFAULT_LANGUAGE<a class="headerlink" href="#nominatim_default_language" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Language of responses when no language is requested</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>language code</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (use the local language of the feature)</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>Nominatim localizes the place names in responses when the corresponding
+translation is available. Users can request a custom language setting through
+the HTTP accept-languages header or through the explicit parameter
+<a href="../../api/Search/#language-of-results">accept-languages</a>. If neither is
+given, it falls back to this setting. If the setting is also empty, then
+the local languages (in OSM: the name tag without any language suffix) is
+used.</p>
+<h4 id="nominatim_search_batch_mode">NOMINATIM_SEARCH_BATCH_MODE<a class="headerlink" href="#nominatim_search_batch_mode" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Enable a special batch query mode</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>no</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>This feature is currently undocumented and potentially broken.</p>
+<h4 id="nominatim_search_name_only_threshold">NOMINATIM_SEARCH_NAME_ONLY_THRESHOLD<a class="headerlink" href="#nominatim_search_name_only_threshold" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Threshold for switching the search index lookup strategy</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>500</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>This setting defines the threshold over which a name is no longer considered
+as rare. When searching for places with rare names, only the name is used
+for place lookups. Otherwise the name and any address information is used.</p>
+<p>This setting only has an effect after <code>nominatim refresh --word-counts</code> has
+been called to compute the word frequencies.</p>
+<h4 id="nominatim_lookup_max_count">NOMINATIM_LOOKUP_MAX_COUNT<a class="headerlink" href="#nominatim_lookup_max_count" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Maximum number of OSM ids accepted by /lookup</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>50</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>The /lookup point accepts list of ids to look up address details for. This
+setting restricts the number of places a user may look up with a single
+request.</p>
+<h4 id="nominatim_polygon_output_max_types">NOMINATIM_POLYGON_OUTPUT_MAX_TYPES<a class="headerlink" href="#nominatim_polygon_output_max_types" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Number of different geometry formats that may be returned</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>Nominatim supports returning full geometries of places. The geometries may
+be requested in different formats with one of the
+<a href="../../api/Search/#polygon-output"><code>polygon_*</code> parameters</a>. Use this
+setting to restrict the number of geometry types that may be requested
+with a single query.</p>
+<p>Setting this parameter to 0 disables polygon output completely.</p>
+<h3 id="logging-settings">Logging Settings<a class="headerlink" href="#logging-settings" title="Permanent link"></a></h3>
+<h4 id="nominatim_log_db">NOMINATIM_LOG_DB<a class="headerlink" href="#nominatim_log_db" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Log requests into the database</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>no</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>Enable logging requests into a database table with this setting. The logs
+can be found in the table <code>new_query_log</code>.</p>
+<p>When using this logging method, it is advisable to set up a job that
+regularly clears out old logging information. Nominatim will not do that
+on its own.</p>
+<p>Can be used as the same time as NOMINATIM_LOG_FILE.</p>
+<h4 id="nominatim_log_file">NOMINATIM_LOG_FILE<a class="headerlink" href="#nominatim_log_file" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Log requests into a file</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (logging disabled)</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>Enable logging of requests into a file with this setting by setting the log
+file where to log to. A relative file name is assumed to be relative to
+the project directory.</p>
+<p>The entries in the log file have the following format:</p>
+<div class="codehilite"><pre><span></span><code>&lt;request time&gt; &lt;execution time in s&gt; &lt;number of results&gt; &lt;type&gt; &quot;&lt;query string&gt;&quot;
+</code></pre></div>
+
+<p>Request time is the time when the request was started. The execution time is
+given in ms and corresponds to the time the query took executing in PHP.
+type contains the name of the endpoint used.</p>
+<p>Can be used as the same time as NOMINATIM_LOG_DB.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Import-Styles/" class="btn btn-neutral float-left" title="Import Styles"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Country-Settings/" class="btn btn-neutral float-right" title="Per-Country Data">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/openstreetmap/Nominatim" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Import-Styles/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Country-Settings/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
