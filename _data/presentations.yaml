@@ -1,3 +1,22 @@
+ - title: Geocoding für Einsteiger
+   lang: DE
+   date: 2023-03-15
+   place: FossGIS conference
+   link: https://pretalx.com/fossgis2023/talk/N8PUC3/
+   description: |
+     Bei der Arbeit mit Geodaten kommt man früher oder später an den Punkt, wo
+     man nach Orten und Adressen suchen will, oder wo man für eine bestimmte
+     Geokoordiante eine Beschreibung benötigt, an welcher Adresse sie sich befindet.
+     Das ist die Aufgabe eines Geocoders.
+
+     Dieser Vortrag gibt Einsteigern einen Überblick darüber, was Geocoding ist
+     und welche Probleme man damit lösen kann. Wir sehen uns die verschiedene
+     Einsatzarten an, von der einfachen Suchbox auf der Website bis hin zur
+     Massenverarbeitung von Daten. Wir stellen verschiedene Werkzeuge vor, die
+     auf die Open-Source Geocoder Nominatim und Photon zurückgreifen, diskutieren
+     Vor- und Nachteile und geben praktische Tips, wie man die besten Ergebnisse
+     erzielt.
+
  - title: "Boundaries, Places and the Future of Tagging"
    lang: EN
    date: 2021-09-21
