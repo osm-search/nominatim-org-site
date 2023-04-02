@@ -445,3 +445,17 @@ div.two-column div p:nth-child(1) {
     padding: 0 10px 0 40px;
 }
 
+table {
+    margin: 20px;
+}
+
+th {
+    padding: 3px;
+    background: #eee
+}
+
+td {
+    padding: 3px;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
