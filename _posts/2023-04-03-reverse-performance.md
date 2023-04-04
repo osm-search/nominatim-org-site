@@ -121,7 +121,7 @@ then it can cache all the required indexes in memory, so that the database
 queries need very little IO and are extremely fast.
 That makes the slower Python code stand out.
 A more realistic scenario is that search and reverse queries are mixed.
-The tow types of queries need different kinds of indexes and therefore tend
+The two types of queries need different kinds of indexes and therefore tend
 to get into each others way. Thus, reverse queries spend a lot more time
 waiting for IO. On our production servers,
 the average execution time of a reverse query is
