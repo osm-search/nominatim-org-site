@@ -1,78 +1,90 @@
  - name: 4.2.2
    date: 2023-03-22
-   doc : 4.2.2
+   doc : "4.2"
  - name: 4.2.1
    date: 2023-02-20
-   doc : 4.2.1
+   doc : "4.2"
  - name: 4.2.0
    date: 2022-11-24
-   doc : 4.2.0
+   doc : "4.2"
+ - name: 4.1.2
+   date: 2023-02-20
+   doc : "4.1"
+ - name: 4.1.1
+   date: 2022-11-19
+   doc : "4.1"
  - name: 4.1.0
    date: 2022-08-05
-   doc : 4.1.0
+   doc : "4.1"
+ - name: 4.0.2
+   date: 2023-02-20
+   doc : "4.0"
  - name: 4.0.1
    date: 2021-11-22
-   doc : 4.0.1
+   doc : "4.0"
  - name: 4.0.0
    date: 2021-11-02
-   doc : 4.0.0
+   doc : "4.0"
+ - name: 3.7.3
+   date: 2023-02-20
+   doc : "3.7"
  - name: 3.7.2
    date: 2021-05-30
-   doc : 3.7.2
+   doc : "3.7"
  - name: 3.7.1
    date: 2021-04-26
-   doc : 3.7.1
+   doc : "3.7"
  - name: 3.7.0
    date: 2021-04-06
-   doc : 3.7.0
+   doc : "3.7"
  - name: 3.6.0
    date: 2020-12-13
-   doc : 3.6.0
+   doc : "3.6"
  - name: 3.5.2
    date: 2020-09-25
-   doc : 3.5.2
+   doc : "3.5"
  - name: 3.5.1
    date: 2020-06-29
-   doc : 3.5.1
+   doc : "3.5"
  - name: 3.5.0
    date: 2020-06-06
-   doc : 3.5.0
+   doc : "3.5"
  - name: 3.4.2
    date: 2020-05-04
-   doc : 3.4.2
+   doc : "3.4"
  - name: 3.4.1
    date: 2019-12-29
-   doc : 3.4.1
+   doc : "3.4"
  - name: 3.4.0
    date: 2019-10-25
-   doc : 3.4.0
+   doc : "3.4"
  - name: 3.3.1
    date: 2020-05-04
-   doc : 3.3.0
+   doc : "3.3"
  - name: 3.3.0
    date: 2019-05-01
-   doc : 3.3.0
+   doc : "3.3"
  - name: 3.2.1
    date: 2020-05-04
-   doc : 3.2.0
+   doc : "3.2"
  - name: 3.2.0
    date: 2018-08-26
-   doc : 3.2.0
+   doc : "3.2"
  - name: 3.1.0
    date: 2018-01-17
-   doc : 3.1.0
+   doc : "3.1"
  - name: 3.0.1
    date: 2017-08-13
-   doc : 3.0.1
+   doc : "3.0"
  - name: 3.0.0
    date: 2017-06-25
-   doc : 3.0.0
+   doc : "3.0"
  - name: 2.5.1
    date: 2016-09-06
-   doc : 2.5.1
+   doc : "2.5"
  - name: 2.5.0
    date: 2016-02-21
-   doc : 2.5.1
+   doc : "2.5"
  - name: 2.4.0
    date: 2015-05-07
    doc : none
