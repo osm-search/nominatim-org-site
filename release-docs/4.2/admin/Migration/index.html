@@ -84,6 +84,12 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Migration from older Versions</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#422-423">4.2.2 -&gt; 4.2.3</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#update-interpolation-functions">Update interpolation functions</a>
+    </li>
+        </ul>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#400-410">4.0.0 -&gt; 4.1.0</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#icu-tokenizer-is-the-new-default">ICU tokenizer is the new default</a>
@@ -259,6 +265,11 @@ breaking changes. <strong>Please read them before running the migration.</strong
 <p>If you are migrating from a version &lt;3.6, then you still have to follow
 the manual migration steps up to 3.6.</p>
 </div>
+<h2 id="422-423">4.2.2 -&gt; 4.2.3<a class="headerlink" href="#422-423" title="Permanent link"></a></h2>
+<h3 id="update-interpolation-functions">Update interpolation functions<a class="headerlink" href="#update-interpolation-functions" title="Permanent link"></a></h3>
+<p>When updating to this release, you need to run <code>nominatim refresh --functions</code>
+after updating and before restarting updates. Otherwise you may see an error
+<code>Splitting of Point geometries is unsupported</code> or similar.</p>
 <h2 id="400-410">4.0.0 -&gt; 4.1.0<a class="headerlink" href="#400-410" title="Permanent link"></a></h2>
 <h3 id="icu-tokenizer-is-the-new-default">ICU tokenizer is the new default<a class="headerlink" href="#icu-tokenizer-is-the-new-default" title="Permanent link"></a></h3>
 <p>Nominatim now installs the <a href="../../customize/Tokenizers/#icu-tokenizer">ICU tokenizer</a>
