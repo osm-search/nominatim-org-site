@@ -25,7 +25,7 @@ sequentially: first create a list of structured queries from and put them
 in an order of best fit to the original free-form query. Then execute the
 list until the database returns a result. Then recheck the results against
 the original query to put them in an order. In practise, it is not always
-possible to out the different interpretations of the free-form query into
+possible to put the different interpretations of the free-form query into
 the right order without seeing what results the database will yield. The
 Python code therefore switches to a global measure of accuracy that
 combines the likelihood how well the structured query matches the free-form
@@ -87,5 +87,7 @@ simple city name searches but also contain searches for POIs like
 airports and museums. For the PHP implementation 72.8% of the tests pass.
 In the initial Python implementation the success rate dropped to 68.3%.
 After some tweaking, the success rate is now 74.6%, already a 2%
-improvement over the old PHP code. 
+improvement over the old PHP code.
 
+_Many thanks to [NGI Zero](https://nlnet.nl/entrust/) who are funding this
+work on improving Nominatim._
