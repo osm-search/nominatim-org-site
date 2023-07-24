@@ -82,35 +82,52 @@ content:
 -- Make sure lua finds out scripts
 package.path = '?.lua;' .. package.path
 
+-- Create a table that saves all the handlers we need.
+
+handlers = {node = {}, way = {}, relation = {}}
+
+local function save_handlers()
+    table.insert(handlers.node, osm2pgsql.process_node)
+    table.insert(handlers.way, osm2pgsql.process_way)
+    table.insert(handlers.relation, osm2pgsql.process_relation)
+end
+
 -- load nominatim style
 local nominatim = require('import-extratags')
-
-local nominatim_process_node = osm2pgsql.process_node
-local nominatim_process_way = osm2pgsql.process_way
-local nominatim_process_relation = osm2pgsql.process_relation
+save_handlers()
 
 --- load mapnik style
 local mapnik = require('compatible')
-
-local mapnik_process_node = osm2pgsql.process_node
-local mapnik_process_way = osm2pgsql.process_way
-local mapnik_process_relation = osm2pgsql.process_relation
+save_handlers()
 
 -- calling both
 
+local function run_all_handlers(object, hlist)
+    local saved_tags = object.tags
+    for i, handler in pairs(hlist) do
+        -- Handlers tend to modify the tag list. Hand in a copy.
+        if i == #hlist then
+            object.tags = saved_tags
+        else
+            object.tags = {}
+            for tk, tv in pairs(saved_tags) do
+                object.tags[tk] = tv
+            end
+        end
+        handler(object)
+    end
+end
+
 function osm2pgsql.process_node(object)
-    nominatim_process_node(object)
-    mapnik_process_node(object)
+    run_all_handlers(object, handlers.node)
 end
 
 function osm2pgsql.process_way(object)
-    nominatim_process_way(object)
-    mapnik_process_way(object)
+    run_all_handlers(object, handlers.way)
 end
 
 function osm2pgsql.process_relation(object)
-    nominatim_process_relation(object)
-    mapnik_process_relation(object)
+    run_all_handlers(object, handlers.relation)
 end
 ```
 
