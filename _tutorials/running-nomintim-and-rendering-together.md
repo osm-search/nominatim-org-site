@@ -87,9 +87,18 @@ package.path = '?.lua;' .. package.path
 handlers = {node = {}, way = {}, relation = {}}
 
 local function save_handlers()
-    table.insert(handlers.node, osm2pgsql.process_node)
-    table.insert(handlers.way, osm2pgsql.process_way)
-    table.insert(handlers.relation, osm2pgsql.process_relation)
+    if osm2pgsql.process_node ~= nil then
+        table.insert(handlers.node, osm2pgsql.process_node)
+    end
+    if osm2pgsql.process_way ~= nil then
+        table.insert(handlers.way, osm2pgsql.process_way)
+    end
+    if osm2pgsql.process_relation ~= nil then
+        table.insert(handlers.relation, osm2pgsql.process_relation)
+    end
+    osm2pgsql.process_node = nil
+    osm2pgsql.process_way = nil
+    osm2pgsql.process_relation = nil
 end
 
 -- load nominatim style
