@@ -13,7 +13,7 @@ Nominatim is now ready for production. While it may still look the same on
 the outside, a lot has changed with the implementation, especially for
 forward search.  It closes as many as
 [10 outstanding issues](https://github.com/osm-search/Nominatim/issues?q=is%3Aissue+milestone%3A%22Python+API%22+is%3Aclosed),
-some as old as 5 years. If you want to now more about what has changed
+some as old as 5 years. If you want to know more about what has changed
 in the frontend, read the previous posts about
 [frontend renovations]({% link _posts/2022-12-08-frontend-renovation.md %})
 and [improving search]({% link _posts/2023-04-27-improving-search.md %}).
