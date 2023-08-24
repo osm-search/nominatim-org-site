@@ -10,6 +10,10 @@ Nominatim. By customizing geometries, a more refined shape can be achieved for
 geographical elements, resulting in more precise and tailored search outcomes
 for specific use cases.
 
+This requirement is derived from a project under EUROSTAT aimed at developing
+[GISCO](https://ec.europa.eu/eurostat/web/gisco) map services to overcome
+political issues related to several geometries.
+
 ## Prerequisites
 
 Before beginning, ensure that Nominatim is set up and operational on your
