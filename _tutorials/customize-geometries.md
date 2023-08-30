@@ -68,7 +68,7 @@ elements.
 
 Adapt the `WHERE` clause to correspond to your element selection criteria.
 Notice that multiple SQL can be run and for that, all `WHERE` clauses must
-contain `osm_id > 0` constrain.
+contain `osm_id > 0` constraint.
 
 ### 3. Lua Script for Blocking Elements
 
