@@ -1,0 +1,2174 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nominatim.org/admin/Migration/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.2.5">
+    
+    
+      
+        <title>Migration from older Versions - Nominatim 4.3.0 Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2d9f7617.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#database-migrations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nominatim 4.3.0 Manual" class="md-header__button md-logo" aria-label="Nominatim 4.3.0 Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nominatim 4.3.0 Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Migration from older Versions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Introduction
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/Overview/" class="md-tabs__link">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Installation/" class="md-tabs__link md-tabs__link--active">
+        Administration Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../customize/Overview/" class="md-tabs__link">
+        Customization Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../library/Getting-Started/" class="md-tabs__link">
+        Library Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../develop/overview/" class="md-tabs__link">
+        Developers Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../appendix/Install-on-Ubuntu-20/" class="md-tabs__link">
+        Appendix
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nominatim 4.3.0 Manual" class="md-nav__button md-logo" aria-label="Nominatim 4.3.0 Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Nominatim 4.3.0 Manual
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Search/" class="md-nav__link">
+        Search
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Reverse/" class="md-nav__link">
+        Reverse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Lookup/" class="md-nav__link">
+        Address Lookup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Details/" class="md-nav__link">
+        Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Status/" class="md-nav__link">
+        Status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Output/" class="md-nav__link">
+        Place Output Formats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Administration Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Administration Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Administration Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Installation/" class="md-nav__link">
+        Basic Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Import/" class="md-nav__link">
+        Import
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Update/" class="md-nav__link">
+        Update
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Deployment-PHP/" class="md-nav__link">
+        Deploy (PHP frontend)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Deployment-Python/" class="md-nav__link">
+        Deploy (Python frontend)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Setup-Nominatim-UI/" class="md-nav__link">
+        Nominatim UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-Installations/" class="md-nav__link">
+        Advanced Installations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Maintenance/" class="md-nav__link">
+        Maintenance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Migration from older Versions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Migration from older Versions
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#420-430" class="md-nav__link">
+    4.2.0 -&gt; 4.3.0
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2.0 -&gt; 4.3.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-indexes-for-reverse-lookup" class="md-nav__link">
+    New indexes for reverse lookup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#400-410" class="md-nav__link">
+    4.0.0 -&gt; 4.1.0
+  </a>
+  
+    <nav class="md-nav" aria-label="4.0.0 -&gt; 4.1.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#icu-tokenizer-is-the-new-default" class="md-nav__link">
+    ICU tokenizer is the new default
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geocodejson-output-changed" class="md-nav__link">
+    geocodejson output changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#370-400" class="md-nav__link">
+    3.7.0 -&gt; 4.0.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7.0 -&gt; 4.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_phrase_config-removed" class="md-nav__link">
+    NOMINATIM_PHRASE_CONFIG removed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#php-utils-removed" class="md-nav__link">
+    PHP utils removed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#360-370" class="md-nav__link">
+    3.6.0 -&gt; 3.7.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6.0 -&gt; 3.7.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-format-and-name-of-configuration-file" class="md-nav__link">
+    New format and name of configuration file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-location-for-data-files" class="md-nav__link">
+    New location for data files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introducing-nominatim-command-line-tool" class="md-nav__link">
+    Introducing nominatim command line tool
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-to-normalized-house-numbers" class="md-nav__link">
+    Switch to normalized house numbers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#350-360" class="md-nav__link">
+    3.5.0 -&gt; 3.6.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5.0 -&gt; 3.6.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-of-layout-of-search_name_-tables" class="md-nav__link">
+    Change of layout of search_name_* tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removal-of-html-output" class="md-nav__link">
+    Removal of html output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-order-during-indexing" class="md-nav__link">
+    Change order during indexing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unused-index" class="md-nav__link">
+    Unused index
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switching-to-dotenv" class="md-nav__link">
+    Switching to dotenv
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-sql-code" class="md-nav__link">
+    Update SQL code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#340-350" class="md-nav__link">
+    3.4.0 -&gt; 3.5.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4.0 -&gt; 3.5.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-wikipediawikidata-importance-tables" class="md-nav__link">
+    New Wikipedia/Wikidata importance tables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#330-340" class="md-nav__link">
+    3.3.0 -&gt; 3.4.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3.0 -&gt; 3.4.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reorganisation-of-location_area_country-table" class="md-nav__link">
+    Reorganisation of location_area_country table
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#320-330" class="md-nav__link">
+    3.2.0 -&gt; 3.3.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2.0 -&gt; 3.3.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-database-connection-string-dsn-format" class="md-nav__link">
+    New database connection string (DSN) format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#natural-earth-country-boundaries-no-longer-needed-as-fallback" class="md-nav__link">
+    Natural Earth country boundaries no longer needed as fallback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurable-address-levels" class="md-nav__link">
+    Configurable Address Levels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#310-320" class="md-nav__link">
+    3.1.0 -&gt; 3.2.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1.0 -&gt; 3.2.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-reverse-algorithm" class="md-nav__link">
+    New reverse algorithm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#300-310" class="md-nav__link">
+    3.0.0 -&gt; 3.1.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.0.0 -&gt; 3.1.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postcode-table" class="md-nav__link">
+    Postcode Table
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Faq/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Customization Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Customization Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Customization Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Import-Styles/" class="md-nav__link">
+        Import Styles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Settings/" class="md-nav__link">
+        Configuration Settings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Country-Settings/" class="md-nav__link">
+        Per-Country Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Ranking/" class="md-nav__link">
+        Place Ranking
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Importance/" class="md-nav__link">
+        Importance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Tokenizers/" class="md-nav__link">
+        Tokenizers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Special-Phrases/" class="md-nav__link">
+        Special Phrases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Tiger/" class="md-nav__link">
+        External data: US housenumbers from TIGER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Postcodes/" class="md-nav__link">
+        External data: Postcodes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Library Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Library Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Library Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Getting-Started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/NominatimAPI/" class="md-nav__link">
+        Nominatim API class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Input-Parameter-Types/" class="md-nav__link">
+        Input Parameter Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Result-Handling/" class="md-nav__link">
+        Result Handling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Low-Level-DB-Access/" class="md-nav__link">
+        Low-level DB Access
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Developers Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developers Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Developers Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/overview/" class="md-nav__link">
+        Architecture Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Database-Layout/" class="md-nav__link">
+        Database Layout
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Indexing/" class="md-nav__link">
+        Indexing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Tokenizers/" class="md-nav__link">
+        Tokenizers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/ICU-Tokenizer-Modules/" class="md-nav__link">
+        Custom modules for ICU tokenizer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Development-Environment/" class="md-nav__link">
+        Setup for Development
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Testing/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/data-sources/" class="md-nav__link">
+        External Data Sources
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Appendix
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Appendix" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/Install-on-Ubuntu-20/" class="md-nav__link">
+        Installation on Ubuntu 20
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/Install-on-Ubuntu-22/" class="md-nav__link">
+        Installation on Ubuntu 22
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#420-430" class="md-nav__link">
+    4.2.0 -&gt; 4.3.0
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2.0 -&gt; 4.3.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-indexes-for-reverse-lookup" class="md-nav__link">
+    New indexes for reverse lookup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#400-410" class="md-nav__link">
+    4.0.0 -&gt; 4.1.0
+  </a>
+  
+    <nav class="md-nav" aria-label="4.0.0 -&gt; 4.1.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#icu-tokenizer-is-the-new-default" class="md-nav__link">
+    ICU tokenizer is the new default
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geocodejson-output-changed" class="md-nav__link">
+    geocodejson output changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#370-400" class="md-nav__link">
+    3.7.0 -&gt; 4.0.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7.0 -&gt; 4.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_phrase_config-removed" class="md-nav__link">
+    NOMINATIM_PHRASE_CONFIG removed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#php-utils-removed" class="md-nav__link">
+    PHP utils removed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#360-370" class="md-nav__link">
+    3.6.0 -&gt; 3.7.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6.0 -&gt; 3.7.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-format-and-name-of-configuration-file" class="md-nav__link">
+    New format and name of configuration file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-location-for-data-files" class="md-nav__link">
+    New location for data files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introducing-nominatim-command-line-tool" class="md-nav__link">
+    Introducing nominatim command line tool
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-to-normalized-house-numbers" class="md-nav__link">
+    Switch to normalized house numbers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#350-360" class="md-nav__link">
+    3.5.0 -&gt; 3.6.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5.0 -&gt; 3.6.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-of-layout-of-search_name_-tables" class="md-nav__link">
+    Change of layout of search_name_* tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removal-of-html-output" class="md-nav__link">
+    Removal of html output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-order-during-indexing" class="md-nav__link">
+    Change order during indexing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unused-index" class="md-nav__link">
+    Unused index
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switching-to-dotenv" class="md-nav__link">
+    Switching to dotenv
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-sql-code" class="md-nav__link">
+    Update SQL code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#340-350" class="md-nav__link">
+    3.4.0 -&gt; 3.5.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4.0 -&gt; 3.5.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-wikipediawikidata-importance-tables" class="md-nav__link">
+    New Wikipedia/Wikidata importance tables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#330-340" class="md-nav__link">
+    3.3.0 -&gt; 3.4.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3.0 -&gt; 3.4.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reorganisation-of-location_area_country-table" class="md-nav__link">
+    Reorganisation of location_area_country table
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#320-330" class="md-nav__link">
+    3.2.0 -&gt; 3.3.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2.0 -&gt; 3.3.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-database-connection-string-dsn-format" class="md-nav__link">
+    New database connection string (DSN) format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#natural-earth-country-boundaries-no-longer-needed-as-fallback" class="md-nav__link">
+    Natural Earth country boundaries no longer needed as fallback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurable-address-levels" class="md-nav__link">
+    Configurable Address Levels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#310-320" class="md-nav__link">
+    3.1.0 -&gt; 3.2.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1.0 -&gt; 3.2.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-reverse-algorithm" class="md-nav__link">
+    New reverse algorithm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#300-310" class="md-nav__link">
+    3.0.0 -&gt; 3.1.0
+  </a>
+  
+    <nav class="md-nav" aria-label="3.0.0 -&gt; 3.1.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postcode-table" class="md-nav__link">
+    Postcode Table
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/admin/Migration.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+
+<h1 id="database-migrations">Database Migrations<a class="headerlink" href="#database-migrations" title="Permanent link"></a></h1>
+<p>Since version 3.7.0 Nominatim offers automatic migrations. Please follow
+the following steps:</p>
+<ul>
+<li>stop any updates that are potentially running</li>
+<li>update Nominatim to the newer version</li>
+<li>go to your project directory and run <code>nominatim admin --migrate</code></li>
+<li>(optionally) restart updates</li>
+</ul>
+<p>Below you find additional migrations and hints about other structural and
+breaking changes. <strong>Please read them before running the migration.</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are migrating from a version &lt;3.6, then you still have to follow
+the manual migration steps up to 3.6.</p>
+</div>
+<h2 id="420-430">4.2.0 -&gt; 4.3.0<a class="headerlink" href="#420-430" title="Permanent link"></a></h2>
+<h3 id="new-indexes-for-reverse-lookup">New indexes for reverse lookup<a class="headerlink" href="#new-indexes-for-reverse-lookup" title="Permanent link"></a></h3>
+<p>The reverse lookup algorithm has changed slightly to improve performance.
+This change needs a different index in the database. The required index
+will be automatically build during migration. Until the new index is available
+performance of the /reverse endpoint is significantly reduced. You should
+therefore either remove traffic from the machine before attempting a
+version update or create the index manually <strong>before</strong> starting the update
+using the following SQL:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">idx_placex_geometry_reverse_lookupPlaceNode</span>
+<span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">placex</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">gist</span><span class="w"> </span><span class="p">(</span><span class="n">ST_Buffer</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span><span class="w"> </span><span class="n">reverse_place_diameter</span><span class="p">(</span><span class="n">rank_search</span><span class="p">)))</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rank_address</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">&#39;postcode&#39;</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">linked_place_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">osm_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N&#39;</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="400-410">4.0.0 -&gt; 4.1.0<a class="headerlink" href="#400-410" title="Permanent link"></a></h2>
+<h3 id="icu-tokenizer-is-the-new-default">ICU tokenizer is the new default<a class="headerlink" href="#icu-tokenizer-is-the-new-default" title="Permanent link"></a></h3>
+<p>Nominatim now installs the <a href="../../customize/Tokenizers/#icu-tokenizer">ICU tokenizer</a>
+by default. This only has an effect on newly installed databases. When
+updating older databases, it keeps its installed tokenizer. If you still
+run with the legacy tokenizer, make sure to compile Nominatim with the
+PostgreSQL module, see <a href="../Installation/#building-nominatim">Installation</a>.</p>
+<h3 id="geocodejson-output-changed">geocodejson output changed<a class="headerlink" href="#geocodejson-output-changed" title="Permanent link"></a></h3>
+<p>The <code>type</code> field of the geocodejson output has changed. It now contains
+the address class of the object instead of the value of the OSM tag. If
+your client has used the <code>type</code> field, switch them to read <code>osm_value</code>
+instead.</p>
+<h2 id="370-400">3.7.0 -&gt; 4.0.0<a class="headerlink" href="#370-400" title="Permanent link"></a></h2>
+<h3 id="nominatim_phrase_config-removed">NOMINATIM_PHRASE_CONFIG removed<a class="headerlink" href="#nominatim_phrase_config-removed" title="Permanent link"></a></h3>
+<p>Custom blacklist configurations for special phrases now need to be handed
+with the <code>--config</code> parameter to <code>nominatim special-phrases</code>. Alternatively
+you can put your custom configuration in the project directory in a file
+named <code>phrase-settings.json</code>.</p>
+<p>Version 3.8 also removes the automatic converter for the php format of
+the configuration in older versions. If you are updating from Nominatim &lt; 3.7
+and still work with a custom <code>phrase-settings.php</code>, you need to manually
+convert it into a json format.</p>
+<h3 id="php-utils-removed">PHP utils removed<a class="headerlink" href="#php-utils-removed" title="Permanent link"></a></h3>
+<p>The old PHP utils have now been removed completely. You need to switch to
+the appropriate functions of the nominatim  command line tool. See
+<a href="#introducing-nominatim-command-line-tool">Introducing <code>nominatim</code> command line tool</a>
+below.</p>
+<h2 id="360-370">3.6.0 -&gt; 3.7.0<a class="headerlink" href="#360-370" title="Permanent link"></a></h2>
+<h3 id="new-format-and-name-of-configuration-file">New format and name of configuration file<a class="headerlink" href="#new-format-and-name-of-configuration-file" title="Permanent link"></a></h3>
+<p>The configuration for an import is now saved in a <code>.env</code> file in the project
+directory. This file follows the dotenv format. For more information, see
+the <a href="../Import/#configuration-setup-in-env">installation chapter</a>.</p>
+<p>To migrate to the new system, create a new project directory, add the <code>.env</code>
+file and port your custom configuration from <code>settings/local.php</code>. Most
+settings are named similar and only have received a <code>NOMINATIM_</code> prefix.
+Use the default settings in <code>settings/env.defaults</code> as a reference.</p>
+<h3 id="new-location-for-data-files">New location for data files<a class="headerlink" href="#new-location-for-data-files" title="Permanent link"></a></h3>
+<p>External data files for Wikipedia importance, postcodes etc. are no longer
+expected to reside in the source tree by default. Instead they will be searched
+in the project directory. If you have an automated setup script you must
+either adapt the download location or explicitly set the location of the
+files to the old place in your <code>.env</code>.</p>
+<h3 id="introducing-nominatim-command-line-tool">Introducing <code>nominatim</code> command line tool<a class="headerlink" href="#introducing-nominatim-command-line-tool" title="Permanent link"></a></h3>
+<p>The various php utilities have been replaced with a single <code>nominatim</code>
+command line tool. Make sure to adapt any scripts. There is no direct 1:1
+matching between the old utilities and the commands of nominatim CLI. The
+following list gives you a list of nominatim sub-commands that contain
+functionality of each script:</p>
+<ul>
+<li>./utils/setup.php: <code>import</code>, <code>freeze</code>, <code>refresh</code></li>
+<li>./utils/update.php: <code>replication</code>, <code>add-data</code>, <code>index</code>, <code>refresh</code></li>
+<li>./utils/specialphrases.php: <code>special-phrases</code></li>
+<li>./utils/check_import_finished.php: <code>admin</code></li>
+<li>./utils/warm.php: <code>admin</code></li>
+<li>./utils/export.php: <code>export</code></li>
+</ul>
+<p>Try <code>nominatim &lt;command&gt; --help</code> for more information about each subcommand.</p>
+<p><code>./utils/query.php</code> no longer exists in its old form. <code>nominatim search</code>
+provides a replacement but returns different output.</p>
+<h3 id="switch-to-normalized-house-numbers">Switch to normalized house numbers<a class="headerlink" href="#switch-to-normalized-house-numbers" title="Permanent link"></a></h3>
+<p>The housenumber column in the placex table uses now normalized version.
+The automatic migration step will convert the column but this may take a
+very long time. It is advisable to take the machine offline while doing that.</p>
+<h2 id="350-360">3.5.0 -&gt; 3.6.0<a class="headerlink" href="#350-360" title="Permanent link"></a></h2>
+<h3 id="change-of-layout-of-search_name_-tables">Change of layout of search_name_* tables<a class="headerlink" href="#change-of-layout-of-search_name_-tables" title="Permanent link"></a></h3>
+<p>The table need a different index for nearest place lookup. Recreate the
+indexes using the following shell script:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>table<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>psql<span class="w"> </span>-d<span class="w"> </span>nominatim<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT tablename FROM pg_tables WHERE tablename LIKE &#39;search_name_%&#39;&quot;</span><span class="w"> </span>-tA<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>search_name_blank<span class="sb">`</span><span class="p">;</span>
+<span class="k">do</span>
+<span class="w">    </span>psql<span class="w"> </span>-d<span class="w"> </span>nominatim<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;DROP INDEX idx_</span><span class="si">${</span><span class="nv">table</span><span class="si">}</span><span class="s2">_centroid_place; CREATE INDEX idx_</span><span class="si">${</span><span class="nv">table</span><span class="si">}</span><span class="s2">_centroid_place ON </span><span class="si">${</span><span class="nv">table</span><span class="si">}</span><span class="s2"> USING gist (centroid) WHERE ((address_rank &gt;= 2) AND (address_rank &lt;= 25)); DROP INDEX idx_</span><span class="si">${</span><span class="nv">table</span><span class="si">}</span><span class="s2">_centroid_street; CREATE INDEX idx_</span><span class="si">${</span><span class="nv">table</span><span class="si">}</span><span class="s2">_centroid_street ON </span><span class="si">${</span><span class="nv">table</span><span class="si">}</span><span class="s2"> USING gist (centroid) WHERE ((address_rank &gt;= 26) AND (address_rank &lt;= 27))&quot;</span><span class="p">;</span>
+<span class="k">done</span>
+</code></pre></div>
+<h3 id="removal-of-html-output">Removal of html output<a class="headerlink" href="#removal-of-html-output" title="Permanent link"></a></h3>
+<p>The debugging UI is no longer directly provided with Nominatim. Instead we
+now provide a simple Javascript application. Please refer to
+<a href="../Setup-Nominatim-UI/">Setting up the Nominatim UI</a> for details on how to
+set up the UI.</p>
+<p>The icons served together with the API responses have been moved to the
+nominatim-ui project as well. If you want to keep the <code>icon</code> field in the
+response, you need to set <code>CONST_MapIcon_URL</code> to the URL of the <code>/mapicon</code>
+directory of nominatim-ui.</p>
+<h3 id="change-order-during-indexing">Change order during indexing<a class="headerlink" href="#change-order-during-indexing" title="Permanent link"></a></h3>
+<p>When reindexing places during updates, there is now a different order used
+which needs a different database index. Create it with the following SQL command:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_placex_pendingsector_rank_address</span>
+<span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">placex</span>
+<span class="w">  </span><span class="k">USING</span><span class="w"> </span><span class="n">BTREE</span><span class="w"> </span><span class="p">(</span><span class="n">rank_address</span><span class="p">,</span><span class="w"> </span><span class="n">geometry_sector</span><span class="p">)</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">indexed_status</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</code></pre></div>
+<p>You can then drop the old index with:</p>
+<div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_placex_pendingsector</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="unused-index">Unused index<a class="headerlink" href="#unused-index" title="Permanent link"></a></h3>
+<p>This index has been unused ever since the query using it was changed two years ago. Saves about 12GB on a planet installation.</p>
+<div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_placex_geometry_reverse_lookupPoint</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="switching-to-dotenv">Switching to dotenv<a class="headerlink" href="#switching-to-dotenv" title="Permanent link"></a></h3>
+<p>As part of the work changing the configuration format, the configuration for
+the website is now using a separate configuration file. To create the
+configuration file, run the following command after updating:</p>
+<div class="highlight"><pre><span></span><code>./utils/setup.php<span class="w"> </span>--setup-website
+</code></pre></div>
+<h3 id="update-sql-code">Update SQL code<a class="headerlink" href="#update-sql-code" title="Permanent link"></a></h3>
+<p>To update the SQL code to the leatest version run:</p>
+<div class="highlight"><pre><span></span><code>./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
+</code></pre></div>
+<h2 id="340-350">3.4.0 -&gt; 3.5.0<a class="headerlink" href="#340-350" title="Permanent link"></a></h2>
+<h3 id="new-wikipediawikidata-importance-tables">New Wikipedia/Wikidata importance tables<a class="headerlink" href="#new-wikipediawikidata-importance-tables" title="Permanent link"></a></h3>
+<p>The <code>wikipedia_*</code> tables have a new format that also includes references to
+Wikidata. You need to update the computation functions and the tables as
+follows:</p>
+<ul>
+<li>download the new Wikipedia tables as described in the import section</li>
+<li>reimport the tables: <code>./utils/setup.php --import-wikipedia-articles</code></li>
+<li>update the functions: <code>./utils/setup.php --create-functions --enable-diff-updates</code></li>
+<li>create a new lookup index:
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_placex_wikidata</span>
+<span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">placex</span>
+<span class="w">  </span><span class="k">USING</span><span class="w"> </span><span class="n">BTREE</span><span class="w"> </span><span class="p">((</span><span class="n">extratags</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s1">&#39;wikidata&#39;</span><span class="p">))</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">extratags</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;wikidata&#39;</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;place&#39;</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">osm_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N&#39;</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">rank_search</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">26</span><span class="p">;</span>
+</code></pre></div></li>
+<li>compute importance: <code>./utils/update.php --recompute-importance</code></li>
+</ul>
+<p>The last step takes about 10 hours on the full planet.</p>
+<p>Remove one function (it will be recreated in the next step):</p>
+<div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">create_country</span><span class="p">(</span><span class="n">hstore</span><span class="p">,</span><span class="nb">character</span><span class="w"> </span><span class="nb">varying</span><span class="p">);</span>
+</code></pre></div>
+<p>Finally, update all SQL functions:</p>
+<div class="highlight"><pre><span></span><code>./utils/setup.php<span class="w"> </span>--create-functions<span class="w"> </span>--enable-diff-updates<span class="w"> </span>--create-partition-functions
+</code></pre></div>
+<h2 id="330-340">3.3.0 -&gt; 3.4.0<a class="headerlink" href="#330-340" title="Permanent link"></a></h2>
+<h3 id="reorganisation-of-location_area_country-table">Reorganisation of location_area_country table<a class="headerlink" href="#reorganisation-of-location_area_country-table" title="Permanent link"></a></h3>
+<p>The table <code>location_area_country</code> has been optimized. You need to switch to the
+new format when you run updates. While updates are disabled, run the following
+SQL commands:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">location_area_country_new</span><span class="w"> </span><span class="k">AS</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">place_id</span><span class="p">,</span><span class="w"> </span><span class="n">country_code</span><span class="p">,</span><span class="w"> </span><span class="n">geometry</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">location_area_country</span><span class="p">;</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">location_area_country</span><span class="p">;</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">location_area_country_new</span><span class="w"> </span><span class="k">RENAME</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">location_area_country</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_location_area_country_geometry</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">location_area_country</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">GIST</span><span class="w"> </span><span class="p">(</span><span class="n">geometry</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_location_area_country_place_id</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">location_area_country</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">BTREE</span><span class="w"> </span><span class="p">(</span><span class="n">place_id</span><span class="p">);</span>
+</code></pre></div>
+<p>Finally, update all SQL functions:</p>
+<div class="highlight"><pre><span></span><code>./utils/setup.php<span class="w"> </span>--create-functions<span class="w"> </span>--enable-diff-updates<span class="w"> </span>--create-partition-functions
+</code></pre></div>
+<h2 id="320-330">3.2.0 -&gt; 3.3.0<a class="headerlink" href="#320-330" title="Permanent link"></a></h2>
+<h3 id="new-database-connection-string-dsn-format">New database connection string (DSN) format<a class="headerlink" href="#new-database-connection-string-dsn-format" title="Permanent link"></a></h3>
+<p>Previously database connection setting (<code>CONST_Database_DSN</code> in <code>settings/*.php</code>) had the format</p>
+<ul>
+<li>(simple) <code>pgsql://@/nominatim</code></li>
+<li>(complex) <code>pgsql://johndoe:secret@machine1.domain.com:1234/db1</code></li>
+</ul>
+<p>The new format is</p>
+<ul>
+<li>(simple) <code>pgsql:dbname=nominatim</code></li>
+<li>(complex) <code>pgsql:dbname=db1;host=machine1.domain.com;port=1234;user=johndoe;password=secret</code></li>
+</ul>
+<h3 id="natural-earth-country-boundaries-no-longer-needed-as-fallback">Natural Earth country boundaries no longer needed as fallback<a class="headerlink" href="#natural-earth-country-boundaries-no-longer-needed-as-fallback" title="Permanent link"></a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">country_naturalearthdata</span><span class="p">;</span>
+</code></pre></div>
+<p>Finally, update all SQL functions:</p>
+<div class="highlight"><pre><span></span><code>./utils/setup.php<span class="w"> </span>--create-functions<span class="w"> </span>--enable-diff-updates<span class="w"> </span>--create-partition-functions
+</code></pre></div>
+<h3 id="configurable-address-levels">Configurable Address Levels<a class="headerlink" href="#configurable-address-levels" title="Permanent link"></a></h3>
+<p>The new configurable address levels require a new table. Create it with the
+following command:</p>
+<div class="highlight"><pre><span></span><code>./utils/update.php<span class="w"> </span>--update-address-levels
+</code></pre></div>
+<h2 id="310-320">3.1.0 -&gt; 3.2.0<a class="headerlink" href="#310-320" title="Permanent link"></a></h2>
+<h3 id="new-reverse-algorithm">New reverse algorithm<a class="headerlink" href="#new-reverse-algorithm" title="Permanent link"></a></h3>
+<p>The reverse algorithm has changed and requires new indexes. Run the following
+SQL statements to create the indexes:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_placex_geometry_reverse_lookupPoint</span>
+<span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">placex</span>
+<span class="w">  </span><span class="k">USING</span><span class="w"> </span><span class="n">gist</span><span class="w"> </span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">housenumber</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">rank_address</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">26</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">27</span><span class="p">)</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;railway&#39;</span><span class="p">,</span><span class="s1">&#39;tunnel&#39;</span><span class="p">,</span><span class="s1">&#39;bridge&#39;</span><span class="p">,</span><span class="s1">&#39;man_made&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">rank_address</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">26</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">indexed_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">linked_place_id</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_placex_geometry_reverse_lookupPolygon</span>
+<span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">placex</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">gist</span><span class="w"> </span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">St_GeometryType</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;ST_Polygon&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ST_MultiPolygon&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">rank_address</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="mi">25</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">&#39;postcode&#39;</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">indexed_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">linked_place_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_placex_geometry_reverse_placeNode</span>
+<span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">placex</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">gist</span><span class="w"> </span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">osm_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N&#39;</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">rank_search</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="mi">25</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;place&#39;</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">&#39;postcode&#39;</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">indexed_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">linked_place_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+</code></pre></div>
+<p>You also need to grant the website user access to the <code>country_osm_grid</code> table:</p>
+<div class="highlight"><pre><span></span><code><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">country_osm_grid</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="ss">&quot;www-user&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>Replace the <code>www-user</code> with the user name of your website server if necessary.</p>
+<p>You can now drop the unused indexes:</p>
+<div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_placex_reverse_geometry</span><span class="p">;</span>
+</code></pre></div>
+<p>Finally, update all SQL functions:</p>
+<div class="highlight"><pre><span></span><code>./utils/setup.php<span class="w"> </span>--create-functions<span class="w"> </span>--enable-diff-updates<span class="w"> </span>--create-partition-functions
+</code></pre></div>
+<h2 id="300-310">3.0.0 -&gt; 3.1.0<a class="headerlink" href="#300-310" title="Permanent link"></a></h2>
+<h3 id="postcode-table">Postcode Table<a class="headerlink" href="#postcode-table" title="Permanent link"></a></h3>
+<p>A new separate table for artificially computed postcode centroids was introduced.
+Migration to the new format is possible but <strong>not recommended</strong>.</p>
+<p>Create postcode table and indexes, running the following SQL statements:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">location_postcode</span>
+<span class="w">  </span><span class="p">(</span><span class="n">place_id</span><span class="w"> </span><span class="nb">BIGINT</span><span class="p">,</span><span class="w"> </span><span class="n">parent_place_id</span><span class="w"> </span><span class="nb">BIGINT</span><span class="p">,</span><span class="w"> </span><span class="n">rank_search</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="p">,</span>
+<span class="w">   </span><span class="n">rank_address</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="p">,</span><span class="w"> </span><span class="n">indexed_status</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="p">,</span><span class="w"> </span><span class="n">indexed_date</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="p">,</span>
+<span class="w">   </span><span class="n">country_code</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">postcode</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">   </span><span class="n">geometry</span><span class="w"> </span><span class="n">GEOMETRY</span><span class="p">(</span><span class="n">Geometry</span><span class="p">,</span><span class="w"> </span><span class="mi">4326</span><span class="p">));</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_postcode_geometry</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">location_postcode</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">GIST</span><span class="w"> </span><span class="p">(</span><span class="n">geometry</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_postcode_id</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">location_postcode</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">BTREE</span><span class="w"> </span><span class="p">(</span><span class="n">place_id</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_postcode_postcode</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">location_postcode</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">BTREE</span><span class="w"> </span><span class="p">(</span><span class="n">postcode</span><span class="p">);</span>
+<span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">location_postcode</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="ss">&quot;www-data&quot;</span><span class="p">;</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">nearfeaturecentr</span><span class="w"> </span><span class="k">CASCADE</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="n">nearfeaturecentr</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">place_id</span><span class="w"> </span><span class="nb">BIGINT</span><span class="p">,</span>
+<span class="w">  </span><span class="n">keywords</span><span class="w"> </span><span class="nb">int</span><span class="p">[],</span>
+<span class="w">  </span><span class="n">rank_address</span><span class="w"> </span><span class="nb">smallint</span><span class="p">,</span>
+<span class="w">  </span><span class="n">rank_search</span><span class="w"> </span><span class="nb">smallint</span><span class="p">,</span>
+<span class="w">  </span><span class="n">distance</span><span class="w"> </span><span class="nb">float</span><span class="p">,</span>
+<span class="w">  </span><span class="n">isguess</span><span class="w"> </span><span class="nb">boolean</span><span class="p">,</span>
+<span class="w">  </span><span class="n">postcode</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">  </span><span class="n">centroid</span><span class="w"> </span><span class="n">GEOMETRY</span>
+<span class="p">);</span>
+</code></pre></div>
+<p>Add postcode column to <code>location_area</code> tables with SQL statement:</p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">location_area</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">postcode</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">;</span>
+</code></pre></div>
+<p>Then reimport the functions:</p>
+<div class="highlight"><pre><span></span><code>./utils/setup.php<span class="w"> </span>--create-functions<span class="w"> </span>--enable-diff-updates<span class="w"> </span>--create-partition-functions
+</code></pre></div>
+<p>Create appropriate triggers with SQL:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">location_postcode_before_update</span><span class="w"> </span><span class="k">BEFORE</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">location_postcode</span>
+<span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span><span class="w"> </span><span class="k">EXECUTE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">postcode_update</span><span class="p">();</span>
+</code></pre></div>
+<p>Finally populate the postcode table (will take a while):</p>
+<div class="highlight"><pre><span></span><code>./utils/setup.php<span class="w"> </span>--calculate-postcodes<span class="w"> </span>--index<span class="w"> </span>--index-noanalyse
+</code></pre></div>
+<p>This will create a working database. You may also delete the old artificial
+postcodes now. Note that this may be expensive and is not absolutely necessary.
+The following SQL statement will remove them:</p>
+<div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">place_addressline</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">placex</span><span class="w"> </span><span class="n">p</span>
+<span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">address_place_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">place_id</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">osm_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;P&#39;</span><span class="p">;</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">placex</span><span class="w"> </span><span class="n">DISABLE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="k">USER</span><span class="p">;</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">placex</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">osm_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;P&#39;</span><span class="p">;</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">placex</span><span class="w"> </span><span class="n">ENABLE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="k">USER</span><span class="p">;</span>
+</code></pre></div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../Maintenance/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Maintenance" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Maintenance
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Faq/" class="md-footer__link md-footer__link--next" aria-label="Next: Troubleshooting" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Troubleshooting
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Nominatim developer community
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
+      
+    
+  </body>
+</html>
