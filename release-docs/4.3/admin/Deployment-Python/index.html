@@ -1315,7 +1315,20 @@ virtualenv<span class="w"> </span>/srv/nominatim-venv
 <h3 id="setting-up-nominatim-as-a-systemd-job">Setting up Nominatim as a systemd job<a class="headerlink" href="#setting-up-nominatim-as-a-systemd-job" title="Permanent link"></a></h3>
 <p>Next you need to set up the service that runs the Nominatim frontend. This is
 easiest done with a systemd job.</p>
-<p>Create the following file <code>/etc/systemd/system/nominatim.service</code>:</p>
+<p>First you need to tell systemd to create a socket file to be used by
+hunicorn. Crate the following file <code>/etc/systemd/system/nominatim.socket</code>:</p>
+<div class="highlight"><pre><span></span><code>[Unit]
+Description=Gunicorn socket for Nominatim
+
+[Socket]
+ListenStream=/run/nominatim.sock
+SocketUser=www-data
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div>
+<p>Now you can add the systemd service for Nominatim itself.
+Create the following file <code>/etc/systemd/system/nominatim.service</code>:</p>
 <div class="highlight"><pre><span></span><code>[Unit]
 Description=Nominatim running as a gunicorn application
 After=network.target
@@ -1342,10 +1355,12 @@ WantedBy=multi-user.target
 its own Python process using
 <a href="../../customize/Settings/#nominatim_api_pool_size"><code>NOMINATIM_API_POOL_SIZE</code></a>
 connections to the database to serve requests in parallel.</p>
-<p>Make the new service known to systemd and start it:</p>
+<p>Make the new services known to systemd and start it:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
-sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nominatim
-sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>nominatim
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nominatim.socket
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>nominatim.socket
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nominatim.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>nominatim.service
 </code></pre></div>
 <p>This sets the service up, so that Nominatim is automatically started
 on reboot.</p>
