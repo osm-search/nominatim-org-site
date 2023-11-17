@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nominatim.org/customize/Tokenizers/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Tokenizers - Nominatim 4.2.3</title>
+    <title>Tokenizers - Nominatim 4.2.4</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -34,7 +34,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Nominatim 4.2.3
+          <a href="../.." class="icon icon-home"> Nominatim 4.2.4
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -173,7 +173,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Nominatim 4.2.3</a>
+          <a href="../..">Nominatim 4.2.4</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -336,109 +336,190 @@ that is configured. Each sanitizer works on the results of the previous one.</p>
 <h5 id="split-name-list">split-name-list<a class="headerlink" href="#split-name-list" title="Permanent link"></a></h5>
 
 
-  <div class="doc doc-object doc-module">
+<div class="doc doc-object doc-module">
+
 
 <a id="nominatim.tokenizer.sanitizers.split_name_list"></a>
-    <div class="doc doc-contents first">
-
+  <div class="doc doc-contents first">
+  
       <p>Sanitizer that splits lists of names into their components.</p>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>delimiters</strong> – Define the set of characters to be used for
-        splitting the list. (default: ',;')</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>delimiters</code></td>
+          <td>
+          </td>
+          <td><p>Define the set of characters to be used for
+        splitting the list. (default: ',;')</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
 
-    </div>
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
 
   </div>
 
-<h5 id="strip-brace-terms">strip-brace-terms<a class="headerlink" href="#strip-brace-terms" title="Permanent link"></a></h5>
+  </div>
+
+</div><h5 id="strip-brace-terms">strip-brace-terms<a class="headerlink" href="#strip-brace-terms" title="Permanent link"></a></h5>
 
 
-  <div class="doc doc-object doc-module">
+<div class="doc doc-object doc-module">
+
 
 <a id="nominatim.tokenizer.sanitizers.strip_brace_terms"></a>
-    <div class="doc doc-contents first">
-
+  <div class="doc doc-contents first">
+  
       <p>This sanitizer creates additional name variants for names that have
 addendums in brackets (e.g. "Halle (Saale)"). The additional variant contains
 only the main name part with the bracket part removed.</p>
 
+  
 
-    </div>
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
 
   </div>
 
-<h5 id="tag-analyzer-by-language">tag-analyzer-by-language<a class="headerlink" href="#tag-analyzer-by-language" title="Permanent link"></a></h5>
+  </div>
+
+</div><h5 id="tag-analyzer-by-language">tag-analyzer-by-language<a class="headerlink" href="#tag-analyzer-by-language" title="Permanent link"></a></h5>
 
 
-  <div class="doc doc-object doc-module">
+<div class="doc doc-object doc-module">
+
 
 <a id="nominatim.tokenizer.sanitizers.tag_analyzer_by_language"></a>
-    <div class="doc doc-contents first">
-
+  <div class="doc doc-contents first">
+  
       <p>This sanitizer sets the <code>analyzer</code> property depending on the
 language of the tag. The language is taken from the suffix of the name.
 If a name already has an analyzer tagged, then this is kept.</p>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>filter-kind</strong> – Restrict the names the sanitizer should be applied to
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>filter-kind</code></td>
+          <td>
+          </td>
+          <td><p>Restrict the names the sanitizer should be applied to
          to the given tags. The parameter expects a list of
          regular expressions which are matched against 'kind'.
-         Note that a match against the full string is expected.</p></li>
-            <li><p><strong>whitelist</strong> – Restrict the set of languages that should be tagged.
+         Note that a match against the full string is expected.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>whitelist</code></td>
+          <td>
+          </td>
+          <td><p>Restrict the set of languages that should be tagged.
        Expects a list of acceptable suffixes. When unset,
-       all 2- and 3-letter lower-case codes are accepted.</p></li>
-            <li><p><strong>use-defaults</strong> – Configure what happens when the name has no suffix.
+       all 2- and 3-letter lower-case codes are accepted.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>use-defaults</code></td>
+          <td>
+          </td>
+          <td><p>Configure what happens when the name has no suffix.
            When set to 'all', a variant is created for
            each of the default languages in the country
            the feature is in. When set to 'mono', a variant is
            only created, when exactly one language is spoken
            in the country. The default is to do nothing with
-           the default languages of a country.</p></li>
-            <li><p><strong>mode</strong> – Define how the variants are created and may be 'replace' or
+           the default languages of a country.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>mode</code></td>
+          <td>
+          </td>
+          <td><p>Define how the variants are created and may be 'replace' or
   'append'. When set to 'append' the original name (without
-  any analyzer tagged) is retained. (default: replace)</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  any analyzer tagged) is retained. (default: replace)</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
 
-    </div>
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
 
   </div>
 
-<h5 id="clean-housenumbers">clean-housenumbers<a class="headerlink" href="#clean-housenumbers" title="Permanent link"></a></h5>
+  </div>
+
+</div><h5 id="clean-housenumbers">clean-housenumbers<a class="headerlink" href="#clean-housenumbers" title="Permanent link"></a></h5>
 
 
-  <div class="doc doc-object doc-module">
+<div class="doc doc-object doc-module">
+
 
 <a id="nominatim.tokenizer.sanitizers.clean_housenumbers"></a>
-    <div class="doc doc-contents first">
-
+  <div class="doc doc-contents first">
+  
       <p>Sanitizer that preprocesses address tags for house numbers. The sanitizer
 allows to</p>
 <ul>
@@ -446,98 +527,177 @@ allows to</p>
 <li>split house number lists into individual numbers (see 'delimiters')</li>
 </ul>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>delimiters</strong> – Define the set of characters to be used for
-        splitting a list of house numbers into parts. (default: ',;')</p></li>
-            <li><p><strong>filter-kind</strong> – Define the address tags that are considered to be a
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>delimiters</code></td>
+          <td>
+          </td>
+          <td><p>Define the set of characters to be used for
+        splitting a list of house numbers into parts. (default: ',;')</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>filter-kind</code></td>
+          <td>
+          </td>
+          <td><p>Define the address tags that are considered to be a
          house number. Either takes a single string or a list of strings,
          where each string is a regular expression. An address item
          is considered a house number if the 'kind' fully matches any
-         of the given regular expressions. (default: 'housenumber')</p></li>
-            <li><p><strong>convert-to-name</strong> – Define house numbers that should be treated as a name
+         of the given regular expressions. (default: 'housenumber')</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>convert-to-name</code></td>
+          <td>
+          </td>
+          <td><p>Define house numbers that should be treated as a name
              instead of a house number. Either takes a single string
              or a list of strings, where each string is a regular
-             expression that must match the full house number value.</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+             expression that must match the full house number value.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
 
-    </div>
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
 
   </div>
 
-<h5 id="clean-postcodes">clean-postcodes<a class="headerlink" href="#clean-postcodes" title="Permanent link"></a></h5>
+  </div>
+
+</div><h5 id="clean-postcodes">clean-postcodes<a class="headerlink" href="#clean-postcodes" title="Permanent link"></a></h5>
 
 
-  <div class="doc doc-object doc-module">
+<div class="doc doc-object doc-module">
+
 
 <a id="nominatim.tokenizer.sanitizers.clean_postcodes"></a>
-    <div class="doc doc-contents first">
-
+  <div class="doc doc-contents first">
+  
       <p>Sanitizer that filters postcodes by their officially allowed pattern.</p>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>convert-to-address</strong> – If set to 'yes' (the default), then postcodes that do
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>convert-to-address</code></td>
+          <td>
+          </td>
+          <td><p>If set to 'yes' (the default), then postcodes that do
                 not conform with their country-specific pattern are
                 converted to an address component. That means that
                 the postcode does not take part when computing the
                 postcode centroids of a country but is still searchable.
                 When set to 'no', non-conforming postcodes are not
-                searchable either.</p></li>
-            <li><p><strong>default-pattern</strong> – Pattern to use, when there is none available for the
+                searchable either.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>default-pattern</code></td>
+          <td>
+          </td>
+          <td><p>Pattern to use, when there is none available for the
                 country in question. Warning: will not be used for
                 objects that have no country assigned. These are always
-                assumed to have no postcode.</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+                assumed to have no postcode.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
 
-    </div>
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
 
   </div>
 
-<h5 id="clean-tiger-tags">clean-tiger-tags<a class="headerlink" href="#clean-tiger-tags" title="Permanent link"></a></h5>
+  </div>
+
+</div><h5 id="clean-tiger-tags">clean-tiger-tags<a class="headerlink" href="#clean-tiger-tags" title="Permanent link"></a></h5>
 
 
-  <div class="doc doc-object doc-module">
+<div class="doc doc-object doc-module">
+
 
 <a id="nominatim.tokenizer.sanitizers.clean_tiger_tags"></a>
-    <div class="doc doc-contents first">
-
+  <div class="doc doc-contents first">
+  
       <p>Sanitizer that preprocesses tags from the TIGER import.</p>
 <p>It makes the following changes:</p>
 <ul>
 <li>remove state reference from tiger:county</li>
 </ul>
 
+  
 
-    </div>
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
 
   </div>
 
-<h4 id="token-analysis">Token Analysis<a class="headerlink" href="#token-analysis" title="Permanent link"></a></h4>
+  </div>
+
+</div><h4 id="token-analysis">Token Analysis<a class="headerlink" href="#token-analysis" title="Permanent link"></a></h4>
 <p>Token analyzers take a full name and transform it into one or more normalized
 form that are then saved in the search index. In its simplest form, the
 analyzer only applies the transliteration rules. More complex analyzers

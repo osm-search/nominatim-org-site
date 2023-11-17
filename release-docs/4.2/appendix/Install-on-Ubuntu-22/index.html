@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nominatim.org/appendix/Install-on-Ubuntu-22/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Installation on Ubuntu 22 - Nominatim 4.2.3</title>
+    <title>Installation on Ubuntu 22 - Nominatim 4.2.4</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -34,7 +34,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Nominatim 4.2.3
+          <a href="../.." class="icon icon-home"> Nominatim 4.2.4
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -147,7 +147,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Nominatim 4.2.3</a>
+          <a href="../..">Nominatim 4.2.4</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -229,15 +229,15 @@ sudo -u postgres createuser www-data
 <h2 id="building-and-configuration">Building and Configuration<a class="headerlink" href="#building-and-configuration" title="Permanent link"></a></h2>
 <p>Get the source code from Github and change into the source directory</p>
 <div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$USERHOME</span>
-wget<span class="w"> </span>https://nominatim.org/release/Nominatim-4.2.3.tar.bz2
-tar<span class="w"> </span>xf<span class="w"> </span>Nominatim-4.2.3.tar.bz2
+wget<span class="w"> </span>https://nominatim.org/release/Nominatim-4.2.4.tar.bz2
+tar<span class="w"> </span>xf<span class="w"> </span>Nominatim-4.2.4.tar.bz2
 </code></pre></div>
 
 <p>The code must be built in a separate directory. Create this directory,
 then configure and build Nominatim in there:</p>
 <div class="codehilite"><pre><span></span><code>mkdir $USERHOME/build
 cd $USERHOME/build
-cmake $USERHOME/Nominatim-4.2.3
+cmake $USERHOME/Nominatim-4.2.4
 make
 sudo make install
 </code></pre></div>

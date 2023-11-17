@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nominatim.org/develop/Tokenizers/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Tokenizers - Nominatim 4.2.3</title>
+    <title>Tokenizers - Nominatim 4.2.4</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -34,7 +34,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Nominatim 4.2.3
+          <a href="../.." class="icon icon-home"> Nominatim 4.2.4
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -213,7 +213,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Nominatim 4.2.3</a>
+          <a href="../..">Nominatim 4.2.4</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -342,18 +342,131 @@ class as defined below.</p>
 and implement the abstract functions defined there.</p>
 
 
-  <div class="doc doc-object doc-class">
+<div class="doc doc-object doc-class">
+
 
 <a id="nominatim.tokenizer.base.AbstractTokenizer"></a>
-    <div class="doc doc-contents first">
+  <div class="doc doc-contents first">
+      <p class="doc doc-class-bases">
+        Bases: <code><span title="abc.ABC">ABC</span></code></p>
 
+  
       <p>The tokenizer instance is the central instance of the tokenizer in
 the system. There will only be a single instance of the tokenizer
 active at any time.</p>
 
+
         <details class="quote">
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">AbstractTokenizer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+          <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AbstractTokenizer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; The tokenizer instance is the central instance of the tokenizer in</span>
 <span class="sd">        the system. There will only be a single instance of the tokenizer</span>
 <span class="sd">        active at any time.</span>
@@ -462,10 +575,10 @@ active at any time.</p>
 <span class="sd">            When used outside the with construct, the caller must ensure to</span>
 <span class="sd">            call the close() function before destructing the analyzer.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
         </details>
 
-
+  
 
   <div class="doc doc-children">
 
@@ -477,58 +590,94 @@ active at any time.</p>
 
 
 
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractTokenizer.check_database" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">check_database</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">check_database</span><span class="p">(</span><span class="n">config</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractTokenizer.check_database" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Check that the database is set up correctly and ready for being
 queried.</p>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>config</strong> (<code>Configuration</code>) – Read-only object with configuration options.</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-        <ul class="first simple">
-          <li><p><code>Optional[str]</code> – If an issue was found, return an error message with the
-description of the issue as well as hints for the user on
-how to resolve the issue. If everything is okay, return <code>None</code>.</p></li>
-        </ul>
-    </td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>config</code></td>
+          <td>
+                <code><span title="nominatim.config.Configuration">Configuration</span></code>
+          </td>
+          <td><p>Read-only object with configuration options.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>If an issue was found, return an error message with the</p></td>
+        </tr>
+        <tr>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>description of the issue as well as hints for the user on</p></td>
+        </tr>
+        <tr>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>how to resolve the issue. If everything is okay, return <code>None</code>.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">check_database</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Check that the database is set up correctly and ready for being</span>
 <span class="sd">        queried.</span>
@@ -541,50 +690,69 @@ how to resolve the issue. If everything is okay, return <code>None</code>.</p></
 <span class="sd">          description of the issue as well as hints for the user on</span>
 <span class="sd">          how to resolve the issue. If everything is okay, return `None`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractTokenizer.finalize_import" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">finalize_import</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">finalize_import</span><span class="p">(</span><span class="n">config</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractTokenizer.finalize_import" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>This function is called at the very end of an import when all
 data has been imported and indexed. The tokenizer may create
 at this point any additional indexes and data structures needed
 during query time.</p>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>config</strong> (<code>Configuration</code>) – Read-only object with configuration options.</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>config</code></td>
+          <td>
+                <code><span title="nominatim.config.Configuration">Configuration</span></code>
+          </td>
+          <td><p>Read-only object with configuration options.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">finalize_import</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This function is called at the very end of an import when all</span>
 <span class="sd">        data has been imported and indexed. The tokenizer may create</span>
@@ -594,49 +762,68 @@ during query time.</p>
 <span class="sd">        Arguments:</span>
 <span class="sd">          config: Read-only object with configuration options.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractTokenizer.init_from_project" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">init_from_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">init_from_project</span><span class="p">(</span><span class="n">config</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractTokenizer.init_from_project" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Initialise the tokenizer from an existing database setup.</p>
 <p>The function should load all previously saved configuration from
 the project directory and/or the property table.</p>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>config</strong> (<code>Configuration</code>) – Read-only object with configuration options.</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>config</code></td>
+          <td>
+                <code><span title="nominatim.config.Configuration">Configuration</span></code>
+          </td>
+          <td><p>Read-only object with configuration options.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">init_from_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Initialise the tokenizer from an existing database setup.</span>
 
@@ -646,55 +833,91 @@ the project directory and/or the property table.</p>
 <span class="sd">        Arguments:</span>
 <span class="sd">          config: Read-only object with configuration options.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractTokenizer.init_new_db" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">init_new_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">init_db</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">init_new_db</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">init_db</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractTokenizer.init_new_db" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Set up a new tokenizer for the database.</p>
 <p>The function should copy all necessary data into the project
 directory or save it in the property table to make sure that
 the tokenizer remains stable over updates.</p>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>config</strong> (<code>Configuration</code>) – Read-only object with configuration options.</p></li>
-            <li><p><strong>init_db</strong> (<code>bool</code>) – When set to False, then initialisation of database
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>config</code></td>
+          <td>
+                <code><span title="nominatim.config.Configuration">Configuration</span></code>
+          </td>
+          <td><p>Read-only object with configuration options.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>init_db</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>When set to False, then initialisation of database
 tables should be skipped. This option is only required for
 migration purposes and can be safely ignored by custom
-tokenizers.</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>      <p>TODO: can we move the init_db parameter somewhere else?</p>
+tokenizers.</p></td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <p>TODO: can we move the init_db parameter somewhere else?</p>
 
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">init_new_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">,</span> <span class="n">init_db</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Set up a new tokenizer for the database.</span>
 
@@ -712,26 +935,28 @@ tokenizers.</p></li>
 
 <span class="sd">        TODO: can we move the init_db parameter somewhere else?</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractTokenizer.name_analyzer" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">name_analyzer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">name_analyzer</span><span class="p">()</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractTokenizer.name_analyzer" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Create a new analyzer for tokenizing names and queries
 using this tokinzer. Analyzers are context managers and should
 be used accordingly:</p>
@@ -742,9 +967,22 @@ be used accordingly:</p>
 <p>When used outside the with construct, the caller must ensure to
 call the close() function before destructing the analyzer.</p>
 
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">name_analyzer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbstractAnalyzer</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a new analyzer for tokenizing names and queries</span>
 <span class="sd">        using this tokinzer. Analyzers are context managers and should</span>
@@ -758,51 +996,72 @@ call the close() function before destructing the analyzer.</p>
 <span class="sd">        When used outside the with construct, the caller must ensure to</span>
 <span class="sd">        call the close() function before destructing the analyzer.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractTokenizer.update_sql_functions" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">update_sql_functions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">update_sql_functions</span><span class="p">(</span><span class="n">config</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractTokenizer.update_sql_functions" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Update the SQL part of the tokenizer. This function is called
 automatically on migrations or may be called explicitly by the
 user through the <code>nominatim refresh --functions</code> command.</p>
 <p>The tokenizer must only update the code of the tokenizer. The
 data structures or data itself must not be changed by this function.</p>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>config</strong> (<code>Configuration</code>) – Read-only object with configuration options.</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>config</code></td>
+          <td>
+                <code><span title="nominatim.config.Configuration">Configuration</span></code>
+          </td>
+          <td><p>Read-only object with configuration options.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">update_sql_functions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Update the SQL part of the tokenizer. This function is called</span>
 <span class="sd">        automatically on migrations or may be called explicitly by the</span>
@@ -814,102 +1073,219 @@ data structures or data itself must not be changed by this function.</p>
 <span class="sd">        Arguments:</span>
 <span class="sd">          config: Read-only object with configuration options.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractTokenizer.update_statistics" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">update_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">update_statistics</span><span class="p">()</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractTokenizer.update_statistics" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Recompute any tokenizer statistics necessary for efficient lookup.
 This function is meant to be called from time to time by the user
 to improve performance. However, the tokenizer must not depend on
 it to be called in order to work.</p>
 
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">update_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Recompute any tokenizer statistics necessary for efficient lookup.</span>
 <span class="sd">        This function is meant to be called from time to time by the user</span>
 <span class="sd">        to improve performance. However, the tokenizer must not depend on</span>
 <span class="sd">        it to be called in order to work.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractTokenizer.update_word_tokens" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">update_word_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">update_word_tokens</span><span class="p">()</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractTokenizer.update_word_tokens" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Do house-keeping on the tokenizers internal data structures.
 Remove unused word tokens, resort data etc.</p>
 
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">update_word_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Do house-keeping on the tokenizers internal data structures.</span>
 <span class="sd">        Remove unused word tokens, resort data etc.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+
 
   </div>
 
-
-
-
-
   </div>
 
-    </div>
-
-  </div>
-
-<h3 id="python-analyzer-class">Python Analyzer Class<a class="headerlink" href="#python-analyzer-class" title="Permanent link"></a></h3>
+</div><h3 id="python-analyzer-class">Python Analyzer Class<a class="headerlink" href="#python-analyzer-class" title="Permanent link"></a></h3>
 
 
-  <div class="doc doc-object doc-class">
+<div class="doc doc-object doc-class">
+
 
 <a id="nominatim.tokenizer.base.AbstractAnalyzer"></a>
-    <div class="doc doc-contents first">
+  <div class="doc doc-contents first">
+      <p class="doc doc-class-bases">
+        Bases: <code><span title="abc.ABC">ABC</span></code></p>
 
+  
       <p>The analyzer provides the functions for analysing names and building
 the token database.</p>
 <p>Analyzers are instantiated on a per-thread base. Access to global data
 structures must be synchronised accordingly.</p>
 
+
         <details class="quote">
           <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">AbstractAnalyzer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+          <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AbstractAnalyzer</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; The analyzer provides the functions for analysing names and building</span>
 <span class="sd">        the token database.</span>
 
@@ -1012,10 +1388,10 @@ structures must be synchronised accordingly.</p>
 <span class="sd">                A JSON-serialisable structure that will be handed into</span>
 <span class="sd">                the database via the `token_info` field.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
         </details>
 
-
+  
 
   <div class="doc doc-children">
 
@@ -1027,43 +1403,70 @@ structures must be synchronised accordingly.</p>
 
 
 
-
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractAnalyzer.add_country_names" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">add_country_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">country_code</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">add_country_names</span><span class="p">(</span><span class="n">country_code</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractAnalyzer.add_country_names" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Add the given names to the tokenizer's list of country tokens.</p>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>country_code</strong> (<code>str</code>) – two-letter country code for the country the names
-          refer to.</p></li>
-            <li><p><strong>names</strong> (<code>Dict[str, str]</code>) – Dictionary of name type to name.</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>country_code</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>two-letter country code for the country the names
+          refer to.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>names</code></td>
+          <td>
+                <code><span title="typing.Dict">Dict</span>[str, str]</code>
+          </td>
+          <td><p>Dictionary of name type to name.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">add_country_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">country_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">names</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Add the given names to the tokenizer&#39;s list of country tokens.</span>
 
@@ -1072,97 +1475,140 @@ structures must be synchronised accordingly.</p>
 <span class="sd">                          refer to.</span>
 <span class="sd">            names: Dictionary of name type to name.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractAnalyzer.close" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">close</span><span class="p">()</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractAnalyzer.close" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Free all resources used by the analyzer.</p>
 
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Free all resources used by the analyzer.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractAnalyzer.get_word_token_info" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">get_word_token_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">words</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">get_word_token_info</span><span class="p">(</span><span class="n">words</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractAnalyzer.get_word_token_info" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Return token information for the given list of words.</p>
 <p>The function is used for testing and debugging only
 and does not need to be particularly efficient.</p>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>words</strong> (<code>List[str]</code>) – A list of words to look up the tokens for.
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>words</code></td>
+          <td>
+                <code><span title="typing.List">List</span>[str]</code>
+          </td>
+          <td><p>A list of words to look up the tokens for.
    If a word starts with # it is assumed to be a full name
-   otherwise is a partial term.</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-        <ul class="first simple">
-          <li><p><code>List[Tuple[str, str, int]]</code> – The function returns the list of all tuples that could be
-found for the given words. Each list entry is a tuple of
-(original word, word token, word id).</p></li>
-        </ul>
-    </td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+   otherwise is a partial term.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="typing.List">List</span>[<span title="typing.Tuple">Tuple</span>[str, str, int]]</code>
+          </td>
+          <td><p>The function returns the list of all tuples that could be</p></td>
+        </tr>
+        <tr>
+          <td>
+                <code><span title="typing.List">List</span>[<span title="typing.Tuple">Tuple</span>[str, str, int]]</code>
+          </td>
+          <td><p>found for the given words. Each list entry is a tuple of</p></td>
+        </tr>
+        <tr>
+          <td>
+                <code><span title="typing.List">List</span>[<span title="typing.Tuple">Tuple</span>[str, str, int]]</code>
+          </td>
+          <td><p>(original word, word token, word id).</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">get_word_token_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">words</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Return token information for the given list of words.</span>
 
@@ -1179,65 +1625,89 @@ found for the given words. Each list entry is a tuple of
 <span class="sd">            found for the given words. Each list entry is a tuple of</span>
 <span class="sd">            (original word, word token, word id).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractAnalyzer.normalize_postcode" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">normalize_postcode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">postcode</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">normalize_postcode</span><span class="p">(</span><span class="n">postcode</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractAnalyzer.normalize_postcode" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Convert the postcode to its standardized form.</p>
 <p>This function must yield exactly the same result as the SQL function
 <code>token_normalized_postcode()</code>.</p>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>postcode</strong> (<code>str</code>) – The postcode to be normalized.</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-        <ul class="first simple">
-          <li><p><code>str</code> – The given postcode after normalization.</p></li>
-        </ul>
-    </td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>postcode</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>The postcode to be normalized.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>The given postcode after normalization.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">normalize_postcode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">postcode</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Convert the postcode to its standardized form.</span>
 
@@ -1250,66 +1720,95 @@ found for the given words. Each list entry is a tuple of
 <span class="sd">        Returns:</span>
 <span class="sd">            The given postcode after normalization.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractAnalyzer.process_place" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">process_place</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">place</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">process_place</span><span class="p">(</span><span class="n">place</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractAnalyzer.process_place" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Extract tokens for the given place and compute the
 information to be handed to the PL/pgSQL processor for building
 the search index.</p>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>place</strong> (<code>PlaceInfo</code>) – Place information retrieved from the database.</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-        <ul class="first simple">
-          <li><p><code>Any</code> – A JSON-serialisable structure that will be handed into
-the database via the <code>token_info</code> field.</p></li>
-        </ul>
-    </td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>place</code></td>
+          <td>
+                <code><a class="autorefs autorefs-internal" title="nominatim.data.place_info.PlaceInfo" href="../ICU-Tokenizer-Modules/#nominatim.data.place_info.PlaceInfo">PlaceInfo</a></code>
+          </td>
+          <td><p>Place information retrieved from the database.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="typing.Any">Any</span></code>
+          </td>
+          <td><p>A JSON-serialisable structure that will be handed into</p></td>
+        </tr>
+        <tr>
+          <td>
+                <code><span title="typing.Any">Any</span></code>
+          </td>
+          <td><p>the database via the <code>token_info</code> field.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">process_place</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">place</span><span class="p">:</span> <span class="n">PlaceInfo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Extract tokens for the given place and compute the</span>
 <span class="sd">        information to be handed to the PL/pgSQL processor for building</span>
@@ -1322,82 +1821,120 @@ the database via the <code>token_info</code> field.</p></li>
 <span class="sd">            A JSON-serialisable structure that will be handed into</span>
 <span class="sd">            the database via the `token_info` field.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractAnalyzer.update_postcodes_from_db" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">update_postcodes_from_db</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">update_postcodes_from_db</span><span class="p">()</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractAnalyzer.update_postcodes_from_db" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Update the tokenizer's postcode tokens from the current content
 of the <code>location_postcode</code> table.</p>
 
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">update_postcodes_from_db</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Update the tokenizer&#39;s postcode tokens from the current content</span>
 <span class="sd">        of the `location_postcode` table.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="nominatim.tokenizer.base.AbstractAnalyzer.update_special_phrases" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">update_special_phrases</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phrases</span><span class="p">,</span> <span class="n">should_replace</span><span class="p">)</span></code>
-
+<code class="codehilite language-python"><span class="n">update_special_phrases</span><span class="p">(</span><span class="n">phrases</span><span class="p">,</span> <span class="n">should_replace</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
 
 <a href="#nominatim.tokenizer.base.AbstractAnalyzer.update_special_phrases" class="headerlink" title="Permanent link"></a></h4>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Update the tokenizer's special phrase tokens from the given
 list of special phrases.</p>
 
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li><p><strong>phrases</strong> (<code>Iterable[Tuple[str, str, str, str]]</code>) – The new list of special phrases. Each entry is
-     a tuple of (phrase, class, type, operator).</p></li>
-            <li><p><strong>should_replace</strong> (<code>bool</code>) – If true, replace the current list of phrases.
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>phrases</code></td>
+          <td>
+                <code><span title="typing.Iterable">Iterable</span>[<span title="typing.Tuple">Tuple</span>[str, str, str, str]]</code>
+          </td>
+          <td><p>The new list of special phrases. Each entry is
+     a tuple of (phrase, class, type, operator).</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>should_replace</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>If true, replace the current list of phrases.
             When false, just add the given phrases to the
-            ones that already exist.</p></li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@abstractmethod</span>
+            ones that already exist.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>nominatim/tokenizer/base.py</code></summary>
+        <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">update_special_phrases</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                            <span class="n">phrases</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span>
                            <span class="n">should_replace</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -1411,23 +1948,19 @@ list of special phrases.</p>
 <span class="sd">                            When false, just add the given phrases to the</span>
 <span class="sd">                            ones that already exist.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
-        </details>
-    </div>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+
 
   </div>
 
-
-
-
-
   </div>
 
-    </div>
-
-  </div>
-
-<h3 id="plpgsql-functions">PL/pgSQL Functions<a class="headerlink" href="#plpgsql-functions" title="Permanent link"></a></h3>
+</div><h3 id="plpgsql-functions">PL/pgSQL Functions<a class="headerlink" href="#plpgsql-functions" title="Permanent link"></a></h3>
 <p>The tokenizer must provide access functions for the <code>token_info</code> column
 to the indexer which extracts the necessary information for the global
 search tables. If the tokenizer needs additional SQL functions for private
