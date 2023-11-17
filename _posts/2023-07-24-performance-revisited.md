@@ -273,7 +273,7 @@ reverse geocoding lookup, a speed-up of 5ms per query has much less influence
 on the overall throughput.
 
 When Nominatim handles a forward search query, it analyses the input and
-comes up with a number of possible interpretations. It create a SQL query for
+comes up with a number of possible interpretations. It creates a SQL query for
 each of these interpretations. If a query is difficult to parse, then this
 can be as many as 50 requests to the database. Therefore, it has a much
 larger effect to look at the internal algorithm to reduce the number of
