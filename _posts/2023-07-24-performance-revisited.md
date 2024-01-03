@@ -57,7 +57,7 @@ When investigating how well this compilation caching works for Nominatim, it
 turned out that it wasn't using the feature at all! The culprit was quickly
 identified. Nominatim uses [GeoAlchemy2](https://geoalchemy-2.readthedocs.org)
 for PostGIS support. The Geometry type that comes with the library
-is not yet enabled to support caching yet. Given that almost every query in
+is not yet enabled to support caching. Given that almost every query in
 Nominatim involves a geometry operation, the library effectively disabled
 caching. Switching from GeoAlchemy2 to using our own custom Geometry type
 solved the problem.
@@ -67,7 +67,7 @@ have been cacheable but were never served from the cache. Tracking those down
 required diving a bit deeper into the inner workings of the caching
 mechanism. One of the queries revealed a
 [bug in SQLAlchemy](https://github.com/sqlalchemy/sqlalchemy/issues/10042)
-where wrong a badly computed cache key prevented caching. The friendly people
+where a badly computed cache key prevented caching. The friendly people
 from SQLAlchemy have already fixed the problem in the meantime.
 
 The other problematic queries revealed structural problems with how
@@ -82,7 +82,7 @@ solution that also makes the SQL queries more understandable for the human
 reader.
 
 Finally, it is also important to know that the VALUES statement is one of the
-view that cannot be cached by SQLAlchemy either. It is fairly to replace the
+few that cannot be cached by SQLAlchemy either. It is fairly easy to replace the
 statement with an array construct in PostgreSQL. Take for example the
 following query with a VALUE subset:
 
@@ -125,7 +125,7 @@ like this:
 ``` python
 sql = lambda_stmt(lambda: select(placex.c.name)\
                             .where(placex.osm_type == 'R')
-                            .where(placex.osm_id == 3463)
+                            .where(placex.osm_id == 3463))
 ```
 
 The code to build the query is thus hidden behind a function and SQLAlchemy
