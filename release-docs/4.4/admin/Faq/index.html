@@ -1,0 +1,1666 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nominatim.org/admin/Faq/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.2.5">
+    
+    
+      
+        <title>Troubleshooting - Nominatim 4.4.0 Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2d9f7617.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#troubleshooting-nominatim-installations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nominatim 4.4.0 Manual" class="md-header__button md-logo" aria-label="Nominatim 4.4.0 Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nominatim 4.4.0 Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Troubleshooting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Introduction
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/Overview/" class="md-tabs__link">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Installation/" class="md-tabs__link md-tabs__link--active">
+        Administration Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../customize/Overview/" class="md-tabs__link">
+        Customization Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../library/Getting-Started/" class="md-tabs__link">
+        Library Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../develop/overview/" class="md-tabs__link">
+        Developers Guide
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../appendix/Install-on-Ubuntu-20/" class="md-tabs__link">
+        Appendix
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nominatim 4.4.0 Manual" class="md-nav__button md-logo" aria-label="Nominatim 4.4.0 Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Nominatim 4.4.0 Manual
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Search/" class="md-nav__link">
+        Search
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Reverse/" class="md-nav__link">
+        Reverse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Lookup/" class="md-nav__link">
+        Address Lookup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Details/" class="md-nav__link">
+        Details
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Status/" class="md-nav__link">
+        Status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Output/" class="md-nav__link">
+        Place Output Formats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Administration Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Administration Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Administration Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Installation/" class="md-nav__link">
+        Basic Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Import/" class="md-nav__link">
+        Import
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Update/" class="md-nav__link">
+        Update
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Deployment-Python/" class="md-nav__link">
+        Deploy (Python frontend)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Deployment-PHP/" class="md-nav__link">
+        Deploy (PHP frontend)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Setup-Nominatim-UI/" class="md-nav__link">
+        Nominatim UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-Installations/" class="md-nav__link">
+        Advanced Installations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Maintenance/" class="md-nav__link">
+        Maintenance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Migration/" class="md-nav__link">
+        Migration from older Versions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Troubleshooting
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation-issues" class="md-nav__link">
+    Installation Issues
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#can-a-stoppedkilled-import-process-be-resumed" class="md-nav__link">
+    Can a stopped/killed import process be resumed?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-crashed-invalid-page-in-block" class="md-nav__link">
+    PostgreSQL crashed "invalid page in block"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatimso-version-mismatch" class="md-nav__link">
+    nominatim.so version mismatch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-see-the-error-error-permission-denied-for-language-c" class="md-nav__link">
+    I see the error "ERROR: permission denied for language c"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-see-the-error-function-transliterationtext-does-not-exist" class="md-nav__link">
+    I see the error: "function transliteration(text) does not exist"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-see-the-error-error-mmap-remap-failed" class="md-nav__link">
+    I see the error: "ERROR: mmap (remap) failed"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim-update-failed-error-buffer-179261-is-not-owned-by-resource-owner-portal" class="md-nav__link">
+    nominatim UPDATE failed: ERROR: buffer 179261 is not owned by resource owner Portal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-website-shows-could-not-get-word-tokens" class="md-nav__link">
+    The website shows: "Could not get word tokens"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#website-reports-db-error-insufficient-permissions" class="md-nav__link">
+    Website reports "DB Error: insufficient permissions"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#website-reports-could-not-load-library-nominatimso" class="md-nav__link">
+    Website reports "Could not load library "nominatim.so"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-fails-with-db-error-extension-not-found" class="md-nav__link">
+    Setup fails with "DB Error: extension not found"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-forgot-to-delete-the-flatnodes-file-before-starting-an-import" class="md-nav__link">
+    I forgot to delete the flatnodes file before starting an import.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-your-own-instance" class="md-nav__link">
+    Running your own instance
+  </a>
+  
+    <nav class="md-nav" aria-label="Running your own instance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#can-i-import-negative-osm-ids-into-nominatim" class="md-nav__link">
+    Can I import negative OSM ids into Nominatim?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Customization Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Customization Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Customization Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Import-Styles/" class="md-nav__link">
+        Import Styles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Settings/" class="md-nav__link">
+        Configuration Settings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Country-Settings/" class="md-nav__link">
+        Per-Country Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Ranking/" class="md-nav__link">
+        Place Ranking
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Importance/" class="md-nav__link">
+        Importance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Tokenizers/" class="md-nav__link">
+        Tokenizers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Special-Phrases/" class="md-nav__link">
+        Special Phrases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Tiger/" class="md-nav__link">
+        External data: US housenumbers from TIGER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Postcodes/" class="md-nav__link">
+        External data: Postcodes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/SQLite/" class="md-nav__link">
+        Conversion to SQLite
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Library Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Library Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Library Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Getting-Started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/NominatimAPI/" class="md-nav__link">
+        Nominatim API class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Input-Parameter-Types/" class="md-nav__link">
+        Input Parameter Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Result-Handling/" class="md-nav__link">
+        Result Handling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Low-Level-DB-Access/" class="md-nav__link">
+        Low-level DB Access
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Developers Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developers Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Developers Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/overview/" class="md-nav__link">
+        Architecture Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Database-Layout/" class="md-nav__link">
+        Database Layout
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Indexing/" class="md-nav__link">
+        Indexing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Tokenizers/" class="md-nav__link">
+        Tokenizers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/ICU-Tokenizer-Modules/" class="md-nav__link">
+        Custom modules for ICU tokenizer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Development-Environment/" class="md-nav__link">
+        Setup for Development
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Testing/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/data-sources/" class="md-nav__link">
+        External Data Sources
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Appendix
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Appendix" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/Install-on-Ubuntu-20/" class="md-nav__link">
+        Installation on Ubuntu 20
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/Install-on-Ubuntu-22/" class="md-nav__link">
+        Installation on Ubuntu 22
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation-issues" class="md-nav__link">
+    Installation Issues
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#can-a-stoppedkilled-import-process-be-resumed" class="md-nav__link">
+    Can a stopped/killed import process be resumed?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-crashed-invalid-page-in-block" class="md-nav__link">
+    PostgreSQL crashed "invalid page in block"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatimso-version-mismatch" class="md-nav__link">
+    nominatim.so version mismatch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-see-the-error-error-permission-denied-for-language-c" class="md-nav__link">
+    I see the error "ERROR: permission denied for language c"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-see-the-error-function-transliterationtext-does-not-exist" class="md-nav__link">
+    I see the error: "function transliteration(text) does not exist"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-see-the-error-error-mmap-remap-failed" class="md-nav__link">
+    I see the error: "ERROR: mmap (remap) failed"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim-update-failed-error-buffer-179261-is-not-owned-by-resource-owner-portal" class="md-nav__link">
+    nominatim UPDATE failed: ERROR: buffer 179261 is not owned by resource owner Portal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-website-shows-could-not-get-word-tokens" class="md-nav__link">
+    The website shows: "Could not get word tokens"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#website-reports-db-error-insufficient-permissions" class="md-nav__link">
+    Website reports "DB Error: insufficient permissions"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#website-reports-could-not-load-library-nominatimso" class="md-nav__link">
+    Website reports "Could not load library "nominatim.so"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-fails-with-db-error-extension-not-found" class="md-nav__link">
+    Setup fails with "DB Error: extension not found"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-forgot-to-delete-the-flatnodes-file-before-starting-an-import" class="md-nav__link">
+    I forgot to delete the flatnodes file before starting an import.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-your-own-instance" class="md-nav__link">
+    Running your own instance
+  </a>
+  
+    <nav class="md-nav" aria-label="Running your own instance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#can-i-import-negative-osm-ids-into-nominatim" class="md-nav__link">
+    Can I import negative OSM ids into Nominatim?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/admin/Faq.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+
+<h1 id="troubleshooting-nominatim-installations">Troubleshooting Nominatim Installations<a class="headerlink" href="#troubleshooting-nominatim-installations" title="Permanent link"></a></h1>
+<h2 id="installation-issues">Installation Issues<a class="headerlink" href="#installation-issues" title="Permanent link"></a></h2>
+<h3 id="can-a-stoppedkilled-import-process-be-resumed">Can a stopped/killed import process be resumed?<a class="headerlink" href="#can-a-stoppedkilled-import-process-be-resumed" title="Permanent link"></a></h3>
+<p>"I accidentally killed the import process after it has been running for many hours. Can it be resumed?"</p>
+<p>It is possible if the import already got to the indexing stage.
+Check the last line of output that was logged before the process
+was killed. If it looks like this:</p>
+<div class="codehilite"><pre><span></span><code>Done 844 in 13 @ 64.923080 per second - Rank 26 ETA (seconds): 7.886255
+</code></pre></div>
+
+<p>then you can resume with the following command:</p>
+<div class="highlight"><pre><span></span><code>nominatim<span class="w"> </span>import<span class="w"> </span>--continue<span class="w"> </span>indexing
+</code></pre></div>
+<p>If the reported rank is 26 or higher, you can also safely add <code>--index-noanalyse</code>.</p>
+<h3 id="postgresql-crashed-invalid-page-in-block">PostgreSQL crashed "invalid page in block"<a class="headerlink" href="#postgresql-crashed-invalid-page-in-block" title="Permanent link"></a></h3>
+<p>Usually serious problem, can be a hardware issue, not all data written to disc
+for example. Check PostgreSQL log file and search PostgreSQL issues/mailing
+list for hints.</p>
+<p>If it happened during index creation you can try rerunning the step with</p>
+<div class="highlight"><pre><span></span><code>nominatim<span class="w"> </span>import<span class="w"> </span>--continue<span class="w"> </span>indexing
+</code></pre></div>
+<p>Otherwise it's best to start the full setup from the beginning.</p>
+<h3 id="nominatimso-version-mismatch">nominatim.so version mismatch<a class="headerlink" href="#nominatimso-version-mismatch" title="Permanent link"></a></h3>
+<p>When running the import you may get a version mismatch:
+<code>COPY_END for place failed: ERROR: incompatible library "/srv/Nominatim/nominatim/build/module/nominatim.so": version mismatch</code></p>
+<p>pg_config seems to use bad includes sometimes when multiple versions
+of PostgreSQL are available in the system. Make sure you remove the
+server development libraries (<code>postgresql-server-dev-13</code> on Ubuntu)
+and recompile (<code>cmake .. &amp;&amp; make</code>).</p>
+<h3 id="i-see-the-error-error-permission-denied-for-language-c">I see the error "ERROR: permission denied for language c"<a class="headerlink" href="#i-see-the-error-error-permission-denied-for-language-c" title="Permanent link"></a></h3>
+<p><code>nominatim.so</code>, written in C, is required to be installed on the database
+server. Some managed database (cloud) services like Amazon RDS do not allow
+this. There is currently no work-around other than installing a database
+on a non-managed machine.</p>
+<h3 id="i-see-the-error-function-transliterationtext-does-not-exist">I see the error: "function transliteration(text) does not exist"<a class="headerlink" href="#i-see-the-error-function-transliterationtext-does-not-exist" title="Permanent link"></a></h3>
+<p>Reinstall the nominatim functions with <code>nominatim refresh --functions</code>
+and check for any errors, e.g. a missing <code>nominatim.so</code> file.</p>
+<h3 id="i-see-the-error-error-mmap-remap-failed">I see the error: "ERROR: mmap (remap) failed"<a class="headerlink" href="#i-see-the-error-error-mmap-remap-failed" title="Permanent link"></a></h3>
+<p>This may be a simple out-of-memory error. Try reducing the memory used
+for <code>--osm2pgsql-cache</code>. Also make sure that overcommitting memory is
+allowed: <code>cat /proc/sys/vm/overcommit_memory</code> should print 0 or 1.</p>
+<p>If you are using a flatnode file, then it may also be that the underlying
+filesystem does not fully support 'mmap'. A notable candidate is virtualbox's
+vboxfs.</p>
+<h3 id="nominatim-update-failed-error-buffer-179261-is-not-owned-by-resource-owner-portal">nominatim UPDATE failed: ERROR: buffer 179261 is not owned by resource owner Portal<a class="headerlink" href="#nominatim-update-failed-error-buffer-179261-is-not-owned-by-resource-owner-portal" title="Permanent link"></a></h3>
+<p>Several users <a href="https://github.com/openstreetmap/Nominatim/issues/1168">reported this</a>
+during the initial import of the database. It's
+something PostgreSQL internal Nominatim doesn't control. And PostgreSQL forums
+suggest it's threading related but definitely some kind of crash of a process.
+Users reported either rebooting the server, different hardware or just trying
+the import again worked.</p>
+<h3 id="the-website-shows-could-not-get-word-tokens">The website shows: "Could not get word tokens"<a class="headerlink" href="#the-website-shows-could-not-get-word-tokens" title="Permanent link"></a></h3>
+<p>The server cannot access your database. Add <code>&amp;debug=1</code> to your URL
+to get the full error message.</p>
+<h3 id="website-reports-db-error-insufficient-permissions">Website reports "DB Error: insufficient permissions"<a class="headerlink" href="#website-reports-db-error-insufficient-permissions" title="Permanent link"></a></h3>
+<p>The user the webserver, e.g. Apache, runs under needs to have access to the
+Nominatim database. You can find the user like
+<a href="https://serverfault.com/questions/125865/finding-out-what-user-apache-is-running-as">this</a>,
+for default Ubuntu operating system for example it's <code>www-data</code>.</p>
+<ol>
+<li>
+<p>Repeat the <code>createuser</code> step of the installation instructions.</p>
+</li>
+<li>
+<p>Give the user permission to existing tables</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>   GRANT usage ON SCHEMA public TO &quot;www-data&quot;;
+   GRANT SELECT ON ALL TABLES IN SCHEMA public TO &quot;www-data&quot;;
+</code></pre></div>
+<h3 id="website-reports-could-not-load-library-nominatimso">Website reports "Could not load library "nominatim.so"<a class="headerlink" href="#website-reports-could-not-load-library-nominatimso" title="Permanent link"></a></h3>
+<p>Example error message</p>
+<div class="highlight"><pre><span></span><code>   SELECT make_standard_name(&#39;3039 E MEADOWLARK LN&#39;) [nativecode=ERROR: could not
+   load library &quot;/srv/nominatim/Nominatim-3.1.0/build/module/nominatim.so&quot;:
+   /srv/nominatim/Nominatim-3.1.0/build/module/nominatim.so: cannot open shared
+   object file: Permission denied
+   CONTEXT: PL/pgSQL function make_standard_name(text) line 5 at assignment]
+</code></pre></div>
+<p>The PostgreSQL database, i.e. user <code>postgres</code>, needs to have access to that file.</p>
+<p>The permission need to be read &amp; executable by everybody, but not writeable
+by everybody, e.g.</p>
+<div class="highlight"><pre><span></span><code>   -rwxr-xr-x 1 nominatim nominatim 297984 build/module/nominatim.so
+</code></pre></div>
+<p>Try <code>chmod a+r nominatim.so; chmod a+x nominatim.so</code>.</p>
+<p>When you recently updated your operating system, updated PostgreSQL to
+a new version or moved files (e.g. the build directory) you should
+recreate <code>nominatim.so</code>. Try</p>
+<div class="highlight"><pre><span></span><code>   cd build
+   rm -r module/
+   cmake $main_Nominatim_path &amp;&amp; make
+</code></pre></div>
+<h3 id="setup-fails-with-db-error-extension-not-found">Setup fails with "DB Error: extension not found"<a class="headerlink" href="#setup-fails-with-db-error-extension-not-found" title="Permanent link"></a></h3>
+<p>Make sure you have the PostgreSQL extensions "hstore" and "postgis" installed.
+See the installation instructions for a full list of required packages.</p>
+<h3 id="i-forgot-to-delete-the-flatnodes-file-before-starting-an-import">I forgot to delete the flatnodes file before starting an import.<a class="headerlink" href="#i-forgot-to-delete-the-flatnodes-file-before-starting-an-import" title="Permanent link"></a></h3>
+<p>That's fine. For each import the flatnodes file get overwritten.
+See <a href="https://help.openstreetmap.org/questions/52419/nominatim-flatnode-storage">https://help.openstreetmap.org/questions/52419/nominatim-flatnode-storage</a>
+for more information.</p>
+<h2 id="running-your-own-instance">Running your own instance<a class="headerlink" href="#running-your-own-instance" title="Permanent link"></a></h2>
+<h3 id="can-i-import-negative-osm-ids-into-nominatim">Can I import negative OSM ids into Nominatim?<a class="headerlink" href="#can-i-import-negative-osm-ids-into-nominatim" title="Permanent link"></a></h3>
+<p>See <a href="https://help.openstreetmap.org/questions/64662/nominatim-flatnode-with-negative-id">this question of Stackoverflow</a>.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../Migration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Migration from older Versions" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Migration from older Versions
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../customize/Overview/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Overview
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Nominatim developer community
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
+      
+    
+  </body>
+</html>
