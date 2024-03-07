@@ -212,7 +212,8 @@ cases, which should be sufficient for many use cases.
 While there is clearly room for improvement, these experiments have shown that
 SQLite is clearly up to the task to serve as a database for a geocoder. Next up
 is the search API (or forward geocoding), which comes with another set of
-challenges. More on that in the second part of this blog post.
+challenges. More on that in the [second part]({% link _posts/2023-12-13-sqlite-search.md %})
+of this blog post.
 
 _Many thanks to [NGI Zero](https://nlnet.nl/entrust/) who are funding this
 work on improving Nominatim._
