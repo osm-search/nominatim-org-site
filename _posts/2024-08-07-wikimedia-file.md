@@ -21,7 +21,7 @@ to it? And we can turn that into a single number.
 
 As early as 2014 (version 2.2) Nominatim had the option to imported
 additional scoring files. Those files were created from Wikipedia
-metdata. First using their pageviews, later based on links between
+metadata. First using their pageviews, later based on links between
 Wikipedia article, links between Wikipedia projects (languages), then
 including redirects and now even taking Wikidata into account.
 
@@ -47,6 +47,15 @@ of the processing during the Google Summer of Code 2019 project
 but it loaded all data into a database. Processing took several days
 each time, was error-prone and we rarely ran it.
 
-In the last year we got the processing down to a managable 12 hours
-and publish one file per month. You can read the full details at
+In the last year we got the processing down to a manageable 12 hours.
+This will allow us to publish updated importance file much more frequently.
+We have also streamlined the format and publish it now as a simple CSV file.
+If you have other uses besides geocoding in mind, you are welcome to
+use it. You can read the full details about how the file is made and
+what it contains at
 [https://github.com/osm-search/wikipedia-wikidata#readme](osm-search/wikipedia-wikidata).
+The updated file can be downloaded at
+[https://nominatim.org/data/wikimedia-importance.csv.gz](https://nominatim.org/data/wikimedia-importance.csv.gz).
+
+Nominatim itself will receive full support for reading then new CSV file
+format in the upcoming version 4.5.
