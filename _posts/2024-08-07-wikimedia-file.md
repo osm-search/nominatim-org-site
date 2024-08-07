@@ -53,7 +53,7 @@ We have also streamlined the format and publish it now as a simple CSV file.
 If you have other uses besides geocoding in mind, you are welcome to
 use it. You can read the full details about how the file is made and
 what it contains at
-[https://github.com/osm-search/wikipedia-wikidata#readme](osm-search/wikipedia-wikidata).
+[https://github.com/osm-search/wikipedia-wikidata#readme](https://github.com/osm-search/wikipedia-wikidata).
 The updated file can be downloaded at
 [https://nominatim.org/data/wikimedia-importance.csv.gz](https://nominatim.org/data/wikimedia-importance.csv.gz).
 
