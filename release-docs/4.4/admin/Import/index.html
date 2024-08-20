@@ -10,22 +10,30 @@
       
         <link rel="canonical" href="https://nominatim.org/admin/Import/">
       
+      
+        <link rel="prev" href="../Installation/">
+      
+      
+        <link rel="next" href="../Update/">
+      
+      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.2.5">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
-        <title>Import - Nominatim 4.4.0 Manual</title>
+        <title>Import - Nominatim 4.4.1 Manual</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2d9f7617.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
       
-        
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
-        
       
+
+
     
+    
+      
     
     
       
@@ -43,23 +51,18 @@
     
       <link rel="stylesheet" href="../../styles.css">
     
-    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
+    
   </head>
   
   
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+    <body dir="ltr">
   
-    
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -81,20 +84,21 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Nominatim 4.4.0 Manual" class="md-header__button md-logo" aria-label="Nominatim 4.4.0 Manual" data-md-component="logo">
+    <a href="../.." title="Nominatim 4.4.1 Manual" class="md-header__button md-logo" aria-label="Nominatim 4.4.1 Manual" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Nominatim 4.4.0 Manual
+            Nominatim 4.4.1 Manual
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -108,9 +112,13 @@
     </div>
     
     
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -118,24 +126,27 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -147,7 +158,7 @@
         <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -166,34 +177,41 @@
           
             
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
+  <div class="md-grid">
     <ul class="md-tabs__list">
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Introduction
 
-
-  <li class="md-tabs__item">
-    <a href="../.." class="md-tabs__link">
-      Introduction
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/Overview/" class="md-tabs__link">
+          
+  
+  API Reference
 
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../api/Overview/" class="md-tabs__link">
-        API Reference
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
@@ -202,80 +220,90 @@
   
     
   
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Installation/" class="md-tabs__link">
+          
+  
+  Administration Guide
 
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../Installation/" class="md-tabs__link md-tabs__link--active">
-        Administration Guide
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../customize/Overview/" class="md-tabs__link">
-        Customization Guide
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../customize/Overview/" class="md-tabs__link">
+          
+  
+  Customization Guide
 
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../library/Getting-Started/" class="md-tabs__link">
-        Library Guide
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../develop/overview/" class="md-tabs__link">
-        Developers Guide
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../library/Getting-Started/" class="md-tabs__link">
+          
+  
+  Library Guide
 
+        </a>
+      </li>
+    
+  
 
+      
+        
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../appendix/Install-on-Ubuntu-20/" class="md-tabs__link">
-        Appendix
-      </a>
-    </li>
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../develop/overview/" class="md-tabs__link">
+          
+  
+  Developers Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../appendix/Install-on-Ubuntu-20/" class="md-tabs__link">
+          
+  
+  Appendix
+
+        </a>
+      </li>
+    
   
 
       
@@ -295,25 +323,26 @@
                   <div class="md-sidebar__inner">
                     
 
+
   
 
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Nominatim 4.4.0 Manual" class="md-nav__button md-logo" aria-label="Nominatim 4.4.0 Manual" data-md-component="logo">
+    <a href="../.." title="Nominatim 4.4.1 Manual" class="md-nav__button md-logo" aria-label="Nominatim 4.4.1 Manual" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
-    Nominatim 4.4.0 Manual
+    Nominatim 4.4.1 Manual
   </label>
   
     <div class="md-nav__source">
       <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -325,14 +354,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        Introduction
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
       </a>
     </li>
   
@@ -340,216 +374,316 @@
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2">
-          API Reference
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
-          API Reference
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
           
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Overview/" class="md-nav__link">
-        Overview
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Search/" class="md-nav__link">
-        Search
+        
+  
+  <span class="md-ellipsis">
+    Search
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Reverse/" class="md-nav__link">
-        Reverse
+        
+  
+  <span class="md-ellipsis">
+    Reverse
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Lookup/" class="md-nav__link">
-        Address Lookup
+        
+  
+  <span class="md-ellipsis">
+    Address Lookup
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Details/" class="md-nav__link">
-        Details
+        
+  
+  <span class="md-ellipsis">
+    Details
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Status/" class="md-nav__link">
-        Status
+        
+  
+  <span class="md-ellipsis">
+    Status
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Output/" class="md-nav__link">
-        Place Output Formats
+        
+  
+  <span class="md-ellipsis">
+    Place Output Formats
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Faq/" class="md-nav__link">
-        FAQ
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
     
   
   
+  
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      
+        
+        
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3">
-          Administration Guide
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Administration Guide" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          Administration Guide
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
           
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Administration Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Administration Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../Installation/" class="md-nav__link">
-        Basic Installation
+        
+  
+  <span class="md-ellipsis">
+    Basic Installation
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
     
   
   
+  
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Import
+          
+  
+  <span class="md-ellipsis">
+    Import
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Import
+        
+  
+  <span class="md-ellipsis">
+    Import
+  </span>
+  
+
       </a>
       
         
@@ -569,7 +703,9 @@
       
         <li class="md-nav__item">
   <a href="#creating-the-project-directory" class="md-nav__link">
-    Creating the project directory
+    <span class="md-ellipsis">
+      Creating the project directory
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Creating the project directory">
@@ -577,7 +713,9 @@
         
           <li class="md-nav__item">
   <a href="#configuration-setup-in-env" class="md-nav__link">
-    Configuration setup in .env
+    <span class="md-ellipsis">
+      Configuration setup in .env
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Configuration setup in .env">
@@ -585,7 +723,9 @@
         
           <li class="md-nav__item">
   <a href="#flatnode-files" class="md-nav__link">
-    Flatnode files
+    <span class="md-ellipsis">
+      Flatnode files
+    </span>
   </a>
   
 </li>
@@ -602,7 +742,9 @@
       
         <li class="md-nav__item">
   <a href="#downloading-additional-data" class="md-nav__link">
-    Downloading additional data
+    <span class="md-ellipsis">
+      Downloading additional data
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Downloading additional data">
@@ -610,14 +752,18 @@
         
           <li class="md-nav__item">
   <a href="#wikipediawikidata-rankings" class="md-nav__link">
-    Wikipedia/Wikidata rankings
+    <span class="md-ellipsis">
+      Wikipedia/Wikidata rankings
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#external-postcodes" class="md-nav__link">
-    External postcodes
+    <span class="md-ellipsis">
+      External postcodes
+    </span>
   </a>
   
 </li>
@@ -629,7 +775,9 @@
       
         <li class="md-nav__item">
   <a href="#choosing-the-data-to-import" class="md-nav__link">
-    Choosing the data to import
+    <span class="md-ellipsis">
+      Choosing the data to import
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Choosing the data to import">
@@ -637,28 +785,36 @@
         
           <li class="md-nav__item">
   <a href="#using-an-extract" class="md-nav__link">
-    Using an extract
+    <span class="md-ellipsis">
+      Using an extract
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#dropping-data-required-for-dynamic-updates" class="md-nav__link">
-    Dropping Data Required for Dynamic Updates
+    <span class="md-ellipsis">
+      Dropping Data Required for Dynamic Updates
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#reverse-only-imports" class="md-nav__link">
-    Reverse-only Imports
+    <span class="md-ellipsis">
+      Reverse-only Imports
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#filtering-imported-data" class="md-nav__link">
-    Filtering Imported Data
+    <span class="md-ellipsis">
+      Filtering Imported Data
+    </span>
   </a>
   
 </li>
@@ -670,7 +826,9 @@
       
         <li class="md-nav__item">
   <a href="#initial-import-of-the-data" class="md-nav__link">
-    Initial import of the data
+    <span class="md-ellipsis">
+      Initial import of the data
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Initial import of the data">
@@ -678,21 +836,27 @@
         
           <li class="md-nav__item">
   <a href="#notes-on-full-planet-imports" class="md-nav__link">
-    Notes on full planet imports
+    <span class="md-ellipsis">
+      Notes on full planet imports
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#notes-on-memory-usage" class="md-nav__link">
-    Notes on memory usage
+    <span class="md-ellipsis">
+      Notes on memory usage
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#testing-the-installation" class="md-nav__link">
-    Testing the installation
+    <span class="md-ellipsis">
+      Testing the installation
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Testing the installation">
@@ -700,14 +864,18 @@
         
           <li class="md-nav__item">
   <a href="#testing-the-python-frontend" class="md-nav__link">
-    Testing the Python frontend
+    <span class="md-ellipsis">
+      Testing the Python frontend
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#testing-the-php-frontend" class="md-nav__link">
-    Testing the PHP frontend
+    <span class="md-ellipsis">
+      Testing the PHP frontend
+    </span>
   </a>
   
 </li>
@@ -724,7 +892,9 @@
       
         <li class="md-nav__item">
   <a href="#enabling-search-by-category-phrases" class="md-nav__link">
-    Enabling search by category phrases
+    <span class="md-ellipsis">
+      Enabling search by category phrases
+    </span>
   </a>
   
 </li>
@@ -736,636 +906,926 @@
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../Update/" class="md-nav__link">
-        Update
+        
+  
+  <span class="md-ellipsis">
+    Update
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../Deployment-Python/" class="md-nav__link">
-        Deploy (Python frontend)
+        
+  
+  <span class="md-ellipsis">
+    Deploy (Python frontend)
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../Deployment-PHP/" class="md-nav__link">
-        Deploy (PHP frontend)
+        
+  
+  <span class="md-ellipsis">
+    Deploy (PHP frontend)
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../Setup-Nominatim-UI/" class="md-nav__link">
-        Nominatim UI
+        
+  
+  <span class="md-ellipsis">
+    Nominatim UI
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../Advanced-Installations/" class="md-nav__link">
-        Advanced Installations
+        
+  
+  <span class="md-ellipsis">
+    Advanced Installations
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../Maintenance/" class="md-nav__link">
-        Maintenance
+        
+  
+  <span class="md-ellipsis">
+    Maintenance
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../Migration/" class="md-nav__link">
-        Migration from older Versions
+        
+  
+  <span class="md-ellipsis">
+    Migration from older Versions
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../Faq/" class="md-nav__link">
-        Troubleshooting
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4">
-          Customization Guide
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Customization Guide" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
-          Customization Guide
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
           
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Customization Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Customization Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Overview/" class="md-nav__link">
-        Overview
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Import-Styles/" class="md-nav__link">
-        Import Styles
+        
+  
+  <span class="md-ellipsis">
+    Import Styles
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Settings/" class="md-nav__link">
-        Configuration Settings
+        
+  
+  <span class="md-ellipsis">
+    Configuration Settings
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Country-Settings/" class="md-nav__link">
-        Per-Country Data
+        
+  
+  <span class="md-ellipsis">
+    Per-Country Data
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Ranking/" class="md-nav__link">
-        Place Ranking
+        
+  
+  <span class="md-ellipsis">
+    Place Ranking
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Importance/" class="md-nav__link">
-        Importance
+        
+  
+  <span class="md-ellipsis">
+    Importance
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Tokenizers/" class="md-nav__link">
-        Tokenizers
+        
+  
+  <span class="md-ellipsis">
+    Tokenizers
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Special-Phrases/" class="md-nav__link">
-        Special Phrases
+        
+  
+  <span class="md-ellipsis">
+    Special Phrases
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Tiger/" class="md-nav__link">
-        External data: US housenumbers from TIGER
+        
+  
+  <span class="md-ellipsis">
+    External data: US housenumbers from TIGER
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Postcodes/" class="md-nav__link">
-        External data: Postcodes
+        
+  
+  <span class="md-ellipsis">
+    External data: Postcodes
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/SQLite/" class="md-nav__link">
-        Conversion to SQLite
+        
+  
+  <span class="md-ellipsis">
+    Conversion to SQLite
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5">
-          Library Guide
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Library Guide" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
-          Library Guide
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
           
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Library Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Library Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../library/Getting-Started/" class="md-nav__link">
-        Getting Started
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../library/NominatimAPI/" class="md-nav__link">
-        Nominatim API class
+        
+  
+  <span class="md-ellipsis">
+    Nominatim API class
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../library/Configuration/" class="md-nav__link">
-        Configuration
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../library/Input-Parameter-Types/" class="md-nav__link">
-        Input Parameter Types
+        
+  
+  <span class="md-ellipsis">
+    Input Parameter Types
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../library/Result-Handling/" class="md-nav__link">
-        Result Handling
+        
+  
+  <span class="md-ellipsis">
+    Result Handling
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../library/Low-Level-DB-Access/" class="md-nav__link">
-        Low-level DB Access
+        
+  
+  <span class="md-ellipsis">
+    Low-level DB Access
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_6">
-          Developers Guide
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Developers Guide" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
-          Developers Guide
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
           
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Developers Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Developers Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/overview/" class="md-nav__link">
-        Architecture Overview
+        
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/Database-Layout/" class="md-nav__link">
-        Database Layout
+        
+  
+  <span class="md-ellipsis">
+    Database Layout
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/Indexing/" class="md-nav__link">
-        Indexing
+        
+  
+  <span class="md-ellipsis">
+    Indexing
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/Tokenizers/" class="md-nav__link">
-        Tokenizers
+        
+  
+  <span class="md-ellipsis">
+    Tokenizers
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/ICU-Tokenizer-Modules/" class="md-nav__link">
-        Custom modules for ICU tokenizer
+        
+  
+  <span class="md-ellipsis">
+    Custom modules for ICU tokenizer
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/Development-Environment/" class="md-nav__link">
-        Setup for Development
+        
+  
+  <span class="md-ellipsis">
+    Setup for Development
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/Testing/" class="md-nav__link">
-        Testing
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/data-sources/" class="md-nav__link">
-        External Data Sources
+        
+  
+  <span class="md-ellipsis">
+    External Data Sources
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_7">
-          Appendix
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Appendix" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
-          <span class="md-nav__icon md-icon"></span>
-          Appendix
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
           
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../appendix/Install-on-Ubuntu-20/" class="md-nav__link">
-        Installation on Ubuntu 20
+        
+  
+  <span class="md-ellipsis">
+    Installation on Ubuntu 20
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../appendix/Install-on-Ubuntu-22/" class="md-nav__link">
-        Installation on Ubuntu 22
+        
+  
+  <span class="md-ellipsis">
+    Installation on Ubuntu 22
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1398,7 +1858,9 @@
       
         <li class="md-nav__item">
   <a href="#creating-the-project-directory" class="md-nav__link">
-    Creating the project directory
+    <span class="md-ellipsis">
+      Creating the project directory
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Creating the project directory">
@@ -1406,7 +1868,9 @@
         
           <li class="md-nav__item">
   <a href="#configuration-setup-in-env" class="md-nav__link">
-    Configuration setup in .env
+    <span class="md-ellipsis">
+      Configuration setup in .env
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Configuration setup in .env">
@@ -1414,7 +1878,9 @@
         
           <li class="md-nav__item">
   <a href="#flatnode-files" class="md-nav__link">
-    Flatnode files
+    <span class="md-ellipsis">
+      Flatnode files
+    </span>
   </a>
   
 </li>
@@ -1431,7 +1897,9 @@
       
         <li class="md-nav__item">
   <a href="#downloading-additional-data" class="md-nav__link">
-    Downloading additional data
+    <span class="md-ellipsis">
+      Downloading additional data
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Downloading additional data">
@@ -1439,14 +1907,18 @@
         
           <li class="md-nav__item">
   <a href="#wikipediawikidata-rankings" class="md-nav__link">
-    Wikipedia/Wikidata rankings
+    <span class="md-ellipsis">
+      Wikipedia/Wikidata rankings
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#external-postcodes" class="md-nav__link">
-    External postcodes
+    <span class="md-ellipsis">
+      External postcodes
+    </span>
   </a>
   
 </li>
@@ -1458,7 +1930,9 @@
       
         <li class="md-nav__item">
   <a href="#choosing-the-data-to-import" class="md-nav__link">
-    Choosing the data to import
+    <span class="md-ellipsis">
+      Choosing the data to import
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Choosing the data to import">
@@ -1466,28 +1940,36 @@
         
           <li class="md-nav__item">
   <a href="#using-an-extract" class="md-nav__link">
-    Using an extract
+    <span class="md-ellipsis">
+      Using an extract
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#dropping-data-required-for-dynamic-updates" class="md-nav__link">
-    Dropping Data Required for Dynamic Updates
+    <span class="md-ellipsis">
+      Dropping Data Required for Dynamic Updates
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#reverse-only-imports" class="md-nav__link">
-    Reverse-only Imports
+    <span class="md-ellipsis">
+      Reverse-only Imports
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#filtering-imported-data" class="md-nav__link">
-    Filtering Imported Data
+    <span class="md-ellipsis">
+      Filtering Imported Data
+    </span>
   </a>
   
 </li>
@@ -1499,7 +1981,9 @@
       
         <li class="md-nav__item">
   <a href="#initial-import-of-the-data" class="md-nav__link">
-    Initial import of the data
+    <span class="md-ellipsis">
+      Initial import of the data
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Initial import of the data">
@@ -1507,21 +1991,27 @@
         
           <li class="md-nav__item">
   <a href="#notes-on-full-planet-imports" class="md-nav__link">
-    Notes on full planet imports
+    <span class="md-ellipsis">
+      Notes on full planet imports
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#notes-on-memory-usage" class="md-nav__link">
-    Notes on memory usage
+    <span class="md-ellipsis">
+      Notes on memory usage
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#testing-the-installation" class="md-nav__link">
-    Testing the installation
+    <span class="md-ellipsis">
+      Testing the installation
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Testing the installation">
@@ -1529,14 +2019,18 @@
         
           <li class="md-nav__item">
   <a href="#testing-the-python-frontend" class="md-nav__link">
-    Testing the Python frontend
+    <span class="md-ellipsis">
+      Testing the Python frontend
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#testing-the-php-frontend" class="md-nav__link">
-    Testing the PHP frontend
+    <span class="md-ellipsis">
+      Testing the PHP frontend
+    </span>
   </a>
   
 </li>
@@ -1553,7 +2047,9 @@
       
         <li class="md-nav__item">
   <a href="#enabling-search-by-category-phrases" class="md-nav__link">
-    Enabling search by category phrases
+    <span class="md-ellipsis">
+      Enabling search by category phrases
+    </span>
   </a>
   
 </li>
@@ -1566,14 +2062,14 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-<a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/admin/Import.md" title="Edit this page" class="md-content__button md-icon">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-</a>
+                  
 
+  
+  
 
 
 <h1 id="importing-the-database">Importing the Database<a class="headerlink" href="#importing-the-database" title="Permanent link"></a></h1>
@@ -1587,12 +2083,12 @@ in your <code>PATH</code>. If this is not the case, return to the
 new database installation. This directory receives all data that is related
 to a single Nominatim setup: configuration, extra data, etc. Create a project
 directory apart from the Nominatim software and change into the directory:</p>
-<div class="highlight"><pre><span></span><code>mkdir ~/nominatim-planet
-cd ~/nominatim-planet
+<div class="highlight"><pre><span></span><code>mkdir ~/nominatim-project
+cd ~/nominatim-project
 </code></pre></div>
 <p>In the following, we refer to the project directory as <code>$PROJECT_DIR</code>. To be
 able to copy&amp;paste instructions, you can export the appropriate variable:</p>
-<div class="highlight"><pre><span></span><code>export PROJECT_DIR=~/nominatim-planet
+<div class="highlight"><pre><span></span><code>export PROJECT_DIR=~/nominatim-project
 </code></pre></div>
 <p>The Nominatim tool assumes per default that the current working directory is
 the project directory but you may explicitly state a different directory using
@@ -1699,7 +2195,7 @@ everything run <code>nominatim freeze</code>.</p>
 if you plan to use the installation only for exports to a
 <a href="https://photon.komoot.io/">photon</a> database, then you can set up a database
 without search indexes. Add <code>--reverse-only</code> to your setup command above.</p>
-<p>This saves about 5% of disk space.</p>
+<p>This saves about 5% of disk space, import time won't be significant faster.</p>
 <h3 id="filtering-imported-data">Filtering Imported Data<a class="headerlink" href="#filtering-imported-data" title="Permanent link"></a></h3>
 <p>Nominatim normally sets up a full search database containing administrative
 boundaries, places, streets, addresses and POI data. There are also other
@@ -1796,7 +2292,7 @@ to load the OSM data into the PostgreSQL database. This step is very demanding
 in terms of RAM usage. osm2pgsql and PostgreSQL are running in parallel at 
 this point. PostgreSQL blocks at least the part of RAM that has been configured
 with the <code>shared_buffers</code> parameter during
-<a href="../Installation/#postgresql-tuning">PostgreSQL tuning</a>
+<a href="../Installation/#tuning-the-postgresql-database">PostgreSQL tuning</a>
 and needs some memory on top of that. osm2pgsql needs at least 2GB of RAM for
 its internal data structures, potentially more when it has to process very large
 relations. In addition it needs to maintain a cache for node locations. The size
@@ -1863,49 +2359,28 @@ need internet access for the step.</p>
 <p>You can also import special phrases from a csv file, for more 
 information please see the <a href="../../customize/Special-Phrases/">Customization part</a>.</p>
 
-              
-            </article>
-          </div>
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../Installation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Basic Installation" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Basic Installation
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../Update/" class="md-footer__link md-footer__link--next" aria-label="Next: Update" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Update
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1931,10 +2406,12 @@ information please see the <a href="../../customize/Special-Phrases/">Customizat
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>

@@ -10,22 +10,30 @@
       
         <link rel="canonical" href="https://nominatim.org/library/Input-Parameter-Types/">
       
+      
+        <link rel="prev" href="../Configuration/">
+      
+      
+        <link rel="next" href="../Result-Handling/">
+      
+      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.2.5">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
-        <title>Input Parameter Types - Nominatim 4.4.0 Manual</title>
+        <title>Input Parameter Types - Nominatim 4.4.1 Manual</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2d9f7617.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
       
-        
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
-        
       
+
+
     
+    
+      
     
     
       
@@ -43,23 +51,18 @@
     
       <link rel="stylesheet" href="../../styles.css">
     
-    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
+    
   </head>
   
   
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+    <body dir="ltr">
   
-    
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -81,20 +84,21 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Nominatim 4.4.0 Manual" class="md-header__button md-logo" aria-label="Nominatim 4.4.0 Manual" data-md-component="logo">
+    <a href="../.." title="Nominatim 4.4.1 Manual" class="md-header__button md-logo" aria-label="Nominatim 4.4.1 Manual" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Nominatim 4.4.0 Manual
+            Nominatim 4.4.1 Manual
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -108,9 +112,13 @@
     </div>
     
     
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -118,24 +126,27 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -147,7 +158,7 @@
         <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -166,32 +177,21 @@
           
             
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
+  <div class="md-grid">
     <ul class="md-tabs__list">
       
         
   
   
-
-
-  <li class="md-tabs__item">
-    <a href="../.." class="md-tabs__link">
-      Introduction
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
   
     <li class="md-tabs__item">
-      <a href="../../api/Overview/" class="md-tabs__link">
-        API Reference
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Introduction
+
       </a>
     </li>
   
@@ -200,32 +200,54 @@
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/Overview/" class="md-tabs__link">
+          
+  
+  API Reference
 
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../admin/Installation/" class="md-tabs__link">
-        Administration Guide
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../admin/Installation/" class="md-tabs__link">
+          
+  
+  Administration Guide
 
+        </a>
+      </li>
+    
+  
 
+      
+        
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../customize/Overview/" class="md-tabs__link">
-        Customization Guide
-      </a>
-    </li>
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../customize/Overview/" class="md-tabs__link">
+          
+  
+  Customization Guide
+
+        </a>
+      </li>
+    
   
 
       
@@ -234,48 +256,54 @@
   
     
   
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Getting-Started/" class="md-tabs__link">
+          
+  
+  Library Guide
 
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../Getting-Started/" class="md-tabs__link md-tabs__link--active">
-        Library Guide
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../develop/overview/" class="md-tabs__link">
-        Developers Guide
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../develop/overview/" class="md-tabs__link">
+          
+  
+  Developers Guide
 
+        </a>
+      </li>
+    
+  
 
+      
+        
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../appendix/Install-on-Ubuntu-20/" class="md-tabs__link">
-        Appendix
-      </a>
-    </li>
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../appendix/Install-on-Ubuntu-20/" class="md-tabs__link">
+          
+  
+  Appendix
+
+        </a>
+      </li>
+    
   
 
       
@@ -295,25 +323,26 @@
                   <div class="md-sidebar__inner">
                     
 
+
   
 
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Nominatim 4.4.0 Manual" class="md-nav__button md-logo" aria-label="Nominatim 4.4.0 Manual" data-md-component="logo">
+    <a href="../.." title="Nominatim 4.4.1 Manual" class="md-nav__button md-logo" aria-label="Nominatim 4.4.1 Manual" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
-    Nominatim 4.4.0 Manual
+    Nominatim 4.4.1 Manual
   </label>
   
     <div class="md-nav__source">
       <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -325,14 +354,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        Introduction
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
       </a>
     </li>
   
@@ -340,606 +374,889 @@
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2">
-          API Reference
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
-          API Reference
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
           
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Overview/" class="md-nav__link">
-        Overview
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Search/" class="md-nav__link">
-        Search
+        
+  
+  <span class="md-ellipsis">
+    Search
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Reverse/" class="md-nav__link">
-        Reverse
+        
+  
+  <span class="md-ellipsis">
+    Reverse
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Lookup/" class="md-nav__link">
-        Address Lookup
+        
+  
+  <span class="md-ellipsis">
+    Address Lookup
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Details/" class="md-nav__link">
-        Details
+        
+  
+  <span class="md-ellipsis">
+    Details
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Status/" class="md-nav__link">
-        Status
+        
+  
+  <span class="md-ellipsis">
+    Status
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Output/" class="md-nav__link">
-        Place Output Formats
+        
+  
+  <span class="md-ellipsis">
+    Place Output Formats
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../api/Faq/" class="md-nav__link">
-        FAQ
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3">
-          Administration Guide
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Administration Guide" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          Administration Guide
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
           
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Administration Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Administration Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../admin/Installation/" class="md-nav__link">
-        Basic Installation
+        
+  
+  <span class="md-ellipsis">
+    Basic Installation
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../admin/Import/" class="md-nav__link">
-        Import
+        
+  
+  <span class="md-ellipsis">
+    Import
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../admin/Update/" class="md-nav__link">
-        Update
+        
+  
+  <span class="md-ellipsis">
+    Update
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../admin/Deployment-Python/" class="md-nav__link">
-        Deploy (Python frontend)
+        
+  
+  <span class="md-ellipsis">
+    Deploy (Python frontend)
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../admin/Deployment-PHP/" class="md-nav__link">
-        Deploy (PHP frontend)
+        
+  
+  <span class="md-ellipsis">
+    Deploy (PHP frontend)
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../admin/Setup-Nominatim-UI/" class="md-nav__link">
-        Nominatim UI
+        
+  
+  <span class="md-ellipsis">
+    Nominatim UI
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../admin/Advanced-Installations/" class="md-nav__link">
-        Advanced Installations
+        
+  
+  <span class="md-ellipsis">
+    Advanced Installations
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../admin/Maintenance/" class="md-nav__link">
-        Maintenance
+        
+  
+  <span class="md-ellipsis">
+    Maintenance
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../admin/Migration/" class="md-nav__link">
-        Migration from older Versions
+        
+  
+  <span class="md-ellipsis">
+    Migration from older Versions
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../admin/Faq/" class="md-nav__link">
-        Troubleshooting
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4">
-          Customization Guide
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Customization Guide" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
-          Customization Guide
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
           
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Customization Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Customization Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Overview/" class="md-nav__link">
-        Overview
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Import-Styles/" class="md-nav__link">
-        Import Styles
+        
+  
+  <span class="md-ellipsis">
+    Import Styles
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Settings/" class="md-nav__link">
-        Configuration Settings
+        
+  
+  <span class="md-ellipsis">
+    Configuration Settings
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Country-Settings/" class="md-nav__link">
-        Per-Country Data
+        
+  
+  <span class="md-ellipsis">
+    Per-Country Data
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Ranking/" class="md-nav__link">
-        Place Ranking
+        
+  
+  <span class="md-ellipsis">
+    Place Ranking
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Importance/" class="md-nav__link">
-        Importance
+        
+  
+  <span class="md-ellipsis">
+    Importance
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Tokenizers/" class="md-nav__link">
-        Tokenizers
+        
+  
+  <span class="md-ellipsis">
+    Tokenizers
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Special-Phrases/" class="md-nav__link">
-        Special Phrases
+        
+  
+  <span class="md-ellipsis">
+    Special Phrases
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Tiger/" class="md-nav__link">
-        External data: US housenumbers from TIGER
+        
+  
+  <span class="md-ellipsis">
+    External data: US housenumbers from TIGER
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/Postcodes/" class="md-nav__link">
-        External data: Postcodes
+        
+  
+  <span class="md-ellipsis">
+    External data: Postcodes
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../customize/SQLite/" class="md-nav__link">
-        Conversion to SQLite
+        
+  
+  <span class="md-ellipsis">
+    Conversion to SQLite
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
     
   
   
+  
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      
+        
+        
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5">
-          Library Guide
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Library Guide" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
-          Library Guide
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
           
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Library Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Library Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../Getting-Started/" class="md-nav__link">
-        Getting Started
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../NominatimAPI/" class="md-nav__link">
-        Nominatim API class
+        
+  
+  <span class="md-ellipsis">
+    Nominatim API class
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../Configuration/" class="md-nav__link">
-        Configuration
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
     
   
   
+  
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Input Parameter Types
+          
+  
+  <span class="md-ellipsis">
+    Input Parameter Types
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Input Parameter Types
+        
+  
+  <span class="md-ellipsis">
+    Input Parameter Types
+  </span>
+  
+
       </a>
       
         
@@ -959,7 +1276,9 @@
       
         <li class="md-nav__item">
   <a href="#place-identification" class="md-nav__link">
-    Place identification
+    <span class="md-ellipsis">
+      Place identification
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Place identification">
@@ -967,7 +1286,9 @@
         
           <li class="md-nav__item">
   <a href="#placeid" class="md-nav__link">
-    PlaceID
+    <span class="md-ellipsis">
+      PlaceID
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="PlaceID">
@@ -975,14 +1296,18 @@
         
           <li class="md-nav__item">
   <a href="#nominatim.api.PlaceID" class="md-nav__link">
-    nominatim.api.PlaceID
+    <span class="md-ellipsis">
+      PlaceID
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.PlaceID.place_id" class="md-nav__link">
-    place_id
+  <a href="#nominatim.api.PlaceID.place_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      place_id
+    </span>
   </a>
   
 </li>
@@ -994,7 +1319,9 @@
         
           <li class="md-nav__item">
   <a href="#osmid" class="md-nav__link">
-    OsmID
+    <span class="md-ellipsis">
+      OsmID
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="OsmID">
@@ -1002,28 +1329,36 @@
         
           <li class="md-nav__item">
   <a href="#nominatim.api.OsmID" class="md-nav__link">
-    nominatim.api.OsmID
+    <span class="md-ellipsis">
+      OsmID
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.OsmID.osm_class" class="md-nav__link">
-    osm_class
+  <a href="#nominatim.api.OsmID.osm_class" class="md-nav__link">
+    <span class="md-ellipsis">
+      osm_class
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.OsmID.osm_id" class="md-nav__link">
-    osm_id
+  <a href="#nominatim.api.OsmID.osm_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      osm_id
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.OsmID.osm_type" class="md-nav__link">
-    osm_type
+  <a href="#nominatim.api.OsmID.osm_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      osm_type
+    </span>
   </a>
   
 </li>
@@ -1040,7 +1375,9 @@
       
         <li class="md-nav__item">
   <a href="#geometry-types" class="md-nav__link">
-    Geometry types
+    <span class="md-ellipsis">
+      Geometry types
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Geometry types">
@@ -1048,42 +1385,54 @@
         
           <li class="md-nav__item">
   <a href="#nominatim.api.GeometryFormat" class="md-nav__link">
-    nominatim.api.GeometryFormat
+    <span class="md-ellipsis">
+      GeometryFormat
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.GeometryFormat.NONE" class="md-nav__link">
-    NONE
+  <a href="#nominatim.api.GeometryFormat.NONE" class="md-nav__link">
+    <span class="md-ellipsis">
+      NONE
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.GeometryFormat.GEOJSON" class="md-nav__link">
-    GEOJSON
+  <a href="#nominatim.api.GeometryFormat.GEOJSON" class="md-nav__link">
+    <span class="md-ellipsis">
+      GEOJSON
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.GeometryFormat.KML" class="md-nav__link">
-    KML
+  <a href="#nominatim.api.GeometryFormat.KML" class="md-nav__link">
+    <span class="md-ellipsis">
+      KML
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.GeometryFormat.SVG" class="md-nav__link">
-    SVG
+  <a href="#nominatim.api.GeometryFormat.SVG" class="md-nav__link">
+    <span class="md-ellipsis">
+      SVG
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.GeometryFormat.TEXT" class="md-nav__link">
-    TEXT
+  <a href="#nominatim.api.GeometryFormat.TEXT" class="md-nav__link">
+    <span class="md-ellipsis">
+      TEXT
+    </span>
   </a>
   
 </li>
@@ -1095,7 +1444,9 @@
       
         <li class="md-nav__item">
   <a href="#geometry-input" class="md-nav__link">
-    Geometry input
+    <span class="md-ellipsis">
+      Geometry input
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Geometry input">
@@ -1103,7 +1454,9 @@
         
           <li class="md-nav__item">
   <a href="#point" class="md-nav__link">
-    Point
+    <span class="md-ellipsis">
+      Point
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Point">
@@ -1111,49 +1464,63 @@
         
           <li class="md-nav__item">
   <a href="#nominatim.api.Point" class="md-nav__link">
-    nominatim.api.Point
+    <span class="md-ellipsis">
+      Point
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Point.lat" class="md-nav__link">
-    lat
+  <a href="#nominatim.api.Point.lat" class="md-nav__link">
+    <span class="md-ellipsis">
+      lat
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Point.lon" class="md-nav__link">
-    lon
+  <a href="#nominatim.api.Point.lon" class="md-nav__link">
+    <span class="md-ellipsis">
+      lon
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Point.from_param" class="md-nav__link">
-    from_param()
+  <a href="#nominatim.api.Point.from_param" class="md-nav__link">
+    <span class="md-ellipsis">
+      from_param
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Point.from_wkb" class="md-nav__link">
-    from_wkb()
+  <a href="#nominatim.api.Point.from_wkb" class="md-nav__link">
+    <span class="md-ellipsis">
+      from_wkb
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Point.to_geojson" class="md-nav__link">
-    to_geojson()
+  <a href="#nominatim.api.Point.to_geojson" class="md-nav__link">
+    <span class="md-ellipsis">
+      to_geojson
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Point.to_wkt" class="md-nav__link">
-    to_wkt()
+  <a href="#nominatim.api.Point.to_wkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      to_wkt
+    </span>
   </a>
   
 </li>
@@ -1165,7 +1532,9 @@
         
           <li class="md-nav__item">
   <a href="#bbox" class="md-nav__link">
-    Bbox
+    <span class="md-ellipsis">
+      Bbox
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Bbox">
@@ -1173,84 +1542,108 @@
         
           <li class="md-nav__item">
   <a href="#nominatim.api.Bbox" class="md-nav__link">
-    nominatim.api.Bbox
+    <span class="md-ellipsis">
+      Bbox
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.__init__" class="md-nav__link">
-    __init__()
+  <a href="#nominatim.api.Bbox.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.minlat" class="md-nav__link">
-    minlat
+  <a href="#nominatim.api.Bbox.minlat" class="md-nav__link">
+    <span class="md-ellipsis">
+      minlat
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.maxlat" class="md-nav__link">
-    maxlat
+  <a href="#nominatim.api.Bbox.maxlat" class="md-nav__link">
+    <span class="md-ellipsis">
+      maxlat
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.minlon" class="md-nav__link">
-    minlon
+  <a href="#nominatim.api.Bbox.minlon" class="md-nav__link">
+    <span class="md-ellipsis">
+      minlon
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.maxlon" class="md-nav__link">
-    maxlon
+  <a href="#nominatim.api.Bbox.maxlon" class="md-nav__link">
+    <span class="md-ellipsis">
+      maxlon
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.area" class="md-nav__link">
-    area
+  <a href="#nominatim.api.Bbox.area" class="md-nav__link">
+    <span class="md-ellipsis">
+      area
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.contains" class="md-nav__link">
-    contains()
+  <a href="#nominatim.api.Bbox.contains" class="md-nav__link">
+    <span class="md-ellipsis">
+      contains
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.to_wkt" class="md-nav__link">
-    to_wkt()
+  <a href="#nominatim.api.Bbox.to_wkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      to_wkt
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.from_wkb" class="md-nav__link">
-    from_wkb()
+  <a href="#nominatim.api.Bbox.from_wkb" class="md-nav__link">
+    <span class="md-ellipsis">
+      from_wkb
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.from_point" class="md-nav__link">
-    from_point()
+  <a href="#nominatim.api.Bbox.from_point" class="md-nav__link">
+    <span class="md-ellipsis">
+      from_point
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.from_param" class="md-nav__link">
-    from_param()
+  <a href="#nominatim.api.Bbox.from_param" class="md-nav__link">
+    <span class="md-ellipsis">
+      from_param
+    </span>
   </a>
   
 </li>
@@ -1267,7 +1660,9 @@
       
         <li class="md-nav__item">
   <a href="#layers" class="md-nav__link">
-    Layers
+    <span class="md-ellipsis">
+      Layers
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Layers">
@@ -1275,42 +1670,54 @@
         
           <li class="md-nav__item">
   <a href="#nominatim.api.DataLayer" class="md-nav__link">
-    nominatim.api.DataLayer
+    <span class="md-ellipsis">
+      DataLayer
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.DataLayer.ADDRESS" class="md-nav__link">
-    ADDRESS
+  <a href="#nominatim.api.DataLayer.ADDRESS" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADDRESS
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.DataLayer.POI" class="md-nav__link">
-    POI
+  <a href="#nominatim.api.DataLayer.POI" class="md-nav__link">
+    <span class="md-ellipsis">
+      POI
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.DataLayer.RAILWAY" class="md-nav__link">
-    RAILWAY
+  <a href="#nominatim.api.DataLayer.RAILWAY" class="md-nav__link">
+    <span class="md-ellipsis">
+      RAILWAY
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.DataLayer.NATURAL" class="md-nav__link">
-    NATURAL
+  <a href="#nominatim.api.DataLayer.NATURAL" class="md-nav__link">
+    <span class="md-ellipsis">
+      NATURAL
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.DataLayer.MANMADE" class="md-nav__link">
-    MANMADE
+  <a href="#nominatim.api.DataLayer.MANMADE" class="md-nav__link">
+    <span class="md-ellipsis">
+      MANMADE
+    </span>
   </a>
   
 </li>
@@ -1327,246 +1734,353 @@
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../Result-Handling/" class="md-nav__link">
-        Result Handling
+        
+  
+  <span class="md-ellipsis">
+    Result Handling
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../Low-Level-DB-Access/" class="md-nav__link">
-        Low-level DB Access
+        
+  
+  <span class="md-ellipsis">
+    Low-level DB Access
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_6">
-          Developers Guide
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Developers Guide" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
-          Developers Guide
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
           
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Developers Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Developers Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/overview/" class="md-nav__link">
-        Architecture Overview
+        
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/Database-Layout/" class="md-nav__link">
-        Database Layout
+        
+  
+  <span class="md-ellipsis">
+    Database Layout
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/Indexing/" class="md-nav__link">
-        Indexing
+        
+  
+  <span class="md-ellipsis">
+    Indexing
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/Tokenizers/" class="md-nav__link">
-        Tokenizers
+        
+  
+  <span class="md-ellipsis">
+    Tokenizers
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/ICU-Tokenizer-Modules/" class="md-nav__link">
-        Custom modules for ICU tokenizer
+        
+  
+  <span class="md-ellipsis">
+    Custom modules for ICU tokenizer
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/Development-Environment/" class="md-nav__link">
-        Setup for Development
+        
+  
+  <span class="md-ellipsis">
+    Setup for Development
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/Testing/" class="md-nav__link">
-        Testing
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../develop/data-sources/" class="md-nav__link">
-        External Data Sources
+        
+  
+  <span class="md-ellipsis">
+    External Data Sources
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+      
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_7">
-          Appendix
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Appendix" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
-          <span class="md-nav__icon md-icon"></span>
-          Appendix
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
           
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../appendix/Install-on-Ubuntu-20/" class="md-nav__link">
-        Installation on Ubuntu 20
+        
+  
+  <span class="md-ellipsis">
+    Installation on Ubuntu 20
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../appendix/Install-on-Ubuntu-22/" class="md-nav__link">
-        Installation on Ubuntu 22
+        
+  
+  <span class="md-ellipsis">
+    Installation on Ubuntu 22
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1599,7 +2113,9 @@
       
         <li class="md-nav__item">
   <a href="#place-identification" class="md-nav__link">
-    Place identification
+    <span class="md-ellipsis">
+      Place identification
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Place identification">
@@ -1607,7 +2123,9 @@
         
           <li class="md-nav__item">
   <a href="#placeid" class="md-nav__link">
-    PlaceID
+    <span class="md-ellipsis">
+      PlaceID
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="PlaceID">
@@ -1615,14 +2133,18 @@
         
           <li class="md-nav__item">
   <a href="#nominatim.api.PlaceID" class="md-nav__link">
-    nominatim.api.PlaceID
+    <span class="md-ellipsis">
+      PlaceID
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.PlaceID.place_id" class="md-nav__link">
-    place_id
+  <a href="#nominatim.api.PlaceID.place_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      place_id
+    </span>
   </a>
   
 </li>
@@ -1634,7 +2156,9 @@
         
           <li class="md-nav__item">
   <a href="#osmid" class="md-nav__link">
-    OsmID
+    <span class="md-ellipsis">
+      OsmID
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="OsmID">
@@ -1642,28 +2166,36 @@
         
           <li class="md-nav__item">
   <a href="#nominatim.api.OsmID" class="md-nav__link">
-    nominatim.api.OsmID
+    <span class="md-ellipsis">
+      OsmID
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.OsmID.osm_class" class="md-nav__link">
-    osm_class
+  <a href="#nominatim.api.OsmID.osm_class" class="md-nav__link">
+    <span class="md-ellipsis">
+      osm_class
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.OsmID.osm_id" class="md-nav__link">
-    osm_id
+  <a href="#nominatim.api.OsmID.osm_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      osm_id
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.OsmID.osm_type" class="md-nav__link">
-    osm_type
+  <a href="#nominatim.api.OsmID.osm_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      osm_type
+    </span>
   </a>
   
 </li>
@@ -1680,7 +2212,9 @@
       
         <li class="md-nav__item">
   <a href="#geometry-types" class="md-nav__link">
-    Geometry types
+    <span class="md-ellipsis">
+      Geometry types
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Geometry types">
@@ -1688,42 +2222,54 @@
         
           <li class="md-nav__item">
   <a href="#nominatim.api.GeometryFormat" class="md-nav__link">
-    nominatim.api.GeometryFormat
+    <span class="md-ellipsis">
+      GeometryFormat
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.GeometryFormat.NONE" class="md-nav__link">
-    NONE
+  <a href="#nominatim.api.GeometryFormat.NONE" class="md-nav__link">
+    <span class="md-ellipsis">
+      NONE
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.GeometryFormat.GEOJSON" class="md-nav__link">
-    GEOJSON
+  <a href="#nominatim.api.GeometryFormat.GEOJSON" class="md-nav__link">
+    <span class="md-ellipsis">
+      GEOJSON
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.GeometryFormat.KML" class="md-nav__link">
-    KML
+  <a href="#nominatim.api.GeometryFormat.KML" class="md-nav__link">
+    <span class="md-ellipsis">
+      KML
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.GeometryFormat.SVG" class="md-nav__link">
-    SVG
+  <a href="#nominatim.api.GeometryFormat.SVG" class="md-nav__link">
+    <span class="md-ellipsis">
+      SVG
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.GeometryFormat.TEXT" class="md-nav__link">
-    TEXT
+  <a href="#nominatim.api.GeometryFormat.TEXT" class="md-nav__link">
+    <span class="md-ellipsis">
+      TEXT
+    </span>
   </a>
   
 </li>
@@ -1735,7 +2281,9 @@
       
         <li class="md-nav__item">
   <a href="#geometry-input" class="md-nav__link">
-    Geometry input
+    <span class="md-ellipsis">
+      Geometry input
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Geometry input">
@@ -1743,7 +2291,9 @@
         
           <li class="md-nav__item">
   <a href="#point" class="md-nav__link">
-    Point
+    <span class="md-ellipsis">
+      Point
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Point">
@@ -1751,49 +2301,63 @@
         
           <li class="md-nav__item">
   <a href="#nominatim.api.Point" class="md-nav__link">
-    nominatim.api.Point
+    <span class="md-ellipsis">
+      Point
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Point.lat" class="md-nav__link">
-    lat
+  <a href="#nominatim.api.Point.lat" class="md-nav__link">
+    <span class="md-ellipsis">
+      lat
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Point.lon" class="md-nav__link">
-    lon
+  <a href="#nominatim.api.Point.lon" class="md-nav__link">
+    <span class="md-ellipsis">
+      lon
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Point.from_param" class="md-nav__link">
-    from_param()
+  <a href="#nominatim.api.Point.from_param" class="md-nav__link">
+    <span class="md-ellipsis">
+      from_param
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Point.from_wkb" class="md-nav__link">
-    from_wkb()
+  <a href="#nominatim.api.Point.from_wkb" class="md-nav__link">
+    <span class="md-ellipsis">
+      from_wkb
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Point.to_geojson" class="md-nav__link">
-    to_geojson()
+  <a href="#nominatim.api.Point.to_geojson" class="md-nav__link">
+    <span class="md-ellipsis">
+      to_geojson
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Point.to_wkt" class="md-nav__link">
-    to_wkt()
+  <a href="#nominatim.api.Point.to_wkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      to_wkt
+    </span>
   </a>
   
 </li>
@@ -1805,7 +2369,9 @@
         
           <li class="md-nav__item">
   <a href="#bbox" class="md-nav__link">
-    Bbox
+    <span class="md-ellipsis">
+      Bbox
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Bbox">
@@ -1813,84 +2379,108 @@
         
           <li class="md-nav__item">
   <a href="#nominatim.api.Bbox" class="md-nav__link">
-    nominatim.api.Bbox
+    <span class="md-ellipsis">
+      Bbox
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.__init__" class="md-nav__link">
-    __init__()
+  <a href="#nominatim.api.Bbox.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.minlat" class="md-nav__link">
-    minlat
+  <a href="#nominatim.api.Bbox.minlat" class="md-nav__link">
+    <span class="md-ellipsis">
+      minlat
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.maxlat" class="md-nav__link">
-    maxlat
+  <a href="#nominatim.api.Bbox.maxlat" class="md-nav__link">
+    <span class="md-ellipsis">
+      maxlat
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.minlon" class="md-nav__link">
-    minlon
+  <a href="#nominatim.api.Bbox.minlon" class="md-nav__link">
+    <span class="md-ellipsis">
+      minlon
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.maxlon" class="md-nav__link">
-    maxlon
+  <a href="#nominatim.api.Bbox.maxlon" class="md-nav__link">
+    <span class="md-ellipsis">
+      maxlon
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.area" class="md-nav__link">
-    area
+  <a href="#nominatim.api.Bbox.area" class="md-nav__link">
+    <span class="md-ellipsis">
+      area
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.contains" class="md-nav__link">
-    contains()
+  <a href="#nominatim.api.Bbox.contains" class="md-nav__link">
+    <span class="md-ellipsis">
+      contains
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.to_wkt" class="md-nav__link">
-    to_wkt()
+  <a href="#nominatim.api.Bbox.to_wkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      to_wkt
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.from_wkb" class="md-nav__link">
-    from_wkb()
+  <a href="#nominatim.api.Bbox.from_wkb" class="md-nav__link">
+    <span class="md-ellipsis">
+      from_wkb
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.from_point" class="md-nav__link">
-    from_point()
+  <a href="#nominatim.api.Bbox.from_point" class="md-nav__link">
+    <span class="md-ellipsis">
+      from_point
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.Bbox.from_param" class="md-nav__link">
-    from_param()
+  <a href="#nominatim.api.Bbox.from_param" class="md-nav__link">
+    <span class="md-ellipsis">
+      from_param
+    </span>
   </a>
   
 </li>
@@ -1907,7 +2497,9 @@
       
         <li class="md-nav__item">
   <a href="#layers" class="md-nav__link">
-    Layers
+    <span class="md-ellipsis">
+      Layers
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Layers">
@@ -1915,42 +2507,54 @@
         
           <li class="md-nav__item">
   <a href="#nominatim.api.DataLayer" class="md-nav__link">
-    nominatim.api.DataLayer
+    <span class="md-ellipsis">
+      DataLayer
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.DataLayer.ADDRESS" class="md-nav__link">
-    ADDRESS
+  <a href="#nominatim.api.DataLayer.ADDRESS" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADDRESS
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.DataLayer.POI" class="md-nav__link">
-    POI
+  <a href="#nominatim.api.DataLayer.POI" class="md-nav__link">
+    <span class="md-ellipsis">
+      POI
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.DataLayer.RAILWAY" class="md-nav__link">
-    RAILWAY
+  <a href="#nominatim.api.DataLayer.RAILWAY" class="md-nav__link">
+    <span class="md-ellipsis">
+      RAILWAY
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.DataLayer.NATURAL" class="md-nav__link">
-    NATURAL
+  <a href="#nominatim.api.DataLayer.NATURAL" class="md-nav__link">
+    <span class="md-ellipsis">
+      NATURAL
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nominatim.api.types.DataLayer.MANMADE" class="md-nav__link">
-    MANMADE
+  <a href="#nominatim.api.DataLayer.MANMADE" class="md-nav__link">
+    <span class="md-ellipsis">
+      MANMADE
+    </span>
   </a>
   
 </li>
@@ -1968,14 +2572,14 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-<a href="https://github.com/openstreetmap/Nominatim/edit/master/docs/library/Input-Parameter-Types.md" title="Edit this page" class="md-content__button md-icon">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-</a>
+                  
 
+  
+  
 
 
 <h1 id="input-parameter-types">Input Parameter Types<a class="headerlink" href="#input-parameter-types" title="Permanent link"></a></h1>
@@ -1992,10 +2596,11 @@ types for place identification are listed. All types are dataclasses.</p>
 <div class="doc doc-object doc-class">
 
 
-<a id="nominatim.api.PlaceID"></a>
-  <div class="doc doc-contents first">
 
-  
+<a id="nominatim.api.PlaceID"></a>
+    <div class="doc doc-contents first">
+
+
       <p>Reference a place by Nominatim's internal ID.</p>
 <p>A PlaceID may reference place from the main table placex, from
 the interpolation tables or the postcode tables. Place IDs are not
@@ -2004,7 +2609,6 @@ with place IDs obtained from the same database.</p>
 
 
 
-  
 
   <div class="doc doc-children">
 
@@ -2018,20 +2622,20 @@ with place IDs obtained from the same database.</p>
 
 
 
-<h6 id="nominatim.api.types.PlaceID.place_id" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">place_id</span><span class="p">:</span> <span class="nb">int</span></code>
-  
+<h6 id="nominatim.api.PlaceID.place_id" class="doc doc-heading">
+            <code class=" language-python"><span class="n">place_id</span><span class="p">:</span> <span class="nb">int</span></code>
+
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.PlaceID.place_id" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.PlaceID.place_id" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>The internal ID of the place to reference.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2041,7 +2645,7 @@ with place IDs obtained from the same database.</p>
 
   </div>
 
-  </div>
+    </div>
 
 </div><h3 id="osmid">OsmID<a class="headerlink" href="#osmid" title="Permanent link"></a></h3>
 
@@ -2049,17 +2653,17 @@ with place IDs obtained from the same database.</p>
 <div class="doc doc-object doc-class">
 
 
-<a id="nominatim.api.OsmID"></a>
-  <div class="doc doc-contents first">
 
-  
+<a id="nominatim.api.OsmID"></a>
+    <div class="doc doc-contents first">
+
+
       <p>Reference a place by its OSM ID and potentially the basic category.</p>
 <p>The OSM ID may refer to places in the main table placex and OSM
 interpolation lines.</p>
 
 
 
-  
 
   <div class="doc doc-children">
 
@@ -2073,24 +2677,25 @@ interpolation lines.</p>
 
 
 
-<h6 id="nominatim.api.types.OsmID.osm_class" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">osm_class</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
-  
+<h6 id="nominatim.api.OsmID.osm_class" class="doc doc-heading">
+            <code class=" language-python"><span class="n">osm_class</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.OsmID.osm_class" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.OsmID.osm_class" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>The same OSM object may appear multiple times in the database under
 different categories. The optional class parameter allows to distinguish
 the different categories and corresponds to the key part of the category.
 If there are multiple objects in the database and <code>osm_class</code> is
 left out, then one of the objects is returned at random.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2098,20 +2703,20 @@ left out, then one of the objects is returned at random.</p>
 
 
 
-<h6 id="nominatim.api.types.OsmID.osm_id" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">osm_id</span><span class="p">:</span> <span class="nb">int</span></code>
-  
+<h6 id="nominatim.api.OsmID.osm_id" class="doc doc-heading">
+            <code class=" language-python"><span class="n">osm_id</span><span class="p">:</span> <span class="nb">int</span></code>
+
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.OsmID.osm_id" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.OsmID.osm_id" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>The OSM ID of the object.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2119,21 +2724,21 @@ left out, then one of the objects is returned at random.</p>
 
 
 
-<h6 id="nominatim.api.types.OsmID.osm_type" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">osm_type</span><span class="p">:</span> <span class="nb">str</span></code>
-  
+<h6 id="nominatim.api.OsmID.osm_type" class="doc doc-heading">
+            <code class=" language-python"><span class="n">osm_type</span><span class="p">:</span> <span class="nb">str</span></code>
+
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.OsmID.osm_type" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.OsmID.osm_type" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>OSM type of the object. Must be one of <code>N</code>(node), <code>W</code>(way) or
 <code>R</code>(relation).</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2143,7 +2748,7 @@ left out, then one of the objects is returned at random.</p>
 
   </div>
 
-  </div>
+    </div>
 
 </div><h2 id="geometry-types">Geometry types<a class="headerlink" href="#geometry-types" title="Permanent link"></a></h2>
 
@@ -2151,10 +2756,11 @@ left out, then one of the objects is returned at random.</p>
 <div class="doc doc-object doc-class">
 
 
-<a id="nominatim.api.GeometryFormat"></a>
-  <div class="doc doc-contents first">
 
-  
+<a id="nominatim.api.GeometryFormat"></a>
+    <div class="doc doc-contents first">
+
+
       <p>All search functions support returning the full geometry of a place in
 various formats. The internal geometry is converted by PostGIS to
 the desired format and then returned as a string. It is possible to
@@ -2162,7 +2768,6 @@ request multiple formats at the same time.</p>
 
 
 
-  
 
   <div class="doc doc-children">
 
@@ -2176,20 +2781,21 @@ request multiple formats at the same time.</p>
 
 
 
-<h6 id="nominatim.api.types.GeometryFormat.NONE" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">NONE</span> <span class="o">=</span> <span class="mi">0</span></code>
-  
+<h6 id="nominatim.api.GeometryFormat.NONE" class="doc doc-heading">
+            <code class=" language-python"><span class="n">NONE</span> <span class="o">=</span> <span class="mi">0</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.GeometryFormat.NONE" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.GeometryFormat.NONE" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>No geometry requested. Alias for a empty flag.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2197,20 +2803,21 @@ request multiple formats at the same time.</p>
 
 
 
-<h6 id="nominatim.api.types.GeometryFormat.GEOJSON" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">GEOJSON</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
-  
+<h6 id="nominatim.api.GeometryFormat.GEOJSON" class="doc doc-heading">
+            <code class=" language-python"><span class="n">GEOJSON</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.GeometryFormat.GEOJSON" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.GeometryFormat.GEOJSON" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p><a href="https://geojson.org/">GeoJSON</a> format</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2218,20 +2825,21 @@ request multiple formats at the same time.</p>
 
 
 
-<h6 id="nominatim.api.types.GeometryFormat.KML" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">KML</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
-  
+<h6 id="nominatim.api.GeometryFormat.KML" class="doc doc-heading">
+            <code class=" language-python"><span class="n">KML</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.GeometryFormat.KML" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.GeometryFormat.KML" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p><a href="https://en.wikipedia.org/wiki/Keyhole_Markup_Language">KML</a> format</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2239,20 +2847,21 @@ request multiple formats at the same time.</p>
 
 
 
-<h6 id="nominatim.api.types.GeometryFormat.SVG" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">SVG</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
-  
+<h6 id="nominatim.api.GeometryFormat.SVG" class="doc doc-heading">
+            <code class=" language-python"><span class="n">SVG</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.GeometryFormat.SVG" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.GeometryFormat.SVG" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p><a href="http://www.w3.org/TR/SVG/paths.html">SVG</a> format</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2260,20 +2869,21 @@ request multiple formats at the same time.</p>
 
 
 
-<h6 id="nominatim.api.types.GeometryFormat.TEXT" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">TEXT</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
-  
+<h6 id="nominatim.api.GeometryFormat.TEXT" class="doc doc-heading">
+            <code class=" language-python"><span class="n">TEXT</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.GeometryFormat.TEXT" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.GeometryFormat.TEXT" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p><a href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">WKT</a> format</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2283,7 +2893,7 @@ request multiple formats at the same time.</p>
 
   </div>
 
-  </div>
+    </div>
 
 </div><h2 id="geometry-input">Geometry input<a class="headerlink" href="#geometry-input" title="Permanent link"></a></h2>
 <h3 id="point">Point<a class="headerlink" href="#point" title="Permanent link"></a></h3>
@@ -2292,15 +2902,15 @@ request multiple formats at the same time.</p>
 <div class="doc doc-object doc-class">
 
 
-<a id="nominatim.api.Point"></a>
-  <div class="doc doc-contents first">
 
-  
+<a id="nominatim.api.Point"></a>
+    <div class="doc doc-contents first">
+
+
       <p>A geographic point in WGS84 projection.</p>
 
 
 
-  
 
   <div class="doc doc-children">
 
@@ -2314,20 +2924,20 @@ request multiple formats at the same time.</p>
 
 
 
-<h6 id="nominatim.api.types.Point.lat" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">lat</span><span class="p">:</span> <span class="nb">float</span></code>
-  
+<h6 id="nominatim.api.Point.lat" class="doc doc-heading">
+            <code class=" language-python"><span class="n">lat</span><span class="p">:</span> <span class="nb">float</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#nominatim.api.types.Point.lat" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Point.lat" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Return the latitude of the point.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2335,20 +2945,20 @@ request multiple formats at the same time.</p>
 
 
 
-<h6 id="nominatim.api.types.Point.lon" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">lon</span><span class="p">:</span> <span class="nb">float</span></code>
-  
+<h6 id="nominatim.api.Point.lon" class="doc doc-heading">
+            <code class=" language-python"><span class="n">lon</span><span class="p">:</span> <span class="nb">float</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#nominatim.api.types.Point.lon" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Point.lon" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Return the longitude of the point.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2357,83 +2967,79 @@ request multiple formats at the same time.</p>
 <div class="doc doc-object doc-function">
 
 
+<h6 id="nominatim.api.Point.from_param" class="doc doc-heading">
+            <code class=" language-python"><span class="n">from_param</span><span class="p">(</span><span class="n">inp</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Point</span></code>
 
-<h6 id="nominatim.api.types.Point.from_param" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">from_param</span><span class="p">(</span><span class="n">inp</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Point</span></code>
-  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
   </span>
 
-<a href="#nominatim.api.types.Point.from_param" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Point.from_param" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Create a point from an input parameter. The parameter
 may be given as a point, a string or a sequence of
 strings or floats. Raises a UsageError if the format is
 not correct.</p>
 
-  </div>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
+<h6 id="nominatim.api.Point.from_wkb" class="doc doc-heading">
+            <code class=" language-python"><span class="n">from_wkb</span><span class="p">(</span><span class="n">wkb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Point</span></code>
 
-<h6 id="nominatim.api.types.Point.from_wkb" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">from_wkb</span><span class="p">(</span><span class="n">wkb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Point</span></code>
-  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
   </span>
 
-<a href="#nominatim.api.types.Point.from_wkb" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Point.from_wkb" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Create a point from EWKB as returned from the database.</p>
 
-  </div>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
+<h6 id="nominatim.api.Point.to_geojson" class="doc doc-heading">
+            <code class=" language-python"><span class="n">to_geojson</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span></code>
 
-<h6 id="nominatim.api.types.Point.to_geojson" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">to_geojson</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span></code>
-
-<a href="#nominatim.api.types.Point.to_geojson" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Point.to_geojson" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Return the point in GeoJSON format.</p>
 
-  </div>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
+<h6 id="nominatim.api.Point.to_wkt" class="doc doc-heading">
+            <code class=" language-python"><span class="n">to_wkt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span></code>
 
-<h6 id="nominatim.api.types.Point.to_wkt" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">to_wkt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span></code>
-
-<a href="#nominatim.api.types.Point.to_wkt" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Point.to_wkt" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Return the WKT representation of the point.</p>
 
-  </div>
+    </div>
 
 </div>
 
@@ -2441,7 +3047,7 @@ not correct.</p>
 
   </div>
 
-  </div>
+    </div>
 
 </div><h3 id="bbox">Bbox<a class="headerlink" href="#bbox" title="Permanent link"></a></h3>
 
@@ -2449,17 +3055,17 @@ not correct.</p>
 <div class="doc doc-object doc-class">
 
 
-<a id="nominatim.api.Bbox"></a>
-  <div class="doc doc-contents first">
 
-  
+<a id="nominatim.api.Bbox"></a>
+    <div class="doc doc-contents first">
+
+
       <p>A bounding box in WGS84 projection.</p>
 <p>The coordinates are available as an array in the 'coord'
 property in the order (minx, miny, maxx, maxy).</p>
 
 
 
-  
 
   <div class="doc doc-children">
 
@@ -2472,19 +3078,18 @@ property in the order (minx, miny, maxx, maxy).</p>
 <div class="doc doc-object doc-function">
 
 
+<h6 id="nominatim.api.Bbox.__init__" class="doc doc-heading">
+            <code class=" language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">minx</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">miny</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">maxx</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">maxy</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
 
-<h6 id="nominatim.api.types.Bbox.__init__" class="doc doc-heading">
-<code class="codehilite language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">minx</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">miny</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">maxx</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">maxy</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
-
-<a href="#nominatim.api.types.Bbox.__init__" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Bbox.__init__" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Create a new bounding box with the given coordinates in WGS84
 projection.</p>
 
-  </div>
+    </div>
 
 </div>
 
@@ -2497,20 +3102,20 @@ projection.</p>
 
 
 
-<h6 id="nominatim.api.types.Bbox.minlat" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">minlat</span><span class="p">:</span> <span class="nb">float</span></code>
-  
+<h6 id="nominatim.api.Bbox.minlat" class="doc doc-heading">
+            <code class=" language-python"><span class="n">minlat</span><span class="p">:</span> <span class="nb">float</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#nominatim.api.types.Bbox.minlat" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Bbox.minlat" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Southern-most latitude, corresponding to the minimum y coordinate.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2523,20 +3128,20 @@ projection.</p>
 
 
 
-<h6 id="nominatim.api.types.Bbox.maxlat" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">maxlat</span><span class="p">:</span> <span class="nb">float</span></code>
-  
+<h6 id="nominatim.api.Bbox.maxlat" class="doc doc-heading">
+            <code class=" language-python"><span class="n">maxlat</span><span class="p">:</span> <span class="nb">float</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#nominatim.api.types.Bbox.maxlat" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Bbox.maxlat" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Northern-most latitude, corresponding to the maximum y coordinate.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2549,20 +3154,20 @@ projection.</p>
 
 
 
-<h6 id="nominatim.api.types.Bbox.minlon" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">minlon</span><span class="p">:</span> <span class="nb">float</span></code>
-  
+<h6 id="nominatim.api.Bbox.minlon" class="doc doc-heading">
+            <code class=" language-python"><span class="n">minlon</span><span class="p">:</span> <span class="nb">float</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#nominatim.api.types.Bbox.minlon" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Bbox.minlon" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Western-most longitude, corresponding to the minimum x coordinate.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2575,20 +3180,20 @@ projection.</p>
 
 
 
-<h6 id="nominatim.api.types.Bbox.maxlon" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">maxlon</span><span class="p">:</span> <span class="nb">float</span></code>
-  
+<h6 id="nominatim.api.Bbox.maxlon" class="doc doc-heading">
+            <code class=" language-python"><span class="n">maxlon</span><span class="p">:</span> <span class="nb">float</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#nominatim.api.types.Bbox.maxlon" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Bbox.maxlon" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Eastern-most longitude, corresponding to the maximum x coordinate.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2601,20 +3206,20 @@ projection.</p>
 
 
 
-<h6 id="nominatim.api.types.Bbox.area" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">area</span><span class="p">:</span> <span class="nb">float</span></code>
-  
+<h6 id="nominatim.api.Bbox.area" class="doc doc-heading">
+            <code class=" language-python"><span class="n">area</span><span class="p">:</span> <span class="nb">float</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#nominatim.api.types.Bbox.area" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Bbox.area" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Return the area of the box in WGS84.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2626,18 +3231,17 @@ projection.</p>
 <div class="doc doc-object doc-function">
 
 
+<h6 id="nominatim.api.Bbox.contains" class="doc doc-heading">
+            <code class=" language-python"><span class="n">contains</span><span class="p">(</span><span class="n">pt</span><span class="p">:</span> <span class="n">Point</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span></code>
 
-<h6 id="nominatim.api.types.Bbox.contains" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">contains</span><span class="p">(</span><span class="n">pt</span><span class="p">:</span> <span class="n">Point</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span></code>
-
-<a href="#nominatim.api.types.Bbox.contains" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Bbox.contains" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Check if the point is inside or on the boundary of the box.</p>
 
-  </div>
+    </div>
 
 </div>
 
@@ -2649,19 +3253,18 @@ projection.</p>
 <div class="doc doc-object doc-function">
 
 
+<h6 id="nominatim.api.Bbox.to_wkt" class="doc doc-heading">
+            <code class=" language-python"><span class="n">to_wkt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span></code>
 
-<h6 id="nominatim.api.types.Bbox.to_wkt" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">to_wkt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span></code>
-
-<a href="#nominatim.api.types.Bbox.to_wkt" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Bbox.to_wkt" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Return the WKT representation of the Bbox. This
 is a simple polygon with four points.</p>
 
-  </div>
+    </div>
 
 </div>
 
@@ -2673,23 +3276,22 @@ is a simple polygon with four points.</p>
 <div class="doc doc-object doc-function">
 
 
+<h6 id="nominatim.api.Bbox.from_wkb" class="doc doc-heading">
+            <code class=" language-python"><span class="n">from_wkb</span><span class="p">(</span><span class="n">wkb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Bbox</span><span class="p">]</span></code>
 
-<h6 id="nominatim.api.types.Bbox.from_wkb" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">from_wkb</span><span class="p">(</span><span class="n">wkb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Bbox</span><span class="p">]</span></code>
-  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
   </span>
 
-<a href="#nominatim.api.types.Bbox.from_wkb" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Bbox.from_wkb" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Create a Bbox from a bounding box polygon as returned by
 the database. Returns <code>None</code> if the input value is None.</p>
 
-  </div>
+    </div>
 
 </div>
 
@@ -2701,22 +3303,21 @@ the database. Returns <code>None</code> if the input value is None.</p>
 <div class="doc doc-object doc-function">
 
 
+<h6 id="nominatim.api.Bbox.from_point" class="doc doc-heading">
+            <code class=" language-python"><span class="n">from_point</span><span class="p">(</span><span class="n">pt</span><span class="p">:</span> <span class="n">Point</span><span class="p">,</span> <span class="n">buffer</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bbox</span></code>
 
-<h6 id="nominatim.api.types.Bbox.from_point" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">from_point</span><span class="p">(</span><span class="n">pt</span><span class="p">:</span> <span class="n">Point</span><span class="p">,</span> <span class="n">buffer</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bbox</span></code>
-  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
   </span>
 
-<a href="#nominatim.api.types.Bbox.from_point" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Bbox.from_point" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Return a Bbox around the point with the buffer added to all sides.</p>
 
-  </div>
+    </div>
 
 </div>
 
@@ -2728,24 +3329,23 @@ the database. Returns <code>None</code> if the input value is None.</p>
 <div class="doc doc-object doc-function">
 
 
+<h6 id="nominatim.api.Bbox.from_param" class="doc doc-heading">
+            <code class=" language-python"><span class="n">from_param</span><span class="p">(</span><span class="n">inp</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bbox</span></code>
 
-<h6 id="nominatim.api.types.Bbox.from_param" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">from_param</span><span class="p">(</span><span class="n">inp</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bbox</span></code>
-  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
   </span>
 
-<a href="#nominatim.api.types.Bbox.from_param" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Bbox.from_param" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Return a Bbox from an input parameter. The box may be
 given as a Bbox, a string or a list or strings or integer.
 Raises a UsageError if the format is incorrect.</p>
 
-  </div>
+    </div>
 
 </div>
 
@@ -2754,7 +3354,7 @@ Raises a UsageError if the format is incorrect.</p>
 
   </div>
 
-  </div>
+    </div>
 
 </div><h2 id="layers">Layers<a class="headerlink" href="#layers" title="Permanent link"></a></h2>
 <p>Layers allow to restrict the search result to thematic groups. This is
@@ -2765,16 +3365,16 @@ geographic extent.</p>
 <div class="doc doc-object doc-class">
 
 
-<a id="nominatim.api.DataLayer"></a>
-  <div class="doc doc-contents first">
 
-  
+<a id="nominatim.api.DataLayer"></a>
+    <div class="doc doc-contents first">
+
+
       <p>The <code>DataLayer</code> flag type defines the layers that can be selected
 for reverse and forward search.</p>
 
 
 
-  
 
   <div class="doc doc-children">
 
@@ -2788,23 +3388,24 @@ for reverse and forward search.</p>
 
 
 
-<h6 id="nominatim.api.types.DataLayer.ADDRESS" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">ADDRESS</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
-  
+<h6 id="nominatim.api.DataLayer.ADDRESS" class="doc doc-heading">
+            <code class=" language-python"><span class="n">ADDRESS</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.DataLayer.ADDRESS" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.DataLayer.ADDRESS" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>The address layer contains all places relevant for addresses:
 fully qualified addresses with a house number (or a house name equivalent,
 for some addresses) and places that can be part of an address like
 roads, cities, states.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2812,21 +3413,22 @@ roads, cities, states.</p>
 
 
 
-<h6 id="nominatim.api.types.DataLayer.POI" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">POI</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
-  
+<h6 id="nominatim.api.DataLayer.POI" class="doc doc-heading">
+            <code class=" language-python"><span class="n">POI</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.DataLayer.POI" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.DataLayer.POI" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Layer for points of interest like shops, restaurants but also
 recycling bins or postboxes.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2834,23 +3436,24 @@ recycling bins or postboxes.</p>
 
 
 
-<h6 id="nominatim.api.types.DataLayer.RAILWAY" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">RAILWAY</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
-  
+<h6 id="nominatim.api.DataLayer.RAILWAY" class="doc doc-heading">
+            <code class=" language-python"><span class="n">RAILWAY</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.DataLayer.RAILWAY" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.DataLayer.RAILWAY" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Layer with railway features including tracks and other infrastructure.
 Note that in Nominatim's standard configuration, only very few railway
 features are imported into the database. Thus a custom configuration
 is required to make full use of this layer.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2858,20 +3461,21 @@ is required to make full use of this layer.</p>
 
 
 
-<h6 id="nominatim.api.types.DataLayer.NATURAL" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">NATURAL</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
-  
+<h6 id="nominatim.api.DataLayer.NATURAL" class="doc doc-heading">
+            <code class=" language-python"><span class="n">NATURAL</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.DataLayer.NATURAL" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.DataLayer.NATURAL" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Layer with natural features like rivers, lakes and mountains.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2879,22 +3483,23 @@ is required to make full use of this layer.</p>
 
 
 
-<h6 id="nominatim.api.types.DataLayer.MANMADE" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">MANMADE</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
-  
+<h6 id="nominatim.api.DataLayer.MANMADE" class="doc doc-heading">
+            <code class=" language-python"><span class="n">MANMADE</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.types.DataLayer.MANMADE" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.DataLayer.MANMADE" class="headerlink" title="Permanent link"></a></h6>
 
 
-  <div class="doc doc-contents ">
-  
+    <div class="doc doc-contents ">
+
       <p>Layer with other human-made features and boundaries. This layer is
 the catch-all and includes all features not covered by the other
 layers. A typical example for this layer are national park boundaries.</p>
-  </div>
+    </div>
 
 </div>
 
@@ -2904,53 +3509,32 @@ layers. A typical example for this layer are national park boundaries.</p>
 
   </div>
 
-  </div>
+    </div>
 
 </div>
 
-              
-            </article>
-          </div>
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../Configuration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Configuration" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Configuration
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../Result-Handling/" class="md-footer__link md-footer__link--next" aria-label="Next: Result Handling" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Result Handling
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -2976,10 +3560,12 @@ layers. A typical example for this layer are national park boundaries.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>
