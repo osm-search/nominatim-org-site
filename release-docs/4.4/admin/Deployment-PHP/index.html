@@ -1844,7 +1844,7 @@
   
 
 
-<h1 id="deploying-nominatim-using-the-php-frontend">Deploying Nominatim using the PHP frontend<a class="headerlink" href="#deploying-nominatim-using-the-php-frontend" title="Permanent link"></a></h1>
+<h1 id="deploying-nominatim-using-the-php-frontend">Deploying Nominatim using the PHP frontend<a class="headerlink" href="#deploying-nominatim-using-the-php-frontend" title="Permanent link">🔗</a></h1>
 <p>The Nominatim API is implemented as a PHP application. The <code>website/</code> directory
 in the project directory contains the configured website. You can serve this
 in a production environment with any web server that is capable to run
@@ -1866,7 +1866,7 @@ accordingly.</p>
 versions of CentOS may still use the user name <code>apache</code>. You also need
 to adapt the instructions in this case.</p>
 </div>
-<h2 id="making-the-website-directory-accessible">Making the website directory accessible<a class="headerlink" href="#making-the-website-directory-accessible" title="Permanent link"></a></h2>
+<h2 id="making-the-website-directory-accessible">Making the website directory accessible<a class="headerlink" href="#making-the-website-directory-accessible" title="Permanent link">🔗</a></h2>
 <p>You need to make sure that the <code>website</code> directory is accessible for the
 web server user. You can check that the permissions are correct by accessing
 on of the php files as the web server user:</p>
@@ -1883,13 +1883,13 @@ sudo<span class="w"> </span>semanage<span class="w"> </span>fcontext<span class=
 sudo<span class="w"> </span>restorecon<span class="w"> </span>-R<span class="w"> </span>-v<span class="w"> </span>/usr/local/lib/nominatim
 sudo<span class="w"> </span>restorecon<span class="w"> </span>-R<span class="w"> </span>-v<span class="w"> </span>/srv/nominatim-project
 </code></pre></div>
-<h2 id="nominatim-with-apache">Nominatim with Apache<a class="headerlink" href="#nominatim-with-apache" title="Permanent link"></a></h2>
-<h3 id="installing-the-required-packages">Installing the required packages<a class="headerlink" href="#installing-the-required-packages" title="Permanent link"></a></h3>
+<h2 id="nominatim-with-apache">Nominatim with Apache<a class="headerlink" href="#nominatim-with-apache" title="Permanent link">🔗</a></h2>
+<h3 id="installing-the-required-packages">Installing the required packages<a class="headerlink" href="#installing-the-required-packages" title="Permanent link">🔗</a></h3>
 <p>With Apache you can use the PHP module to run Nominatim.</p>
 <p>Under Ubuntu/Debian install them with:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apache2<span class="w"> </span>libapache2-mod-php
 </code></pre></div>
-<h3 id="configuring-apache">Configuring Apache<a class="headerlink" href="#configuring-apache" title="Permanent link"></a></h3>
+<h3 id="configuring-apache">Configuring Apache<a class="headerlink" href="#configuring-apache" title="Permanent link">🔗</a></h3>
 <p>Make sure your Apache configuration contains the required permissions for the
 directory and create an alias:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;/srv/nominatim-project/website&quot;</span><span class="nt">&gt;</span>
@@ -1902,14 +1902,14 @@ directory and create an alias:</p>
 </code></pre></div>
 <p>After making changes in the apache config you need to restart apache.
 The website should now be available on <code>http://localhost/nominatim</code>.</p>
-<h2 id="nominatim-with-nginx">Nominatim with Nginx<a class="headerlink" href="#nominatim-with-nginx" title="Permanent link"></a></h2>
-<h3 id="installing-the-required-packages_1">Installing the required packages<a class="headerlink" href="#installing-the-required-packages_1" title="Permanent link"></a></h3>
+<h2 id="nominatim-with-nginx">Nominatim with Nginx<a class="headerlink" href="#nominatim-with-nginx" title="Permanent link">🔗</a></h2>
+<h3 id="installing-the-required-packages_1">Installing the required packages<a class="headerlink" href="#installing-the-required-packages_1" title="Permanent link">🔗</a></h3>
 <p>Nginx has no built-in PHP interpreter. You need to use php-fpm as a daemon for
 serving PHP cgi.</p>
 <p>On Ubuntu/Debian install nginx and php-fpm with:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nginx<span class="w"> </span>php-fpm
 </code></pre></div>
-<h3 id="configure-php-fpm-and-nginx">Configure php-fpm and Nginx<a class="headerlink" href="#configure-php-fpm-and-nginx" title="Permanent link"></a></h3>
+<h3 id="configure-php-fpm-and-nginx">Configure php-fpm and Nginx<a class="headerlink" href="#configure-php-fpm-and-nginx" title="Permanent link">🔗</a></h3>
 <p>By default php-fpm listens on a network socket. If you want it to listen to a
 Unix socket instead, change the pool configuration
 (<code>/etc/php/&lt;php version&gt;/fpm/pool.d/www.conf</code>) as follows:</p>
@@ -1950,7 +1950,7 @@ unix socket by adding the location definition to the default configuration.</p>
 </code></pre></div>
 <p>Restart the nginx and php-fpm services and the website should now be available
 at <code>http://localhost/</code>.</p>
-<h2 id="nominatim-with-other-webservers">Nominatim with other webservers<a class="headerlink" href="#nominatim-with-other-webservers" title="Permanent link"></a></h2>
+<h2 id="nominatim-with-other-webservers">Nominatim with other webservers<a class="headerlink" href="#nominatim-with-other-webservers" title="Permanent link">🔗</a></h2>
 <p>Users have created instructions for other webservers:</p>
 <ul>
 <li><a href="https://github.com/osm-search/Nominatim/discussions/2580">Caddy</a></li>

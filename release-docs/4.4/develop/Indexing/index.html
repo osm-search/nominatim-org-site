@@ -1856,11 +1856,11 @@
   
 
 
-<h1 id="indexing-places">Indexing Places<a class="headerlink" href="#indexing-places" title="Permanent link"></a></h1>
+<h1 id="indexing-places">Indexing Places<a class="headerlink" href="#indexing-places" title="Permanent link">🔗</a></h1>
 <p>In Nominatim, the word <strong>indexing</strong> refers to the process that takes the raw
 OpenStreetMap data from the place table, enriches it with address information
 and creates the search indexes. This section explains the basic data flow.</p>
-<h2 id="initial-import">Initial import<a class="headerlink" href="#initial-import" title="Permanent link"></a></h2>
+<h2 id="initial-import">Initial import<a class="headerlink" href="#initial-import" title="Permanent link">🔗</a></h2>
 <p>After osm2pgsql has loaded the raw OSM data into the place table,
 the data is copied to the final search tables placex and location_property_osmline.
 While they are copied, some basic properties are added:</p>
@@ -1871,7 +1871,7 @@ While they are copied, some basic properties are added:</p>
 <p>In addition the column <code>indexed_status</code> is set to <code>1</code> marking the place as one
 that needs to be indexed.</p>
 <p>All this happens in the triggers <code>placex_insert</code> and <code>osmline_insert</code>.</p>
-<h2 id="indexing">Indexing<a class="headerlink" href="#indexing" title="Permanent link"></a></h2>
+<h2 id="indexing">Indexing<a class="headerlink" href="#indexing" title="Permanent link">🔗</a></h2>
 <p>The main work horse of the data import is the indexing step, where Nominatim
 takes every place from the placex and location_property_osmline tables where
 the indexed_status != 0 and computes the search terms and the address parts
@@ -1903,7 +1903,7 @@ place nodes, administrative boundaries are processed before all other places.</p
 from the others. This allows a large degree of parallelization during the indexing.
 It also means that the indexing process can be interrupted at any time and
 will simply pick up where it left of when restarted.</p>
-<h3 id="data-preparation">Data preparation<a class="headerlink" href="#data-preparation" title="Permanent link"></a></h3>
+<h3 id="data-preparation">Data preparation<a class="headerlink" href="#data-preparation" title="Permanent link">🔗</a></h3>
 <p>The data preparation step computes and retrieves all data for a place that
 might be needed for the next step of processing the search name. That includes</p>
 <ul>
@@ -1914,18 +1914,18 @@ might be needed for the next step of processing the search name. That includes</
 </ul>
 <p>Data preparation is implemented in pl/PgSQL mostly in the functions
 <code>placex_indexing_prepare()</code> and <code>get_interpolation_address()</code>.</p>
-<h4 id="addr-tag-inheritance"><code>addr:*</code> tag inheritance<a class="headerlink" href="#addr-tag-inheritance" title="Permanent link"></a></h4>
+<h4 id="addr-tag-inheritance"><code>addr:*</code> tag inheritance<a class="headerlink" href="#addr-tag-inheritance" title="Permanent link">🔗</a></h4>
 <p>Nominatim has limited support for inheriting address tags from a building
 to POIs inside the building. This only works when the address tags are on the
 building outline. Any rank 30 object inside such a building or on its outline
 inherits all address tags when it does not have any address tags of its own.</p>
 <p>The inheritance is computed in the data preparation step.</p>
-<h3 id="search-name-processing">Search name processing<a class="headerlink" href="#search-name-processing" title="Permanent link"></a></h3>
+<h3 id="search-name-processing">Search name processing<a class="headerlink" href="#search-name-processing" title="Permanent link">🔗</a></h3>
 <p>The prepared place information is handed to the tokenizer next. This is a
 Python module responsible for processing the names  from both name and address
 terms and building up the word index from them. The process is explained in
 more detail in the <a href="../Tokenizers/">Tokenizer chapter</a>.</p>
-<h3 id="address-processing">Address processing<a class="headerlink" href="#address-processing" title="Permanent link"></a></h3>
+<h3 id="address-processing">Address processing<a class="headerlink" href="#address-processing" title="Permanent link">🔗</a></h3>
 <p>Finally, the preprocessed place information and the results of the search name
 processing are written back to the database. At this point the update trigger
 of the placex/location_property_osmline tables take over and fill all the
@@ -1938,7 +1938,7 @@ and displaying information. Everything else are <strong>independent places</stro
 parks, water bodies, suburbs, cities, states etc.  They receive a full address
 on their own.</p>
 <p>The address processing for both types of places is very different.</p>
-<h4 id="independent-places">Independent places<a class="headerlink" href="#independent-places" title="Permanent link"></a></h4>
+<h4 id="independent-places">Independent places<a class="headerlink" href="#independent-places" title="Permanent link">🔗</a></h4>
 <p>To compute the address of an independent place Nominatim searches for all
 places that cover the place to compute the address for at least partially.
 For places with an area, that area is used to check for coverage. For place
@@ -1953,7 +1953,7 @@ at all, then the tags are at least added to the search index. That means that
 the names will not be shown in the result as the 'address' of the place, but
 searching by them still works.</p>
 <p>Independent places are always added to the global search index <code>search_name</code>.</p>
-<h4 id="dependent-places">Dependent places<a class="headerlink" href="#dependent-places" title="Permanent link"></a></h4>
+<h4 id="dependent-places">Dependent places<a class="headerlink" href="#dependent-places" title="Permanent link">🔗</a></h4>
 <p>Dependent places skip the full address computation for performance reasons.
 Instead they just find a parent place to attach themselves to.</p>
 <p><img alt="parenting of dependent places" src="../parenting-flow.svg" /></p>

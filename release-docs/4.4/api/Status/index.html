@@ -1778,11 +1778,11 @@
   
 
 
-<h1 id="status">Status<a class="headerlink" href="#status" title="Permanent link"></a></h1>
+<h1 id="status">Status<a class="headerlink" href="#status" title="Permanent link">🔗</a></h1>
 <p>Report on the state of the service and database. Useful for checking if the
 service is up and running. The JSON output also reports
 when the database was last updated.</p>
-<h2 id="endpoint">Endpoint<a class="headerlink" href="#endpoint" title="Permanent link"></a></h2>
+<h2 id="endpoint">Endpoint<a class="headerlink" href="#endpoint" title="Permanent link">🔗</a></h2>
 <p>The status API has the following format:</p>
 <div class="highlight"><pre><span></span><code>https://nominatim.openstreetmap.org/status
 </code></pre></div>
@@ -1792,7 +1792,7 @@ when the database was last updated.</p>
 <code>https://nominatim.openstreetmap.org/status.php</code>. This is now deprecated
 and will be removed in future versions.</p>
 </div>
-<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link"></a></h2>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">🔗</a></h2>
 <p>The status endpoint takes a single optional parameter:</p>
 <table>
 <thead>
@@ -1811,12 +1811,12 @@ and will be removed in future versions.</p>
 </tbody>
 </table>
 <p>Selects the output format. See below.</p>
-<h2 id="output">Output<a class="headerlink" href="#output" title="Permanent link"></a></h2>
-<h4 id="text-format">Text format<a class="headerlink" href="#text-format" title="Permanent link"></a></h4>
+<h2 id="output">Output<a class="headerlink" href="#output" title="Permanent link">🔗</a></h2>
+<h4 id="text-format">Text format<a class="headerlink" href="#text-format" title="Permanent link">🔗</a></h4>
 <p>When everything is okay, a status code 200 is returned and a simple message: <code>OK</code></p>
 <p>On error it will return HTTP status code 500 and print a detailed error message, e.g.
 <code>ERROR: Database connection failed</code>.</p>
-<h4 id="json-format">JSON format<a class="headerlink" href="#json-format" title="Permanent link"></a></h4>
+<h4 id="json-format">JSON format<a class="headerlink" href="#json-format" title="Permanent link">🔗</a></h4>
 <p>Always returns a HTTP code 200, when the status call could be executed.</p>
 <p>On success a JSON dictionary with the following structure is returned:</p>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p">{</span>

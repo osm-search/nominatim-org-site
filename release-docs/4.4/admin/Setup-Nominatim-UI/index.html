@@ -1760,14 +1760,14 @@
   
 
 
-<h1 id="setting-up-the-nominatim-ui">Setting up the Nominatim UI<a class="headerlink" href="#setting-up-the-nominatim-ui" title="Permanent link"></a></h1>
+<h1 id="setting-up-the-nominatim-ui">Setting up the Nominatim UI<a class="headerlink" href="#setting-up-the-nominatim-ui" title="Permanent link">🔗</a></h1>
 <p>Nominatim is a search API, it does not provide a website interface on its
 own. <a href="https://github.com/osm-search/nominatim-ui">nominatim-ui</a> offers a
 small website for testing your setup and inspecting the database content.</p>
 <p>This section provides a quick start how to use nominatim-ui with your
 installation. For more details, please also have a look at the
 <a href="https://github.com/osm-search/nominatim-ui/blob/master/README.md">README of nominatim-ui</a>.</p>
-<h2 id="installing-nominatim-ui">Installing nominatim-ui<a class="headerlink" href="#installing-nominatim-ui" title="Permanent link"></a></h2>
+<h2 id="installing-nominatim-ui">Installing nominatim-ui<a class="headerlink" href="#installing-nominatim-ui" title="Permanent link">🔗</a></h2>
 <p>We provide regular releases of nominatim-ui that contain the packaged website.
 They do not need any special installation. Just download, configure
 and run it. Grab the latest release from
@@ -1788,14 +1788,14 @@ python3 -m http.server 8765
 </code></pre></div>
 
 <p>The website is now available at <code>http://localhost:8765</code>.</p>
-<h2 id="forwarding-searches-to-nominatim-ui">Forwarding searches to nominatim-ui<a class="headerlink" href="#forwarding-searches-to-nominatim-ui" title="Permanent link"></a></h2>
+<h2 id="forwarding-searches-to-nominatim-ui">Forwarding searches to nominatim-ui<a class="headerlink" href="#forwarding-searches-to-nominatim-ui" title="Permanent link">🔗</a></h2>
 <p>Nominatim used to provide the search interface directly by itself when
 <code>format=html</code> was requested. For all endpoints except for <code>/reverse</code> and
 <code>/lookup</code> this even used to be the default.</p>
 <p>The following section describes how to set up Apache or nginx, so that your
 users are forwarded to nominatim-ui when they go to URL that formerly presented
 the UI.</p>
-<h3 id="setting-up-forwarding-in-nginx">Setting up forwarding in Nginx<a class="headerlink" href="#setting-up-forwarding-in-nginx" title="Permanent link"></a></h3>
+<h3 id="setting-up-forwarding-in-nginx">Setting up forwarding in Nginx<a class="headerlink" href="#setting-up-forwarding-in-nginx" title="Permanent link">🔗</a></h3>
 <p>First of all make nominatim-ui available under <code>/ui</code> on your webserver:</p>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 
@@ -1852,7 +1852,7 @@ location ~ [^/]\.php(/|$) {
 without the .php suffix.</p>
 </div>
 <p>Reload nginx and the UI should be available.</p>
-<h3 id="setting-up-forwarding-in-apache">Setting up forwarding in Apache<a class="headerlink" href="#setting-up-forwarding-in-apache" title="Permanent link"></a></h3>
+<h3 id="setting-up-forwarding-in-apache">Setting up forwarding in Apache<a class="headerlink" href="#setting-up-forwarding-in-apache" title="Permanent link">🔗</a></h3>
 <p>First of all make nominatim-ui available in the <code>ui/</code> subdirectory where
 Nominatim is installed. For example, given you have set up an alias under
 <code>nominatim</code> like this:</p>

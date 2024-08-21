@@ -1826,7 +1826,7 @@
   
 
 
-<h1 id="updating-the-database">Updating the Database<a class="headerlink" href="#updating-the-database" title="Permanent link"></a></h1>
+<h1 id="updating-the-database">Updating the Database<a class="headerlink" href="#updating-the-database" title="Permanent link">🔗</a></h1>
 <p>There are many different ways to update your Nominatim database.
 The following section describes how to keep it up-to-date using
 an <a href="https://wiki.openstreetmap.org/wiki/Planet.osm/diffs">online replication service for OpenStreetMap data</a>
@@ -1837,7 +1837,7 @@ For a list of other methods to add or update data see the output of
 <p>If you have configured a flatnode file for the import, then you
 need to keep this flatnode file around for updates.</p>
 </div>
-<h3 id="installing-the-newest-version-of-pyosmium">Installing the newest version of Pyosmium<a class="headerlink" href="#installing-the-newest-version-of-pyosmium" title="Permanent link"></a></h3>
+<h3 id="installing-the-newest-version-of-pyosmium">Installing the newest version of Pyosmium<a class="headerlink" href="#installing-the-newest-version-of-pyosmium" title="Permanent link">🔗</a></h3>
 <p>The replication process uses
 <a href="https://docs.osmcode.org/pyosmium/latest/updating_osm_data.html">Pyosmium</a>
 to download update data from the server.
@@ -1845,7 +1845,7 @@ It is recommended to install Pyosmium via pip.
 Run (as the same user who will later run the updates):</p>
 <div class="highlight"><pre><span></span><code>pip3<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>osmium
 </code></pre></div>
-<h3 id="setting-up-the-update-process">Setting up the update process<a class="headerlink" href="#setting-up-the-update-process" title="Permanent link"></a></h3>
+<h3 id="setting-up-the-update-process">Setting up the update process<a class="headerlink" href="#setting-up-the-update-process" title="Permanent link">🔗</a></h3>
 <p>Next the update process needs to be initialised. By default Nominatim is configured
 to update using the global minutely diffs.</p>
 <p>If you want a different update source you will need to add some settings
@@ -1867,7 +1867,7 @@ diffs for Ireland from Geofabrik add the following:</p>
 what you expect.</p>
 <p>The <code>replication --init</code> command needs to be rerun whenever the replication
 service is changed.</p>
-<h3 id="updating-nominatim">Updating Nominatim<a class="headerlink" href="#updating-nominatim" title="Permanent link"></a></h3>
+<h3 id="updating-nominatim">Updating Nominatim<a class="headerlink" href="#updating-nominatim" title="Permanent link">🔗</a></h3>
 <p>Nominatim supports different modes how to retrieve the update data from the
 server. Which one you want to use depends on your exact setup and how often you
 want to retrieve updates.</p>
@@ -1875,7 +1875,7 @@ want to retrieve updates.</p>
 imported multiple country extracts and want to keep them
 up-to-date, <a href="../Advanced-Installations/">Advanced installations section</a>
 contains instructions to set up and update multiple country extracts.</p>
-<h4 id="one-time-mode">One-time mode<a class="headerlink" href="#one-time-mode" title="Permanent link"></a></h4>
+<h4 id="one-time-mode">One-time mode<a class="headerlink" href="#one-time-mode" title="Permanent link">🔗</a></h4>
 <p>When the <code>--once</code> parameter is given, then Nominatim will download exactly one
 batch of updates and then exit. This one-time mode still respects the
 <code>NOMINATIM_REPLICATION_UPDATE_INTERVAL</code> that you have set. If according to
@@ -1900,7 +1900,7 @@ looks like this:</p>
 <span class="k">done</span>
 </code></pre></div>
 <p>A cron job then creates the file <code>/srv/nominatim/schedule-maintenance</code> once per night.</p>
-<h5 id="one-time-mode-with-systemd">One-time mode with systemd<a class="headerlink" href="#one-time-mode-with-systemd" title="Permanent link"></a></h5>
+<h5 id="one-time-mode-with-systemd">One-time mode with systemd<a class="headerlink" href="#one-time-mode-with-systemd" title="Permanent link">🔗</a></h5>
 <p>You can run the one-time mode with a systemd timer &amp; service.</p>
 <p>Create a timer description like <code>/etc/systemd/system/nominatim-updates.timer</code>:</p>
 <div class="highlight"><pre><span></span><code>[Unit]
@@ -1944,7 +1944,7 @@ nominatim-updates.timer</code> and waiting until <code>nominatim-updates.service
 running (<code>sudo systemctl is-active nominatim-updates.service</code>). Current output
 from the update can be seen like above (<code>systemctl status
 nominatim-updates.service</code>).</p>
-<h4 id="catch-up-mode">Catch-up mode<a class="headerlink" href="#catch-up-mode" title="Permanent link"></a></h4>
+<h4 id="catch-up-mode">Catch-up mode<a class="headerlink" href="#catch-up-mode" title="Permanent link">🔗</a></h4>
 <p>With the <code>--catch-up</code> parameter, Nominatim will immediately try to download
 all changes from the server until the database is up-to-date. The catch-up mode
 still respects the parameter <code>NOMINATIM_REPLICATION_MAX_DIFF</code>. It downloads and
@@ -1971,7 +1971,7 @@ updated source with daily updates), use the
 continuous update mode. It ensures to re-request the newest update until it
 is published.</p>
 </div>
-<h4 id="continuous-updates">Continuous updates<a class="headerlink" href="#continuous-updates" title="Permanent link"></a></h4>
+<h4 id="continuous-updates">Continuous updates<a class="headerlink" href="#continuous-updates" title="Permanent link">🔗</a></h4>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
 <p>This mode is no longer recommended to use and will removed in future

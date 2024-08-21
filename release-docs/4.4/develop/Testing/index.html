@@ -1862,11 +1862,11 @@
   
 
 
-<h1 id="nominatim-test-suite">Nominatim Test Suite<a class="headerlink" href="#nominatim-test-suite" title="Permanent link"></a></h1>
+<h1 id="nominatim-test-suite">Nominatim Test Suite<a class="headerlink" href="#nominatim-test-suite" title="Permanent link">🔗</a></h1>
 <p>This chapter describes the tests in the <code>/test</code> directory, how they are
 structured and how to extend them. For a quick introduction on how to run
 the tests, see the <a href="../Development-Environment/">Development setup chapter</a>.</p>
-<h2 id="overall-structure">Overall structure<a class="headerlink" href="#overall-structure" title="Permanent link"></a></h2>
+<h2 id="overall-structure">Overall structure<a class="headerlink" href="#overall-structure" title="Permanent link">🔗</a></h2>
 <p>There are two kind of tests in this test suite. There are functional tests
 which test the API interface using a BDD test framework and there are unit
 tests for specific PHP functions.</p>
@@ -1883,7 +1883,7 @@ tests for specific PHP functions.</p>
   +-   testdb      Base data for generating API test database
   +-   testdata    Additional test data used by unit tests
 </code></pre></div>
-<h2 id="php-unit-tests-testphp">PHP Unit Tests (<code>test/php</code>)<a class="headerlink" href="#php-unit-tests-testphp" title="Permanent link"></a></h2>
+<h2 id="php-unit-tests-testphp">PHP Unit Tests (<code>test/php</code>)<a class="headerlink" href="#php-unit-tests-testphp" title="Permanent link">🔗</a></h2>
 <p>Unit tests for PHP code can be found in the <code>php/</code> directory. They test selected
 PHP functions. Very low coverage.</p>
 <p>To execute the test suite run</p>
@@ -1895,7 +1895,7 @@ UNIT_TEST_DSN=&#39;pgsql:dbname=nominatim_unit_tests&#39; phpunit ../
 strip and sets other parameters.</p>
 <p>It will use (and destroy) a local database 'nominatim_unit_tests'. You can set
 a different connection string with e.g. UNIT_TEST_DSN='pgsql:dbname=foo_unit_tests'.</p>
-<h2 id="python-unit-tests-testpython">Python Unit Tests (<code>test/python</code>)<a class="headerlink" href="#python-unit-tests-testpython" title="Permanent link"></a></h2>
+<h2 id="python-unit-tests-testpython">Python Unit Tests (<code>test/python</code>)<a class="headerlink" href="#python-unit-tests-testpython" title="Permanent link">🔗</a></h2>
 <p>Unit tests for Python code can be found in the <code>python/</code> directory. The goal is
 to have complete coverage of the Python library in <code>nominatim</code>.</p>
 <p>To execute the tests run</p>
@@ -1907,7 +1907,7 @@ to have complete coverage of the Python library in <code>nominatim</code>.</p>
 </code></pre></div>
 
 <p>The name of the pytest binary depends on your installation.</p>
-<h2 id="bdd-functional-tests-testbdd">BDD Functional Tests (<code>test/bdd</code>)<a class="headerlink" href="#bdd-functional-tests-testbdd" title="Permanent link"></a></h2>
+<h2 id="bdd-functional-tests-testbdd">BDD Functional Tests (<code>test/bdd</code>)<a class="headerlink" href="#bdd-functional-tests-testbdd" title="Permanent link">🔗</a></h2>
 <p>Functional tests are written as BDD instructions. For more information on
 the philosophy of BDD testing, see the
 <a href="http://pythonhosted.org/behave/philosophy.html">Behave manual</a>.</p>
@@ -1915,7 +1915,7 @@ the philosophy of BDD testing, see the
 notations of features, scenarios and steps.</p>
 <p>All possible steps can be found in the <code>steps</code> directory and should ideally
 be documented.</p>
-<h3 id="general-usage">General Usage<a class="headerlink" href="#general-usage" title="Permanent link"></a></h3>
+<h3 id="general-usage">General Usage<a class="headerlink" href="#general-usage" title="Permanent link">🔗</a></h3>
 <p>To run the functional tests, do</p>
 <div class="codehilite"><pre><span></span><code>cd test/bdd
 behave
@@ -1948,7 +1948,7 @@ behave
 <p>Logging can be defined through command line parameters of behave itself. Check
 out <code>behave --help</code> for details. Also have a look at the 'work-in-progress'
 feature of behave which comes in handy when writing new tests.</p>
-<h3 id="api-tests-testbddapi">API Tests (<code>test/bdd/api</code>)<a class="headerlink" href="#api-tests-testbddapi" title="Permanent link"></a></h3>
+<h3 id="api-tests-testbddapi">API Tests (<code>test/bdd/api</code>)<a class="headerlink" href="#api-tests-testbddapi" title="Permanent link">🔗</a></h3>
 <p>These tests are meant to test the different API endpoints and their parameters.
 They require to import several datasets into a test database. This is normally
 done automatically during setup of the test. The API test database is then
@@ -1963,7 +1963,7 @@ and compromises the following data:</p>
 </ul>
 <p>API tests should only be testing the functionality of the website PHP code.
 Most tests should be formulated as BDD DB creation tests (see below) instead.</p>
-<h4 id="code-coverage-php-engine-only">Code Coverage (PHP engine only)<a class="headerlink" href="#code-coverage-php-engine-only" title="Permanent link"></a></h4>
+<h4 id="code-coverage-php-engine-only">Code Coverage (PHP engine only)<a class="headerlink" href="#code-coverage-php-engine-only" title="Permanent link">🔗</a></h4>
 <p>The API tests also support code coverage tests. You need to install
 <a href="https://github.com/sebastianbergmann/php-code-coverage">PHP_CodeCoverage</a>.
 On Debian/Ubuntu run:</p>
@@ -1979,7 +1979,7 @@ the <a href="https://github.com/sebastianbergmann/phpcov">phpcov</a> tool:</p>
 <div class="codehilite"><pre><span></span><code>phpcov merge --html=&lt;report output dir&gt; &lt;coverage output dir&gt;
 </code></pre></div>
 
-<h3 id="db-creation-tests-testbdddb">DB Creation Tests (<code>test/bdd/db</code>)<a class="headerlink" href="#db-creation-tests-testbdddb" title="Permanent link"></a></h3>
+<h3 id="db-creation-tests-testbdddb">DB Creation Tests (<code>test/bdd/db</code>)<a class="headerlink" href="#db-creation-tests-testbdddb" title="Permanent link">🔗</a></h3>
 <p>These tests check the import and update of the Nominatim database. They do not
 test the correctness of osm2pgsql. Each test will write some data into the <code>place</code>
 table (and optionally the <code>planet_osm_*</code> tables if required) and then run
@@ -1988,7 +1988,7 @@ Nominatim's processing functions on that.</p>
 called <code>test_template_nominatim</code> and <code>test_nominatim</code>. Names can be changed with
 the environment variables <code>TEMPLATE_DB</code> and <code>TEST_DB</code>. The user running the tests
 needs superuser rights for postgres.</p>
-<h3 id="import-tests-testbddosm2pgsql">Import Tests (<code>test/bdd/osm2pgsql</code>)<a class="headerlink" href="#import-tests-testbddosm2pgsql" title="Permanent link"></a></h3>
+<h3 id="import-tests-testbddosm2pgsql">Import Tests (<code>test/bdd/osm2pgsql</code>)<a class="headerlink" href="#import-tests-testbddosm2pgsql" title="Permanent link">🔗</a></h3>
 <p>These tests check that data is imported correctly into the place table. They
 use the same template database as the DB Creation tests, so the same remarks apply.</p>
 

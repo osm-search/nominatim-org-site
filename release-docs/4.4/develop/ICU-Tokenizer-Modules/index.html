@@ -2360,7 +2360,7 @@
   
 
 
-<h1 id="writing-custom-sanitizer-and-token-analysis-modules-for-the-icu-tokenizer">Writing custom sanitizer and token analysis modules for the ICU tokenizer<a class="headerlink" href="#writing-custom-sanitizer-and-token-analysis-modules-for-the-icu-tokenizer" title="Permanent link"></a></h1>
+<h1 id="writing-custom-sanitizer-and-token-analysis-modules-for-the-icu-tokenizer">Writing custom sanitizer and token analysis modules for the ICU tokenizer<a class="headerlink" href="#writing-custom-sanitizer-and-token-analysis-modules-for-the-icu-tokenizer" title="Permanent link">🔗</a></h1>
 <p>The <a href="../../customize/Tokenizers/#icu-tokenizer">ICU tokenizer</a> provides a
 highly customizable method to pre-process and normalize the name information
 of the input data before it is added to the search index. It comes with a
@@ -2374,7 +2374,7 @@ of sanitizers and token analysis.</p>
 be a public API on which other sanitizers and token analyzers may be
 implemented, it is not guaranteed to be stable at the moment.</p>
 </div>
-<h2 id="using-non-standard-sanitizers-and-token-analyzers">Using non-standard sanitizers and token analyzers<a class="headerlink" href="#using-non-standard-sanitizers-and-token-analyzers" title="Permanent link"></a></h2>
+<h2 id="using-non-standard-sanitizers-and-token-analyzers">Using non-standard sanitizers and token analyzers<a class="headerlink" href="#using-non-standard-sanitizers-and-token-analyzers" title="Permanent link">🔗</a></h2>
 <p>Sanitizer names (in the <code>step</code> property) and token analysis names (in the
 <code>analyzer</code>) may refer to externally supplied modules. There are two ways
 to include external modules: through a library or from the project directory.</p>
@@ -2383,7 +2383,7 @@ make sure the library can be found in your PYTHONPATH.</p>
 <p>To use a custom module without creating a library, you can put the module
 somewhere in your project directory and then use the relative path to the
 file. Include the whole name of the file including the <code>.py</code> ending.</p>
-<h2 id="custom-sanitizer-modules">Custom sanitizer modules<a class="headerlink" href="#custom-sanitizer-modules" title="Permanent link"></a></h2>
+<h2 id="custom-sanitizer-modules">Custom sanitizer modules<a class="headerlink" href="#custom-sanitizer-modules" title="Permanent link">🔗</a></h2>
 <p>A sanitizer module must export a single factory function <code>create</code> with the
 following signature:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">SanitizerConfig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ProcessInfo</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
@@ -2400,7 +2400,7 @@ are forwarded to the token analysis module.</p>
 that is imported or updated. They don't need to be thread-safe.
 If multi-threading is used, each thread creates their own instance of
 the function.</p>
-<h3 id="sanitizer-configuration">Sanitizer configuration<a class="headerlink" href="#sanitizer-configuration" title="Permanent link"></a></h3>
+<h3 id="sanitizer-configuration">Sanitizer configuration<a class="headerlink" href="#sanitizer-configuration" title="Permanent link">🔗</a></h3>
 
 
 <div class="doc doc-object doc-class">
@@ -2436,7 +2436,7 @@ sanitizers.</p>
 <h6 id="nominatim.tokenizer.sanitizers.config.SanitizerConfig.get_bool" class="doc doc-heading">
             <code class=" language-python"><span class="n">get_bool</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
-<a href="#nominatim.tokenizer.sanitizers.config.SanitizerConfig.get_bool" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.tokenizer.sanitizers.config.SanitizerConfig.get_bool" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2522,7 +2522,7 @@ sanitizers.</p>
 <h6 id="nominatim.tokenizer.sanitizers.config.SanitizerConfig.get_delimiter" class="doc doc-heading">
             <code class=" language-python"><span class="n">get_delimiter</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;,;&#39;</span><span class="p">)</span></code>
 
-<a href="#nominatim.tokenizer.sanitizers.config.SanitizerConfig.get_delimiter" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.tokenizer.sanitizers.config.SanitizerConfig.get_delimiter" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2598,7 +2598,7 @@ code needs to filter those.</p>
 <h6 id="nominatim.tokenizer.sanitizers.config.SanitizerConfig.get_filter" class="doc doc-heading">
             <code class=" language-python"><span class="n">get_filter</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;PASS_ALL&#39;</span><span class="p">)</span></code>
 
-<a href="#nominatim.tokenizer.sanitizers.config.SanitizerConfig.get_filter" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.tokenizer.sanitizers.config.SanitizerConfig.get_filter" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2699,7 +2699,7 @@ otherwise returns False.</p>
 <h6 id="nominatim.tokenizer.sanitizers.config.SanitizerConfig.get_string_list" class="doc doc-heading">
             <code class=" language-python"><span class="n">get_string_list</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">tuple</span><span class="p">())</span></code>
 
-<a href="#nominatim.tokenizer.sanitizers.config.SanitizerConfig.get_string_list" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.tokenizer.sanitizers.config.SanitizerConfig.get_string_list" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2789,7 +2789,7 @@ checked to contain only strings before being returned.</p>
 
     </div>
 
-</div><h3 id="the-main-filter-function-of-the-sanitizer">The main filter function of the sanitizer<a class="headerlink" href="#the-main-filter-function-of-the-sanitizer" title="Permanent link"></a></h3>
+</div><h3 id="the-main-filter-function-of-the-sanitizer">The main filter function of the sanitizer<a class="headerlink" href="#the-main-filter-function-of-the-sanitizer" title="Permanent link">🔗</a></h3>
 <p>The filter function receives a single object of type <code>ProcessInfo</code>
 which has with three members:</p>
 <ul>
@@ -2802,7 +2802,7 @@ which has with three members:</p>
 <code>address</code> lists are meant to be manipulated by the sanitizer. It may add and
 remove entries, change information within a single entry (for example by
 adding extra attributes) or completely replace the list with a different one.</p>
-<h4 id="placeinfo-information-about-the-place">PlaceInfo - information about the place<a class="headerlink" href="#placeinfo-information-about-the-place" title="Permanent link"></a></h4>
+<h4 id="placeinfo-information-about-the-place">PlaceInfo - information about the place<a class="headerlink" href="#placeinfo-information-about-the-place" title="Permanent link">🔗</a></h4>
 
 
 <div class="doc doc-object doc-class">
@@ -2838,7 +2838,7 @@ about a place.</p>
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#nominatim.data.place_info.PlaceInfo.address" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.data.place_info.PlaceInfo.address" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2864,7 +2864,7 @@ the same information. See <a href="../../customize/Import-Styles/">Import Styles
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#nominatim.data.place_info.PlaceInfo.centroid" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.data.place_info.PlaceInfo.centroid" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2886,7 +2886,7 @@ geometry of the place is unknown.</p>
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#nominatim.data.place_info.PlaceInfo.country_code" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.data.place_info.PlaceInfo.country_code" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2909,7 +2909,7 @@ any country, the property is set to None.</p>
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#nominatim.data.place_info.PlaceInfo.name" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.data.place_info.PlaceInfo.name" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2933,7 +2933,7 @@ The property may be None if the place has no names.</p>
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#nominatim.data.place_info.PlaceInfo.rank_address" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.data.place_info.PlaceInfo.rank_address" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2951,7 +2951,7 @@ The property may be None if the place has no names.</p>
 <h6 id="nominatim.data.place_info.PlaceInfo.is_a" class="doc doc-heading">
             <code class=" language-python"><span class="n">is_a</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></code>
 
-<a href="#nominatim.data.place_info.PlaceInfo.is_a" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.data.place_info.PlaceInfo.is_a" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2969,7 +2969,7 @@ key and value.</p>
 <h6 id="nominatim.data.place_info.PlaceInfo.is_country" class="doc doc-heading">
             <code class=" language-python"><span class="n">is_country</span><span class="p">()</span></code>
 
-<a href="#nominatim.data.place_info.PlaceInfo.is_country" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.data.place_info.PlaceInfo.is_country" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2986,7 +2986,7 @@ key and value.</p>
 
     </div>
 
-</div><h4 id="placename-extended-naming-information">PlaceName - extended naming information<a class="headerlink" href="#placename-extended-naming-information" title="Permanent link"></a></h4>
+</div><h4 id="placename-extended-naming-information">PlaceName - extended naming information<a class="headerlink" href="#placename-extended-naming-information" title="Permanent link">🔗</a></h4>
 
 
 <div class="doc doc-object doc-class">
@@ -3031,7 +3031,7 @@ names.</p>
 <h6 id="nominatim.data.place_name.PlaceName.clone" class="doc doc-heading">
             <code class=" language-python"><span class="n">clone</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attr</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
-<a href="#nominatim.data.place_name.PlaceName.clone" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.data.place_name.PlaceName.clone" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -3052,7 +3052,7 @@ attribute from a place name.</p>
 <h6 id="nominatim.data.place_name.PlaceName.get_attr" class="doc doc-heading">
             <code class=" language-python"><span class="n">get_attr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
-<a href="#nominatim.data.place_name.PlaceName.get_attr" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.data.place_name.PlaceName.get_attr" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -3070,7 +3070,7 @@ is not set.</p>
 <h6 id="nominatim.data.place_name.PlaceName.has_attr" class="doc doc-heading">
             <code class=" language-python"><span class="n">has_attr</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></code>
 
-<a href="#nominatim.data.place_name.PlaceName.has_attr" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.data.place_name.PlaceName.has_attr" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -3087,7 +3087,7 @@ is not set.</p>
 <h6 id="nominatim.data.place_name.PlaceName.set_attr" class="doc doc-heading">
             <code class=" language-python"><span class="n">set_attr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></code>
 
-<a href="#nominatim.data.place_name.PlaceName.set_attr" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.data.place_name.PlaceName.set_attr" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -3105,7 +3105,7 @@ set, then the value is overwritten.</p>
 
     </div>
 
-</div><h3 id="example-filter-for-us-street-prefixes">Example: Filter for US street prefixes<a class="headerlink" href="#example-filter-for-us-street-prefixes" title="Permanent link"></a></h3>
+</div><h3 id="example-filter-for-us-street-prefixes">Example: Filter for US street prefixes<a class="headerlink" href="#example-filter-for-us-street-prefixes" title="Permanent link">🔗</a></h3>
 <p>The following sanitizer removes the directional prefixes from street names
 in the US:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
@@ -3147,7 +3147,7 @@ shorten a simple <code>North Street</code> to <code>Street</code>.</p>
 <p>For more sanitizer examples, have a look at the sanitizers provided by Nominatim.
 They can be found in the directory
 <a href="https://github.com/osm-search/Nominatim/tree/master/nominatim/tokenizer/sanitizers"><code>nominatim/tokenizer/sanitizers</code></a>.</p>
-<h2 id="custom-token-analysis-module">Custom token analysis module<a class="headerlink" href="#custom-token-analysis-module" title="Permanent link"></a></h2>
+<h2 id="custom-token-analysis-module">Custom token analysis module<a class="headerlink" href="#custom-token-analysis-module" title="Permanent link">🔗</a></h2>
 
 
 <div class="doc doc-object doc-class">
@@ -3181,7 +3181,7 @@ therefore implement the two functions here described.</p>
 <h6 id="nominatim.tokenizer.token_analysis.base.AnalysisModule.configure" class="doc doc-heading">
             <code class=" language-python"><span class="n">configure</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="n">normalizer</span><span class="p">,</span> <span class="n">transliterator</span><span class="p">)</span></code>
 
-<a href="#nominatim.tokenizer.token_analysis.base.AnalysisModule.configure" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.tokenizer.token_analysis.base.AnalysisModule.configure" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -3285,7 +3285,7 @@ used freely by the analysis module as needed.</p>
 <h6 id="nominatim.tokenizer.token_analysis.base.AnalysisModule.create" class="doc doc-heading">
             <code class=" language-python"><span class="n">create</span><span class="p">(</span><span class="n">normalizer</span><span class="p">,</span> <span class="n">transliterator</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span></code>
 
-<a href="#nominatim.tokenizer.token_analysis.base.AnalysisModule.create" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.tokenizer.token_analysis.base.AnalysisModule.create" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -3419,7 +3419,7 @@ object that implements the following functions.</p>
 <h6 id="nominatim.tokenizer.token_analysis.base.Analyzer.compute_variants" class="doc doc-heading">
             <code class=" language-python"><span class="n">compute_variants</span><span class="p">(</span><span class="n">canonical_id</span><span class="p">)</span></code>
 
-<a href="#nominatim.tokenizer.token_analysis.base.Analyzer.compute_variants" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.tokenizer.token_analysis.base.Analyzer.compute_variants" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -3497,7 +3497,7 @@ and there are no such variants.</p>
 <h6 id="nominatim.tokenizer.token_analysis.base.Analyzer.get_canonical_id" class="doc doc-heading">
             <code class=" language-python"><span class="n">get_canonical_id</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code>
 
-<a href="#nominatim.tokenizer.token_analysis.base.Analyzer.get_canonical_id" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.tokenizer.token_analysis.base.Analyzer.get_canonical_id" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -3571,7 +3571,7 @@ for example because the character set in use does not match.</p>
 
     </div>
 
-</div><h3 id="example-creating-acronym-variants-for-long-names">Example: Creating acronym variants for long names<a class="headerlink" href="#example-creating-acronym-variants-for-long-names" title="Permanent link"></a></h3>
+</div><h3 id="example-creating-acronym-variants-for-long-names">Example: Creating acronym variants for long names<a class="headerlink" href="#example-creating-acronym-variants-for-long-names" title="Permanent link">🔗</a></h3>
 <p>The following example of a token analysis module creates acronyms from
 very long names and adds them as a variant:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AcronymMaker</span><span class="p">:</span>
@@ -3618,7 +3618,7 @@ very long names and adds them as a variant:</p>
 <p>Given the name <code>Trans-Siberian Railway</code>, the code above would return the full
 name <code>Trans-Siberian Railway</code> and the acronym <code>TSR</code> as variant, so that
 searching would work for both.</p>
-<h2 id="sanitizers-vs-token-analysis-what-to-use-for-variants">Sanitizers vs. Token analysis - what to use for variants?<a class="headerlink" href="#sanitizers-vs-token-analysis-what-to-use-for-variants" title="Permanent link"></a></h2>
+<h2 id="sanitizers-vs-token-analysis-what-to-use-for-variants">Sanitizers vs. Token analysis - what to use for variants?<a class="headerlink" href="#sanitizers-vs-token-analysis-what-to-use-for-variants" title="Permanent link">🔗</a></h2>
 <p>It is not always clear when to implement variations in the sanitizer and
 when to write a token analysis module. Just take the acronym example
 above: it would also have been possible to write a sanitizer which adds the

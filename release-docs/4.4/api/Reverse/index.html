@@ -1934,10 +1934,10 @@
   
 
 
-<h1 id="reverse-geocoding">Reverse Geocoding<a class="headerlink" href="#reverse-geocoding" title="Permanent link"></a></h1>
+<h1 id="reverse-geocoding">Reverse Geocoding<a class="headerlink" href="#reverse-geocoding" title="Permanent link">🔗</a></h1>
 <p>Reverse geocoding generates an address from a coordinate given as
 latitude and longitude.</p>
-<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link"></a></h2>
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">🔗</a></h2>
 <p>The reverse geocoding API does not exactly compute the address for the
 coordinate it receives. It works by finding the closest suitable OSM object
 and returning its address information. This may occasionally lead to
@@ -1949,7 +1949,7 @@ geocoding either.</p>
 <p>The other issue to be aware of is that the closest OSM object may not always
 have a similar enough address to the coordinate you were requesting. For
 example, in dense city areas it may belong to a completely different street.</p>
-<h2 id="endpoint">Endpoint<a class="headerlink" href="#endpoint" title="Permanent link"></a></h2>
+<h2 id="endpoint">Endpoint<a class="headerlink" href="#endpoint" title="Permanent link">🔗</a></h2>
 <p>The main format of the reverse API is</p>
 <div class="highlight"><pre><span></span><code>https://nominatim.openstreetmap.org/reverse?lat=&lt;value&gt;&amp;lon=&lt;value&gt;&amp;&lt;params&gt;
 </code></pre></div>
@@ -1968,9 +1968,9 @@ Use the <a href="../Lookup/">Address Lookup API</a> instead.</p>
 <code>https://nominatim.openstreetmap.org/reverse.php</code>. This is now deprecated
 and will be removed in future versions.</p>
 </div>
-<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link"></a></h2>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">🔗</a></h2>
 <p>This section lists additional parameters to further influence the output.</p>
-<h3 id="output-format">Output format<a class="headerlink" href="#output-format" title="Permanent link"></a></h3>
+<h3 id="output-format">Output format<a class="headerlink" href="#output-format" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2008,7 +2008,7 @@ and will be removed in future versions.</p>
 the given name. See <a href="https://en.wikipedia.org/wiki/JSONP">JSONP</a> for more
 information.</p>
 <p>Only has an effect for JSON output formats.</p>
-<h3 id="output-details">Output details<a class="headerlink" href="#output-details" title="Permanent link"></a></h3>
+<h3 id="output-details">Output details<a class="headerlink" href="#output-details" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2071,7 +2071,7 @@ that is available in the database, e.g. wikipedia link, opening hours.</p>
 </table>
 <p>When set to 1, include a full list of names for the result. These may include
 language variants, older names, references and brand.</p>
-<h3 id="language-of-results">Language of results<a class="headerlink" href="#language-of-results" title="Permanent link"></a></h3>
+<h3 id="language-of-results">Language of results<a class="headerlink" href="#language-of-results" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2100,7 +2100,7 @@ usually don't send any Accept-Language header, prompting Nominatim
 to show results in the local language. Browsers on the contrary always
 send the currently chosen browser language.</p>
 </div>
-<h3 id="result-restriction">Result restriction<a class="headerlink" href="#result-restriction" title="Permanent link"></a></h3>
+<h3 id="result-restriction">Result restriction<a class="headerlink" href="#result-restriction" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2205,7 +2205,7 @@ features are imported into the database.</p>
 <p>The <code>natural</code> layer collects features like rivers, lakes and mountains while
 the <code>manmade</code> layer functions as a catch-all for features not covered by the
 other layers.</p>
-<h3 id="polygon-output">Polygon output<a class="headerlink" href="#polygon-output" title="Permanent link"></a></h3>
+<h3 id="polygon-output">Polygon output<a class="headerlink" href="#polygon-output" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2260,7 +2260,7 @@ options can be used at a time.</p>
 of the output geometry. The parameter describes the
 tolerance in degrees with which the geometry may differ from the original
 geometry. Topology is preserved in the geometry.</p>
-<h3 id="other">Other<a class="headerlink" href="#other" title="Permanent link"></a></h3>
+<h3 id="other">Other<a class="headerlink" href="#other" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2299,7 +2299,7 @@ address to identify your requests. See Nominatim's
 <p>Output assorted developer debug information. Data on internals of Nominatim's
 "search loop" logic, and SQL queries. The output is HTML format.
 This overrides the specified machine readable format.</p>
-<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link"></a></h2>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">🔗</a></h2>
 <ul>
 <li><a href="https://nominatim.openstreetmap.org/reverse?format=xml&amp;lat=52.5487429714954&amp;lon=-1.81602098644987&amp;zoom=18&amp;addressdetails=1">https://nominatim.openstreetmap.org/reverse?format=xml&amp;lat=52.5487429714954&amp;lon=-1.81602098644987&amp;zoom=18&amp;addressdetails=1</a></li>
 </ul>
@@ -2320,7 +2320,7 @@ This overrides the specified machine readable format.</p>
 <span class="w">    </span><span class="nt">&lt;/addressparts&gt;</span>
 <span class="w">  </span><span class="nt">&lt;/reversegeocode&gt;</span>
 </code></pre></div>
-<h5 id="example-with-formatjsonv2">Example with <code>format=jsonv2</code><a class="headerlink" href="#example-with-formatjsonv2" title="Permanent link"></a></h5>
+<h5 id="example-with-formatjsonv2">Example with <code>format=jsonv2</code><a class="headerlink" href="#example-with-formatjsonv2" title="Permanent link">🔗</a></h5>
 <ul>
 <li><a href="https://nominatim.openstreetmap.org/reverse?format=jsonv2&amp;lat=-34.44076&amp;lon=-58.70521">https://nominatim.openstreetmap.org/reverse?format=jsonv2&amp;lat=-34.44076&amp;lon=-58.70521</a></li>
 </ul>
@@ -2350,7 +2350,7 @@ This overrides the specified machine readable format.</p>
 <span class="w">  </span><span class="nt">&quot;boundingbox&quot;</span><span class="p">:[</span><span class="s2">&quot;-34.44159&quot;</span><span class="p">,</span><span class="s2">&quot;-34.4370994&quot;</span><span class="p">,</span><span class="s2">&quot;-58.7086067&quot;</span><span class="p">,</span><span class="s2">&quot;-58.7044712&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h5 id="example-with-formatgeojson">Example with <code>format=geojson</code><a class="headerlink" href="#example-with-formatgeojson" title="Permanent link"></a></h5>
+<h5 id="example-with-formatgeojson">Example with <code>format=geojson</code><a class="headerlink" href="#example-with-formatgeojson" title="Permanent link">🔗</a></h5>
 <ul>
 <li><a href="https://nominatim.openstreetmap.org/reverse?format=geojson&amp;lat=44.50155&amp;lon=11.33989">https://nominatim.openstreetmap.org/reverse?format=geojson&amp;lat=44.50155&amp;lon=11.33989</a></li>
 </ul>
@@ -2400,7 +2400,7 @@ This overrides the specified machine readable format.</p>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h5 id="example-with-formatgeocodejson">Example with <code>format=geocodejson</code><a class="headerlink" href="#example-with-formatgeocodejson" title="Permanent link"></a></h5>
+<h5 id="example-with-formatgeocodejson">Example with <code>format=geocodejson</code><a class="headerlink" href="#example-with-formatgeocodejson" title="Permanent link">🔗</a></h5>
 <p><a href="https://nominatim.openstreetmap.org/reverse?format=geocodejson&amp;lat=60.2299&amp;lon=11.1663">https://nominatim.openstreetmap.org/reverse?format=geocodejson&amp;lat=60.2299&amp;lon=11.1663</a></p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>

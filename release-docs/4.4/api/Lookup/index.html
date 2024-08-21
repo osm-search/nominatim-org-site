@@ -1880,10 +1880,10 @@
   
 
 
-<h1 id="address-lookup">Address lookup<a class="headerlink" href="#address-lookup" title="Permanent link"></a></h1>
+<h1 id="address-lookup">Address lookup<a class="headerlink" href="#address-lookup" title="Permanent link">🔗</a></h1>
 <p>The lookup API allows to query the address and other details of one or
 multiple OSM objects like node, way or relation.</p>
-<h2 id="endpoint">Endpoint<a class="headerlink" href="#endpoint" title="Permanent link"></a></h2>
+<h2 id="endpoint">Endpoint<a class="headerlink" href="#endpoint" title="Permanent link">🔗</a></h2>
 <p>The lookup API has the following format:</p>
 <div class="highlight"><pre><span></span><code>  https://nominatim.openstreetmap.org/lookup?osm_ids=[N|W|R]&lt;value&gt;,…,…,&amp;&lt;params&gt;
 </code></pre></div>
@@ -1896,9 +1896,9 @@ can be queried at the same time.</p>
 <code>https://nominatim.openstreetmap.org/lookup.php</code>. This is now deprecated
 and will be removed in future versions.</p>
 </div>
-<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link"></a></h2>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">🔗</a></h2>
 <p>This section lists additional optional parameters.</p>
-<h3 id="output-format">Output format<a class="headerlink" href="#output-format" title="Permanent link"></a></h3>
+<h3 id="output-format">Output format<a class="headerlink" href="#output-format" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -1936,7 +1936,7 @@ and will be removed in future versions.</p>
 the given name. See <a href="https://en.wikipedia.org/wiki/JSONP">JSONP</a> for more
 information.</p>
 <p>Only has an effect for JSON output formats.</p>
-<h3 id="output-details">Output details<a class="headerlink" href="#output-details" title="Permanent link"></a></h3>
+<h3 id="output-details">Output details<a class="headerlink" href="#output-details" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -1999,7 +1999,7 @@ that is available in the database, e.g. wikipedia link, opening hours.</p>
 </table>
 <p>When set to 1, include a full list of names for the result. These may include
 language variants, older names, references and brand.</p>
-<h3 id="language-of-results">Language of results<a class="headerlink" href="#language-of-results" title="Permanent link"></a></h3>
+<h3 id="language-of-results">Language of results<a class="headerlink" href="#language-of-results" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2028,7 +2028,7 @@ usually don't send any Accept-Language header, prompting Nominatim
 to show results in the local language. Browsers on the contrary always
 send the currently chosen browser language.</p>
 </div>
-<h3 id="polygon-output">Polygon output<a class="headerlink" href="#polygon-output" title="Permanent link"></a></h3>
+<h3 id="polygon-output">Polygon output<a class="headerlink" href="#polygon-output" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2083,7 +2083,7 @@ options can be used at a time.</p>
 of the output geometry. The parameter describes the
 tolerance in degrees with which the geometry may differ from the original
 geometry. Topology is preserved in the geometry.</p>
-<h3 id="other">Other<a class="headerlink" href="#other" title="Permanent link"></a></h3>
+<h3 id="other">Other<a class="headerlink" href="#other" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2122,8 +2122,8 @@ address to identify your requests. See Nominatim's
 <p>Output assorted developer debug information. Data on internals of Nominatim's
 "search loop" logic, and SQL queries. The output is HTML format.
 This overrides the specified machine readable format.</p>
-<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link"></a></h2>
-<h5 id="xml">XML<a class="headerlink" href="#xml" title="Permanent link"></a></h5>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">🔗</a></h2>
+<h5 id="xml">XML<a class="headerlink" href="#xml" title="Permanent link">🔗</a></h5>
 <p><a href="https://nominatim.openstreetmap.org/lookup?osm_ids=R146656,W50637691,N240109189">https://nominatim.openstreetmap.org/lookup?osm_ids=R146656,W104393803,N240109189</a></p>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&lt;lookupresults</span><span class="w"> </span><span class="na">timestamp=</span><span class="s">&quot;Mon, 28 Mar 22 14:38:54 +0000&quot;</span><span class="w"> </span><span class="na">attribution=</span><span class="s">&quot;Data &amp;#xA9; OpenStreetMap contributors, ODbL 1.0. http://www.openstreetmap.org/copyright&quot;</span><span class="w"> </span><span class="na">querystring=</span><span class="s">&quot;R146656,W50637691,N240109189&quot;</span><span class="w"> </span><span class="na">more_url=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;place</span><span class="w"> </span><span class="na">place_id=</span><span class="s">&quot;282236157&quot;</span><span class="w"> </span><span class="na">osm_type=</span><span class="s">&quot;relation&quot;</span><span class="w"> </span><span class="na">osm_id=</span><span class="s">&quot;146656&quot;</span><span class="w"> </span><span class="na">place_rank=</span><span class="s">&quot;16&quot;</span><span class="w"> </span><span class="na">address_rank=</span><span class="s">&quot;16&quot;</span><span class="w"> </span><span class="na">boundingbox=</span><span class="s">&quot;53.3401044,53.5445923,-2.3199185,-2.1468288&quot;</span><span class="w"> </span><span class="na">lat=</span><span class="s">&quot;53.44246175&quot;</span><span class="w"> </span><span class="na">lon=</span><span class="s">&quot;-2.2324547359718547&quot;</span><span class="w"> </span><span class="na">display_name=</span><span class="s">&quot;Manchester, Greater Manchester, North West England, England, United Kingdom&quot;</span><span class="w"> </span><span class="na">class=</span><span class="s">&quot;boundary&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;administrative&quot;</span><span class="w"> </span><span class="na">importance=</span><span class="s">&quot;0.35&quot;</span><span class="nt">&gt;</span>
@@ -2153,7 +2153,7 @@ This overrides the specified machine readable format.</p>
 <span class="w">    </span><span class="nt">&lt;/place&gt;</span>
 <span class="w">  </span><span class="nt">&lt;/lookupresults&gt;</span>
 </code></pre></div>
-<h5 id="json-with-extratags">JSON with extratags<a class="headerlink" href="#json-with-extratags" title="Permanent link"></a></h5>
+<h5 id="json-with-extratags">JSON with extratags<a class="headerlink" href="#json-with-extratags" title="Permanent link">🔗</a></h5>
 <p><a href="https://nominatim.openstreetmap.org/lookup?osm_ids=W50637691&amp;format=json&amp;extratags=1">https://nominatim.openstreetmap.org/lookup?osm_ids=W50637691&amp;format=json&amp;extratags=1</a></p>
 <div class="highlight"><pre><span></span><code><span class="p">[</span>
 <span class="w">   </span><span class="p">{</span>

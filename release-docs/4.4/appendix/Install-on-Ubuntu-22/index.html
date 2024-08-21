@@ -1638,7 +1638,7 @@
 
 <p><em>Note:</em> these installation instructions are also available in executable
         form for use with vagrant under vagrant/Install-on-Ubuntu-22.sh.</p>
-<h1 id="installing-the-required-software">Installing the Required Software<a class="headerlink" href="#installing-the-required-software" title="Permanent link"></a></h1>
+<h1 id="installing-the-required-software">Installing the Required Software<a class="headerlink" href="#installing-the-required-software" title="Permanent link">🔗</a></h1>
 <p>These instructions expect that you have a freshly installed Ubuntu 22.04.</p>
 <p>Make sure all packages are up-to-date by running:</p>
 <div class="codehilite"><pre><span></span><code>sudo apt-get update -qq
@@ -1656,11 +1656,11 @@
                     python3-icu python3-datrie python3-yaml
 </code></pre></div>
 
-<h1 id="system-configuration">System Configuration<a class="headerlink" href="#system-configuration" title="Permanent link"></a></h1>
+<h1 id="system-configuration">System Configuration<a class="headerlink" href="#system-configuration" title="Permanent link">🔗</a></h1>
 <p>The following steps are meant to configure a fresh Ubuntu installation
 for use with Nominatim. You may skip some of the steps if you have your
 OS already configured.</p>
-<h2 id="creating-dedicated-user-accounts">Creating Dedicated User Accounts<a class="headerlink" href="#creating-dedicated-user-accounts" title="Permanent link"></a></h2>
+<h2 id="creating-dedicated-user-accounts">Creating Dedicated User Accounts<a class="headerlink" href="#creating-dedicated-user-accounts" title="Permanent link">🔗</a></h2>
 <p>Nominatim will run as a global service on your machine. It is therefore
 best to install it under its own separate user account. In the following
 we assume this user is called nominatim and the installation will be in
@@ -1685,7 +1685,7 @@ user name and home directory now like this:</p>
 <div class="codehilite"><pre><span></span><code>chmod a+x $USERHOME
 </code></pre></div>
 
-<h2 id="setting-up-postgresql">Setting up PostgreSQL<a class="headerlink" href="#setting-up-postgresql" title="Permanent link"></a></h2>
+<h2 id="setting-up-postgresql">Setting up PostgreSQL<a class="headerlink" href="#setting-up-postgresql" title="Permanent link">🔗</a></h2>
 <p>Tune the postgresql configuration, which is located in 
 <code>/etc/postgresql/14/main/postgresql.conf</code>. See section <em>Tuning the PostgreSQL database</em>
 in <a href="../../admin/Installation/#tuning-the-postgresql-database">the installation page</a>
@@ -1701,8 +1701,8 @@ for reading only:</p>
 sudo -u postgres createuser www-data
 </code></pre></div>
 
-<h1 id="installing-nominatim">Installing Nominatim<a class="headerlink" href="#installing-nominatim" title="Permanent link"></a></h1>
-<h2 id="building-and-configuration">Building and Configuration<a class="headerlink" href="#building-and-configuration" title="Permanent link"></a></h2>
+<h1 id="installing-nominatim">Installing Nominatim<a class="headerlink" href="#installing-nominatim" title="Permanent link">🔗</a></h1>
+<h2 id="building-and-configuration">Building and Configuration<a class="headerlink" href="#building-and-configuration" title="Permanent link">🔗</a></h2>
 <p>Get the source code from Github and change into the source directory</p>
 <div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="nv">$USERHOME</span>
 wget<span class="w"> </span>https://nominatim.org/release/Nominatim-4.4.1.tar.bz2
@@ -1726,7 +1726,7 @@ sudo make install
 <p>Nominatim is now ready to use. You can continue with
 <a href="../../admin/Import/">importing a database from OSM data</a>. If you want to set up
 the API frontend first, continue reading.</p>
-<h1 id="setting-up-the-python-frontend">Setting up the Python frontend<a class="headerlink" href="#setting-up-the-python-frontend" title="Permanent link"></a></h1>
+<h1 id="setting-up-the-python-frontend">Setting up the Python frontend<a class="headerlink" href="#setting-up-the-python-frontend" title="Permanent link">🔗</a></h1>
 <p>Some of the Python packages in Ubuntu are too old. Therefore run the
 frontend from a Python virtualenv with current packages.</p>
 <p>To set up the virtualenv, run:</p>
@@ -1781,7 +1781,7 @@ First create a systemd job that manages the socket file:</p>
 <span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">nominatim</span><span class="o">.</span><span class="n">service</span>
 </code></pre></div>
 
-<h1 id="setting-up-a-webserver">Setting up a webserver<a class="headerlink" href="#setting-up-a-webserver" title="Permanent link"></a></h1>
+<h1 id="setting-up-a-webserver">Setting up a webserver<a class="headerlink" href="#setting-up-a-webserver" title="Permanent link">🔗</a></h1>
 <p>The webserver is only needed as a proxy between the public interface
 and the gunicorn service.</p>
 <p>The frontend will need configuration information from the project
@@ -1791,7 +1791,7 @@ Already create the project directory itself now:</p>
 <div class="codehilite"><pre><span></span><code>mkdir $USERHOME/nominatim-project
 </code></pre></div>
 
-<h2 id="option-1-using-apache">Option 1: Using Apache<a class="headerlink" href="#option-1-using-apache" title="Permanent link"></a></h2>
+<h2 id="option-1-using-apache">Option 1: Using Apache<a class="headerlink" href="#option-1-using-apache" title="Permanent link">🔗</a></h2>
 <p>First install apache itself and enable the proxy module:</p>
 <div class="codehilite"><pre><span></span><code>sudo apt-get install -y apache2
 sudo a2enmod proxy_http
@@ -1810,7 +1810,7 @@ sudo a2enmod proxy_http
 </code></pre></div>
 
 <p>The Nominatim API is now available at <code>http://localhost/nominatim/</code>.</p>
-<h2 id="option-2-using-nginx">Option 2: Using nginx<a class="headerlink" href="#option-2-using-nginx" title="Permanent link"></a></h2>
+<h2 id="option-2-using-nginx">Option 2: Using nginx<a class="headerlink" href="#option-2-using-nginx" title="Permanent link">🔗</a></h2>
 <p>First install nginx itself:</p>
 <div class="codehilite"><pre><span></span><code>sudo apt-get install -y nginx
 </code></pre></div>

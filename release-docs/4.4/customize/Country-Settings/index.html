@@ -1844,13 +1844,13 @@
   
 
 
-<h1 id="customizing-per-country-data">Customizing Per-Country Data<a class="headerlink" href="#customizing-per-country-data" title="Permanent link"></a></h1>
+<h1 id="customizing-per-country-data">Customizing Per-Country Data<a class="headerlink" href="#customizing-per-country-data" title="Permanent link">🔗</a></h1>
 <p>Whenever an OSM is imported into Nominatim, the object is first assigned
 a country. Nominatim can use this information to adapt various aspects of
 the address computation to the local customs of the country. This section
 explains how country assignment works and the principal per-country
 localizations.</p>
-<h2 id="country-assignment">Country assignment<a class="headerlink" href="#country-assignment" title="Permanent link"></a></h2>
+<h2 id="country-assignment">Country assignment<a class="headerlink" href="#country-assignment" title="Permanent link">🔗</a></h2>
 <p>Countries are assigned on the basis of country data from the OpenStreetMap
 input data itself. Countries are expected to be tagged according to the
 <a href="https://wiki.openstreetmap.org/wiki/Tag:boundary%3Dadministrative">administrative boundary schema</a>:
@@ -1862,8 +1862,8 @@ from OSM data as well but is guaranteed to cover all countries.</p>
 <p>Some OSM objects may also be located outside any country, for example a buoy
 in the middle of the ocean. These object do not get any country assigned and
 get a default treatment when it comes to localized handling of data.</p>
-<h2 id="per-country-settings">Per-country settings<a class="headerlink" href="#per-country-settings" title="Permanent link"></a></h2>
-<h3 id="global-country-settings">Global country settings<a class="headerlink" href="#global-country-settings" title="Permanent link"></a></h3>
+<h2 id="per-country-settings">Per-country settings<a class="headerlink" href="#per-country-settings" title="Permanent link">🔗</a></h2>
+<h3 id="global-country-settings">Global country settings<a class="headerlink" href="#global-country-settings" title="Permanent link">🔗</a></h3>
 <p>The main place to configure settings per country is the file
 <code>settings/country_settings.yaml</code>. This file has one section per country that
 is recognised by Nominatim. Each section is tagged with the country code
@@ -1878,13 +1878,13 @@ countries which are listed in this file are taken into account for computations.
       output: AD\1
 </code></pre></div>
 <p>The individual settings are described below.</p>
-<h4 id="partition"><code>partition</code><a class="headerlink" href="#partition" title="Permanent link"></a></h4>
+<h4 id="partition"><code>partition</code><a class="headerlink" href="#partition" title="Permanent link">🔗</a></h4>
 <p>Nominatim internally splits the data into multiple tables to improve
 performance. The partition number tells Nominatim into which table to put
 the country. This is purely internal management and has no effect on the
 output data.</p>
 <p>The default is to have one partition per country.</p>
-<h4 id="languages"><code>languages</code><a class="headerlink" href="#languages" title="Permanent link"></a></h4>
+<h4 id="languages"><code>languages</code><a class="headerlink" href="#languages" title="Permanent link">🔗</a></h4>
 <p>A comma-separated list of ISO-639 language codes of default languages in the
 country. These are the languages used in name tags without a language suffix.
 Note that this is not necessarily the same as the list of official languages
@@ -1897,7 +1897,7 @@ used language first. It is not recommended to add languages when there are only
 very few occurrences.</p>
 <p>If only one language is listed, then Nominatim will 'auto-complete' the
 language of names without an explicit language-suffix.</p>
-<h4 id="names"><code>names</code><a class="headerlink" href="#names" title="Permanent link"></a></h4>
+<h4 id="names"><code>names</code><a class="headerlink" href="#names" title="Permanent link">🔗</a></h4>
 <p>List of names of the country and its translations. These names are used as
 a baseline. It is always possible to search countries by the given names, no
 matter what other names are in the OSM data. They are also used as a fallback
@@ -1911,7 +1911,7 @@ name lists in the file <code>settings/country-names/&lt;country code&gt;.yaml</c
 The names section in the main country settings file only refers to these
 files via the special <code>!include</code> directive.</p>
 </div>
-<h4 id="postcode"><code>postcode</code><a class="headerlink" href="#postcode" title="Permanent link"></a></h4>
+<h4 id="postcode"><code>postcode</code><a class="headerlink" href="#postcode" title="Permanent link">🔗</a></h4>
 <p>Describes the format of the postcode that is in use in the country.</p>
 <p>When a country has no official postcodes, set this to no. Example:</p>
 <div class="highlight"><pre><span></span><code>ae:
@@ -1950,7 +1950,7 @@ between letters and digits.</p>
 you must explicitly state the canonical output or Nominatim will not
 handle the variations correctly.</p>
 </div>
-<h3 id="other-country-specific-configuration">Other country-specific configuration<a class="headerlink" href="#other-country-specific-configuration" title="Permanent link"></a></h3>
+<h3 id="other-country-specific-configuration">Other country-specific configuration<a class="headerlink" href="#other-country-specific-configuration" title="Permanent link">🔗</a></h3>
 <p>There are some other configuration files where you can set localized settings
 according to the assigned country. These are:</p>
 <ul>

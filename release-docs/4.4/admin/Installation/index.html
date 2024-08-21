@@ -1844,7 +1844,7 @@
   
 
 
-<h1 id="basic-installation">Basic Installation<a class="headerlink" href="#basic-installation" title="Permanent link"></a></h1>
+<h1 id="basic-installation">Basic Installation<a class="headerlink" href="#basic-installation" title="Permanent link">🔗</a></h1>
 <p>This page contains generic installation instructions for Nominatim and its
 prerequisites. There are also step-by-step instructions available for
 the following operating systems:</p>
@@ -1862,8 +1862,8 @@ and can't offer support.</p>
 <li><a href="https://github.com/robjuz/helm-charts/blob/master/charts/nominatim/README.md">Kubernetes with Helm</a></li>
 <li><a href="https://github.com/synthesio/infra-ansible-nominatim">Ansible</a></li>
 </ul>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link"></a></h2>
-<h3 id="software">Software<a class="headerlink" href="#software" title="Permanent link"></a></h3>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">🔗</a></h2>
+<h3 id="software">Software<a class="headerlink" href="#software" title="Permanent link">🔗</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>For larger installations you <strong>must have</strong> PostgreSQL 11+ and PostGIS 3+
@@ -1919,7 +1919,7 @@ Query performance has marked improvements with PostgreSQL 13+ and PostGIS 3.2+.<
 </ul>
 <p>For dependencies for running tests and building documentation, see
 the <a href="../../develop/Development-Environment/">Development section</a>.</p>
-<h3 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link"></a></h3>
+<h3 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">🔗</a></h3>
 <p>A minimum of 2GB of RAM is required or installation will fail. For a full
 planet import 128GB of RAM or more are strongly recommended. Do not report
 out of memory problems if you have less than 64GB RAM.</p>
@@ -1928,7 +1928,7 @@ Take into account that the OSM database is growing fast.
 Fast disks are essential. Using NVME disks is recommended.</p>
 <p>Even on a well configured machine the import of a full planet takes
 around 2 days. When using traditional SSDs, 4-5 days are more realistic.</p>
-<h2 id="tuning-the-postgresql-database">Tuning the PostgreSQL database<a class="headerlink" href="#tuning-the-postgresql-database" title="Permanent link"></a></h2>
+<h2 id="tuning-the-postgresql-database">Tuning the PostgreSQL database<a class="headerlink" href="#tuning-the-postgresql-database" title="Permanent link">🔗</a></h2>
 <p>You might want to tune your PostgreSQL installation so that the later steps
 make best use of your hardware. You should tune the following parameters in
 your <code>postgresql.conf</code> file.</p>
@@ -1955,11 +1955,11 @@ you might consider setting:</p>
 
 <p>and even reduce <code>autovacuum_work_mem</code> further. This will reduce the amount
 of memory that autovacuum takes away from the import process.</p>
-<h2 id="downloading-and-building-nominatim">Downloading and building Nominatim<a class="headerlink" href="#downloading-and-building-nominatim" title="Permanent link"></a></h2>
-<h3 id="downloading-the-latest-release">Downloading the latest release<a class="headerlink" href="#downloading-the-latest-release" title="Permanent link"></a></h3>
+<h2 id="downloading-and-building-nominatim">Downloading and building Nominatim<a class="headerlink" href="#downloading-and-building-nominatim" title="Permanent link">🔗</a></h2>
+<h3 id="downloading-the-latest-release">Downloading the latest release<a class="headerlink" href="#downloading-the-latest-release" title="Permanent link">🔗</a></h3>
 <p>You can download the <a href="https://nominatim.org/downloads/">latest release from nominatim.org</a>.
 The release contains all necessary files. Just unpack it.</p>
-<h3 id="downloading-the-latest-development-version">Downloading the latest development version<a class="headerlink" href="#downloading-the-latest-development-version" title="Permanent link"></a></h3>
+<h3 id="downloading-the-latest-development-version">Downloading the latest development version<a class="headerlink" href="#downloading-the-latest-development-version" title="Permanent link">🔗</a></h3>
 <p>If you want to install latest development version from github, make sure to
 also check out the osm2pgsql subproject:</p>
 <div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/openstreetmap/Nominatim.git
@@ -1967,7 +1967,7 @@ also check out the osm2pgsql subproject:</p>
 <p>The development version does not include the country grid. Download it separately:</p>
 <div class="highlight"><pre><span></span><code>wget -O Nominatim/data/country_osm_grid.sql.gz https://nominatim.org/data/country_grid.sql.gz
 </code></pre></div>
-<h3 id="building-nominatim">Building Nominatim<a class="headerlink" href="#building-nominatim" title="Permanent link"></a></h3>
+<h3 id="building-nominatim">Building Nominatim<a class="headerlink" href="#building-nominatim" title="Permanent link">🔗</a></h3>
 <p>The code must be built in a separate directory. Create the directory and
 change into it.</p>
 <div class="highlight"><pre><span></span><code>mkdir build

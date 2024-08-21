@@ -1970,9 +1970,9 @@
   
 
 
-<h1 id="troubleshooting-nominatim-installations">Troubleshooting Nominatim Installations<a class="headerlink" href="#troubleshooting-nominatim-installations" title="Permanent link"></a></h1>
-<h2 id="installation-issues">Installation Issues<a class="headerlink" href="#installation-issues" title="Permanent link"></a></h2>
-<h3 id="can-a-stoppedkilled-import-process-be-resumed">Can a stopped/killed import process be resumed?<a class="headerlink" href="#can-a-stoppedkilled-import-process-be-resumed" title="Permanent link"></a></h3>
+<h1 id="troubleshooting-nominatim-installations">Troubleshooting Nominatim Installations<a class="headerlink" href="#troubleshooting-nominatim-installations" title="Permanent link">🔗</a></h1>
+<h2 id="installation-issues">Installation Issues<a class="headerlink" href="#installation-issues" title="Permanent link">🔗</a></h2>
+<h3 id="can-a-stoppedkilled-import-process-be-resumed">Can a stopped/killed import process be resumed?<a class="headerlink" href="#can-a-stoppedkilled-import-process-be-resumed" title="Permanent link">🔗</a></h3>
 <p>"I accidentally killed the import process after it has been running for many hours. Can it be resumed?"</p>
 <p>It is possible if the import already got to the indexing stage.
 Check the last line of output that was logged before the process
@@ -1984,7 +1984,7 @@ was killed. If it looks like this:</p>
 <div class="highlight"><pre><span></span><code>nominatim<span class="w"> </span>import<span class="w"> </span>--continue<span class="w"> </span>indexing
 </code></pre></div>
 <p>If the reported rank is 26 or higher, you can also safely add <code>--index-noanalyse</code>.</p>
-<h3 id="postgresql-crashed-invalid-page-in-block">PostgreSQL crashed "invalid page in block"<a class="headerlink" href="#postgresql-crashed-invalid-page-in-block" title="Permanent link"></a></h3>
+<h3 id="postgresql-crashed-invalid-page-in-block">PostgreSQL crashed "invalid page in block"<a class="headerlink" href="#postgresql-crashed-invalid-page-in-block" title="Permanent link">🔗</a></h3>
 <p>Usually serious problem, can be a hardware issue, not all data written to disc
 for example. Check PostgreSQL log file and search PostgreSQL issues/mailing
 list for hints.</p>
@@ -1992,39 +1992,39 @@ list for hints.</p>
 <div class="highlight"><pre><span></span><code>nominatim<span class="w"> </span>import<span class="w"> </span>--continue<span class="w"> </span>indexing
 </code></pre></div>
 <p>Otherwise it's best to start the full setup from the beginning.</p>
-<h3 id="nominatimso-version-mismatch">nominatim.so version mismatch<a class="headerlink" href="#nominatimso-version-mismatch" title="Permanent link"></a></h3>
+<h3 id="nominatimso-version-mismatch">nominatim.so version mismatch<a class="headerlink" href="#nominatimso-version-mismatch" title="Permanent link">🔗</a></h3>
 <p>When running the import you may get a version mismatch:
 <code>COPY_END for place failed: ERROR: incompatible library "/srv/Nominatim/nominatim/build/module/nominatim.so": version mismatch</code></p>
 <p>pg_config seems to use bad includes sometimes when multiple versions
 of PostgreSQL are available in the system. Make sure you remove the
 server development libraries (<code>postgresql-server-dev-13</code> on Ubuntu)
 and recompile (<code>cmake .. &amp;&amp; make</code>).</p>
-<h3 id="i-see-the-error-error-permission-denied-for-language-c">I see the error "ERROR: permission denied for language c"<a class="headerlink" href="#i-see-the-error-error-permission-denied-for-language-c" title="Permanent link"></a></h3>
+<h3 id="i-see-the-error-error-permission-denied-for-language-c">I see the error "ERROR: permission denied for language c"<a class="headerlink" href="#i-see-the-error-error-permission-denied-for-language-c" title="Permanent link">🔗</a></h3>
 <p><code>nominatim.so</code>, written in C, is required to be installed on the database
 server. Some managed database (cloud) services like Amazon RDS do not allow
 this. There is currently no work-around other than installing a database
 on a non-managed machine.</p>
-<h3 id="i-see-the-error-function-transliterationtext-does-not-exist">I see the error: "function transliteration(text) does not exist"<a class="headerlink" href="#i-see-the-error-function-transliterationtext-does-not-exist" title="Permanent link"></a></h3>
+<h3 id="i-see-the-error-function-transliterationtext-does-not-exist">I see the error: "function transliteration(text) does not exist"<a class="headerlink" href="#i-see-the-error-function-transliterationtext-does-not-exist" title="Permanent link">🔗</a></h3>
 <p>Reinstall the nominatim functions with <code>nominatim refresh --functions</code>
 and check for any errors, e.g. a missing <code>nominatim.so</code> file.</p>
-<h3 id="i-see-the-error-error-mmap-remap-failed">I see the error: "ERROR: mmap (remap) failed"<a class="headerlink" href="#i-see-the-error-error-mmap-remap-failed" title="Permanent link"></a></h3>
+<h3 id="i-see-the-error-error-mmap-remap-failed">I see the error: "ERROR: mmap (remap) failed"<a class="headerlink" href="#i-see-the-error-error-mmap-remap-failed" title="Permanent link">🔗</a></h3>
 <p>This may be a simple out-of-memory error. Try reducing the memory used
 for <code>--osm2pgsql-cache</code>. Also make sure that overcommitting memory is
 allowed: <code>cat /proc/sys/vm/overcommit_memory</code> should print 0 or 1.</p>
 <p>If you are using a flatnode file, then it may also be that the underlying
 filesystem does not fully support 'mmap'. A notable candidate is virtualbox's
 vboxfs.</p>
-<h3 id="nominatim-update-failed-error-buffer-179261-is-not-owned-by-resource-owner-portal">nominatim UPDATE failed: ERROR: buffer 179261 is not owned by resource owner Portal<a class="headerlink" href="#nominatim-update-failed-error-buffer-179261-is-not-owned-by-resource-owner-portal" title="Permanent link"></a></h3>
+<h3 id="nominatim-update-failed-error-buffer-179261-is-not-owned-by-resource-owner-portal">nominatim UPDATE failed: ERROR: buffer 179261 is not owned by resource owner Portal<a class="headerlink" href="#nominatim-update-failed-error-buffer-179261-is-not-owned-by-resource-owner-portal" title="Permanent link">🔗</a></h3>
 <p>Several users <a href="https://github.com/openstreetmap/Nominatim/issues/1168">reported this</a>
 during the initial import of the database. It's
 something PostgreSQL internal Nominatim doesn't control. And PostgreSQL forums
 suggest it's threading related but definitely some kind of crash of a process.
 Users reported either rebooting the server, different hardware or just trying
 the import again worked.</p>
-<h3 id="the-website-shows-could-not-get-word-tokens">The website shows: "Could not get word tokens"<a class="headerlink" href="#the-website-shows-could-not-get-word-tokens" title="Permanent link"></a></h3>
+<h3 id="the-website-shows-could-not-get-word-tokens">The website shows: "Could not get word tokens"<a class="headerlink" href="#the-website-shows-could-not-get-word-tokens" title="Permanent link">🔗</a></h3>
 <p>The server cannot access your database. Add <code>&amp;debug=1</code> to your URL
 to get the full error message.</p>
-<h3 id="website-reports-db-error-insufficient-permissions">Website reports "DB Error: insufficient permissions"<a class="headerlink" href="#website-reports-db-error-insufficient-permissions" title="Permanent link"></a></h3>
+<h3 id="website-reports-db-error-insufficient-permissions">Website reports "DB Error: insufficient permissions"<a class="headerlink" href="#website-reports-db-error-insufficient-permissions" title="Permanent link">🔗</a></h3>
 <p>The user the webserver, e.g. Apache, runs under needs to have access to the
 Nominatim database. You can find the user like
 <a href="https://serverfault.com/questions/125865/finding-out-what-user-apache-is-running-as">this</a>,
@@ -2040,7 +2040,7 @@ for default Ubuntu operating system for example it's <code>www-data</code>.</p>
 <div class="highlight"><pre><span></span><code>   GRANT usage ON SCHEMA public TO &quot;www-data&quot;;
    GRANT SELECT ON ALL TABLES IN SCHEMA public TO &quot;www-data&quot;;
 </code></pre></div>
-<h3 id="website-reports-could-not-load-library-nominatimso">Website reports "Could not load library "nominatim.so"<a class="headerlink" href="#website-reports-could-not-load-library-nominatimso" title="Permanent link"></a></h3>
+<h3 id="website-reports-could-not-load-library-nominatimso">Website reports "Could not load library "nominatim.so"<a class="headerlink" href="#website-reports-could-not-load-library-nominatimso" title="Permanent link">🔗</a></h3>
 <p>Example error message</p>
 <div class="highlight"><pre><span></span><code>   SELECT make_standard_name(&#39;3039 E MEADOWLARK LN&#39;) [nativecode=ERROR: could not
    load library &quot;/srv/nominatim/Nominatim-3.1.0/build/module/nominatim.so&quot;:
@@ -2061,15 +2061,15 @@ recreate <code>nominatim.so</code>. Try</p>
    rm -r module/
    cmake $main_Nominatim_path &amp;&amp; make
 </code></pre></div>
-<h3 id="setup-fails-with-db-error-extension-not-found">Setup fails with "DB Error: extension not found"<a class="headerlink" href="#setup-fails-with-db-error-extension-not-found" title="Permanent link"></a></h3>
+<h3 id="setup-fails-with-db-error-extension-not-found">Setup fails with "DB Error: extension not found"<a class="headerlink" href="#setup-fails-with-db-error-extension-not-found" title="Permanent link">🔗</a></h3>
 <p>Make sure you have the PostgreSQL extensions "hstore" and "postgis" installed.
 See the installation instructions for a full list of required packages.</p>
-<h3 id="i-forgot-to-delete-the-flatnodes-file-before-starting-an-import">I forgot to delete the flatnodes file before starting an import.<a class="headerlink" href="#i-forgot-to-delete-the-flatnodes-file-before-starting-an-import" title="Permanent link"></a></h3>
+<h3 id="i-forgot-to-delete-the-flatnodes-file-before-starting-an-import">I forgot to delete the flatnodes file before starting an import.<a class="headerlink" href="#i-forgot-to-delete-the-flatnodes-file-before-starting-an-import" title="Permanent link">🔗</a></h3>
 <p>That's fine. For each import the flatnodes file get overwritten.
 See <a href="https://help.openstreetmap.org/questions/52419/nominatim-flatnode-storage">https://help.openstreetmap.org/questions/52419/nominatim-flatnode-storage</a>
 for more information.</p>
-<h2 id="running-your-own-instance">Running your own instance<a class="headerlink" href="#running-your-own-instance" title="Permanent link"></a></h2>
-<h3 id="can-i-import-negative-osm-ids-into-nominatim">Can I import negative OSM ids into Nominatim?<a class="headerlink" href="#can-i-import-negative-osm-ids-into-nominatim" title="Permanent link"></a></h3>
+<h2 id="running-your-own-instance">Running your own instance<a class="headerlink" href="#running-your-own-instance" title="Permanent link">🔗</a></h2>
+<h3 id="can-i-import-negative-osm-ids-into-nominatim">Can I import negative OSM ids into Nominatim?<a class="headerlink" href="#can-i-import-negative-osm-ids-into-nominatim" title="Permanent link">🔗</a></h3>
 <p>See <a href="https://help.openstreetmap.org/questions/64662/nominatim-flatnode-with-negative-id">this question of Stackoverflow</a>.</p>
 
 

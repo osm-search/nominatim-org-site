@@ -2306,13 +2306,13 @@
   
 
 
-<h1 id="result-handling">Result handling<a class="headerlink" href="#result-handling" title="Permanent link"></a></h1>
+<h1 id="result-handling">Result handling<a class="headerlink" href="#result-handling" title="Permanent link">🔗</a></h1>
 <p>The search functions of the Nominatim API always return a result object
 with the raw information about the place that is available in the
 database. This section discusses data types used in the results and utility
 functions that allow further processing of the results.</p>
-<h2 id="result-fields">Result fields<a class="headerlink" href="#result-fields" title="Permanent link"></a></h2>
-<h3 id="sources">Sources<a class="headerlink" href="#sources" title="Permanent link"></a></h3>
+<h2 id="result-fields">Result fields<a class="headerlink" href="#result-fields" title="Permanent link">🔗</a></h2>
+<h3 id="sources">Sources<a class="headerlink" href="#sources" title="Permanent link">🔗</a></h3>
 <p>Nominatim takes the result data from multiple sources. The <code>source_table</code> field
 in the result describes, from which source the result was retrieved.</p>
 
@@ -2350,7 +2350,7 @@ in the result describes, from which source the result was retrieved.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.SourceTable.PLACEX" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.SourceTable.PLACEX" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2373,7 +2373,7 @@ OSM data.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.SourceTable.OSMLINE" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.SourceTable.OSMLINE" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2397,7 +2397,7 @@ result refers to the OSM way with the interpolation line object.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.SourceTable.TIGER" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.SourceTable.TIGER" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2423,7 +2423,7 @@ that street.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.SourceTable.POSTCODE" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.SourceTable.POSTCODE" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2447,7 +2447,7 @@ are always approximate.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.SourceTable.COUNTRY" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.SourceTable.COUNTRY" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2466,7 +2466,7 @@ in the OSM data.</p>
 
     </div>
 
-</div><h3 id="detailed-address-description">Detailed address description<a class="headerlink" href="#detailed-address-description" title="Permanent link"></a></h3>
+</div><h3 id="detailed-address-description">Detailed address description<a class="headerlink" href="#detailed-address-description" title="Permanent link">🔗</a></h3>
 <p>When the <code>address_details</code> parameter is set, then functions return not
 only information about the result place but also about the place that
 make up the address. This information is almost always required when you
@@ -2513,7 +2513,7 @@ Their presence depends on the kind and function of the address part.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.AddressLine.category" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.AddressLine.category" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2534,7 +2534,7 @@ Their presence depends on the kind and function of the address part.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.AddressLine.names" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.AddressLine.names" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2556,7 +2556,7 @@ names and translations.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.AddressLine.fromarea" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.AddressLine.fromarea" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2579,7 +2579,7 @@ belongs to one place or another.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.AddressLine.isaddress" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.AddressLine.isaddress" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2605,7 +2605,7 @@ be shown.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.AddressLine.rank_address" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.AddressLine.rank_address" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2626,7 +2626,7 @@ be shown.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.AddressLine.distance" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.AddressLine.distance" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2648,7 +2648,7 @@ be shown.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.AddressLine.place_id" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.AddressLine.place_id" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2670,7 +2670,7 @@ be shown.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.AddressLine.osm_object" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.AddressLine.osm_object" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2692,7 +2692,7 @@ be shown.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.AddressLine.extratags" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.AddressLine.extratags" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2715,7 +2715,7 @@ that usually contains OSM tag key-value pairs.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.AddressLine.admin_level" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.AddressLine.admin_level" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2739,7 +2739,7 @@ This field is only meaningful for places of the category
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.AddressLine.local_name" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.AddressLine.local_name" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2758,7 +2758,7 @@ This field is only meaningful for places of the category
 
     </div>
 
-</div><h3 id="detailed-search-terms">Detailed search terms<a class="headerlink" href="#detailed-search-terms" title="Permanent link"></a></h3>
+</div><h3 id="detailed-search-terms">Detailed search terms<a class="headerlink" href="#detailed-search-terms" title="Permanent link">🔗</a></h3>
 <p>The <code>details</code> function can return detailed information about which search terms
 may be used to find a place, when the <code>keywords</code> parameter is set. Search
 terms are split into terms for the name of the place and search terms for
@@ -2799,7 +2799,7 @@ following detailed information.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.WordInfo.word" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.WordInfo.word" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2820,7 +2820,7 @@ following detailed information.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.WordInfo.word_id" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.WordInfo.word_id" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2841,7 +2841,7 @@ following detailed information.</p>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
-<a href="#nominatim.api.WordInfo.word_token" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.WordInfo.word_token" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2860,9 +2860,9 @@ This form is used for searching.</p>
 
     </div>
 
-</div><h2 id="localization">Localization<a class="headerlink" href="#localization" title="Permanent link"></a></h2>
+</div><h2 id="localization">Localization<a class="headerlink" href="#localization" title="Permanent link">🔗</a></h2>
 <p>Results are always returned with the full list of available names.</p>
-<h3 id="locale">Locale<a class="headerlink" href="#locale" title="Permanent link"></a></h3>
+<h3 id="locale">Locale<a class="headerlink" href="#locale" title="Permanent link">🔗</a></h3>
 
 
 <div class="doc doc-object doc-class">
@@ -2896,7 +2896,7 @@ usage.</p>
 <h6 id="nominatim.api.Locales.display_name" class="doc doc-heading">
             <code class=" language-python"><span class="n">display_name</span><span class="p">(</span><span class="n">names</span><span class="p">)</span></code>
 
-<a href="#nominatim.api.Locales.display_name" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Locales.display_name" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">
@@ -2920,7 +2920,7 @@ appropriate localization is found, the first name is returned.</p>
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
   </span>
 
-<a href="#nominatim.api.Locales.from_accept_languages" class="headerlink" title="Permanent link"></a></h6>
+<a href="#nominatim.api.Locales.from_accept_languages" class="headerlink" title="Permanent link">🔗</a></h6>
 
 
     <div class="doc doc-contents ">

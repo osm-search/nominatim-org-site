@@ -2566,7 +2566,7 @@
 
 <p>This section provides a reference of all configuration parameters that can
 be used with Nominatim.</p>
-<h1 id="configuring-nominatim">Configuring Nominatim<a class="headerlink" href="#configuring-nominatim" title="Permanent link"></a></h1>
+<h1 id="configuring-nominatim">Configuring Nominatim<a class="headerlink" href="#configuring-nominatim" title="Permanent link">🔗</a></h1>
 <p>Nominatim uses <a href="https://github.com/theskumar/python-dotenv">dotenv</a> to manage
 its configuration settings. There are two means to set configuration
 variables: through an <code>.env</code> configuration file or through an environment
@@ -2584,9 +2584,9 @@ download the next change, you can temporarily disable the update interval:</p>
 
 <p>If a configuration option is defined through .env file and environment
 variable, then the latter takes precedence. </p>
-<h2 id="configuration-parameter-reference">Configuration Parameter Reference<a class="headerlink" href="#configuration-parameter-reference" title="Permanent link"></a></h2>
-<h3 id="import-and-database-settings">Import and Database Settings<a class="headerlink" href="#import-and-database-settings" title="Permanent link"></a></h3>
-<h4 id="nominatim_database_dsn">NOMINATIM_DATABASE_DSN<a class="headerlink" href="#nominatim_database_dsn" title="Permanent link"></a></h4>
+<h2 id="configuration-parameter-reference">Configuration Parameter Reference<a class="headerlink" href="#configuration-parameter-reference" title="Permanent link">🔗</a></h2>
+<h3 id="import-and-database-settings">Import and Database Settings<a class="headerlink" href="#import-and-database-settings" title="Permanent link">🔗</a></h3>
+<h4 id="nominatim_database_dsn">NOMINATIM_DATABASE_DSN<a class="headerlink" href="#nominatim_database_dsn" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -2623,7 +2623,7 @@ configuration parameter. Use a
 <a href="https://www.postgresql.org/docs/current/libpq-pgpass.html">password file</a>
 instead.</p>
 </div>
-<h4 id="nominatim_database_webuser">NOMINATIM_DATABASE_WEBUSER<a class="headerlink" href="#nominatim_database_webuser" title="Permanent link"></a></h4>
+<h4 id="nominatim_database_webuser">NOMINATIM_DATABASE_WEBUSER<a class="headerlink" href="#nominatim_database_webuser" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -2656,7 +2656,7 @@ via php-fpm, you can also define a separate query user. The Postgres user
 needs to be set up before starting the import.</p>
 <p>Nominatim grants minimal rights to this user to all tables that are needed
 for running geocoding queries.</p>
-<h4 id="nominatim_database_module_path">NOMINATIM_DATABASE_MODULE_PATH<a class="headerlink" href="#nominatim_database_module_path" title="Permanent link"></a></h4>
+<h4 id="nominatim_database_module_path">NOMINATIM_DATABASE_MODULE_PATH<a class="headerlink" href="#nominatim_database_module_path" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -2693,7 +2693,7 @@ server.</p>
 <p>For information on how to use this setting when working with external databases,
 see <a href="../../admin/Advanced-Installations/">Advanced Installations</a>.</p>
 <p>The option is only used by the Legacy tokenizer and ignored otherwise.</p>
-<h4 id="nominatim_tokenizer">NOMINATIM_TOKENIZER<a class="headerlink" href="#nominatim_tokenizer" title="Permanent link"></a></h4>
+<h4 id="nominatim_tokenizer">NOMINATIM_TOKENIZER<a class="headerlink" href="#nominatim_tokenizer" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -2723,7 +2723,7 @@ see <a href="../../admin/Advanced-Installations/">Advanced Installations</a>.</p
 <p>Sets the tokenizer type to use for the import. For more information on
 available tokenizers and how they are configured, see
 <a href="../Tokenizers/">Tokenizers</a>.</p>
-<h4 id="nominatim_tokenizer_config">NOMINATIM_TOKENIZER_CONFIG<a class="headerlink" href="#nominatim_tokenizer_config" title="Permanent link"></a></h4>
+<h4 id="nominatim_tokenizer_config">NOMINATIM_TOKENIZER_CONFIG<a class="headerlink" href="#nominatim_tokenizer_config" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -2755,7 +2755,7 @@ See the <a href="../Tokenizers/">Tokenizer</a> descriptions for details
 on the file format.</p>
 <p>If a relative path is given, then the file is searched first relative to the
 project directory and then in the global settings directory.</p>
-<h4 id="nominatim_max_word_frequency">NOMINATIM_MAX_WORD_FREQUENCY<a class="headerlink" href="#nominatim_max_word_frequency" title="Permanent link"></a></h4>
+<h4 id="nominatim_max_word_frequency">NOMINATIM_MAX_WORD_FREQUENCY<a class="headerlink" href="#nominatim_max_word_frequency" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -2789,7 +2789,7 @@ project directory and then in the global settings directory.</p>
 <p>The word frequency count is used by the Legacy tokenizer to automatically
 identify <em>stop words</em>. Any partial term that occurs more often then what
 is defined in this setting, is effectively ignored during search.</p>
-<h4 id="nominatim_limit_reindexing">NOMINATIM_LIMIT_REINDEXING<a class="headerlink" href="#nominatim_limit_reindexing" title="Permanent link"></a></h4>
+<h4 id="nominatim_limit_reindexing">NOMINATIM_LIMIT_REINDEXING<a class="headerlink" href="#nominatim_limit_reindexing" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -2819,7 +2819,7 @@ the state of Florida would require recomputing every single address point
 in the state to make the new name searchable in conjunction with addresses.</p>
 <p>Setting this option to 'yes' means that Nominatim skips reindexing of contained
 objects when the area becomes too large.</p>
-<h4 id="nominatim_languages">NOMINATIM_LANGUAGES<a class="headerlink" href="#nominatim_languages" title="Permanent link"></a></h4>
+<h4 id="nominatim_languages">NOMINATIM_LANGUAGES<a class="headerlink" href="#nominatim_languages" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -2846,7 +2846,7 @@ objects when the area becomes too large.</p>
 in the search index. Set this to a comma separated list of language
 codes, to restrict import to a subset of languages.</p>
 <p>Currently only affects the initial import of country names and special phrases.</p>
-<h4 id="nominatim_term_normalization">NOMINATIM_TERM_NORMALIZATION<a class="headerlink" href="#nominatim_term_normalization" title="Permanent link"></a></h4>
+<h4 id="nominatim_term_normalization">NOMINATIM_TERM_NORMALIZATION<a class="headerlink" href="#nominatim_term_normalization" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -2880,7 +2880,7 @@ normalization has been applied.</p>
 defined in the
 <a href="../Tokenizers/#normalization-and-transliteration">normalization section</a>
 will be used.</p>
-<h4 id="nominatim_use_us_tiger_data">NOMINATIM_USE_US_TIGER_DATA<a class="headerlink" href="#nominatim_use_us_tiger_data" title="Permanent link"></a></h4>
+<h4 id="nominatim_use_us_tiger_data">NOMINATIM_USE_US_TIGER_DATA<a class="headerlink" href="#nominatim_use_us_tiger_data" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -2909,7 +2909,7 @@ will be used.</p>
 </table>
 <p>When this setting is enabled, search and reverse queries also take data
 from <a href="../Tiger/">Tiger house number data</a> into account.</p>
-<h4 id="nominatim_use_aux_location_data">NOMINATIM_USE_AUX_LOCATION_DATA<a class="headerlink" href="#nominatim_use_aux_location_data" title="Permanent link"></a></h4>
+<h4 id="nominatim_use_aux_location_data">NOMINATIM_USE_AUX_LOCATION_DATA<a class="headerlink" href="#nominatim_use_aux_location_data" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -2943,7 +2943,7 @@ from <a href="../Tiger/">Tiger house number data</a> into account.</p>
 <p>When this setting is enabled, search queries also take data from external
 house number tables into account.</p>
 <p><em>Warning:</em> This feature is currently unmaintained and should not be used.</p>
-<h4 id="nominatim_http_proxy">NOMINATIM_HTTP_PROXY<a class="headerlink" href="#nominatim_http_proxy" title="Permanent link"></a></h4>
+<h4 id="nominatim_http_proxy">NOMINATIM_HTTP_PROXY<a class="headerlink" href="#nominatim_http_proxy" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -2971,7 +2971,7 @@ house number tables into account.</p>
 <a href="#nominatim_http_proxy_port">NOMINATIM_HTTP_PROXY_PORT</a> are set, the
 configured proxy will be used, when downloading external data like
 replication diffs.</p>
-<h4 id="nominatim_http_proxy_host">NOMINATIM_HTTP_PROXY_HOST<a class="headerlink" href="#nominatim_http_proxy_host" title="Permanent link"></a></h4>
+<h4 id="nominatim_http_proxy_host">NOMINATIM_HTTP_PROXY_HOST<a class="headerlink" href="#nominatim_http_proxy_host" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -2996,7 +2996,7 @@ replication diffs.</p>
 </table>
 <p>When <a href="#nominatim_http_proxy">NOMINATIM_HTTP_PROXY</a> is enabled, this setting
 configures the proxy host name.</p>
-<h4 id="nominatim_http_proxy_port">NOMINATIM_HTTP_PROXY_PORT<a class="headerlink" href="#nominatim_http_proxy_port" title="Permanent link"></a></h4>
+<h4 id="nominatim_http_proxy_port">NOMINATIM_HTTP_PROXY_PORT<a class="headerlink" href="#nominatim_http_proxy_port" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3021,7 +3021,7 @@ configures the proxy host name.</p>
 </table>
 <p>When <a href="#nominatim_http_proxy">NOMINATIM_HTTP_PROXY</a> is enabled, this setting
 configures the port number to use with the proxy.</p>
-<h4 id="nominatim_http_proxy_login">NOMINATIM_HTTP_PROXY_LOGIN<a class="headerlink" href="#nominatim_http_proxy_login" title="Permanent link"></a></h4>
+<h4 id="nominatim_http_proxy_login">NOMINATIM_HTTP_PROXY_LOGIN<a class="headerlink" href="#nominatim_http_proxy_login" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3046,7 +3046,7 @@ configures the port number to use with the proxy.</p>
 </table>
 <p>When <a href="#nominatim_http_proxy">NOMINATIM_HTTP_PROXY</a> is enabled, use this
 setting to define the username for proxies that require a login.</p>
-<h4 id="nominatim_http_proxy_password">NOMINATIM_HTTP_PROXY_PASSWORD<a class="headerlink" href="#nominatim_http_proxy_password" title="Permanent link"></a></h4>
+<h4 id="nominatim_http_proxy_password">NOMINATIM_HTTP_PROXY_PASSWORD<a class="headerlink" href="#nominatim_http_proxy_password" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3071,7 +3071,7 @@ setting to define the username for proxies that require a login.</p>
 </table>
 <p>When <a href="#nominatim_http_proxy">NOMINATIM_HTTP_PROXY</a> is enabled, use this
 setting to define the password for proxies that require a login.</p>
-<h4 id="nominatim_osm2pgsql_binary">NOMINATIM_OSM2PGSQL_BINARY<a class="headerlink" href="#nominatim_osm2pgsql_binary" title="Permanent link"></a></h4>
+<h4 id="nominatim_osm2pgsql_binary">NOMINATIM_OSM2PGSQL_BINARY<a class="headerlink" href="#nominatim_osm2pgsql_binary" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3104,7 +3104,7 @@ osm2pgsql that is guaranteed to be compatible. Use this setting to use
 a different binary instead. You should do this only when you know exactly
 what you are doing. If the osm2pgsql version is not compatible, then the
 result is undefined.</p>
-<h4 id="nominatim_wikipedia_data_path">NOMINATIM_WIKIPEDIA_DATA_PATH<a class="headerlink" href="#nominatim_wikipedia_data_path" title="Permanent link"></a></h4>
+<h4 id="nominatim_wikipedia_data_path">NOMINATIM_WIKIPEDIA_DATA_PATH<a class="headerlink" href="#nominatim_wikipedia_data_path" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3130,7 +3130,7 @@ result is undefined.</p>
 <p>Set a custom location for the
 <a href="../../admin/Import/#wikipediawikidata-rankings">wikipedia ranking file</a>. When
 unset, Nominatim expects the data to be saved in the project directory.</p>
-<h4 id="nominatim_address_level_config">NOMINATIM_ADDRESS_LEVEL_CONFIG<a class="headerlink" href="#nominatim_address_level_config" title="Permanent link"></a></h4>
+<h4 id="nominatim_address_level_config">NOMINATIM_ADDRESS_LEVEL_CONFIG<a class="headerlink" href="#nominatim_address_level_config" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3158,7 +3158,7 @@ unset, Nominatim expects the data to be saved in the project directory.</p>
 are and what the configuration file must look like.</p>
 <p>When a relative path is given, then the file is searched first relative to the
 project directory and then in the global settings directory.</p>
-<h4 id="nominatim_import_style">NOMINATIM_IMPORT_STYLE<a class="headerlink" href="#nominatim_import_style" title="Permanent link"></a></h4>
+<h4 id="nominatim_import_style">NOMINATIM_IMPORT_STYLE<a class="headerlink" href="#nominatim_import_style" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3191,7 +3191,7 @@ directory.</p>
 <p>See <a href="../Import-Styles/">Import Styles</a>
 for more information on the available internal styles and the format of the
 configuration file.</p>
-<h4 id="nominatim_flatnode_file">NOMINATIM_FLATNODE_FILE<a class="headerlink" href="#nominatim_flatnode_file" title="Permanent link"></a></h4>
+<h4 id="nominatim_flatnode_file">NOMINATIM_FLATNODE_FILE<a class="headerlink" href="#nominatim_flatnode_file" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3231,7 +3231,7 @@ when adding new data with <code>nominatim add-data</code> or <code>nominatim rep
 Make sure you keep the flatnode file around and this setting unmodified,
 if you plan to add more data or run regular updates.</p>
 </div>
-<h4 id="nominatim_tablespace_">NOMINATIM_TABLESPACE_*<a class="headerlink" href="#nominatim_tablespace_" title="Permanent link"></a></h4>
+<h4 id="nominatim_tablespace_">NOMINATIM_TABLESPACE_*<a class="headerlink" href="#nominatim_tablespace_" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3288,8 +3288,8 @@ the import.</p>
 <dt>NOMINATIM_TABLESPACE_AUX_INDEX</dt>
 <dd>Indexes on auxiliary data tables.</dd>
 </dl>
-<h3 id="replication-update-settings">Replication Update Settings<a class="headerlink" href="#replication-update-settings" title="Permanent link"></a></h3>
-<h4 id="nominatim_replication_url">NOMINATIM_REPLICATION_URL<a class="headerlink" href="#nominatim_replication_url" title="Permanent link"></a></h4>
+<h3 id="replication-update-settings">Replication Update Settings<a class="headerlink" href="#replication-update-settings" title="Permanent link">🔗</a></h3>
+<h4 id="nominatim_replication_url">NOMINATIM_REPLICATION_URL<a class="headerlink" href="#nominatim_replication_url" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3319,7 +3319,7 @@ the import.</p>
 <p>Replication services deliver updates to OSM data. Use this setting to choose
 which replication service to use. See <a href="../../admin/Update/">Updates</a> for more
 information on how to set up regular updates.</p>
-<h4 id="nominatim_replication_max_diff">NOMINATIM_REPLICATION_MAX_DIFF<a class="headerlink" href="#nominatim_replication_max_diff" title="Permanent link"></a></h4>
+<h4 id="nominatim_replication_max_diff">NOMINATIM_REPLICATION_MAX_DIFF<a class="headerlink" href="#nominatim_replication_max_diff" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3361,7 +3361,7 @@ the setting can easily be changed temporarily on the command line:</p>
 <div class="codehilite"><pre><span></span><code>NOMINATIM_REPLICATION_MAX_DIFF=3000 nominatim replication
 </code></pre></div>
 
-<h4 id="nominatim_replication_update_interval">NOMINATIM_REPLICATION_UPDATE_INTERVAL<a class="headerlink" href="#nominatim_replication_update_interval" title="Permanent link"></a></h4>
+<h4 id="nominatim_replication_update_interval">NOMINATIM_REPLICATION_UPDATE_INTERVAL<a class="headerlink" href="#nominatim_replication_update_interval" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3392,7 +3392,7 @@ the setting can easily be changed temporarily on the command line:</p>
 update. The time is computed from the publication date of the last diff
 downloaded. Setting this to a slightly higher value than the actual
 publication interval avoids unnecessary rechecks.</p>
-<h4 id="nominatim_replication_recheck_interval">NOMINATIM_REPLICATION_RECHECK_INTERVAL<a class="headerlink" href="#nominatim_replication_recheck_interval" title="Permanent link"></a></h4>
+<h4 id="nominatim_replication_recheck_interval">NOMINATIM_REPLICATION_RECHECK_INTERVAL<a class="headerlink" href="#nominatim_replication_recheck_interval" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3428,8 +3428,8 @@ Nominatim will never attempt to query for new updates for UPDATE_INTERVAL
 seconds after the current database date. Only after the update interval has
 passed it asks for new data. If then no new data is found, it waits for
 RECHECK_INTERVAL seconds before it attempts again.</p>
-<h3 id="api-settings">API Settings<a class="headerlink" href="#api-settings" title="Permanent link"></a></h3>
-<h4 id="nominatim_cors_noaccesscontrol">NOMINATIM_CORS_NOACCESSCONTROL<a class="headerlink" href="#nominatim_cors_noaccesscontrol" title="Permanent link"></a></h4>
+<h3 id="api-settings">API Settings<a class="headerlink" href="#api-settings" title="Permanent link">🔗</a></h3>
+<h4 id="nominatim_cors_noaccesscontrol">NOMINATIM_CORS_NOACCESSCONTROL<a class="headerlink" href="#nominatim_cors_noaccesscontrol" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3459,7 +3459,7 @@ RECHECK_INTERVAL seconds before it attempts again.</p>
 <p>When this setting is enabled, API HTTP responses include the HTTP
 <a href="https://en.wikipedia.org/wiki/CORS">CORS</a> headers
 <code>access-control-allow-origin: *</code> and <code>access-control-allow-methods: OPTIONS,GET</code>.</p>
-<h4 id="nominatim_mapicon_url">NOMINATIM_MAPICON_URL<a class="headerlink" href="#nominatim_mapicon_url" title="Permanent link"></a></h4>
+<h4 id="nominatim_mapicon_url">NOMINATIM_MAPICON_URL<a class="headerlink" href="#nominatim_mapicon_url" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3493,7 +3493,7 @@ field in the responses, pointing to an appropriate icon for the place type.</p>
 want the URL to be included in API responses, make the <code>/mapicon</code>
 directory of the project available under a public URL and point this setting
 to the directory.</p>
-<h4 id="nominatim_default_language">NOMINATIM_DEFAULT_LANGUAGE<a class="headerlink" href="#nominatim_default_language" title="Permanent link"></a></h4>
+<h4 id="nominatim_default_language">NOMINATIM_DEFAULT_LANGUAGE<a class="headerlink" href="#nominatim_default_language" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3527,7 +3527,7 @@ the HTTP accept-languages header or through the explicit parameter
 given, it falls back to this setting. If the setting is also empty, then
 the local languages (in OSM: the name tag without any language suffix) is
 used.</p>
-<h4 id="nominatim_search_batch_mode">NOMINATIM_SEARCH_BATCH_MODE<a class="headerlink" href="#nominatim_search_batch_mode" title="Permanent link"></a></h4>
+<h4 id="nominatim_search_batch_mode">NOMINATIM_SEARCH_BATCH_MODE<a class="headerlink" href="#nominatim_search_batch_mode" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3559,7 +3559,7 @@ used.</p>
 </tbody>
 </table>
 <p>This feature is currently undocumented and potentially broken.</p>
-<h4 id="nominatim_search_name_only_threshold">NOMINATIM_SEARCH_NAME_ONLY_THRESHOLD<a class="headerlink" href="#nominatim_search_name_only_threshold" title="Permanent link"></a></h4>
+<h4 id="nominatim_search_name_only_threshold">NOMINATIM_SEARCH_NAME_ONLY_THRESHOLD<a class="headerlink" href="#nominatim_search_name_only_threshold" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3595,7 +3595,7 @@ as rare. When searching for places with rare names, only the name is used
 for place lookups. Otherwise the name and any address information is used.</p>
 <p>This setting only has an effect after <code>nominatim refresh --word-counts</code> has
 been called to compute the word frequencies.</p>
-<h4 id="nominatim_lookup_max_count">NOMINATIM_LOOKUP_MAX_COUNT<a class="headerlink" href="#nominatim_lookup_max_count" title="Permanent link"></a></h4>
+<h4 id="nominatim_lookup_max_count">NOMINATIM_LOOKUP_MAX_COUNT<a class="headerlink" href="#nominatim_lookup_max_count" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3625,7 +3625,7 @@ been called to compute the word frequencies.</p>
 <p>The /lookup point accepts list of ids to look up address details for. This
 setting restricts the number of places a user may look up with a single
 request.</p>
-<h4 id="nominatim_polygon_output_max_types">NOMINATIM_POLYGON_OUTPUT_MAX_TYPES<a class="headerlink" href="#nominatim_polygon_output_max_types" title="Permanent link"></a></h4>
+<h4 id="nominatim_polygon_output_max_types">NOMINATIM_POLYGON_OUTPUT_MAX_TYPES<a class="headerlink" href="#nominatim_polygon_output_max_types" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3658,7 +3658,7 @@ be requested in different formats with one of the
 setting to restrict the number of geometry types that may be requested
 with a single query.</p>
 <p>Setting this parameter to 0 disables polygon output completely.</p>
-<h4 id="nominatim_search_within_countries">NOMINATIM_SEARCH_WITHIN_COUNTRIES<a class="headerlink" href="#nominatim_search_within_countries" title="Permanent link"></a></h4>
+<h4 id="nominatim_search_within_countries">NOMINATIM_SEARCH_WITHIN_COUNTRIES<a class="headerlink" href="#nominatim_search_within_countries" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3693,7 +3693,7 @@ with a single query.</p>
 <p>When enabled, if, despite not finding a point within the static grid of countries, it
 finds a geometry of a region, do not return the geometry.
 Return "Unable to geocode" instead.</p>
-<h4 id="nominatim_serve_legacy_urls">NOMINATIM_SERVE_LEGACY_URLS<a class="headerlink" href="#nominatim_serve_legacy_urls" title="Permanent link"></a></h4>
+<h4 id="nominatim_serve_legacy_urls">NOMINATIM_SERVE_LEGACY_URLS<a class="headerlink" href="#nominatim_serve_legacy_urls" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3723,7 +3723,7 @@ Return "Unable to geocode" instead.</p>
 <p>When enabled, then endpoints are reachable as <code>/&lt;name&gt;</code> as well as <code>/&lt;name&gt;.php</code>.
 This can be useful when you want to be backwards-compatible with previous
 versions of Nominatim.</p>
-<h4 id="nominatim_api_pool_size">NOMINATIM_API_POOL_SIZE<a class="headerlink" href="#nominatim_api_pool_size" title="Permanent link"></a></h4>
+<h4 id="nominatim_api_pool_size">NOMINATIM_API_POOL_SIZE<a class="headerlink" href="#nominatim_api_pool_size" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3756,7 +3756,7 @@ PostgreSQL database can handle, you need at least
 <code>NOMINATIM_API_POOL_SIZE</code> * <code>&lt;number of configured workers&gt;</code> connections.
 For configuring the number of workers, refer to the section about
 <a href="../../admin/Deployment-Python/">Deploying the Python frontend</a>.</p>
-<h4 id="nominatim_query_timeout">NOMINATIM_QUERY_TIMEOUT<a class="headerlink" href="#nominatim_query_timeout" title="Permanent link"></a></h4>
+<h4 id="nominatim_query_timeout">NOMINATIM_QUERY_TIMEOUT<a class="headerlink" href="#nominatim_query_timeout" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3789,7 +3789,7 @@ timeout exceptions. Users of the API see a 503 HTTP error.</p>
 <p>The timeout does ont apply when using the
 <a href="../../library/Low-Level-DB-Access/">low-level DB access</a>
 of the library. A timeout can be manually set, if required.</p>
-<h4 id="nominatim_request_timeout">NOMINATIM_REQUEST_TIMEOUT<a class="headerlink" href="#nominatim_request_timeout" title="Permanent link"></a></h4>
+<h4 id="nominatim_request_timeout">NOMINATIM_REQUEST_TIMEOUT<a class="headerlink" href="#nominatim_request_timeout" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3821,8 +3821,8 @@ to the database after the timeout has passed and immediately return the
 results gathered so far.</p>
 <p>Note that under high load you may observe that users receive different results
 than usual without seeing an error. This may cause some confusion.</p>
-<h3 id="logging-settings">Logging Settings<a class="headerlink" href="#logging-settings" title="Permanent link"></a></h3>
-<h4 id="nominatim_log_db">NOMINATIM_LOG_DB<a class="headerlink" href="#nominatim_log_db" title="Permanent link"></a></h4>
+<h3 id="logging-settings">Logging Settings<a class="headerlink" href="#logging-settings" title="Permanent link">🔗</a></h3>
+<h4 id="nominatim_log_db">NOMINATIM_LOG_DB<a class="headerlink" href="#nominatim_log_db" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3855,7 +3855,7 @@ can be found in the table <code>new_query_log</code>.</p>
 regularly clears out old logging information. Nominatim will not do that
 on its own.</p>
 <p>Can be used as the same time as NOMINATIM_LOG_FILE.</p>
-<h4 id="nominatim_log_file">NOMINATIM_LOG_FILE<a class="headerlink" href="#nominatim_log_file" title="Permanent link"></a></h4>
+<h4 id="nominatim_log_file">NOMINATIM_LOG_FILE<a class="headerlink" href="#nominatim_log_file" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>
@@ -3893,7 +3893,7 @@ the project directory.</p>
 given in seconds and corresponds to the time the query took executing in PHP.
 type contains the name of the endpoint used.</p>
 <p>Can be used as the same time as NOMINATIM_LOG_DB.</p>
-<h4 id="nominatim_debug_sql">NOMINATIM_DEBUG_SQL<a class="headerlink" href="#nominatim_debug_sql" title="Permanent link"></a></h4>
+<h4 id="nominatim_debug_sql">NOMINATIM_DEBUG_SQL<a class="headerlink" href="#nominatim_debug_sql" title="Permanent link">🔗</a></h4>
 <table>
 <thead>
 <tr>

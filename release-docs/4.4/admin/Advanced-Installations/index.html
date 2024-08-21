@@ -1880,12 +1880,12 @@
   
 
 
-<h1 id="advanced-installations">Advanced installations<a class="headerlink" href="#advanced-installations" title="Permanent link"></a></h1>
+<h1 id="advanced-installations">Advanced installations<a class="headerlink" href="#advanced-installations" title="Permanent link">🔗</a></h1>
 <p>This page contains instructions for setting up multiple countries in 
 your Nominatim database. It is assumed that you have already successfully
 installed the Nominatim software itself, if not return to the 
 <a href="../Installation/">installation page</a>.</p>
-<h2 id="importing-with-a-database-user-without-superuser-rights">Importing with a database user without superuser rights<a class="headerlink" href="#importing-with-a-database-user-without-superuser-rights" title="Permanent link"></a></h2>
+<h2 id="importing-with-a-database-user-without-superuser-rights">Importing with a database user without superuser rights<a class="headerlink" href="#importing-with-a-database-user-without-superuser-rights" title="Permanent link">🔗</a></h2>
 <p>Nominatim usually creates its own PostgreSQL database at the beginning of the
 import process. This makes usage easier for the user but means that the
 database user doing the import needs the appropriate rights.</p>
@@ -1908,7 +1908,7 @@ you can do so by changing the import process as follows:</p>
 </ol>
 <div class="highlight"><pre><span></span><code>NOMINATIM_DATABASE_DSN=&quot;pgsql:dbname=nominatim;user=import-user&quot; nominatim import --continue import-from-file --osm-file file.pbf
 </code></pre></div>
-<h2 id="importing-multiple-regions-without-updates">Importing multiple regions (without updates)<a class="headerlink" href="#importing-multiple-regions-without-updates" title="Permanent link"></a></h2>
+<h2 id="importing-multiple-regions-without-updates">Importing multiple regions (without updates)<a class="headerlink" href="#importing-multiple-regions-without-updates" title="Permanent link">🔗</a></h2>
 <p>To import multiple regions in your database you can simply give multiple
 OSM files to the import command:</p>
 <div class="highlight"><pre><span></span><code>nominatim import --osm-file file1.pbf --osm-file file2.pbf
@@ -1921,7 +1921,7 @@ nominatim index -j &lt;NUMBER OF THREADS&gt;
 </code></pre></div>
 <p>Please note that adding additional data is always significantly slower than
 the original import.</p>
-<h2 id="importing-multiple-regions-with-updates">Importing multiple regions (with updates)<a class="headerlink" href="#importing-multiple-regions-with-updates" title="Permanent link"></a></h2>
+<h2 id="importing-multiple-regions-with-updates">Importing multiple regions (with updates)<a class="headerlink" href="#importing-multiple-regions-with-updates" title="Permanent link">🔗</a></h2>
 <p>If you want to import multiple regions <em>and</em> be able to keep them up-to-date
 with updates, then you can use the scripts provided in the <code>utils</code> directory.</p>
 <p>These scripts will set up an <code>update</code> directory in your project directory,
@@ -1940,7 +1940,7 @@ which has the following structure:</p>
 <p>The <code>sequence.state</code> files contain the sequence ID for each region. They will
 be used by pyosmium to get updates. The <code>tmp</code> folder is used for import dump and
 can be deleted once the import is complete.</p>
-<h3 id="setting-up-multiple-regions">Setting up multiple regions<a class="headerlink" href="#setting-up-multiple-regions" title="Permanent link"></a></h3>
+<h3 id="setting-up-multiple-regions">Setting up multiple regions<a class="headerlink" href="#setting-up-multiple-regions" title="Permanent link">🔗</a></h3>
 <p>Create a project directory as described for the
 <a href="../Import/#creating-the-project-directory">simple import</a>. If necessary,
 you can also add an <code>.env</code> configuration with customized options. In particular,
@@ -1976,7 +1976,7 @@ into the project directory.</p>
 <p>To start the initial import, change into the project directory and run</p>
 <div class="highlight"><pre><span></span><code>    bash import_multiple_regions.sh
 </code></pre></div>
-<h3 id="updating-the-database">Updating the database<a class="headerlink" href="#updating-the-database" title="Permanent link"></a></h3>
+<h3 id="updating-the-database">Updating the database<a class="headerlink" href="#updating-the-database" title="Permanent link">🔗</a></h3>
 <p>Change into the project directory and run the following command:</p>
 <div class="codehilite"><pre><span></span><code>bash update_database.sh
 </code></pre></div>
@@ -1984,7 +1984,7 @@ into the project directory.</p>
 <p>This will get diffs from the replication server, import diffs and index
 the database. The default replication server in the
 script (<a href="https://download.geofabrik.de">Geofabrik</a>) provides daily updates.</p>
-<h2 id="using-an-external-postgresql-database">Using an external PostgreSQL database<a class="headerlink" href="#using-an-external-postgresql-database" title="Permanent link"></a></h2>
+<h2 id="using-an-external-postgresql-database">Using an external PostgreSQL database<a class="headerlink" href="#using-an-external-postgresql-database" title="Permanent link">🔗</a></h2>
 <p>You can install Nominatim using a database that runs on a different server when
 you have physical access to the file system on the other server. Nominatim
 uses a custom normalization library that needs to be made accessible to the
@@ -1996,7 +1996,7 @@ library.</p>
 If you have chosen the ICU tokenizer, then you can ignore this section
 and follow the standard import documentation.</p>
 </div>
-<h3 id="option-1-compiling-the-library-on-the-database-server">Option 1: Compiling the library on the database server<a class="headerlink" href="#option-1-compiling-the-library-on-the-database-server" title="Permanent link"></a></h3>
+<h3 id="option-1-compiling-the-library-on-the-database-server">Option 1: Compiling the library on the database server<a class="headerlink" href="#option-1-compiling-the-library-on-the-database-server" title="Permanent link">🔗</a></h3>
 <p>The most sure way to get a working library is to compile it on the database
 server. From the prerequisites you need at least cmake, gcc and the
 PostgreSQL server package.</p>
@@ -2013,7 +2013,7 @@ make
 <p>When done, you find the normalization library in <code>build/module/nominatim.so</code>.
 Copy it to a place where it is readable and executable by the PostgreSQL server
 process.</p>
-<h3 id="option-2-compiling-the-library-on-the-import-machine">Option 2: Compiling the library on the import machine<a class="headerlink" href="#option-2-compiling-the-library-on-the-import-machine" title="Permanent link"></a></h3>
+<h3 id="option-2-compiling-the-library-on-the-import-machine">Option 2: Compiling the library on the import machine<a class="headerlink" href="#option-2-compiling-the-library-on-the-import-machine" title="Permanent link">🔗</a></h3>
 <p>You can also compile the normalization library on the machine from where you
 run the import.</p>
 <div class="admonition important">
@@ -2030,7 +2030,7 @@ the PostgreSQL server itself.</p>
 the normalization library in <code>build/module/nominatim.so</code>. Copy the file to
 the database server at a location where it is readable and executable by the
 PostgreSQL server process.</p>
-<h3 id="running-the-import">Running the import<a class="headerlink" href="#running-the-import" title="Permanent link"></a></h3>
+<h3 id="running-the-import">Running the import<a class="headerlink" href="#running-the-import" title="Permanent link">🔗</a></h3>
 <p>On the client side you now need to configure the import to point to the
 correct location of the library <strong>on the database server</strong>. Add the following
 line to your your <code>.env</code> file:</p>
@@ -2038,7 +2038,7 @@ line to your your <code>.env</code> file:</p>
 </code></pre></div>
 <p>Now change the <code>NOMINATIM_DATABASE_DSN</code> to point to your remote server and continue
 to follow the <a href="../Import/">standard instructions for importing</a>.</p>
-<h2 id="moving-the-database-to-another-machine">Moving the database to another machine<a class="headerlink" href="#moving-the-database-to-another-machine" title="Permanent link"></a></h2>
+<h2 id="moving-the-database-to-another-machine">Moving the database to another machine<a class="headerlink" href="#moving-the-database-to-another-machine" title="Permanent link">🔗</a></h2>
 <p>For some configurations it may be useful to run the import on one machine, then
 move the database to another machine and run the Nominatim service from there.
 For example, you might want to use a large machine to be able to run the import

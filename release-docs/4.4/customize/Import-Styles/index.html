@@ -2008,7 +2008,7 @@
 
   <h1>Import Styles</h1>
 
-<h2 id="configuring-the-import">Configuring the Import<a class="headerlink" href="#configuring-the-import" title="Permanent link"></a></h2>
+<h2 id="configuring-the-import">Configuring the Import<a class="headerlink" href="#configuring-the-import" title="Permanent link">🔗</a></h2>
 <p>In the very first step of a Nominatim import, OSM data is loaded into the
 database. Nominatim uses <a href="https://osm2pgsql.org">osm2pgsql</a> for this task.
 It comes with a <a href="https://osm2pgsql.org/doc/manual.html#the-flex-output">flex style</a>
@@ -2026,7 +2026,7 @@ in the standard Nominatim configuration path (usually <code>/etc/nominatim</code
 <code>/usr/local/etc/nominatim</code>).</p>
 <p>The remainder of the page describes how the flex style works and how to
 customize it.</p>
-<h3 id="the-flex-baselua-module">The <code>flex-base.lua</code> module<a class="headerlink" href="#the-flex-baselua-module" title="Permanent link"></a></h3>
+<h3 id="the-flex-baselua-module">The <code>flex-base.lua</code> module<a class="headerlink" href="#the-flex-baselua-module" title="Permanent link">🔗</a></h3>
 <p>The core of Nominatim's flex import configuration is the <code>flex-base</code> module.
 It defines the table layout used by Nominatim and provides standard
 implementations for the import callbacks that make it easy to customize
@@ -2036,7 +2036,7 @@ tables are created. Thus start your custom style as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">flex</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;flex-base&#39;</span><span class="p">)</span>
 </code></pre></div>
 <p>The following sections explain how the module can be customized.</p>
-<h3 id="changing-the-recognized-tags">Changing the recognized tags<a class="headerlink" href="#changing-the-recognized-tags" title="Permanent link"></a></h3>
+<h3 id="changing-the-recognized-tags">Changing the recognized tags<a class="headerlink" href="#changing-the-recognized-tags" title="Permanent link">🔗</a></h3>
 <p>If you just want to change which OSM tags are recognized during import,
 then there are a number of convenience functions to set the tag lists used
 during the processing.</p>
@@ -2055,7 +2055,7 @@ A string that ends in an asterisk <code>*</code> is a prefix match and according
 against any key that starts with the given string (minus the <code>*</code>). 
 A suffix match can be defined similarly with a string that starts with a <code>*</code>.
 Any other string is matched exactly against tag keys.</p>
-<h4 id="set_main_tags-principal-tags"><code>set_main_tags()</code> - principal tags<a class="headerlink" href="#set_main_tags-principal-tags" title="Permanent link"></a></h4>
+<h4 id="set_main_tags-principal-tags"><code>set_main_tags()</code> - principal tags<a class="headerlink" href="#set_main_tags-principal-tags" title="Permanent link">🔗</a></h4>
 <p>If a principal or main tag is found on an OSM object, then the object
 is included in Nominatim's search index. A single object may also have
 multiple main tags. In that case, the object will be included multiple
@@ -2100,7 +2100,7 @@ independently of the name. Finally, if a <code>landuse</code> tag is present the
 it will be used independely of the concrete value if neither boundary
 nor highway tags were found and the object is named.</p>
 </div>
-<h4 id="set_prefilters-ignoring-tags"><code>set_prefilters()</code> - ignoring tags<a class="headerlink" href="#set_prefilters-ignoring-tags" title="Permanent link"></a></h4>
+<h4 id="set_prefilters-ignoring-tags"><code>set_prefilters()</code> - ignoring tags<a class="headerlink" href="#set_prefilters-ignoring-tags" title="Permanent link">🔗</a></h4>
 <p>Pre-filtering of tags allows to ignore them for any further processing.
 Thus pre-filtering takes precedence over any other tag processing. This is
 useful when some specific key/value combinations need to be excluded from
@@ -2142,7 +2142,7 @@ all tags with an <code>amenity</code> key are made a main tag. This effectively 
 that Nominatim will use all amenity tags except for those with value
 yes and no.</p>
 </div>
-<h4 id="set_name_tags-defining-names"><code>set_name_tags()</code> - defining names<a class="headerlink" href="#set_name_tags-defining-names" title="Permanent link"></a></h4>
+<h4 id="set_name_tags-defining-names"><code>set_name_tags()</code> - defining names<a class="headerlink" href="#set_name_tags-defining-names" title="Permanent link">🔗</a></h4>
 <p>The flex script distinguishes between two kinds of names:</p>
 <ul>
 <li><strong>main</strong>: the primary names make an object fully searchable.
@@ -2167,7 +2167,7 @@ They take <em>key match lists</em> for main and extra names respectively.</p>
 only include those that have a common name and not those which just
 have some reference ID from the city.</p>
 </div>
-<h4 id="set_address_tags-defining-address-parts"><code>set_address_tags()</code> - defining address parts<a class="headerlink" href="#set_address_tags-defining-address-parts" title="Permanent link"></a></h4>
+<h4 id="set_address_tags-defining-address-parts"><code>set_address_tags()</code> - defining address parts<a class="headerlink" href="#set_address_tags-defining-address-parts" title="Permanent link">🔗</a></h4>
 <p>Address tags will be used to build up the address of an object.</p>
 <p><code>set_address_tags()</code> takes a table with arbitrary fields pointing to
 <em>key match lists</em>. To fields have a special meaning:</p>
@@ -2210,7 +2210,7 @@ value under <code>country</code> in the address tag list. The same thing happens
 to postcodes, they will always be saved under the key <code>postcode</code> thus
 normalizing the multitude of keys that are used in the OSM database.</p>
 </div>
-<h4 id="set_unused_handling-processing-remaining-tags"><code>set_unused_handling()</code> - processing remaining tags<a class="headerlink" href="#set_unused_handling-processing-remaining-tags" title="Permanent link"></a></h4>
+<h4 id="set_unused_handling-processing-remaining-tags"><code>set_unused_handling()</code> - processing remaining tags<a class="headerlink" href="#set_unused_handling-processing-remaining-tags" title="Permanent link">🔗</a></h4>
 <p>This function defines what to do with tags that remain after all tags
 have been classified using the functions above. There are two ways in
 which the function can be used:</p>
@@ -2236,12 +2236,12 @@ are moved to the extratags list. Note that it is not possible to
 already delete the tiger tags with <code>set_prefilters()</code> because that
 would remove tiger:county before the address tags are processed.</p>
 </div>
-<h3 id="customizing-osm2pgsql-callbacks">Customizing osm2pgsql callbacks<a class="headerlink" href="#customizing-osm2pgsql-callbacks" title="Permanent link"></a></h3>
+<h3 id="customizing-osm2pgsql-callbacks">Customizing osm2pgsql callbacks<a class="headerlink" href="#customizing-osm2pgsql-callbacks" title="Permanent link">🔗</a></h3>
 <p>osm2pgsql expects the flex style to implement three callbacks, one process
 function per OSM type. If you want to implement special handling for
 certain OSM types, you can override the default implementations provided
 by the flex-base module.</p>
-<h4 id="changing-the-relation-types-to-be-handled">Changing the relation types to be handled<a class="headerlink" href="#changing-the-relation-types-to-be-handled" title="Permanent link"></a></h4>
+<h4 id="changing-the-relation-types-to-be-handled">Changing the relation types to be handled<a class="headerlink" href="#changing-the-relation-types-to-be-handled" title="Permanent link">🔗</a></h4>
 <p>The default scripts only allows relations of type <code>multipolygon</code>, <code>boundary</code>
 and <code>waterway</code>. To add other types relations, set <code>RELATION_TYPES</code> for
 the type to the kind of geometry that should be created. The following
@@ -2265,7 +2265,7 @@ according to main tags found. This only works when the site relation
 resolves to a valid area. Nodes in the site relation are not part of the
 geometry.</p>
 </div>
-<h4 id="adding-additional-logic-to-processing-functions">Adding additional logic to processing functions<a class="headerlink" href="#adding-additional-logic-to-processing-functions" title="Permanent link"></a></h4>
+<h4 id="adding-additional-logic-to-processing-functions">Adding additional logic to processing functions<a class="headerlink" href="#adding-additional-logic-to-processing-functions" title="Permanent link">🔗</a></h4>
 <p>The default processing functions are also exported by the flex-base module
 as <code>process_node</code>, <code>process_way</code> and <code>process_relation</code>. These can be used
 to implement your own processing functions with some additional processing
@@ -2284,7 +2284,7 @@ logic.</p>
 handling for everything else. This can be useful if you want to use
 your own custom country boundaries.</p>
 </div>
-<h3 id="customizing-the-main-processing-function">Customizing the main processing function<a class="headerlink" href="#customizing-the-main-processing-function" title="Permanent link"></a></h3>
+<h3 id="customizing-the-main-processing-function">Customizing the main processing function<a class="headerlink" href="#customizing-the-main-processing-function" title="Permanent link">🔗</a></h3>
 <p>The main processing function of the flex style can be found in the function
 <code>process_tags</code>. This function is called for all OSM object kinds and is
 responsible for filtering the tags and writing out the rows into Postgresql.</p>
@@ -2308,7 +2308,7 @@ To do that, first save the original function and then overwrite process_tags
 from the module. In this example all highways which are not accessible
 by anyone will be ignored.</p>
 </div>
-<h4 id="the-place-class">The <code>Place</code> class<a class="headerlink" href="#the-place-class" title="Permanent link"></a></h4>
+<h4 id="the-place-class">The <code>Place</code> class<a class="headerlink" href="#the-place-class" title="Permanent link">🔗</a></h4>
 <p>The <code>process_tags</code> function receives a Lua object of <code>Place</code> type which comes
 with some handy functions to collect the data necessary for geocoding and
 writing it into the place table. Always use this object to fill the table.</p>
@@ -2364,7 +2364,7 @@ when False, they will be simply discarded.</p>
   tag prefixed with the name of the main key. Only if at least one is found,
   the row will be written. The names are replaced with the domain names found.</li>
 </ul>
-<h4 id="match-functions">Match functions<a class="headerlink" href="#match-functions" title="Permanent link"></a></h4>
+<h4 id="match-functions">Match functions<a class="headerlink" href="#match-functions" title="Permanent link">🔗</a></h4>
 <p>The Place functions usually expect either a <em>match function</em> or a
 <em>group match function</em> to find the tags to apply their function to.</p>
 <p>The <strong>match function</strong> is a Lua function which takes two parameters,
@@ -2377,7 +2377,7 @@ possible values, thus defining key/value matches.</p>
 key and value, and returns a string indicating to which group or type they
 belong to. The <code>tag_group()</code> can be used to create such a function. It expects
 a table where the group names are the keys and the values are a key match list.</p>
-<h3 id="using-the-gazetteer-output-of-osm2pgsql">Using the gazetteer output of osm2pgsql<a class="headerlink" href="#using-the-gazetteer-output-of-osm2pgsql" title="Permanent link"></a></h3>
+<h3 id="using-the-gazetteer-output-of-osm2pgsql">Using the gazetteer output of osm2pgsql<a class="headerlink" href="#using-the-gazetteer-output-of-osm2pgsql" title="Permanent link">🔗</a></h3>
 <p>Nominatim still allows you to configure the gazetteer output to remain
 backwards compatible with older imports. It will be automatically used
 when the style file name ends in <code>.style</code>. For documentation of the
@@ -2385,7 +2385,7 @@ old import style, please refer to the documentation of older releases
 of Nominatim. Do not use the gazetteer output for new imports. There is no
 guarantee that new versions of Nominatim are fully compatible with the
 gazetteer output.</p>
-<h3 id="changing-the-style-of-existing-databases">Changing the Style of Existing Databases<a class="headerlink" href="#changing-the-style-of-existing-databases" title="Permanent link"></a></h3>
+<h3 id="changing-the-style-of-existing-databases">Changing the Style of Existing Databases<a class="headerlink" href="#changing-the-style-of-existing-databases" title="Permanent link">🔗</a></h3>
 <p>There is normally no issue changing the style of a database that is already
 imported and now kept up-to-date with change files. Just be aware that any
 change in the style applies to updates only. If you want to change the data

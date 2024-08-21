@@ -1738,14 +1738,14 @@
 
   <h1>Importance</h1>
 
-<h2 id="importance">Importance<a class="headerlink" href="#importance" title="Permanent link"></a></h2>
+<h2 id="importance">Importance<a class="headerlink" href="#importance" title="Permanent link">🔗</a></h2>
 <p>Search requests can yield multiple results which match equally well with
 the original query. In such case Nominatim needs to order the results
 according to a different criterion: importance. This is a measure for how
 likely it is that a user will search for a given place. This section explains
 the sources Nominatim uses for computing importance of a place and how to
 customize them.</p>
-<h3 id="how-importance-is-computed">How importance is computed<a class="headerlink" href="#how-importance-is-computed" title="Permanent link"></a></h3>
+<h3 id="how-importance-is-computed">How importance is computed<a class="headerlink" href="#how-importance-is-computed" title="Permanent link">🔗</a></h3>
 <p>The main value for importance is derived from page ranking values for Wikipedia
 pages for a place. For places that do not have their own
 Wikipedia page, a formula is used that derives a static importance from the
@@ -1757,7 +1757,7 @@ importance values.</p>
 <p>nominatim.org has preprocessed importance tables for the
 <a href="https://nominatim.org/data/wikimedia-importance.sql.gz">primary Wikipedia rankings</a>
 and for a secondary importance based on the number of tile views on openstreetmap.org.</p>
-<h3 id="customizing-secondary-importance">Customizing secondary importance<a class="headerlink" href="#customizing-secondary-importance" title="Permanent link"></a></h3>
+<h3 id="customizing-secondary-importance">Customizing secondary importance<a class="headerlink" href="#customizing-secondary-importance" title="Permanent link">🔗</a></h3>
 <p>The secondary importance is implemented as a simple
 <a href="https://postgis.net/docs/raster.html">Postgis raster</a> table, where Nominatim
 looks up the value for the coordinates of the centroid of a place. You can

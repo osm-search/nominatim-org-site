@@ -2474,7 +2474,7 @@
   
 
 
-<h1 id="tokenizers">Tokenizers<a class="headerlink" href="#tokenizers" title="Permanent link"></a></h1>
+<h1 id="tokenizers">Tokenizers<a class="headerlink" href="#tokenizers" title="Permanent link">🔗</a></h1>
 <p>The tokenizer module in Nominatim is responsible for analysing the names given
 to OSM objects and the terms of an incoming query in order to make sure, they
 can be matched appropriately.</p>
@@ -2489,12 +2489,12 @@ is done, you cannot switch to another tokenizer anymore. Reconfiguring the
 chosen tokenizer is very limited as well. See the comments in each tokenizer
 section.</p>
 </div>
-<h2 id="legacy-tokenizer">Legacy tokenizer<a class="headerlink" href="#legacy-tokenizer" title="Permanent link"></a></h2>
+<h2 id="legacy-tokenizer">Legacy tokenizer<a class="headerlink" href="#legacy-tokenizer" title="Permanent link">🔗</a></h2>
 <p>The legacy tokenizer implements the analysis algorithms of older Nominatim
 versions. It uses a special Postgresql module to normalize names and queries.
 This tokenizer is automatically installed and used when upgrading an older
 database. It should not be used for new installations anymore.</p>
-<h3 id="compiling-the-postgresql-module">Compiling the PostgreSQL module<a class="headerlink" href="#compiling-the-postgresql-module" title="Permanent link"></a></h3>
+<h3 id="compiling-the-postgresql-module">Compiling the PostgreSQL module<a class="headerlink" href="#compiling-the-postgresql-module" title="Permanent link">🔗</a></h3>
 <p>The tokeinzer needs a special C module for PostgreSQL which is not compiled
 by default. If you need the legacy tokenizer, compile Nominatim as follows:</p>
 <div class="highlight"><pre><span></span><code>mkdir build
@@ -2502,7 +2502,7 @@ cd build
 cmake -DBUILD_MODULE=on
 make
 </code></pre></div>
-<h3 id="enabling-the-tokenizer">Enabling the tokenizer<a class="headerlink" href="#enabling-the-tokenizer" title="Permanent link"></a></h3>
+<h3 id="enabling-the-tokenizer">Enabling the tokenizer<a class="headerlink" href="#enabling-the-tokenizer" title="Permanent link">🔗</a></h3>
 <p>To enable the tokenizer add the following line to your project configuration:</p>
 <div class="highlight"><pre><span></span><code>NOMINATIM_TOKENIZER=legacy
 </code></pre></div>
@@ -2516,7 +2516,7 @@ the module with</p>
 See <a href="../../admin/Advanced-Installations/#using-an-external-postgresql-database">Advanced installations</a> for details.</p>
 <p>There are no other configuration options for the legacy tokenizer. All
 normalization functions are hard-coded.</p>
-<h2 id="icu-tokenizer">ICU tokenizer<a class="headerlink" href="#icu-tokenizer" title="Permanent link"></a></h2>
+<h2 id="icu-tokenizer">ICU tokenizer<a class="headerlink" href="#icu-tokenizer" title="Permanent link">🔗</a></h2>
 <p>The ICU tokenizer uses the <a href="http://site.icu-project.org/">ICU library</a> to
 normalize names and queries. It also offers configurable decomposition and
 abbreviation handling.
@@ -2524,7 +2524,7 @@ This tokenizer is currently the default.</p>
 <p>To enable the tokenizer add the following line to your project configuration:</p>
 <div class="highlight"><pre><span></span><code>NOMINATIM_TOKENIZER=icu
 </code></pre></div>
-<h3 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link"></a></h3>
+<h3 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">🔗</a></h3>
 <p>On import the tokenizer processes names in the following three stages:</p>
 <ol>
 <li>During the <strong>Sanitizer step</strong> incoming names are cleaned up and converted to
@@ -2542,7 +2542,7 @@ This tokenizer is currently the default.</p>
 An incoming query is first split into name chunks (this usually means splitting
 the string at the commas) and the each part is normalised and transliterated.
 The result is used to look up places in the search index.</p>
-<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link"></a></h3>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">🔗</a></h3>
 <p>The ICU tokenizer is configured using a YAML file which can be configured using
 <code>NOMINATIM_TOKENIZER_CONFIG</code>. The configuration is read on import and then
 saved as part of the internal database status. Later changes to the variable
@@ -2569,7 +2569,7 @@ have no effect.</p>
 </code></pre></div>
 <p>The configuration file contains four sections:
 <code>normalization</code>, <code>transliteration</code>, <code>sanitizers</code> and <code>token-analysis</code>.</p>
-<h4 id="normalization-and-transliteration">Normalization and Transliteration<a class="headerlink" href="#normalization-and-transliteration" title="Permanent link"></a></h4>
+<h4 id="normalization-and-transliteration">Normalization and Transliteration<a class="headerlink" href="#normalization-and-transliteration" title="Permanent link">🔗</a></h4>
 <p>The normalization and transliteration sections each define a set of
 ICU rules that are applied to the names.</p>
 <p>The <strong>normalization</strong> rules are applied after sanitation. They should remove
@@ -2592,7 +2592,7 @@ and may again include other files.</p>
 YAML syntax. You should therefore always enclose the ICU rules in
 double-quotes.</p>
 </div>
-<h4 id="sanitizers">Sanitizers<a class="headerlink" href="#sanitizers" title="Permanent link"></a></h4>
+<h4 id="sanitizers">Sanitizers<a class="headerlink" href="#sanitizers" title="Permanent link">🔗</a></h4>
 <p>The sanitizers section defines an ordered list of functions that are applied
 to the name and address tags before they are further processed by the tokenizer.
 They allows to clean up the tagging and bring it to a standardized form more
@@ -2611,7 +2611,7 @@ on the type, it may have additional parameters to configure its operation.</p>
 <p>The order of the list matters. The sanitizers are applied exactly in the order
 that is configured. Each sanitizer works on the results of the previous one.</p>
 <p>The following is a list of sanitizers that are shipped with Nominatim.</p>
-<h5 id="split-name-list">split-name-list<a class="headerlink" href="#split-name-list" title="Permanent link"></a></h5>
+<h5 id="split-name-list">split-name-list<a class="headerlink" href="#split-name-list" title="Permanent link">🔗</a></h5>
 
 
 <div class="doc doc-object doc-module">
@@ -2664,7 +2664,7 @@ that is configured. Each sanitizer works on the results of the previous one.</p>
 
     </div>
 
-</div><h5 id="strip-brace-terms">strip-brace-terms<a class="headerlink" href="#strip-brace-terms" title="Permanent link"></a></h5>
+</div><h5 id="strip-brace-terms">strip-brace-terms<a class="headerlink" href="#strip-brace-terms" title="Permanent link">🔗</a></h5>
 
 
 <div class="doc doc-object doc-module">
@@ -2696,7 +2696,7 @@ only the main name part with the bracket part removed.</p>
 
     </div>
 
-</div><h5 id="tag-analyzer-by-language">tag-analyzer-by-language<a class="headerlink" href="#tag-analyzer-by-language" title="Permanent link"></a></h5>
+</div><h5 id="tag-analyzer-by-language">tag-analyzer-by-language<a class="headerlink" href="#tag-analyzer-by-language" title="Permanent link">🔗</a></h5>
 
 
 <div class="doc doc-object doc-module">
@@ -2747,7 +2747,7 @@ If a name already has an analyzer tagged, then this is kept.</p>
 
     </div>
 
-</div><h5 id="clean-housenumbers">clean-housenumbers<a class="headerlink" href="#clean-housenumbers" title="Permanent link"></a></h5>
+</div><h5 id="clean-housenumbers">clean-housenumbers<a class="headerlink" href="#clean-housenumbers" title="Permanent link">🔗</a></h5>
 
 
 <div class="doc doc-object doc-module">
@@ -2832,7 +2832,7 @@ allows to</p>
 
     </div>
 
-</div><h5 id="clean-postcodes">clean-postcodes<a class="headerlink" href="#clean-postcodes" title="Permanent link"></a></h5>
+</div><h5 id="clean-postcodes">clean-postcodes<a class="headerlink" href="#clean-postcodes" title="Permanent link">🔗</a></h5>
 
 
 <div class="doc doc-object doc-module">
@@ -2903,7 +2903,7 @@ allows to</p>
 
     </div>
 
-</div><h5 id="clean-tiger-tags">clean-tiger-tags<a class="headerlink" href="#clean-tiger-tags" title="Permanent link"></a></h5>
+</div><h5 id="clean-tiger-tags">clean-tiger-tags<a class="headerlink" href="#clean-tiger-tags" title="Permanent link">🔗</a></h5>
 
 
 <div class="doc doc-object doc-module">
@@ -2937,7 +2937,7 @@ allows to</p>
 
     </div>
 
-</div><h4 id="delete-tags">delete-tags<a class="headerlink" href="#delete-tags" title="Permanent link"></a></h4>
+</div><h4 id="delete-tags">delete-tags<a class="headerlink" href="#delete-tags" title="Permanent link">🔗</a></h4>
 
 
 <div class="doc doc-object doc-module">
@@ -3070,7 +3070,7 @@ It remove tags which matches all properties given below.</p>
 
     </div>
 
-</div><h4 id="tag-japanese">tag-japanese<a class="headerlink" href="#tag-japanese" title="Permanent link"></a></h4>
+</div><h4 id="tag-japanese">tag-japanese<a class="headerlink" href="#tag-japanese" title="Permanent link">🔗</a></h4>
 
 
 <div class="doc doc-object doc-module">
@@ -3102,7 +3102,7 @@ and quarter and neighbourhood with place.</p>
 
     </div>
 
-</div><h4 id="token-analysis">Token Analysis<a class="headerlink" href="#token-analysis" title="Permanent link"></a></h4>
+</div><h4 id="token-analysis">Token Analysis<a class="headerlink" href="#token-analysis" title="Permanent link">🔗</a></h4>
 <p>Token analyzers take a full name and transform it into one or more normalized
 form that are then saved in the search index. In its simplest form, the
 analyzer only applies the transliteration rules. More complex analyzers
@@ -3125,10 +3125,10 @@ analyzer was selected. There are analysers with special ids:</p>
 <p>Different analyzer implementations may exist. To select the implementation,
 the <code>analyzer</code> parameter must be set. The different implementations are
 described in the following.</p>
-<h5 id="generic-token-analyzer">Generic token analyzer<a class="headerlink" href="#generic-token-analyzer" title="Permanent link"></a></h5>
+<h5 id="generic-token-analyzer">Generic token analyzer<a class="headerlink" href="#generic-token-analyzer" title="Permanent link">🔗</a></h5>
 <p>The generic analyzer <code>generic</code> is able to create variants from a list of given
 abbreviation and decomposition replacements and introduce spelling variations.</p>
-<h6 id="variants">Variants<a class="headerlink" href="#variants" title="Permanent link"></a></h6>
+<h6 id="variants">Variants<a class="headerlink" href="#variants" title="Permanent link">🔗</a></h6>
 <p>The optional 'variants' section defines lists of replacements which create alternative
 spellings of a name. To create the variants, a name is scanned from left to
 right and the longest matching replacement is applied until the end of the
@@ -3150,7 +3150,7 @@ strings match as expected. In fact, it is better to use unnormalized
 words in the configuration because then it is possible to change the
 rules for normalization later without having to adapt the variant rules.</p>
 </div>
-<h6 id="decomposition">Decomposition<a class="headerlink" href="#decomposition" title="Permanent link"></a></h6>
+<h6 id="decomposition">Decomposition<a class="headerlink" href="#decomposition" title="Permanent link">🔗</a></h6>
 <p>In its standard form, only full words match against the source. There
 is a special notation to match the prefix and suffix of a word:</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~strasse =&gt; str</span><span class="w">  </span><span class="c1"># matches &quot;strasse&quot; as full word and in suffix position</span>
@@ -3168,7 +3168,7 @@ rules are not applied at query time.</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~strasse |=&gt; str</span>
 </code></pre></div>
 <p>simply changes "hauptstrasse" to "hauptstr" and "rote strasse" to "rote str".</p>
-<h6 id="initial-and-final-terms">Initial and final terms<a class="headerlink" href="#initial-and-final-terms" title="Permanent link"></a></h6>
+<h6 id="initial-and-final-terms">Initial and final terms<a class="headerlink" href="#initial-and-final-terms" title="Permanent link">🔗</a></h6>
 <p>It is also possible to restrict replacements to the beginning and end of a
 name:</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^south =&gt; s</span><span class="w">  </span><span class="c1"># matches only at the beginning of the name</span>
@@ -3176,7 +3176,7 @@ name:</p>
 </code></pre></div>
 <p>So the first example would trigger a replacement for "south 45th street" but
 not for "the south beach restaurant".</p>
-<h6 id="replacements-vs-variants">Replacements vs. variants<a class="headerlink" href="#replacements-vs-variants" title="Permanent link"></a></h6>
+<h6 id="replacements-vs-variants">Replacements vs. variants<a class="headerlink" href="#replacements-vs-variants" title="Permanent link">🔗</a></h6>
 <p>The replacement syntax <code>source =&gt; target</code> works as a pure replacement. It changes
 the name instead of creating a variant. To create an additional version, you'd
 have to write <code>source =&gt; source,target</code>. As this is a frequent case, there is
@@ -3189,7 +3189,7 @@ decomposition has an effect here on the source as well. So a rule</p>
 </code></pre></div>
 <p>means that for a word like <code>hauptstrasse</code> four variants are created:
 <code>hauptstrasse</code>, <code>haupt strasse</code>, <code>hauptstr</code> and <code>haupt str</code>.</p>
-<h6 id="mutations">Mutations<a class="headerlink" href="#mutations" title="Permanent link"></a></h6>
+<h6 id="mutations">Mutations<a class="headerlink" href="#mutations" title="Permanent link">🔗</a></h6>
 <p>The 'mutation' section in the configuration describes an additional set of
 replacements to be applied after the variants have been computed.</p>
 <p>Each mutation is described by two parameters: <code>pattern</code> and <code>replacements</code>.
@@ -3200,24 +3200,24 @@ Capturing groups are not permitted.
 <code>replacements</code> must contain a list of strings that the pattern
 should be replaced with. Each occurrence of the pattern is replaced with
 all given replacements. Be mindful of combinatorial explosion of variants.</p>
-<h6 id="modes">Modes<a class="headerlink" href="#modes" title="Permanent link"></a></h6>
+<h6 id="modes">Modes<a class="headerlink" href="#modes" title="Permanent link">🔗</a></h6>
 <p>The generic analyser supports a special mode <code>variant-only</code>. When configured
 then it consumes the input token and emits only variants (if any exist). Enable
 the mode by adding:</p>
 <div class="highlight"><pre><span></span><code>  mode: variant-only
 </code></pre></div>
 <p>to the analyser configuration.</p>
-<h5 id="housenumber-token-analyzer">Housenumber token analyzer<a class="headerlink" href="#housenumber-token-analyzer" title="Permanent link"></a></h5>
+<h5 id="housenumber-token-analyzer">Housenumber token analyzer<a class="headerlink" href="#housenumber-token-analyzer" title="Permanent link">🔗</a></h5>
 <p>The analyzer <code>housenumbers</code> is purpose-made to analyze house numbers. It
 creates variants with optional spaces between numbers and letters. Thus,
 house numbers of the form '3 a', '3A', '3-A' etc. are all considered equivalent.</p>
 <p>The analyzer cannot be customized.</p>
-<h5 id="postcode-token-analyzer">Postcode token analyzer<a class="headerlink" href="#postcode-token-analyzer" title="Permanent link"></a></h5>
+<h5 id="postcode-token-analyzer">Postcode token analyzer<a class="headerlink" href="#postcode-token-analyzer" title="Permanent link">🔗</a></h5>
 <p>The analyzer <code>postcodes</code> is pupose-made to analyze postcodes. It supports
 a 'lookup' variant of the token, which produces variants with optional
 spaces. Use together with the clean-postcodes sanitizer.</p>
 <p>The analyzer cannot be customized.</p>
-<h3 id="reconfiguration">Reconfiguration<a class="headerlink" href="#reconfiguration" title="Permanent link"></a></h3>
+<h3 id="reconfiguration">Reconfiguration<a class="headerlink" href="#reconfiguration" title="Permanent link">🔗</a></h3>
 <p>Changing the configuration after the import is currently not possible, although
 this feature may be added at a later time.</p>
 

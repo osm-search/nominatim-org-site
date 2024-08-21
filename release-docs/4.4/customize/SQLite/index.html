@@ -1734,7 +1734,7 @@ create and use an SQLite database.</p>
 <p>This feature is in an experimental state at the moment. Use at your own
 risk.</p>
 </div>
-<h2 id="installing-prerequisites">Installing prerequisites<a class="headerlink" href="#installing-prerequisites" title="Permanent link"></a></h2>
+<h2 id="installing-prerequisites">Installing prerequisites<a class="headerlink" href="#installing-prerequisites" title="Permanent link">🔗</a></h2>
 <p>To use a SQLite database, you need to install:</p>
 <ul>
 <li>SQLite (&gt;= 3.30)</li>
@@ -1744,7 +1744,7 @@ risk.</p>
 <div class="codehilite"><pre><span></span><code>sudo apt install sqlite3 libsqlite3-mod-spatialite libspatialite7
 </code></pre></div>
 
-<h2 id="creating-a-new-sqlite-database">Creating a new SQLite database<a class="headerlink" href="#creating-a-new-sqlite-database" title="Permanent link"></a></h2>
+<h2 id="creating-a-new-sqlite-database">Creating a new SQLite database<a class="headerlink" href="#creating-a-new-sqlite-database" title="Permanent link">🔗</a></h2>
 <p>Nominatim cannot import directly into SQLite database. Instead you have to
 first create a geocoding database in PostgreSQL by running a
 <a href="../../admin/Import/">regular Nominatim import</a>.</p>
@@ -1760,7 +1760,7 @@ Depending on what functions you need, the database can be made smaller:</p>
 <li><code>--without-details</code> leaves out extra information only available in the
   details API</li>
 </ul>
-<h2 id="using-an-sqlite-database">Using an SQLite database<a class="headerlink" href="#using-an-sqlite-database" title="Permanent link"></a></h2>
+<h2 id="using-an-sqlite-database">Using an SQLite database<a class="headerlink" href="#using-an-sqlite-database" title="Permanent link">🔗</a></h2>
 <p>Once you have created the database, you can use it by simply pointing the
 database DSN to the SQLite file:</p>
 <div class="codehilite"><pre><span></span><code>NOMINATIM_DATABASE_DSN=sqlite:dbname=mydb.sqlite

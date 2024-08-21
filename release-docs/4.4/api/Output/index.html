@@ -1916,12 +1916,12 @@
   
 
 
-<h1 id="place-output">Place Output<a class="headerlink" href="#place-output" title="Permanent link"></a></h1>
+<h1 id="place-output">Place Output<a class="headerlink" href="#place-output" title="Permanent link">🔗</a></h1>
 <p>The <a href="../Reverse/">/reverse</a>, <a href="../Search/">/search</a> and <a href="../Lookup/">/lookup</a>
 API calls produce very similar output which is explained in this section.
 There is one section for each format. The format correspond to what was
 selected via the <code>format</code> parameter.</p>
-<h2 id="json">JSON<a class="headerlink" href="#json" title="Permanent link"></a></h2>
+<h2 id="json">JSON<a class="headerlink" href="#json" title="Permanent link">🔗</a></h2>
 <p>The JSON format returns an array of places (for search and lookup) or
 a single place (for reverse) of the following format:</p>
 <div class="highlight"><pre><span></span><code>  {
@@ -1973,13 +1973,13 @@ a single place (for reverse) of the following format:</p>
 <li><code>geojson</code>, <code>svg</code>, <code>geotext</code>, <code>geokml</code> - full geometry
    (only with the appropriate <code>polygon_*</code> parameter)</li>
 </ul>
-<h2 id="jsonv2">JSONv2<a class="headerlink" href="#jsonv2" title="Permanent link"></a></h2>
+<h2 id="jsonv2">JSONv2<a class="headerlink" href="#jsonv2" title="Permanent link">🔗</a></h2>
 <p>This is the same as the JSON format with two changes:</p>
 <ul>
 <li><code>class</code> renamed to <code>category</code></li>
 <li>additional field <code>place_rank</code> with the search rank of the object</li>
 </ul>
-<h2 id="geojson">GeoJSON<a class="headerlink" href="#geojson" title="Permanent link"></a></h2>
+<h2 id="geojson">GeoJSON<a class="headerlink" href="#geojson" title="Permanent link">🔗</a></h2>
 <p>This format follows the <a href="https://geojson.org">RFC7946</a>. Every feature includes
 a bounding box (<code>bbox</code>).</p>
 <p>The properties object has the following fields:</p>
@@ -1999,7 +1999,7 @@ a bounding box (<code>bbox</code>).</p>
 </ul>
 <p>Use <code>polygon_geojson</code> to output the full geometry of the object instead
 of the centroid.</p>
-<h2 id="geocodejson">GeocodeJSON<a class="headerlink" href="#geocodejson" title="Permanent link"></a></h2>
+<h2 id="geocodejson">GeocodeJSON<a class="headerlink" href="#geocodejson" title="Permanent link">🔗</a></h2>
 <p>The GeocodeJSON format follows the
 <a href="https://github.com/geocoders/geocodejson-spec">GeocodeJSON spec 0.1.0</a>.
 The following feature attributes are implemented:</p>
@@ -2018,10 +2018,10 @@ The following feature attributes are implemented:</p>
 </ul>
 <p>Use <code>polygon_geojson</code> to output the full geometry of the object instead
 of the centroid.</p>
-<h2 id="xml">XML<a class="headerlink" href="#xml" title="Permanent link"></a></h2>
+<h2 id="xml">XML<a class="headerlink" href="#xml" title="Permanent link">🔗</a></h2>
 <p>The XML response returns one or more place objects in slightly different
 formats depending on the API call.</p>
-<h3 id="reverse">Reverse<a class="headerlink" href="#reverse" title="Permanent link"></a></h3>
+<h3 id="reverse">Reverse<a class="headerlink" href="#reverse" title="Permanent link">🔗</a></h3>
 <div class="highlight"><pre><span></span><code>&lt;reversegeocode timestamp=&quot;Sat, 11 Aug 18 11:53:21 +0000&quot;
                 attribution=&quot;Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright&quot;
                 querystring=&quot;lat=48.400381&amp;lon=11.745876&amp;zoom=5&amp;format=xml&quot;&gt;
@@ -2060,7 +2060,7 @@ attribution to OSM and the original querystring.</p>
 <code>result</code> element as a comma-separated list.</p>
 <p>Additional information requested with <code>addressdetails=1</code>, <code>extratags=1</code> and
 <code>namedetails=1</code> can be found in extra elements.</p>
-<h3 id="search-and-lookup">Search and Lookup<a class="headerlink" href="#search-and-lookup" title="Permanent link"></a></h3>
+<h3 id="search-and-lookup">Search and Lookup<a class="headerlink" href="#search-and-lookup" title="Permanent link">🔗</a></h3>
 <div class="highlight"><pre><span></span><code>&lt;searchresults timestamp=&quot;Sat, 11 Aug 18 11:55:35 +0000&quot;
                attribution=&quot;Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright&quot;
                querystring=&quot;london&quot; polygon=&quot;false&quot; exclude_place_ids=&quot;100149&quot;
@@ -2118,8 +2118,8 @@ as subelements with the type of the address part.</p>
 <p>Additional information requested with <code>extratags=1</code> and <code>namedetails=1</code> can
 be found in extra elements as sub-element of <code>extratags</code> and <code>namedetails</code>
 respectively.</p>
-<h2 id="notes-on-field-values">Notes on field values<a class="headerlink" href="#notes-on-field-values" title="Permanent link"></a></h2>
-<h3 id="place_id-is-not-a-persistent-id">place_id is not a persistent id<a class="headerlink" href="#place_id-is-not-a-persistent-id" title="Permanent link"></a></h3>
+<h2 id="notes-on-field-values">Notes on field values<a class="headerlink" href="#notes-on-field-values" title="Permanent link">🔗</a></h2>
+<h3 id="place_id-is-not-a-persistent-id">place_id is not a persistent id<a class="headerlink" href="#place_id-is-not-a-persistent-id" title="Permanent link">🔗</a></h3>
 <p>The <code>place_id</code> is an internal identifier that is assigned data is imported
 into a Nominatim database. The same OSM object will have a different value
 on another server. It may even change its ID on the same server when it is
@@ -2133,7 +2133,7 @@ e.g. when a restaurant is retagged as supermarket. For a more in-depth
 discussion see <a href="https://wiki.openstreetmap.org/wiki/Permanent_ID">Permanent ID</a>.</p>
 <p>If you need an ID that is consistent over multiple installations of Nominatim,
 then you should use the combination of <code>osm_type</code>+<code>osm_id</code>+<code>class</code>.</p>
-<h3 id="osm-reference">OSM reference<a class="headerlink" href="#osm-reference" title="Permanent link"></a></h3>
+<h3 id="osm-reference">OSM reference<a class="headerlink" href="#osm-reference" title="Permanent link">🔗</a></h3>
 <p>Nominatim may sometimes return special objects that do not correspond directly
 to an object in OpenStreetMap. These are:</p>
 <ul>
@@ -2150,7 +2150,7 @@ to an object in OpenStreetMap. These are:</p>
 <p>Please note that the <code>osm_type</code> and <code>osm_id</code> returned may be changed in the
 future. You should not expect to only find <code>node</code>, <code>way</code> and <code>relation</code> for
 the type.</p>
-<h3 id="boundingbox">boundingbox<a class="headerlink" href="#boundingbox" title="Permanent link"></a></h3>
+<h3 id="boundingbox">boundingbox<a class="headerlink" href="#boundingbox" title="Permanent link">🔗</a></h3>
 <p>Comma separated list of min latitude, max latitude, min longitude, max longitude.
 The whole planet would be <code>-90,90,-180,180</code>.</p>
 <p>Can be used to pan and center the map on the result, for example with leafletjs
@@ -2159,7 +2159,7 @@ mapping library
 <p>Bounds crossing the antimeridian have a min latitude -180 and max latitude 180,
 essentially covering the entire planet
 (see <a href="https://github.com/openstreetmap/Nominatim/issues/184">issue 184</a>).</p>
-<h3 id="addressdetails">addressdetails<a class="headerlink" href="#addressdetails" title="Permanent link"></a></h3>
+<h3 id="addressdetails">addressdetails<a class="headerlink" href="#addressdetails" title="Permanent link">🔗</a></h3>
 <p>Address details in the xml and json formats return a list of names together
 with a designation label. Per default the following labels may appear:</p>
 <ul>

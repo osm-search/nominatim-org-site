@@ -2000,7 +2000,7 @@
   
 
 
-<h1 id="search-queries">Search queries<a class="headerlink" href="#search-queries" title="Permanent link"></a></h1>
+<h1 id="search-queries">Search queries<a class="headerlink" href="#search-queries" title="Permanent link">🔗</a></h1>
 <p>The search API allows you to look up a location from a textual description
 or address. Nominatim supports structured and free-form search queries.</p>
 <p>The search query may also contain
@@ -2013,7 +2013,7 @@ This can be used to narrow down the kind of objects to be returned.</p>
 area. Nominatim will always just return a collection of the best matches. To
 download OSM data by object type, use the <a href="https://overpass-api.de/">Overpass API</a>.</p>
 </div>
-<h2 id="endpoint">Endpoint<a class="headerlink" href="#endpoint" title="Permanent link"></a></h2>
+<h2 id="endpoint">Endpoint<a class="headerlink" href="#endpoint" title="Permanent link">🔗</a></h2>
 <p>The search API has the following format:</p>
 <div class="highlight"><pre><span></span><code>   https://nominatim.openstreetmap.org/search?&lt;params&gt;
 </code></pre></div>
@@ -2024,7 +2024,7 @@ download OSM data by object type, use the <a href="https://overpass-api.de/">Ove
 and will be removed in future versions.</p>
 </div>
 <p>The query term can be given in two different forms: free-form or structured.</p>
-<h3 id="free-form-query">Free-form query<a class="headerlink" href="#free-form-query" title="Permanent link"></a></h3>
+<h3 id="free-form-query">Free-form query<a class="headerlink" href="#free-form-query" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2046,7 +2046,7 @@ Free-form queries are processed first left-to-right and then right-to-left if th
 Commas are optional, but improve performance by reducing the complexity of the search.</p>
 <p>The free-form may also contain special phrases to describe the type of
 place to be returned or a coordinate to search close to a position.</p>
-<h3 id="structured-query">Structured query<a class="headerlink" href="#structured-query" title="Permanent link"></a></h3>
+<h3 id="structured-query">Structured query<a class="headerlink" href="#structured-query" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2095,10 +2095,10 @@ that are relevant for the address you want to geocode.</p>
 the API will return an error if you do so. Older versions simply return
 unexpected results.</p>
 </div>
-<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link"></a></h2>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">🔗</a></h2>
 <p>The following parameters can be used to further restrict the search and
 change the output. They are usable for both forms of the search query.</p>
-<h3 id="output-format">Output format<a class="headerlink" href="#output-format" title="Permanent link"></a></h3>
+<h3 id="output-format">Output format<a class="headerlink" href="#output-format" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2162,7 +2162,7 @@ information.</p>
 <p>Limit the maximum number of returned results. Cannot be more than 40.
 Nominatim may decide to return less results than given, if additional
 results do not sufficiently match the query.</p>
-<h3 id="output-details">Output details<a class="headerlink" href="#output-details" title="Permanent link"></a></h3>
+<h3 id="output-details">Output details<a class="headerlink" href="#output-details" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2225,7 +2225,7 @@ that is available in the database, e.g. wikipedia link, opening hours.</p>
 </table>
 <p>When set to 1, include a full list of names for the result. These may include
 language variants, older names, references and brand.</p>
-<h3 id="language-of-results">Language of results<a class="headerlink" href="#language-of-results" title="Permanent link"></a></h3>
+<h3 id="language-of-results">Language of results<a class="headerlink" href="#language-of-results" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2254,7 +2254,7 @@ usually don't send any Accept-Language header, prompting Nominatim
 to show results in the local language. Browsers on the contrary always
 send the currently chosen browser language.</p>
 </div>
-<h3 id="result-restriction">Result restriction<a class="headerlink" href="#result-restriction" title="Permanent link"></a></h3>
+<h3 id="result-restriction">Result restriction<a class="headerlink" href="#result-restriction" title="Permanent link">🔗</a></h3>
 <p>There are two ways to influence the results. <em>Filters</em> exclude certain
 kinds of results completely. <em>Boost parameters</em> only change the order of the
 results and thus give a preference to some results over others.</p>
@@ -2412,7 +2412,7 @@ a filter parameter, excluding any results outside the viewbox.</p>
 search is allowed. Give the special keyword for the amenity in square
 brackets, e.g. <code>[pub]</code> and a selection of objects of this type is returned.
 There is no guarantee that the result returns all objects in the area.</p>
-<h3 id="polygon-output">Polygon output<a class="headerlink" href="#polygon-output" title="Permanent link"></a></h3>
+<h3 id="polygon-output">Polygon output<a class="headerlink" href="#polygon-output" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2467,7 +2467,7 @@ options can be used at a time.</p>
 of the output geometry. The parameter describes the
 tolerance in degrees with which the geometry may differ from the original
 geometry. Topology is preserved in the geometry.</p>
-<h3 id="other">Other<a class="headerlink" href="#other" title="Permanent link"></a></h3>
+<h3 id="other">Other<a class="headerlink" href="#other" title="Permanent link">🔗</a></h3>
 <table>
 <thead>
 <tr>
@@ -2528,8 +2528,8 @@ ensures that all results are returned.</p>
 <p>Output assorted developer debug information. Data on internals of Nominatim's
 "search loop" logic, and SQL queries. The output is HTML format.
 This overrides the specified machine readable format.</p>
-<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link"></a></h2>
-<h5 id="xml-with-kml-polygon">XML with KML polygon<a class="headerlink" href="#xml-with-kml-polygon" title="Permanent link"></a></h5>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">🔗</a></h2>
+<h5 id="xml-with-kml-polygon">XML with KML polygon<a class="headerlink" href="#xml-with-kml-polygon" title="Permanent link">🔗</a></h5>
 <ul>
 <li><a href="https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&amp;format=xml&amp;polygon_kml=1&amp;addressdetails=1">https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&amp;format=xml&amp;polygon_kml=1&amp;addressdetails=1</a></li>
 </ul>
@@ -2576,7 +2576,7 @@ This overrides the specified machine readable format.</p>
 <span class="w">  </span><span class="nt">&lt;/place&gt;</span>
 <span class="nt">&lt;/searchresults&gt;</span>
 </code></pre></div>
-<h5 id="json-with-svg-polygon">JSON with SVG polygon<a class="headerlink" href="#json-with-svg-polygon" title="Permanent link"></a></h5>
+<h5 id="json-with-svg-polygon">JSON with SVG polygon<a class="headerlink" href="#json-with-svg-polygon" title="Permanent link">🔗</a></h5>
 <p><a href="https://nominatim.openstreetmap.org/search?q=Unter%20den%20Linden%201%20Berlin&amp;format=json&amp;addressdetails=1&amp;limit=1&amp;polygon_svg=1">https://nominatim.openstreetmap.org/search?q=Unter%20den%20Linden%201%20Berlin&amp;format=json&amp;addressdetails=1&amp;limit=1&amp;polygon_svg=1</a></p>
 <div class="highlight"><pre><span></span><code><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
@@ -2613,7 +2613,7 @@ This overrides the specified machine readable format.</p>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">]</span>
 </code></pre></div>
-<h5 id="json-with-address-details">JSON with address details<a class="headerlink" href="#json-with-address-details" title="Permanent link"></a></h5>
+<h5 id="json-with-address-details">JSON with address details<a class="headerlink" href="#json-with-address-details" title="Permanent link">🔗</a></h5>
 <p><a href="https://nominatim.openstreetmap.org/search?addressdetails=1&amp;q=bakery+in+berlin+wedding&amp;format=jsonv2&amp;limit=1">https://nominatim.openstreetmap.org/search?addressdetails=1&amp;q=bakery+in+berlin+wedding&amp;format=jsonv2&amp;limit=1</a></p>
 <div class="highlight"><pre><span></span><code><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
@@ -2651,7 +2651,7 @@ This overrides the specified machine readable format.</p>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">]</span>
 </code></pre></div>
-<h5 id="geojson">GeoJSON<a class="headerlink" href="#geojson" title="Permanent link"></a></h5>
+<h5 id="geojson">GeoJSON<a class="headerlink" href="#geojson" title="Permanent link">🔗</a></h5>
 <p><a href="https://nominatim.openstreetmap.org/search?q=17+Strada+Pictor+Alexandru+Romano%2C+Bukarest&amp;format=geojson">https://nominatim.openstreetmap.org/search?q=17+Strada+Pictor+Alexandru+Romano%2C+Bukarest&amp;format=geojson</a></p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
@@ -2686,7 +2686,7 @@ This overrides the specified machine readable format.</p>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h5 id="geocodejson">GeocodeJSON<a class="headerlink" href="#geocodejson" title="Permanent link"></a></h5>
+<h5 id="geocodejson">GeocodeJSON<a class="headerlink" href="#geocodejson" title="Permanent link">🔗</a></h5>
 <p><a href="https://nominatim.openstreetmap.org/search?q=%CE%91%CE%B3%CE%AF%CE%B1+%CE%A4%CF%81%CE%B9%CE%AC%CE%B4%CE%B1%2C+%CE%91%CE%B4%CF%89%CE%BD%CE%B9%CE%B4%CE%BF%CF%82%2C+Athens%2C+Greece&amp;format=geocodejson">https://nominatim.openstreetmap.org/search?q=%CE%91%CE%B3%CE%AF%CE%B1+%CE%A4%CF%81%CE%B9%CE%AC%CE%B4%CE%B1%2C+%CE%91%CE%B4%CF%89%CE%BD%CE%B9%CE%B4%CE%BF%CF%82%2C+Athens%2C+Greece&amp;format=geocodejson</a></p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>

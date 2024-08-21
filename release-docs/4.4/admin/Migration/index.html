@@ -2372,7 +2372,7 @@
   
 
 
-<h1 id="database-migrations">Database Migrations<a class="headerlink" href="#database-migrations" title="Permanent link"></a></h1>
+<h1 id="database-migrations">Database Migrations<a class="headerlink" href="#database-migrations" title="Permanent link">🔗</a></h1>
 <p>Since version 3.7.0 Nominatim offers automatic migrations. Please follow
 the following steps:</p>
 <ul>
@@ -2388,8 +2388,8 @@ breaking changes. <strong>Please read them before running the migration.</strong
 <p>If you are migrating from a version &lt;3.6, then you still have to follow
 the manual migration steps up to 3.6.</p>
 </div>
-<h2 id="420-430">4.2.0 -&gt; 4.3.0<a class="headerlink" href="#420-430" title="Permanent link"></a></h2>
-<h3 id="new-indexes-for-reverse-lookup">New indexes for reverse lookup<a class="headerlink" href="#new-indexes-for-reverse-lookup" title="Permanent link"></a></h3>
+<h2 id="420-430">4.2.0 -&gt; 4.3.0<a class="headerlink" href="#420-430" title="Permanent link">🔗</a></h2>
+<h3 id="new-indexes-for-reverse-lookup">New indexes for reverse lookup<a class="headerlink" href="#new-indexes-for-reverse-lookup" title="Permanent link">🔗</a></h3>
 <p>The reverse lookup algorithm has changed slightly to improve performance.
 This change needs a different index in the database. The required index
 will be automatically build during migration. Until the new index is available
@@ -2402,20 +2402,20 @@ using the following SQL:</p>
 <span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rank_address</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">&#39;postcode&#39;</span>
 <span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">linked_place_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">osm_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N&#39;</span><span class="p">;</span>
 </code></pre></div>
-<h2 id="400-410">4.0.0 -&gt; 4.1.0<a class="headerlink" href="#400-410" title="Permanent link"></a></h2>
-<h3 id="icu-tokenizer-is-the-new-default">ICU tokenizer is the new default<a class="headerlink" href="#icu-tokenizer-is-the-new-default" title="Permanent link"></a></h3>
+<h2 id="400-410">4.0.0 -&gt; 4.1.0<a class="headerlink" href="#400-410" title="Permanent link">🔗</a></h2>
+<h3 id="icu-tokenizer-is-the-new-default">ICU tokenizer is the new default<a class="headerlink" href="#icu-tokenizer-is-the-new-default" title="Permanent link">🔗</a></h3>
 <p>Nominatim now installs the <a href="../../customize/Tokenizers/#icu-tokenizer">ICU tokenizer</a>
 by default. This only has an effect on newly installed databases. When
 updating older databases, it keeps its installed tokenizer. If you still
 run with the legacy tokenizer, make sure to compile Nominatim with the
 PostgreSQL module, see <a href="../Installation/#building-nominatim">Installation</a>.</p>
-<h3 id="geocodejson-output-changed">geocodejson output changed<a class="headerlink" href="#geocodejson-output-changed" title="Permanent link"></a></h3>
+<h3 id="geocodejson-output-changed">geocodejson output changed<a class="headerlink" href="#geocodejson-output-changed" title="Permanent link">🔗</a></h3>
 <p>The <code>type</code> field of the geocodejson output has changed. It now contains
 the address class of the object instead of the value of the OSM tag. If
 your client has used the <code>type</code> field, switch them to read <code>osm_value</code>
 instead.</p>
-<h2 id="370-400">3.7.0 -&gt; 4.0.0<a class="headerlink" href="#370-400" title="Permanent link"></a></h2>
-<h3 id="nominatim_phrase_config-removed">NOMINATIM_PHRASE_CONFIG removed<a class="headerlink" href="#nominatim_phrase_config-removed" title="Permanent link"></a></h3>
+<h2 id="370-400">3.7.0 -&gt; 4.0.0<a class="headerlink" href="#370-400" title="Permanent link">🔗</a></h2>
+<h3 id="nominatim_phrase_config-removed">NOMINATIM_PHRASE_CONFIG removed<a class="headerlink" href="#nominatim_phrase_config-removed" title="Permanent link">🔗</a></h3>
 <p>Custom blacklist configurations for special phrases now need to be handed
 with the <code>--config</code> parameter to <code>nominatim special-phrases</code>. Alternatively
 you can put your custom configuration in the project directory in a file
@@ -2424,13 +2424,13 @@ named <code>phrase-settings.json</code>.</p>
 the configuration in older versions. If you are updating from Nominatim &lt; 3.7
 and still work with a custom <code>phrase-settings.php</code>, you need to manually
 convert it into a json format.</p>
-<h3 id="php-utils-removed">PHP utils removed<a class="headerlink" href="#php-utils-removed" title="Permanent link"></a></h3>
+<h3 id="php-utils-removed">PHP utils removed<a class="headerlink" href="#php-utils-removed" title="Permanent link">🔗</a></h3>
 <p>The old PHP utils have now been removed completely. You need to switch to
 the appropriate functions of the nominatim  command line tool. See
 <a href="#introducing-nominatim-command-line-tool">Introducing <code>nominatim</code> command line tool</a>
 below.</p>
-<h2 id="360-370">3.6.0 -&gt; 3.7.0<a class="headerlink" href="#360-370" title="Permanent link"></a></h2>
-<h3 id="new-format-and-name-of-configuration-file">New format and name of configuration file<a class="headerlink" href="#new-format-and-name-of-configuration-file" title="Permanent link"></a></h3>
+<h2 id="360-370">3.6.0 -&gt; 3.7.0<a class="headerlink" href="#360-370" title="Permanent link">🔗</a></h2>
+<h3 id="new-format-and-name-of-configuration-file">New format and name of configuration file<a class="headerlink" href="#new-format-and-name-of-configuration-file" title="Permanent link">🔗</a></h3>
 <p>The configuration for an import is now saved in a <code>.env</code> file in the project
 directory. This file follows the dotenv format. For more information, see
 the <a href="../Import/#configuration-setup-in-env">installation chapter</a>.</p>
@@ -2438,13 +2438,13 @@ the <a href="../Import/#configuration-setup-in-env">installation chapter</a>.</p
 file and port your custom configuration from <code>settings/local.php</code>. Most
 settings are named similar and only have received a <code>NOMINATIM_</code> prefix.
 Use the default settings in <code>settings/env.defaults</code> as a reference.</p>
-<h3 id="new-location-for-data-files">New location for data files<a class="headerlink" href="#new-location-for-data-files" title="Permanent link"></a></h3>
+<h3 id="new-location-for-data-files">New location for data files<a class="headerlink" href="#new-location-for-data-files" title="Permanent link">🔗</a></h3>
 <p>External data files for Wikipedia importance, postcodes etc. are no longer
 expected to reside in the source tree by default. Instead they will be searched
 in the project directory. If you have an automated setup script you must
 either adapt the download location or explicitly set the location of the
 files to the old place in your <code>.env</code>.</p>
-<h3 id="introducing-nominatim-command-line-tool">Introducing <code>nominatim</code> command line tool<a class="headerlink" href="#introducing-nominatim-command-line-tool" title="Permanent link"></a></h3>
+<h3 id="introducing-nominatim-command-line-tool">Introducing <code>nominatim</code> command line tool<a class="headerlink" href="#introducing-nominatim-command-line-tool" title="Permanent link">🔗</a></h3>
 <p>The various php utilities have been replaced with a single <code>nominatim</code>
 command line tool. Make sure to adapt any scripts. There is no direct 1:1
 matching between the old utilities and the commands of nominatim CLI. The
@@ -2461,12 +2461,12 @@ functionality of each script:</p>
 <p>Try <code>nominatim &lt;command&gt; --help</code> for more information about each subcommand.</p>
 <p><code>./utils/query.php</code> no longer exists in its old form. <code>nominatim search</code>
 provides a replacement but returns different output.</p>
-<h3 id="switch-to-normalized-house-numbers">Switch to normalized house numbers<a class="headerlink" href="#switch-to-normalized-house-numbers" title="Permanent link"></a></h3>
+<h3 id="switch-to-normalized-house-numbers">Switch to normalized house numbers<a class="headerlink" href="#switch-to-normalized-house-numbers" title="Permanent link">🔗</a></h3>
 <p>The housenumber column in the placex table uses now normalized version.
 The automatic migration step will convert the column but this may take a
 very long time. It is advisable to take the machine offline while doing that.</p>
-<h2 id="350-360">3.5.0 -&gt; 3.6.0<a class="headerlink" href="#350-360" title="Permanent link"></a></h2>
-<h3 id="change-of-layout-of-search_name_-tables">Change of layout of search_name_* tables<a class="headerlink" href="#change-of-layout-of-search_name_-tables" title="Permanent link"></a></h3>
+<h2 id="350-360">3.5.0 -&gt; 3.6.0<a class="headerlink" href="#350-360" title="Permanent link">🔗</a></h2>
+<h3 id="change-of-layout-of-search_name_-tables">Change of layout of search_name_* tables<a class="headerlink" href="#change-of-layout-of-search_name_-tables" title="Permanent link">🔗</a></h3>
 <p>The table need a different index for nearest place lookup. Recreate the
 indexes using the following shell script:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>table<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>psql<span class="w"> </span>-d<span class="w"> </span>nominatim<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT tablename FROM pg_tables WHERE tablename LIKE &#39;search_name_%&#39;&quot;</span><span class="w"> </span>-tA<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>search_name_blank<span class="sb">`</span><span class="p">;</span>
@@ -2474,7 +2474,7 @@ indexes using the following shell script:</p>
 <span class="w">    </span>psql<span class="w"> </span>-d<span class="w"> </span>nominatim<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;DROP INDEX idx_</span><span class="si">${</span><span class="nv">table</span><span class="si">}</span><span class="s2">_centroid_place; CREATE INDEX idx_</span><span class="si">${</span><span class="nv">table</span><span class="si">}</span><span class="s2">_centroid_place ON </span><span class="si">${</span><span class="nv">table</span><span class="si">}</span><span class="s2"> USING gist (centroid) WHERE ((address_rank &gt;= 2) AND (address_rank &lt;= 25)); DROP INDEX idx_</span><span class="si">${</span><span class="nv">table</span><span class="si">}</span><span class="s2">_centroid_street; CREATE INDEX idx_</span><span class="si">${</span><span class="nv">table</span><span class="si">}</span><span class="s2">_centroid_street ON </span><span class="si">${</span><span class="nv">table</span><span class="si">}</span><span class="s2"> USING gist (centroid) WHERE ((address_rank &gt;= 26) AND (address_rank &lt;= 27))&quot;</span><span class="p">;</span>
 <span class="k">done</span>
 </code></pre></div>
-<h3 id="removal-of-html-output">Removal of html output<a class="headerlink" href="#removal-of-html-output" title="Permanent link"></a></h3>
+<h3 id="removal-of-html-output">Removal of html output<a class="headerlink" href="#removal-of-html-output" title="Permanent link">🔗</a></h3>
 <p>The debugging UI is no longer directly provided with Nominatim. Instead we
 now provide a simple Javascript application. Please refer to
 <a href="../Setup-Nominatim-UI/">Setting up the Nominatim UI</a> for details on how to
@@ -2483,7 +2483,7 @@ set up the UI.</p>
 nominatim-ui project as well. If you want to keep the <code>icon</code> field in the
 response, you need to set <code>CONST_MapIcon_URL</code> to the URL of the <code>/mapicon</code>
 directory of nominatim-ui.</p>
-<h3 id="change-order-during-indexing">Change order during indexing<a class="headerlink" href="#change-order-during-indexing" title="Permanent link"></a></h3>
+<h3 id="change-order-during-indexing">Change order during indexing<a class="headerlink" href="#change-order-during-indexing" title="Permanent link">🔗</a></h3>
 <p>When reindexing places during updates, there is now a different order used
 which needs a different database index. Create it with the following SQL command:</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_placex_pendingsector_rank_address</span>
@@ -2494,22 +2494,22 @@ which needs a different database index. Create it with the following SQL command
 <p>You can then drop the old index with:</p>
 <div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_placex_pendingsector</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="unused-index">Unused index<a class="headerlink" href="#unused-index" title="Permanent link"></a></h3>
+<h3 id="unused-index">Unused index<a class="headerlink" href="#unused-index" title="Permanent link">🔗</a></h3>
 <p>This index has been unused ever since the query using it was changed two years ago. Saves about 12GB on a planet installation.</p>
 <div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_placex_geometry_reverse_lookupPoint</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="switching-to-dotenv">Switching to dotenv<a class="headerlink" href="#switching-to-dotenv" title="Permanent link"></a></h3>
+<h3 id="switching-to-dotenv">Switching to dotenv<a class="headerlink" href="#switching-to-dotenv" title="Permanent link">🔗</a></h3>
 <p>As part of the work changing the configuration format, the configuration for
 the website is now using a separate configuration file. To create the
 configuration file, run the following command after updating:</p>
 <div class="highlight"><pre><span></span><code>./utils/setup.php<span class="w"> </span>--setup-website
 </code></pre></div>
-<h3 id="update-sql-code">Update SQL code<a class="headerlink" href="#update-sql-code" title="Permanent link"></a></h3>
+<h3 id="update-sql-code">Update SQL code<a class="headerlink" href="#update-sql-code" title="Permanent link">🔗</a></h3>
 <p>To update the SQL code to the leatest version run:</p>
 <div class="highlight"><pre><span></span><code>./utils/setup.php --create-functions --enable-diff-updates --create-partition-functions
 </code></pre></div>
-<h2 id="340-350">3.4.0 -&gt; 3.5.0<a class="headerlink" href="#340-350" title="Permanent link"></a></h2>
-<h3 id="new-wikipediawikidata-importance-tables">New Wikipedia/Wikidata importance tables<a class="headerlink" href="#new-wikipediawikidata-importance-tables" title="Permanent link"></a></h3>
+<h2 id="340-350">3.4.0 -&gt; 3.5.0<a class="headerlink" href="#340-350" title="Permanent link">🔗</a></h2>
+<h3 id="new-wikipediawikidata-importance-tables">New Wikipedia/Wikidata importance tables<a class="headerlink" href="#new-wikipediawikidata-importance-tables" title="Permanent link">🔗</a></h3>
 <p>The <code>wikipedia_*</code> tables have a new format that also includes references to
 Wikidata. You need to update the computation functions and the tables as
 follows:</p>
@@ -2535,8 +2535,8 @@ follows:</p>
 <p>Finally, update all SQL functions:</p>
 <div class="highlight"><pre><span></span><code>./utils/setup.php<span class="w"> </span>--create-functions<span class="w"> </span>--enable-diff-updates<span class="w"> </span>--create-partition-functions
 </code></pre></div>
-<h2 id="330-340">3.3.0 -&gt; 3.4.0<a class="headerlink" href="#330-340" title="Permanent link"></a></h2>
-<h3 id="reorganisation-of-location_area_country-table">Reorganisation of location_area_country table<a class="headerlink" href="#reorganisation-of-location_area_country-table" title="Permanent link"></a></h3>
+<h2 id="330-340">3.3.0 -&gt; 3.4.0<a class="headerlink" href="#330-340" title="Permanent link">🔗</a></h2>
+<h3 id="reorganisation-of-location_area_country-table">Reorganisation of location_area_country table<a class="headerlink" href="#reorganisation-of-location_area_country-table" title="Permanent link">🔗</a></h3>
 <p>The table <code>location_area_country</code> has been optimized. You need to switch to the
 new format when you run updates. While updates are disabled, run the following
 SQL commands:</p>
@@ -2550,8 +2550,8 @@ SQL commands:</p>
 <p>Finally, update all SQL functions:</p>
 <div class="highlight"><pre><span></span><code>./utils/setup.php<span class="w"> </span>--create-functions<span class="w"> </span>--enable-diff-updates<span class="w"> </span>--create-partition-functions
 </code></pre></div>
-<h2 id="320-330">3.2.0 -&gt; 3.3.0<a class="headerlink" href="#320-330" title="Permanent link"></a></h2>
-<h3 id="new-database-connection-string-dsn-format">New database connection string (DSN) format<a class="headerlink" href="#new-database-connection-string-dsn-format" title="Permanent link"></a></h3>
+<h2 id="320-330">3.2.0 -&gt; 3.3.0<a class="headerlink" href="#320-330" title="Permanent link">🔗</a></h2>
+<h3 id="new-database-connection-string-dsn-format">New database connection string (DSN) format<a class="headerlink" href="#new-database-connection-string-dsn-format" title="Permanent link">🔗</a></h3>
 <p>Previously database connection setting (<code>CONST_Database_DSN</code> in <code>settings/*.php</code>) had the format</p>
 <ul>
 <li>(simple) <code>pgsql://@/nominatim</code></li>
@@ -2562,19 +2562,19 @@ SQL commands:</p>
 <li>(simple) <code>pgsql:dbname=nominatim</code></li>
 <li>(complex) <code>pgsql:dbname=db1;host=machine1.domain.com;port=1234;user=johndoe;password=secret</code></li>
 </ul>
-<h3 id="natural-earth-country-boundaries-no-longer-needed-as-fallback">Natural Earth country boundaries no longer needed as fallback<a class="headerlink" href="#natural-earth-country-boundaries-no-longer-needed-as-fallback" title="Permanent link"></a></h3>
+<h3 id="natural-earth-country-boundaries-no-longer-needed-as-fallback">Natural Earth country boundaries no longer needed as fallback<a class="headerlink" href="#natural-earth-country-boundaries-no-longer-needed-as-fallback" title="Permanent link">🔗</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">country_naturalearthdata</span><span class="p">;</span>
 </code></pre></div>
 <p>Finally, update all SQL functions:</p>
 <div class="highlight"><pre><span></span><code>./utils/setup.php<span class="w"> </span>--create-functions<span class="w"> </span>--enable-diff-updates<span class="w"> </span>--create-partition-functions
 </code></pre></div>
-<h3 id="configurable-address-levels">Configurable Address Levels<a class="headerlink" href="#configurable-address-levels" title="Permanent link"></a></h3>
+<h3 id="configurable-address-levels">Configurable Address Levels<a class="headerlink" href="#configurable-address-levels" title="Permanent link">🔗</a></h3>
 <p>The new configurable address levels require a new table. Create it with the
 following command:</p>
 <div class="highlight"><pre><span></span><code>./utils/update.php<span class="w"> </span>--update-address-levels
 </code></pre></div>
-<h2 id="310-320">3.1.0 -&gt; 3.2.0<a class="headerlink" href="#310-320" title="Permanent link"></a></h2>
-<h3 id="new-reverse-algorithm">New reverse algorithm<a class="headerlink" href="#new-reverse-algorithm" title="Permanent link"></a></h3>
+<h2 id="310-320">3.1.0 -&gt; 3.2.0<a class="headerlink" href="#310-320" title="Permanent link">🔗</a></h2>
+<h3 id="new-reverse-algorithm">New reverse algorithm<a class="headerlink" href="#new-reverse-algorithm" title="Permanent link">🔗</a></h3>
 <p>The reverse algorithm has changed and requires new indexes. Run the following
 SQL statements to create the indexes:</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_placex_geometry_reverse_lookupPoint</span>
@@ -2613,8 +2613,8 @@ SQL statements to create the indexes:</p>
 <p>Finally, update all SQL functions:</p>
 <div class="highlight"><pre><span></span><code>./utils/setup.php<span class="w"> </span>--create-functions<span class="w"> </span>--enable-diff-updates<span class="w"> </span>--create-partition-functions
 </code></pre></div>
-<h2 id="300-310">3.0.0 -&gt; 3.1.0<a class="headerlink" href="#300-310" title="Permanent link"></a></h2>
-<h3 id="postcode-table">Postcode Table<a class="headerlink" href="#postcode-table" title="Permanent link"></a></h3>
+<h2 id="300-310">3.0.0 -&gt; 3.1.0<a class="headerlink" href="#300-310" title="Permanent link">🔗</a></h2>
+<h3 id="postcode-table">Postcode Table<a class="headerlink" href="#postcode-table" title="Permanent link">🔗</a></h3>
 <p>A new separate table for artificially computed postcode centroids was introduced.
 Migration to the new format is possible but <strong>not recommended</strong>.</p>
 <p>Create postcode table and indexes, running the following SQL statements:</p>

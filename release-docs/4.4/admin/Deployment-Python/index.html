@@ -1730,7 +1730,7 @@
   
 
 
-<h1 id="deploying-the-nominatim-python-frontend">Deploying the Nominatim Python frontend<a class="headerlink" href="#deploying-the-nominatim-python-frontend" title="Permanent link"></a></h1>
+<h1 id="deploying-the-nominatim-python-frontend">Deploying the Nominatim Python frontend<a class="headerlink" href="#deploying-the-nominatim-python-frontend" title="Permanent link">🔗</a></h1>
 <p>The Nominatim can be run as a Python-based 
 <a href="https://asgi.readthedocs.io/en/latest/">ASGI web application</a>. You have the
 choice between <a href="https://falcon.readthedocs.io/en/stable/">Falcon</a>
@@ -1750,7 +1750,7 @@ accordingly.</p>
 versions of CentOS may still use the user name <code>apache</code>. You also need
 to adapt the instructions in this case.</p>
 </div>
-<h3 id="installing-the-required-packages">Installing the required packages<a class="headerlink" href="#installing-the-required-packages" title="Permanent link"></a></h3>
+<h3 id="installing-the-required-packages">Installing the required packages<a class="headerlink" href="#installing-the-required-packages" title="Permanent link">🔗</a></h3>
 <p>The recommended way to deploy a Python ASGI application is to run
 the ASGI runner <a href="https://uvicorn.org/">uvicorn</a>
 together with <a href="https://gunicorn.org/">gunicorn</a> HTTP server. We use
@@ -1762,7 +1762,7 @@ virtualenv<span class="w"> </span>/srv/nominatim-venv
 /srv/nominatim-venv/bin/pip<span class="w"> </span>install<span class="w"> </span>SQLAlchemy<span class="w"> </span>PyICU<span class="w"> </span>psycopg<span class="o">[</span>binary<span class="o">]</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>psycopg2-binary<span class="w"> </span>python-dotenv<span class="w"> </span>PyYAML<span class="w"> </span>falcon<span class="w"> </span>uvicorn<span class="w"> </span>gunicorn
 </code></pre></div>
-<h3 id="setting-up-nominatim-as-a-systemd-job">Setting up Nominatim as a systemd job<a class="headerlink" href="#setting-up-nominatim-as-a-systemd-job" title="Permanent link"></a></h3>
+<h3 id="setting-up-nominatim-as-a-systemd-job">Setting up Nominatim as a systemd job<a class="headerlink" href="#setting-up-nominatim-as-a-systemd-job" title="Permanent link">🔗</a></h3>
 <p>Next you need to set up the service that runs the Nominatim frontend. This is
 easiest done with a systemd job.</p>
 <p>First you need to tell systemd to create a socket file to be used by
@@ -1814,7 +1814,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w
 </code></pre></div>
 <p>This sets the service up, so that Nominatim is automatically started
 on reboot.</p>
-<h3 id="configuring-nginx">Configuring nginx<a class="headerlink" href="#configuring-nginx" title="Permanent link"></a></h3>
+<h3 id="configuring-nginx">Configuring nginx<a class="headerlink" href="#configuring-nginx" title="Permanent link">🔗</a></h3>
 <p>To make the service available to the world, you need to proxy it through
 nginx. Add the following definition to the default configuration:</p>
 <div class="highlight"><pre><span></span><code><span class="k">upstream</span><span class="w"> </span><span class="s">nominatim_service</span><span class="w"> </span><span class="p">{</span>

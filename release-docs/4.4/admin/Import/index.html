@@ -2072,13 +2072,13 @@
   
 
 
-<h1 id="importing-the-database">Importing the Database<a class="headerlink" href="#importing-the-database" title="Permanent link"></a></h1>
+<h1 id="importing-the-database">Importing the Database<a class="headerlink" href="#importing-the-database" title="Permanent link">🔗</a></h1>
 <p>The following instructions explain how to create a Nominatim database
 from an OSM planet file. It is assumed that you have already successfully
 installed the Nominatim software itself and the <code>nominatim</code> tool can be found
 in your <code>PATH</code>. If this is not the case, return to the
 <a href="../Installation/">installation page</a>.</p>
-<h2 id="creating-the-project-directory">Creating the project directory<a class="headerlink" href="#creating-the-project-directory" title="Permanent link"></a></h2>
+<h2 id="creating-the-project-directory">Creating the project directory<a class="headerlink" href="#creating-the-project-directory" title="Permanent link">🔗</a></h2>
 <p>Before you start the import, you should create a project directory for your
 new database installation. This directory receives all data that is related
 to a single Nominatim setup: configuration, extra data, etc. Create a project
@@ -2102,7 +2102,7 @@ for the database installation. This setup still works and can be useful for
 development purposes. It is not recommended anymore for production setups.
 Create a project directory that is separate from the Nominatim software.</p>
 </div>
-<h3 id="configuration-setup-in-env">Configuration setup in <code>.env</code><a class="headerlink" href="#configuration-setup-in-env" title="Permanent link"></a></h3>
+<h3 id="configuration-setup-in-env">Configuration setup in <code>.env</code><a class="headerlink" href="#configuration-setup-in-env" title="Permanent link">🔗</a></h3>
 <p>The Nominatim server can be customized via an <code>.env</code> configuration file in the 
 project directory. This is a file in <a href="https://github.com/theskumar/python-dotenv">dotenv</a>
 format which looks the same as variable settings in a standard shell environment.
@@ -2112,7 +2112,7 @@ variables.</p>
 <p>There are lots of configuration settings you can tweak. A full reference
 can be found in the chapter <a href="../../customize/Settings/">Configuration Settings</a>.
 Most should have a sensible default.</p>
-<h4 id="flatnode-files">Flatnode files<a class="headerlink" href="#flatnode-files" title="Permanent link"></a></h4>
+<h4 id="flatnode-files">Flatnode files<a class="headerlink" href="#flatnode-files" title="Permanent link">🔗</a></h4>
 <p>If you plan to import a large dataset (e.g. Europe, North America, planet),
 you should also enable flatnode storage of node locations. With this
 setting enabled, node coordinates are stored in a simple file instead
@@ -2123,8 +2123,8 @@ Add to your <code>.env</code>:</p>
 
 <p>Replace the second part with a suitable path on your system and make sure
 the directory exists. There should be at least 75GB of free space.</p>
-<h2 id="downloading-additional-data">Downloading additional data<a class="headerlink" href="#downloading-additional-data" title="Permanent link"></a></h2>
-<h3 id="wikipediawikidata-rankings">Wikipedia/Wikidata rankings<a class="headerlink" href="#wikipediawikidata-rankings" title="Permanent link"></a></h3>
+<h2 id="downloading-additional-data">Downloading additional data<a class="headerlink" href="#downloading-additional-data" title="Permanent link">🔗</a></h2>
+<h3 id="wikipediawikidata-rankings">Wikipedia/Wikidata rankings<a class="headerlink" href="#wikipediawikidata-rankings" title="Permanent link">🔗</a></h3>
 <p>Wikipedia can be used as an optional auxiliary data source to help indicate
 the importance of OSM features. Nominatim will work without this information
 but it will improve the quality of the results if this is installed.
@@ -2141,7 +2141,7 @@ also add importances after the import. Download the SQL files, then
 run <code>nominatim refresh --wiki-data --importance</code>. Updating
 importances for a planet will take a couple of hours.</p>
 </div>
-<h3 id="external-postcodes">External postcodes<a class="headerlink" href="#external-postcodes" title="Permanent link"></a></h3>
+<h3 id="external-postcodes">External postcodes<a class="headerlink" href="#external-postcodes" title="Permanent link">🔗</a></h3>
 <p>Nominatim can use postcodes from an external source to improve searching with
 postcodes. We provide precomputed postcodes sets for the US (using TIGER data)
 and the UK (using the <a href="https://osdatahub.os.uk/downloads/open/CodePointOpen">CodePoint OpenData set</a>.
@@ -2153,13 +2153,13 @@ wget https://nominatim.org/data/us_postcodes.csv.gz
 
 <p>You can also add your own custom postcode sources, see
 <a href="../../customize/Postcodes/">Customization of postcodes</a>.</p>
-<h2 id="choosing-the-data-to-import">Choosing the data to import<a class="headerlink" href="#choosing-the-data-to-import" title="Permanent link"></a></h2>
+<h2 id="choosing-the-data-to-import">Choosing the data to import<a class="headerlink" href="#choosing-the-data-to-import" title="Permanent link">🔗</a></h2>
 <p>In its default setup Nominatim is configured to import the full OSM data
 set for the entire planet. Such a setup requires a powerful machine with
 at least 64GB of RAM and around 900GB of SSD hard disks. Depending on your
 use case there are various ways to reduce the amount of data imported. This
 section discusses these methods. They can also be combined.</p>
-<h3 id="using-an-extract">Using an extract<a class="headerlink" href="#using-an-extract" title="Permanent link"></a></h3>
+<h3 id="using-an-extract">Using an extract<a class="headerlink" href="#using-an-extract" title="Permanent link">🔗</a></h3>
 <p>If you only need geocoding for a smaller region, then precomputed OSM extracts
 are a good way to reduce the database size and import time.
 <a href="https://download.geofabrik.de">Geofabrik</a> offers extracts for most countries.
@@ -2169,7 +2169,7 @@ They even have daily updates which can be used with the update process described
 <p>Please be aware that some extracts are not cut exactly along the country
 boundaries. As a result some parts of the boundary may be missing which means
 that Nominatim cannot compute the areas for some administrative areas.</p>
-<h3 id="dropping-data-required-for-dynamic-updates">Dropping Data Required for Dynamic Updates<a class="headerlink" href="#dropping-data-required-for-dynamic-updates" title="Permanent link"></a></h3>
+<h3 id="dropping-data-required-for-dynamic-updates">Dropping Data Required for Dynamic Updates<a class="headerlink" href="#dropping-data-required-for-dynamic-updates" title="Permanent link">🔗</a></h3>
 <p>About half of the data in Nominatim's database is not really used for serving
 the API. It is only there to allow the data to be updated from the latest
 changes from OSM. For many uses these dynamic updates are not really required.
@@ -2190,13 +2190,13 @@ If you plan to use those, you must not use the <code>--no-updates</code> paramet
 Do a normal import, add the external data and once you are done with
 everything run <code>nominatim freeze</code>.</p>
 </div>
-<h3 id="reverse-only-imports">Reverse-only Imports<a class="headerlink" href="#reverse-only-imports" title="Permanent link"></a></h3>
+<h3 id="reverse-only-imports">Reverse-only Imports<a class="headerlink" href="#reverse-only-imports" title="Permanent link">🔗</a></h3>
 <p>If you only want to use the Nominatim database for reverse lookups or
 if you plan to use the installation only for exports to a
 <a href="https://photon.komoot.io/">photon</a> database, then you can set up a database
 without search indexes. Add <code>--reverse-only</code> to your setup command above.</p>
 <p>This saves about 5% of disk space, import time won't be significant faster.</p>
-<h3 id="filtering-imported-data">Filtering Imported Data<a class="headerlink" href="#filtering-imported-data" title="Permanent link"></a></h3>
+<h3 id="filtering-imported-data">Filtering Imported Data<a class="headerlink" href="#filtering-imported-data" title="Permanent link">🔗</a></h3>
 <p>Nominatim normally sets up a full search database containing administrative
 boundaries, places, streets, addresses and POI data. There are also other
 import styles available which only read selected data:</p>
@@ -2266,7 +2266,7 @@ OSM data grows with time.</p>
 <p>You can also customize the styles further.
 A <a href="../../customize/Import-Styles/">description of the style format</a>
 can be found in the customization guide.</p>
-<h2 id="initial-import-of-the-data">Initial import of the data<a class="headerlink" href="#initial-import-of-the-data" title="Permanent link"></a></h2>
+<h2 id="initial-import-of-the-data">Initial import of the data<a class="headerlink" href="#initial-import-of-the-data" title="Permanent link">🔗</a></h2>
 <div class="admonition danger">
 <p class="admonition-title">Important</p>
 <p>First try the import with a small extract, for example from
@@ -2278,7 +2278,7 @@ from the <strong>project directory</strong> to start the import:</p>
 </code></pre></div>
 <p>The <strong>project directory</strong> is the one that you have set up at the beginning.
 See <a href="#creating-the-project-directory">creating the project directory</a>.</p>
-<h3 id="notes-on-full-planet-imports">Notes on full planet imports<a class="headerlink" href="#notes-on-full-planet-imports" title="Permanent link"></a></h3>
+<h3 id="notes-on-full-planet-imports">Notes on full planet imports<a class="headerlink" href="#notes-on-full-planet-imports" title="Permanent link">🔗</a></h3>
 <p>Even on a perfectly configured machine
 the import of a full planet takes around 2 days. Once you see messages
 with <code>Rank .. ETA</code> appear, the indexing process has started. This part takes
@@ -2286,7 +2286,7 @@ the most time. There are 30 ranks to process. Rank 26 and 30 are the most comple
 They take each about a third of the total import time. If you have not reached
 rank 26 after two days of import, it is worth revisiting your system
 configuration as it may not be optimal for the import.</p>
-<h3 id="notes-on-memory-usage">Notes on memory usage<a class="headerlink" href="#notes-on-memory-usage" title="Permanent link"></a></h3>
+<h3 id="notes-on-memory-usage">Notes on memory usage<a class="headerlink" href="#notes-on-memory-usage" title="Permanent link">🔗</a></h3>
 <p>In the first step of the import Nominatim uses <a href="https://osm2pgsql.org">osm2pgsql</a>
 to load the OSM data into the PostgreSQL database. This step is very demanding
 in terms of RAM usage. osm2pgsql and PostgreSQL are running in parallel at 
@@ -2305,7 +2305,7 @@ the size of the OSM pbf file you are importing. The size needs to be given in
 MB. Make sure you leave enough RAM for PostgreSQL and osm2pgsql as mentioned
 above. If the system starts swapping or you are getting out-of-memory errors,
 reduce the cache size or even consider using a flatnode file.</p>
-<h3 id="testing-the-installation">Testing the installation<a class="headerlink" href="#testing-the-installation" title="Permanent link"></a></h3>
+<h3 id="testing-the-installation">Testing the installation<a class="headerlink" href="#testing-the-installation" title="Permanent link">🔗</a></h3>
 <p>Run this script to verify that all required tables and indices got created
 successfully.</p>
 <div class="highlight"><pre><span></span><code>nominatim<span class="w"> </span>admin<span class="w"> </span>--check-database
@@ -2321,7 +2321,7 @@ command line:</p>
 running the modern Python frontend and the legacy PHP frontend.
 Make sure you have installed the right packages as per
 <a href="../Installation/#software">Installation</a>.</p>
-<h4 id="testing-the-python-frontend">Testing the Python frontend<a class="headerlink" href="#testing-the-python-frontend" title="Permanent link"></a></h4>
+<h4 id="testing-the-python-frontend">Testing the Python frontend<a class="headerlink" href="#testing-the-python-frontend" title="Permanent link">🔗</a></h4>
 <p>To run the test server against the Python frontend, you must choose a
 web framework to use, either starlette or falcon. Make sure the appropriate
 packages are installed. Then run</p>
@@ -2337,7 +2337,7 @@ e.g. <code>http://localhost:8088/reverse.php?lat=27.1750090510034&amp;lon=78.042
 <p>Do not use this test server in production.
 To run Nominatim via webservers like Apache or nginx, please continue reading
 <a href="../Deployment-Python/">Deploy the Python frontend</a>.</p>
-<h4 id="testing-the-php-frontend">Testing the PHP frontend<a class="headerlink" href="#testing-the-php-frontend" title="Permanent link"></a></h4>
+<h4 id="testing-the-php-frontend">Testing the PHP frontend<a class="headerlink" href="#testing-the-php-frontend" title="Permanent link">🔗</a></h4>
 <p>You can run a small test server with the PHP frontend like this:</p>
 <div class="highlight"><pre><span></span><code>nominatim<span class="w"> </span>serve<span class="w"> </span>--engine<span class="w"> </span>php
 </code></pre></div>
@@ -2348,7 +2348,7 @@ e.g. <code>http://localhost:8088/reverse.php?lat=27.1750090510034&amp;lon=78.042
 <p>Do not use this test server in production.
 To run Nominatim via webservers like Apache or nginx, please continue reading
 <a href="../Deployment-PHP/">Deploy the PHP frontend</a>.</p>
-<h2 id="enabling-search-by-category-phrases">Enabling search by category phrases<a class="headerlink" href="#enabling-search-by-category-phrases" title="Permanent link"></a></h2>
+<h2 id="enabling-search-by-category-phrases">Enabling search by category phrases<a class="headerlink" href="#enabling-search-by-category-phrases" title="Permanent link">🔗</a></h2>
 <p>To be able to search for places by their type using
 <a href="https://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases">special phrases</a>
 you also need to import these key phrases like this:</p>

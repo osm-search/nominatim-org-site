@@ -1766,8 +1766,8 @@
   
 
 
-<h1 id="database-layout">Database Layout<a class="headerlink" href="#database-layout" title="Permanent link"></a></h1>
-<h3 id="import-tables">Import tables<a class="headerlink" href="#import-tables" title="Permanent link"></a></h3>
+<h1 id="database-layout">Database Layout<a class="headerlink" href="#database-layout" title="Permanent link">🔗</a></h1>
+<h3 id="import-tables">Import tables<a class="headerlink" href="#import-tables" title="Permanent link">🔗</a></h3>
 <p>OSM data is initially imported using <a href="https://osm2pgsql.org">osm2pgsql</a>.
 Nominatim uses its own data output style 'gazetteer', which differs from the
 output style created for map rendering.</p>
@@ -1799,7 +1799,7 @@ once with <code>class</code> of <code>highway</code> and once with a <code>class
 <p>How raw OSM tags are mapped to the columns in the place table is to a certain
 degree configurable. See <a href="../../customize/Import-Styles/">Customizing Import Styles</a>
 for more information.</p>
-<h3 id="search-tables">Search tables<a class="headerlink" href="#search-tables" title="Permanent link"></a></h3>
+<h3 id="search-tables">Search tables<a class="headerlink" href="#search-tables" title="Permanent link">🔗</a></h3>
 <p>The following tables carry all information needed to do the search:</p>
 <p><img alt="search tables" src="../search-tables.svg" /></p>
 <p>The <strong>placex</strong> table is the central table that saves all information about the
@@ -1865,7 +1865,7 @@ of the columns from placex for faster lookup.</p>
 integers are saved in the name and address vectors of the search_name table. The
 <strong>word</strong> table serves as the lookup table from string to such a word ID. The
 exact content of the word table depends on the <a href="../Tokenizers/">tokenizer</a> used.</p>
-<h2 id="address-computation-tables">Address computation tables<a class="headerlink" href="#address-computation-tables" title="Permanent link"></a></h2>
+<h2 id="address-computation-tables">Address computation tables<a class="headerlink" href="#address-computation-tables" title="Permanent link">🔗</a></h2>
 <p>Next to the main search tables, there is a set of secondary helper tables used
 to compute the address relations between places. These tables are partitioned.
 Each country is assigned a partition number in the country_name table (see
@@ -1889,7 +1889,7 @@ selected subset of places:</p>
 <li><code>isguess</code> is true for places that are not described by an area</li>
 </ul>
 <p>All other columns reflect their counterpart in the placex table.</p>
-<h2 id="static-data-tables">Static data tables<a class="headerlink" href="#static-data-tables" title="Permanent link"></a></h2>
+<h2 id="static-data-tables">Static data tables<a class="headerlink" href="#static-data-tables" title="Permanent link">🔗</a></h2>
 <p>Nominatim also creates a number of static tables at import:</p>
 <ul>
 <li><code>nominatim_properties</code> saves settings that must not be changed after
@@ -1900,7 +1900,7 @@ selected subset of places:</p>
    default languages and saves the assignment of countries to partitions.</li>
 <li><code>country_osm_grid</code> provides a fallback for country geometries</li>
 </ul>
-<h2 id="auxiliary-data-tables">Auxiliary data tables<a class="headerlink" href="#auxiliary-data-tables" title="Permanent link"></a></h2>
+<h2 id="auxiliary-data-tables">Auxiliary data tables<a class="headerlink" href="#auxiliary-data-tables" title="Permanent link">🔗</a></h2>
 <p>Finally there are some table for auxiliary data:</p>
 <ul>
 <li><code>location_property_tiger</code> - saves housenumber from the Tiger import. Its

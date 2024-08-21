@@ -1778,7 +1778,7 @@
   
 
 
-<h1 id="setting-up-nominatim-for-development">Setting up Nominatim for Development<a class="headerlink" href="#setting-up-nominatim-for-development" title="Permanent link"></a></h1>
+<h1 id="setting-up-nominatim-for-development">Setting up Nominatim for Development<a class="headerlink" href="#setting-up-nominatim-for-development" title="Permanent link">🔗</a></h1>
 <p>This chapter gives an overview how to set up Nominatim for development
 and how to run tests.</p>
 <div class="admonition important">
@@ -1788,7 +1788,7 @@ can of course also use your favourite distribution. You just might have to
 adapt the commands below slightly, in particular the commands for installing
 additional software.</p>
 </div>
-<h2 id="installing-nominatim">Installing Nominatim<a class="headerlink" href="#installing-nominatim" title="Permanent link"></a></h2>
+<h2 id="installing-nominatim">Installing Nominatim<a class="headerlink" href="#installing-nominatim" title="Permanent link">🔗</a></h2>
 <p>The first step is to install Nominatim itself. Please follow the installation
 instructions in the <a href="../../admin/Installation/">Admin section</a>. You don't need
 to set up a webserver for development, the webserver that is included with PHP
@@ -1800,7 +1800,7 @@ following packages should get you started:</p>
 <div class="codehilite"><pre><span></span><code>sudo apt install vagrant vagrant-libvirt libvirt-daemon nfs-kernel-server
 </code></pre></div>
 
-<h2 id="prerequisites-for-testing-and-documentation">Prerequisites for testing and documentation<a class="headerlink" href="#prerequisites-for-testing-and-documentation" title="Permanent link"></a></h2>
+<h2 id="prerequisites-for-testing-and-documentation">Prerequisites for testing and documentation<a class="headerlink" href="#prerequisites-for-testing-and-documentation" title="Permanent link">🔗</a></h2>
 <p>The Nominatim test suite consists of behavioural tests (using behave) and
 unit tests (using PHPUnit for PHP code and pytest for Python code).
 It has the following additional requirements:</p>
@@ -1826,7 +1826,7 @@ depending on your choice of webserver framework:</p>
 <li><a href="https://mkdocstrings.github.io/">mkdocstrings</a> &gt;= 0.18</li>
 <li><a href="https://mkdocstrings.github.io/python/">mkdocstrings-python</a></li>
 </ul>
-<h3 id="installing-prerequisites-on-ubuntudebian">Installing prerequisites on Ubuntu/Debian<a class="headerlink" href="#installing-prerequisites-on-ubuntudebian" title="Permanent link"></a></h3>
+<h3 id="installing-prerequisites-on-ubuntudebian">Installing prerequisites on Ubuntu/Debian<a class="headerlink" href="#installing-prerequisites-on-ubuntudebian" title="Permanent link">🔗</a></h3>
 <p>Some of the Python packages require the newest version which is not yet
 available with the current distributions. Therefore it is recommended to
 install pip to get the newest versions.</p>
@@ -1853,7 +1853,7 @@ composer global require &quot;phpunit/phpunit=8.*&quot;
 to your PATH as well:</p>
 <div class="highlight"><pre><span></span><code>echo &#39;export PATH=~/.config/composer/vendor/bin:$PATH&#39; &gt; ~/.profile
 </code></pre></div>
-<h2 id="executing-tests">Executing Tests<a class="headerlink" href="#executing-tests" title="Permanent link"></a></h2>
+<h2 id="executing-tests">Executing Tests<a class="headerlink" href="#executing-tests" title="Permanent link">🔗</a></h2>
 <p>All tests are located in the <code>/test</code> directory.</p>
 <p>To run all tests just go to the build directory and run make:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>build
@@ -1861,7 +1861,7 @@ make<span class="w"> </span><span class="nb">test</span>
 </code></pre></div>
 <p>For more information about the structure of the tests and how to change and
 extend the test suite, see the <a href="../Testing/">Testing chapter</a>.</p>
-<h2 id="documentation-pages">Documentation Pages<a class="headerlink" href="#documentation-pages" title="Permanent link"></a></h2>
+<h2 id="documentation-pages">Documentation Pages<a class="headerlink" href="#documentation-pages" title="Permanent link">🔗</a></h2>
 <p>The <a href="https://nominatim.org/release-docs/develop/">Nominatim documentation</a> is
 built using the <a href="https://www.mkdocs.org/">MkDocs</a> static site generation
 framework. The master branch is automatically deployed every night on
