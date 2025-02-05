@@ -1,0 +1,3348 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nominatim.org/develop/ICU-Tokenizer-Modules/">
+      
+      
+        <link rel="prev" href="../Tokenizers/">
+      
+      
+        <link rel="next" href="../Development-Environment/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>Custom modules for ICU tokenizer - Nominatim 5.0.0 Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#writing-custom-sanitizer-and-token-analysis-modules-for-the-icu-tokenizer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nominatim 5.0.0 Manual" class="md-header__button md-logo" aria-label="Nominatim 5.0.0 Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nominatim 5.0.0 Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Custom modules for ICU tokenizer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Introduction
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/Overview/" class="md-tabs__link">
+          
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../admin/Installation/" class="md-tabs__link">
+          
+  
+  Administration Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../customize/Overview/" class="md-tabs__link">
+          
+  
+  Customization Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../library/Getting-Started/" class="md-tabs__link">
+          
+  
+  Library Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+  Developers Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nominatim 5.0.0 Manual" class="md-nav__button md-logo" aria-label="Nominatim 5.0.0 Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nominatim 5.0.0 Manual
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Search/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Reverse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Lookup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Address Lookup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Details/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Details
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Status/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Status
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Output/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Place Output Formats
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Administration Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Administration Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Import/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Import
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Update/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Deployment-Python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Setup-Nominatim-UI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nominatim UI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Advanced-Installations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Installations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maintenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Migration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migration from older Versions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Install-on-Ubuntu-22/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation on Ubuntu 22
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Install-on-Ubuntu-24/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation on Ubuntu 24
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Customization Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Customization Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Import-Styles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Import Styles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration Settings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Result-Formatting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Result Formatting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Country-Settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Per-Country Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Ranking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Place Ranking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Importance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Importance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Tokenizers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tokenizers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Special-Phrases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Special Phrases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Tiger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External data: US housenumbers from TIGER
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/Postcodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External data: Postcodes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../customize/SQLite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conversion to SQLite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Library Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Library Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Getting-Started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/NominatimAPI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nominatim API class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Input-Parameter-Types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input Parameter Types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Result-Handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Result Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Low-Level-DB-Access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Low-level DB Access
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Developers Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Developers Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Database-Layout/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Layout
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Indexing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Indexing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tokenizers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tokenizers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Custom modules for ICU tokenizer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Custom modules for ICU tokenizer
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-non-standard-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using non-standard modules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-query-preprocessors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom query preprocessors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-sanitizer-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom sanitizer modules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom sanitizer modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sanitizer-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sanitizer configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-main-filter-function-of-the-sanitizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      The main filter function of the sanitizer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The main filter function of the sanitizer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#placeinfo-information-about-the-place" class="md-nav__link">
+    <span class="md-ellipsis">
+      PlaceInfo - information about the place
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#placename-extended-naming-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      PlaceName - extended naming information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-filter-for-us-street-prefixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Filter for US street prefixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-token-analysis-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom token analysis module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom token analysis module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-creating-acronym-variants-for-long-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Creating acronym variants for long names
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sanitizers-vs-token-analysis-what-to-use-for-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sanitizers vs. Token analysis - what to use for variants?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Development-Environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup for Development
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-sources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External Data Sources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="writing-custom-sanitizer-and-token-analysis-modules-for-the-icu-tokenizer">Writing custom sanitizer and token analysis modules for the ICU tokenizer<a class="headerlink" href="#writing-custom-sanitizer-and-token-analysis-modules-for-the-icu-tokenizer" title="Permanent link">🔗</a></h1>
+<p>The <a href="../../customize/Tokenizers/#icu-tokenizer">ICU tokenizer</a> provides a
+highly customizable method to pre-process and normalize the name information
+of the input data before it is added to the search index. It comes with a
+selection of sanitizers and token analyzers which you can use to adapt your
+installation to your needs. If the provided modules are not enough, you can
+also provide your own implementations. This section describes the API
+of sanitizers and token analysis.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This API is currently in early alpha status. While this API is meant to
+be a public API on which other sanitizers and token analyzers may be
+implemented, it is not guaranteed to be stable at the moment.</p>
+</div>
+<h2 id="using-non-standard-modules">Using non-standard modules<a class="headerlink" href="#using-non-standard-modules" title="Permanent link">🔗</a></h2>
+<p>Sanitizer names (in the <code>step</code> property), token analysis names (in the
+<code>analyzer</code>) and query preprocessor names (in the <code>step</code> property)
+may refer to externally supplied modules. There are two ways
+to include external modules: through a library or from the project directory.</p>
+<p>To include a module from a library, use the absolute import path as name and
+make sure the library can be found in your PYTHONPATH.</p>
+<p>To use a custom module without creating a library, you can put the module
+somewhere in your project directory and then use the relative path to the
+file. Include the whole name of the file including the <code>.py</code> ending.</p>
+<h2 id="custom-query-preprocessors">Custom query preprocessors<a class="headerlink" href="#custom-query-preprocessors" title="Permanent link">🔗</a></h2>
+<p>A query preprocessor must export a single factory function <code>create</code> with
+the following signature:</p>
+<div class="highlight"><pre><span></span><code><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">QueryConfig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">list</span><span class="p">[</span><span class="n">Phrase</span><span class="p">]],</span> <span class="nb">list</span><span class="p">[</span><span class="n">Phrase</span><span class="p">]]</span>
+</code></pre></div>
+<p>The function receives the custom configuration for the preprocessor and
+returns a callable (function or class) with the actual preprocessing
+code. When a query comes in, then the callable gets a list of phrases
+and needs to return the transformed list of phrases. The list and phrases
+may be changed in place or a completely new list may be generated.</p>
+<p>The <code>QueryConfig</code> is a simple dictionary which contains all configuration
+options given in the yaml configuration of the ICU tokenizer. It is up to
+the function to interpret the values.</p>
+<p>A <code>nominatim_api.search.Phrase</code> describes a part of the query that contains one or more independent
+search terms. Breaking a query into phrases helps reducing the number of
+possible tokens Nominatim has to take into account. However a phrase break
+is definitive: a multi-term search word cannot go over a phrase break.
+A Phrase object has two fields:</p>
+<ul>
+<li><code>ptype</code> further refines the type of phrase (see list below)</li>
+<li><code>text</code> contains the query text for the phrase</li>
+</ul>
+<p>The order of phrases matters to Nominatim when doing further processing.
+Thus, while you may split or join phrases, you should not reorder them
+unless you really know what you are doing.</p>
+<p>Phrase types (<code>nominatim_api.search.PhraseType</code>) can further help narrowing
+down how the tokens in the phrase are interpreted. The following phrase types
+are known:</p>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="nominatim_api.search.PhraseType"></a>
+    <div class="doc doc-contents first">
+
+
+        <p>Designation of a phrase.</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h6 id="nominatim_api.search.PhraseType.AMENITY" class="doc doc-heading">
+            <code class=" language-python"><span class="n">AMENITY</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#nominatim_api.search.PhraseType.AMENITY" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Contains name or type of a POI.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h6 id="nominatim_api.search.PhraseType.CITY" class="doc doc-heading">
+            <code class=" language-python"><span class="n">CITY</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#nominatim_api.search.PhraseType.CITY" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Contains the postal city.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h6 id="nominatim_api.search.PhraseType.COUNTRY" class="doc doc-heading">
+            <code class=" language-python"><span class="n">COUNTRY</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#nominatim_api.search.PhraseType.COUNTRY" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Contains the country name or code.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h6 id="nominatim_api.search.PhraseType.COUNTY" class="doc doc-heading">
+            <code class=" language-python"><span class="n">COUNTY</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#nominatim_api.search.PhraseType.COUNTY" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Contains the equivalent of a county.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h6 id="nominatim_api.search.PhraseType.NONE" class="doc doc-heading">
+            <code class=" language-python"><span class="n">NONE</span> <span class="o">=</span> <span class="mi">0</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#nominatim_api.search.PhraseType.NONE" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>No specific designation (i.e. source is free-form query).</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h6 id="nominatim_api.search.PhraseType.POSTCODE" class="doc doc-heading">
+            <code class=" language-python"><span class="n">POSTCODE</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#nominatim_api.search.PhraseType.POSTCODE" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Contains a postal code.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h6 id="nominatim_api.search.PhraseType.STATE" class="doc doc-heading">
+            <code class=" language-python"><span class="n">STATE</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#nominatim_api.search.PhraseType.STATE" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Contains a state or province.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h6 id="nominatim_api.search.PhraseType.STREET" class="doc doc-heading">
+            <code class=" language-python"><span class="n">STREET</span> <span class="o">=</span> <span class="n">enum</span><span class="o">.</span><span class="n">auto</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#nominatim_api.search.PhraseType.STREET" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Contains a street name optionally with a housenumber.</p>
+    </div>
+
+</div>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_api.search.PhraseType.compatible_with" class="doc doc-heading">
+            <code class=" language-python"><span class="n">compatible_with</span><span class="p">(</span><span class="n">ttype</span><span class="p">,</span> <span class="n">is_full_phrase</span><span class="p">)</span></code>
+
+<a href="#nominatim_api.search.PhraseType.compatible_with" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Check if the given token type can be used with the phrase type.</p>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="custom-sanitizer-modules">Custom sanitizer modules<a class="headerlink" href="#custom-sanitizer-modules" title="Permanent link">🔗</a></h2>
+<p>A sanitizer module must export a single factory function <code>create</code> with the
+following signature:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">SanitizerConfig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ProcessInfo</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
+</code></pre></div>
+<p>The function receives the custom configuration for the sanitizer and must
+return a callable (function or class) that transforms the name and address
+terms of a place. When a place is processed, then a <code>ProcessInfo</code> object
+is created from the information that was queried from the database. This
+object is sequentially handed to each configured sanitizer, so that each
+sanitizer receives the result of processing from the previous sanitizer.
+After the last sanitizer is finished, the resulting name and address lists
+are forwarded to the token analysis module.</p>
+<p>Sanitizer functions are instantiated once and then called for each place
+that is imported or updated. They don't need to be thread-safe.
+If multi-threading is used, each thread creates their own instance of
+the function.</p>
+<h3 id="sanitizer-configuration">Sanitizer configuration<a class="headerlink" href="#sanitizer-configuration" title="Permanent link">🔗</a></h3>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="nominatim_db.tokenizer.sanitizers.config.SanitizerConfig"></a>
+    <div class="doc doc-contents first">
+
+
+        <p>The <code>SanitizerConfig</code> class is a read-only dictionary
+with configuration options for the sanitizer.
+In addition to the usual dictionary functions, the class provides
+accessors to standard sanitizer options that are used by many of the
+sanitizers.</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.tokenizer.sanitizers.config.SanitizerConfig.get_bool" class="doc doc-heading">
+            <code class=" language-python"><span class="n">get_bool</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#nominatim_db.tokenizer.sanitizers.config.SanitizerConfig.get_bool" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Extract a configuration parameter as a boolean.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>param</code>
+            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Name of the configuration parameter. The parameter must
+   contain one of the yaml boolean values or an
+   UsageError will be raised.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>default</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[bool]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Value to return, when the parameter is missing.
+     When set to <code>None</code>, the parameter must be defined.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Boolean value of the given parameter.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.tokenizer.sanitizers.config.SanitizerConfig.get_delimiter" class="doc doc-heading">
+            <code class=" language-python"><span class="n">get_delimiter</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;,;&#39;</span><span class="p">)</span></code>
+
+<a href="#nominatim_db.tokenizer.sanitizers.config.SanitizerConfig.get_delimiter" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the 'delimiters' parameter in the configuration as a
+compiled regular expression that can be used to split strings on
+these delimiters.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>default</code>
+            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Delimiters to be used when 'delimiters' parameter
+     is not explicitly configured.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;,;&#39;</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Pattern">Pattern</span>[str]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A regular expression pattern which can be used to
+split a string. The regular expression makes sure that the
+resulting names are stripped and that repeated delimiters
+are ignored. It may still create empty fields on occasion. The
+code needs to filter those.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.tokenizer.sanitizers.config.SanitizerConfig.get_filter" class="doc doc-heading">
+            <code class=" language-python"><span class="n">get_filter</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;PASS_ALL&#39;</span><span class="p">)</span></code>
+
+<a href="#nominatim_db.tokenizer.sanitizers.config.SanitizerConfig.get_filter" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Returns a filter function for the given parameter of the sanitizer
+configuration.</p>
+<p>The value provided for the parameter in sanitizer configuration
+should be a string or list of strings, where each string is a regular
+expression. These regular expressions will later be used by the
+filter function to filter strings.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>param</code>
+            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The parameter for which the filter function
+   will be created.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>default</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[str, <span title="typing.Sequence">Sequence</span>[str]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Defines the behaviour of filter function if
+     parameter is missing in the sanitizer configuration.
+     Takes a string(PASS_ALL or FAIL_ALL) or a list of strings.
+     Any other value of string or an empty list is not allowed,
+     and will raise a ValueError. If the value is PASS_ALL, the filter
+     function will let all strings to pass, if the value is FAIL_ALL,
+     filter function will let no strings to pass.
+     If value provided is a list of strings each string
+     is treated as a regular expression. In this case these regular
+     expressions will be used by the filter function.
+     By default allow filter function to let all strings pass.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;PASS_ALL&#39;</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Callable">Callable</span>[[str], bool]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A filter function that takes a target string as the argument and
+returns True if it fully matches any of the regular expressions
+otherwise returns False.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.tokenizer.sanitizers.config.SanitizerConfig.get_string_list" class="doc doc-heading">
+            <code class=" language-python"><span class="n">get_string_list</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">tuple</span><span class="p">())</span></code>
+
+<a href="#nominatim_db.tokenizer.sanitizers.config.SanitizerConfig.get_string_list" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Extract a configuration parameter as a string list.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>param</code>
+            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Name of the configuration parameter.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>default</code>
+            </td>
+            <td>
+                  <code><span title="typing.Sequence">Sequence</span>[str]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Takes a tuple or list of strings which will
+     be returned if the parameter is missing in the
+     sanitizer configuration.
+     Note that if this default parameter is not
+     provided then an empty list is returned.</p>
+              </div>
+            </td>
+            <td>
+                  <code>tuple()</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Sequence">Sequence</span>[str]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the parameter value is a simple string, it is returned as a
+one-item list. If the parameter value does not exist, the given
+default is returned. If the parameter value is a list, it is
+checked to contain only strings before being returned.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h3 id="the-main-filter-function-of-the-sanitizer">The main filter function of the sanitizer<a class="headerlink" href="#the-main-filter-function-of-the-sanitizer" title="Permanent link">🔗</a></h3>
+<p>The filter function receives a single object of type <code>ProcessInfo</code>
+which has with three members:</p>
+<ul>
+<li><code>place: PlaceInfo</code>: read-only information about the place being processed.
+   See PlaceInfo below.</li>
+<li><code>names: List[PlaceName]</code>: The current list of names for the place.</li>
+<li><code>address: List[PlaceName]</code>: The current list of address names for the place.</li>
+</ul>
+<p>While the <code>place</code> member is provided for information only, the <code>names</code> and
+<code>address</code> lists are meant to be manipulated by the sanitizer. It may add and
+remove entries, change information within a single entry (for example by
+adding extra attributes) or completely replace the list with a different one.</p>
+<h4 id="placeinfo-information-about-the-place">PlaceInfo - information about the place<a class="headerlink" href="#placeinfo-information-about-the-place" title="Permanent link">🔗</a></h4>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="nominatim_db.data.place_info.PlaceInfo"></a>
+    <div class="doc doc-contents first">
+
+
+        <p>This data class contains all information the tokenizer can access
+about a place.</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h6 id="nominatim_db.data.place_info.PlaceInfo.address" class="doc doc-heading">
+            <code class=" language-python"><span class="n">address</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#nominatim_db.data.place_info.PlaceInfo.address" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>A dictionary with the address elements of the place. They key
+usually corresponds to the suffix part of the key of an OSM
+'addr:<em>' or 'isin:</em>' tag. There are also some special keys like
+<code>country</code> or <code>country_code</code> which merge OSM keys that contain
+the same information. See <a href="../../customize/Import-Styles/">Import Styles</a> for details.</p>
+<p>The property may be None if the place has no address information.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h6 id="nominatim_db.data.place_info.PlaceInfo.centroid" class="doc doc-heading">
+            <code class=" language-python"><span class="n">centroid</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#nominatim_db.data.place_info.PlaceInfo.centroid" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>A center point of the place in WGS84. May be None when the
+geometry of the place is unknown.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h6 id="nominatim_db.data.place_info.PlaceInfo.country_code" class="doc doc-heading">
+            <code class=" language-python"><span class="n">country_code</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#nominatim_db.data.place_info.PlaceInfo.country_code" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The country code of the country the place is in. Guaranteed
+to be a two-letter lower-case string. If the place is not inside
+any country, the property is set to None.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h6 id="nominatim_db.data.place_info.PlaceInfo.name" class="doc doc-heading">
+            <code class=" language-python"><span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#nominatim_db.data.place_info.PlaceInfo.name" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>A dictionary with the names of the place. Keys and values represent
+the full key and value of the corresponding OSM tag. Which tags
+are saved as names is determined by the import style.
+The property may be None if the place has no names.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h6 id="nominatim_db.data.place_info.PlaceInfo.rank_address" class="doc doc-heading">
+            <code class=" language-python"><span class="n">rank_address</span><span class="p">:</span> <span class="nb">int</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#nominatim_db.data.place_info.PlaceInfo.rank_address" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The <a href="../../customize/Ranking/#address-rank">rank address</a> before any rank correction is applied.</p>
+    </div>
+
+</div>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.data.place_info.PlaceInfo.is_a" class="doc doc-heading">
+            <code class=" language-python"><span class="n">is_a</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></code>
+
+<a href="#nominatim_db.data.place_info.PlaceInfo.is_a" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Set to True when the place's primary tag corresponds to the given
+key and value.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.data.place_info.PlaceInfo.is_country" class="doc doc-heading">
+            <code class=" language-python"><span class="n">is_country</span><span class="p">()</span></code>
+
+<a href="#nominatim_db.data.place_info.PlaceInfo.is_country" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Set to True when the place is a valid country boundary.</p>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h4 id="placename-extended-naming-information">PlaceName - extended naming information<a class="headerlink" href="#placename-extended-naming-information" title="Permanent link">🔗</a></h4>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="nominatim_db.data.place_name.PlaceName"></a>
+    <div class="doc doc-contents first">
+
+
+        <p>Each name and address part of a place is encapsulated in an object of
+this class. It saves not only the name proper but also describes the
+kind of name with two properties:</p>
+<ul>
+<li><code>kind</code> describes the name of the OSM key used without any suffixes
+  (i.e. the part after the colon removed)</li>
+<li><code>suffix</code> contains the suffix of the OSM tag, if any. The suffix
+  is the part of the key after the first colon.</li>
+</ul>
+<p>In addition to that, a name may have arbitrary additional attributes.
+How attributes are used, depends on the sanitizers and token analysers.
+The exception is the 'analyzer' attribute. This attribute determines
+which token analysis module will be used to finalize the treatment of
+names.</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.data.place_name.PlaceName.clone" class="doc doc-heading">
+            <code class=" language-python"><span class="n">clone</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attr</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#nominatim_db.data.place_name.PlaceName.clone" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Create a deep copy of the place name, optionally with the
+given parameters replaced. In the attribute list only the given
+keys are updated. The list is not replaced completely.
+In particular, the function cannot to be used to remove an
+attribute from a place name.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.data.place_name.PlaceName.get_attr" class="doc doc-heading">
+            <code class=" language-python"><span class="n">get_attr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#nominatim_db.data.place_name.PlaceName.get_attr" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the given property or the value of 'default' if it
+is not set.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.data.place_name.PlaceName.has_attr" class="doc doc-heading">
+            <code class=" language-python"><span class="n">has_attr</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></code>
+
+<a href="#nominatim_db.data.place_name.PlaceName.has_attr" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Check if the given attribute is set.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.data.place_name.PlaceName.set_attr" class="doc doc-heading">
+            <code class=" language-python"><span class="n">set_attr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></code>
+
+<a href="#nominatim_db.data.place_name.PlaceName.set_attr" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Add the given property to the name. If the property was already
+set, then the value is overwritten.</p>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h3 id="example-filter-for-us-street-prefixes">Example: Filter for US street prefixes<a class="headerlink" href="#example-filter-for-us-street-prefixes" title="Permanent link">🔗</a></h3>
+<p>The following sanitizer removes the directional prefixes from street names
+in the US:</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">def</span> <span class="nf">_filter_function</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">place</span><span class="o">.</span><span class="n">country_code</span> <span class="o">==</span> <span class="s1">&#39;us&#39;</span> \
+       <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="n">place</span><span class="o">.</span><span class="n">rank_address</span> <span class="o">&gt;=</span> <span class="mi">26</span> <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="n">place</span><span class="o">.</span><span class="n">rank_address</span> <span class="o">&lt;=</span> <span class="mi">27</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
+            <span class="n">name</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(north|south|west|east) &#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                               <span class="n">name</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                               <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">_filter_function</span>
+</code></pre></div>
+</div>
+<p>This is the most simple form of a sanitizer module. If defines a single
+filter function and implements the required <code>create()</code> function by returning
+the filter.</p>
+<p>The filter function first checks if the object is interesting for the
+sanitizer. Namely it checks if the place is in the US (through <code>country_code</code>)
+and it the place is a street (a <code>rank_address</code> of 26 or 27). If the
+conditions are met, then it goes through all available names and
+removes any leading directional prefix using a simple regular expression.</p>
+<p>Save the source code in a file in your project directory, for example as
+<code>us_streets.py</code>. Then you can use the sanitizer in your <code>icu_tokenizer.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+<span class="nt">sanitizers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">step</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us_streets.py</span>
+<span class="nn">...</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This example is just a simplified show case on how to create a sanitizer.
+It is not really meant for real-world use: while the sanitizer would
+correctly transform <code>West 5th Street</code> into <code>5th Street</code>. it would also
+shorten a simple <code>North Street</code> to <code>Street</code>.</p>
+</div>
+<p>For more sanitizer examples, have a look at the sanitizers provided by Nominatim.
+They can be found in the directory
+<a href="https://github.com/osm-search/Nominatim/tree/master/src/nominatim_db/tokenizer/sanitizers"><code>src/nominatim_db/tokenizer/sanitizers</code></a>.</p>
+<h2 id="custom-token-analysis-module">Custom token analysis module<a class="headerlink" href="#custom-token-analysis-module" title="Permanent link">🔗</a></h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="nominatim_db.tokenizer.token_analysis.base.AnalysisModule"></a>
+    <div class="doc doc-contents first">
+
+
+        <p>The setup of the token analysis is split into two parts:
+configuration and analyser factory. A token analysis module must
+therefore implement the two functions here described.</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.tokenizer.token_analysis.base.AnalysisModule.configure" class="doc doc-heading">
+            <code class=" language-python"><span class="n">configure</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="n">normalizer</span><span class="p">,</span> <span class="n">transliterator</span><span class="p">)</span></code>
+
+<a href="#nominatim_db.tokenizer.token_analysis.base.AnalysisModule.configure" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Prepare the configuration of the analysis module.
+This function should prepare all data that can be shared
+between instances of this analyser.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>rules</code>
+            </td>
+            <td>
+                  <code><span title="typing.Mapping">Mapping</span>[str, <span title="typing.Any">Any</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A dictionary with the additional configuration options
+   as specified in the tokenizer configuration.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>normalizer</code>
+            </td>
+            <td>
+                  <code><span title="typing.Any">Any</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>an ICU Transliterator with the compiled
+        global normalization rules.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>transliterator</code>
+            </td>
+            <td>
+                  <code><span title="typing.Any">Any</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>an ICU Transliterator with the compiled
+            global transliteration rules.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Any">Any</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A data object with configuration data. This will be handed
+as is into the <code>create()</code> function and may be
+used freely by the analysis module as needed.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.tokenizer.token_analysis.base.AnalysisModule.create" class="doc doc-heading">
+            <code class=" language-python"><span class="n">create</span><span class="p">(</span><span class="n">normalizer</span><span class="p">,</span> <span class="n">transliterator</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span></code>
+
+<a href="#nominatim_db.tokenizer.token_analysis.base.AnalysisModule.create" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Create a new instance of the analyser.
+A separate instance of the analyser is created for each thread
+when used in multi-threading context.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>normalizer</code>
+            </td>
+            <td>
+                  <code><span title="typing.Any">Any</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>an ICU Transliterator with the compiled normalization
+        rules.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>transliterator</code>
+            </td>
+            <td>
+                  <code><span title="typing.Any">Any</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>an ICU Transliterator with the compiled
+            transliteration rules.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>config</code>
+            </td>
+            <td>
+                  <code><span title="typing.Any">Any</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The object that was returned by the call to configure().</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="nominatim_db.tokenizer.token_analysis.base.Analyzer" href="#nominatim_db.tokenizer.token_analysis.base.Analyzer">Analyzer</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A new analyzer instance. This must be an object that implements
+the Analyzer protocol.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="nominatim_db.tokenizer.token_analysis.base.Analyzer"></a>
+    <div class="doc doc-contents first">
+
+
+        <p>The <code>create()</code> function of an analysis module needs to return an
+object that implements the following functions.</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.tokenizer.token_analysis.base.Analyzer.compute_variants" class="doc doc-heading">
+            <code class=" language-python"><span class="n">compute_variants</span><span class="p">(</span><span class="n">canonical_id</span><span class="p">)</span></code>
+
+<a href="#nominatim_db.tokenizer.token_analysis.base.Analyzer.compute_variants" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compute the transliterated spelling variants for the given
+canonical ID.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>canonical_id</code>
+            </td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ID string previously computed with
+          <code>get_canonical_id()</code>.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.List">List</span>[str]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A list of possible spelling variants. All strings must have
+been transformed with the global normalizer and
+transliterator ICU rules. Otherwise they cannot be matched
+against the input by the query frontend.
+The list may be empty, when there are no useful
+spelling variants. This may happen when an analyzer only
+usually outputs additional variants to the canonical spelling
+and there are no such variants.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="nominatim_db.tokenizer.token_analysis.base.Analyzer.get_canonical_id" class="doc doc-heading">
+            <code class=" language-python"><span class="n">get_canonical_id</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code>
+
+<a href="#nominatim_db.tokenizer.token_analysis.base.Analyzer.get_canonical_id" class="headerlink" title="Permanent link">🔗</a></h6>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the canonical form of the given name. The canonical ID must
+be unique (the same ID must always yield the same variants) and
+must be a form from which the variants can be derived.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="nominatim_db.data.place_name.PlaceName" href="#nominatim_db.data.place_name.PlaceName">PlaceName</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extended place name description as prepared by
+  the sanitizers.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ID string with a canonical form of the name. The string may
+be empty, when the analyzer cannot analyze the name at all,
+for example because the character set in use does not match.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h3 id="example-creating-acronym-variants-for-long-names">Example: Creating acronym variants for long names<a class="headerlink" href="#example-creating-acronym-variants-for-long-names" title="Permanent link">🔗</a></h3>
+<p>The following example of a token analysis module creates acronyms from
+very long names and adds them as a variant:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AcronymMaker</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; This class is the actual analyzer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">trans</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">norm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trans</span> <span class="o">=</span> <span class="n">trans</span>
+
+
+    <span class="k">def</span> <span class="nf">get_canonical_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="c1"># In simple cases, the normalized name can be used as a canonical id.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">transliterate</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">compute_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="c1"># The transliterated form of the name always makes up a variant.</span>
+        <span class="n">variants</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">transliterate</span><span class="p">(</span><span class="n">name</span><span class="p">)]</span>
+
+        <span class="c1"># Only create acronyms from very long words.</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="c1"># Take the first letter from each word to form the acronym.</span>
+            <span class="n">acronym</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+            <span class="c1"># If that leds to an acronym with at least three letters,</span>
+            <span class="c1"># add the resulting acronym as a variant.</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">acronym</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="c1"># Never forget to transliterate the variants before returning them.</span>
+                <span class="n">variants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">transliterate</span><span class="p">(</span><span class="n">acronym</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">variants</span>
+
+<span class="c1"># The following two functions are the module interface.</span>
+
+<span class="k">def</span> <span class="nf">configure</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="n">normalizer</span><span class="p">,</span> <span class="n">transliterator</span><span class="p">):</span>
+    <span class="c1"># There is no configuration to parse and no data to set up.</span>
+    <span class="c1"># Just return an empty configuration.</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">normalizer</span><span class="p">,</span> <span class="n">transliterator</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+    <span class="c1"># Return a new instance of our token analysis class above.</span>
+    <span class="k">return</span> <span class="n">AcronymMaker</span><span class="p">(</span><span class="n">normalizer</span><span class="p">,</span> <span class="n">transliterator</span><span class="p">)</span>
+</code></pre></div>
+<p>Given the name <code>Trans-Siberian Railway</code>, the code above would return the full
+name <code>Trans-Siberian Railway</code> and the acronym <code>TSR</code> as variant, so that
+searching would work for both.</p>
+<h2 id="sanitizers-vs-token-analysis-what-to-use-for-variants">Sanitizers vs. Token analysis - what to use for variants?<a class="headerlink" href="#sanitizers-vs-token-analysis-what-to-use-for-variants" title="Permanent link">🔗</a></h2>
+<p>It is not always clear when to implement variations in the sanitizer and
+when to write a token analysis module. Just take the acronym example
+above: it would also have been possible to write a sanitizer which adds the
+acronym as an additional name to the name list. The result would have been
+similar. So which should be used when?</p>
+<p>The most important thing to keep in mind is that variants created by the
+token analysis are only saved in the word lookup table. They do not need
+extra space in the search index. If there are many spelling variations, this
+can mean quite a significant amount of space is saved.</p>
+<p>When creating additional names with a sanitizer, these names are completely
+independent. In particular, they can be fed into different token analysis
+modules. This gives a much greater flexibility but at the price that the
+additional names increase the size of the search index.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Nominatim developer community
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "toc.integrate"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
