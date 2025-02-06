@@ -71,3 +71,5 @@ that you require for your use of Nominatim, please get in contact at
 
 * 2020: [LocationIQ](https://locationiq.com/)
 * 2020: [OpenStreetMap Foundation](https://osmfoundation.org)
+* 2020: [NGI Zero Discovery](https://nlnet.nl/discovery/)
+* 2022: [NGI Zero Entrust](https://nlnet.nl/entrust/)
