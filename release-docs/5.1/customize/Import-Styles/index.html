@@ -1,0 +1,2518 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nominatim.org/customize/Import-Styles/">
+      
+      
+        <link rel="prev" href="../Overview/">
+      
+      
+        <link rel="next" href="../Settings/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+    
+    
+      
+        <title>Import Styles - Nominatim 5.1.0 Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuring-the-import-of-osm-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nominatim 5.1.0 Manual" class="md-header__button md-logo" aria-label="Nominatim 5.1.0 Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nominatim 5.1.0 Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Import Styles
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Introduction
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/Overview/" class="md-tabs__link">
+          
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../admin/Installation/" class="md-tabs__link">
+          
+  
+  Administration Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Overview/" class="md-tabs__link">
+          
+  
+  Customization Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../library/Getting-Started/" class="md-tabs__link">
+          
+  
+  Library Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../develop/overview/" class="md-tabs__link">
+          
+  
+  Developers Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nominatim 5.1.0 Manual" class="md-nav__button md-logo" aria-label="Nominatim 5.1.0 Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nominatim 5.1.0 Manual
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Search/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Search
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Reverse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverse
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Lookup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Address Lookup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Details/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Details
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Status/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Output/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Place Output Formats
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Administration Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Administration Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Import/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Import
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Update/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Update
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Deployment-Python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Setup-Nominatim-UI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nominatim UI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Advanced-Installations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Installations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maintenance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Migration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migration from older Versions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Install-on-Ubuntu-22/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation on Ubuntu 22
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Install-on-Ubuntu-24/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation on Ubuntu 24
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Customization Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Customization Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Import Styles
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Import Styles
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-flex-base-lua-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      The flex-base lua module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The flex-base lua module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-preset-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using preset configurations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-processing-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How processing works
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-the-recognized-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the recognized tags
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changing the recognized tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-match-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key match lists
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main tags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignored-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ignored tags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags-for-extratags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tags for extratags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general-pre-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      General pre-filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Name tags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#address-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Address tags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-of-unclassified-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling of unclassified tags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customizing-osm2pgsql-callbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing osm2pgsql callbacks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing osm2pgsql callbacks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabling-additional-relation-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling additional relation types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-additional-logic-to-processing-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding additional logic to processing functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-main-processing-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customizing the main processing function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-osm2pgsql-themepark" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using osm2pgsql-themepark
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osm2pgsql-gazetteer-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      osm2pgsql gazetteer output
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-the-style-of-existing-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the style of existing databases
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Result-Formatting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Result Formatting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Country-Settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Per-Country Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ranking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Place Ranking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Importance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Importance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tokenizers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tokenizers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Special-Phrases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Special Phrases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tiger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External data: US housenumbers from TIGER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Postcodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External data: Postcodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQLite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conversion to SQLite
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Library Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Library Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Getting-Started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/NominatimAPI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nominatim API class
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Input-Parameter-Types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input Parameter Types
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Result-Handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Result Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Low-Level-DB-Access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Low-level DB Access
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Developers Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Developers Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Database-Layout/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Layout
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Indexing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Indexing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Tokenizers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tokenizers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/ICU-Tokenizer-Modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom modules for ICU tokenizer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Development-Environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup for Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/data-sources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External Data Sources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="configuring-the-import-of-osm-data">Configuring the Import of OSM data<a class="headerlink" href="#configuring-the-import-of-osm-data" title="Permanent link">🔗</a></h1>
+<p>In the very first step of a Nominatim import, OSM data is loaded into the
+database. Nominatim uses <a href="https://osm2pgsql.org">osm2pgsql</a> for this task.
+It comes with a <a href="https://osm2pgsql.org/doc/manual.html#the-flex-output">flex style</a>
+specifically tailored to filter and convert OSM data into Nominatim's
+internal data representation. Nominatim ships with a few preset
+configurations for this import, each results in a geocoding database of
+different detail. The
+<a href="../../admin/Import/#filtering-imported-data">Import section</a> explains
+these default configurations in detail.</p>
+<p>If you want to have more control over which OSM data is added to the database,
+you can also create your own custom style. Create a new lua style file, put it
+into your project directory and then set <code>NOMINATIM_IMPORT_STYLE</code> to the name
+of the file. Custom style files can be used to modify the existing preset
+configurations or to implement your own configuration from scratch.</p>
+<p>The remainder of the page describes how the flex style works and how to
+customize it.</p>
+<h2 id="the-flex-base-lua-module">The <code>flex-base</code> lua module<a class="headerlink" href="#the-flex-base-lua-module" title="Permanent link">🔗</a></h2>
+<p>The core of Nominatim's flex import configuration is the <code>flex-base</code> module.
+It defines the table layout used by Nominatim and provides standard
+implementations for the import callbacks that help with customizing
+how OSM tags are used by Nominatim.</p>
+<p>Every custom style must include this module to make sure that the correct
+tables are created. Thus start your custom style as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">flex</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;flex-base&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="using-preset-configurations">Using preset configurations<a class="headerlink" href="#using-preset-configurations" title="Permanent link">🔗</a></h3>
+<p>If you want to start with one of the existing presets, then you can import
+its settings using the <code>import_topic()</code> function:</p>
+<div class="highlight"><pre><span></span><code>local flex = require(&#39;flex-base&#39;)
+
+flex.import_topic(&#39;streets&#39;)
+</code></pre></div>
+<p>The <code>import_topic</code> function takes an optional second configuration
+parameter. The available options are explained in the
+<a href="#using-osm2pgsql-themepark">themepark section</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also directly import the preset style files, e.g.
+<code>local flex = require('import-street')</code>. It is not possible to
+set extra configuration this way.</p>
+</div>
+<h3 id="how-processing-works">How processing works<a class="headerlink" href="#how-processing-works" title="Permanent link">🔗</a></h3>
+<p>When Nominatim processes an OSM object, it looks for four kinds of tags:
+The <em>main tags</em> classify what kind of place the OSM object represents. One
+OSM object can have more than one main tag. In such case one database entry
+is created for each main tag. <em>Name tags</em> represent searchable names of the
+place. <em>Address tags</em> are used to compute the address hierarchy of the place.
+Address tags are used for searching and for creating a display name of the place.
+<em>Extra tags</em> are any tags that are not directly related to search but
+contain interesting additional information.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Some tags in the extratags category are used by Nominatim to better
+classify the place. You want to make sure these are always present
+in custom styles.</p>
+</div>
+<p>Configuring the style means deciding which key and/or key/value is used
+in which category.</p>
+<h2 id="changing-the-recognized-tags">Changing the recognized tags<a class="headerlink" href="#changing-the-recognized-tags" title="Permanent link">🔗</a></h2>
+<p>The flex style offers a number of functions to set the classification of
+each OSM tag. Most of these functions can also take a preset string instead
+of a tag description. These presets describe common configurations that
+are also used in the definition of the predefined styles. This section
+lists the configuration functions and the accepted presets.</p>
+<h4 id="key-match-lists">Key match lists<a class="headerlink" href="#key-match-lists" title="Permanent link">🔗</a></h4>
+<p>Some of the following functions take <em>key match lists</em>. These lists can
+contain three kinds of strings to match against tag keys:
+A string that ends in an asterisk <code>*</code> is a prefix match and accordingly matches
+against any key that starts with the given string (minus the <code>*</code>). 
+A suffix match can be defined similarly with a string that starts with a <code>*</code>.
+Any other string is matched exactly against tag keys.</p>
+<h3 id="main-tags">Main tags<a class="headerlink" href="#main-tags" title="Permanent link">🔗</a></h3>
+<p><code>set/modify_main_tags()</code> allow to define which tags are used as main tags. It
+takes a lua table parameter which defines for keys and key/value
+combinations, how they are classified.</p>
+<p>The following classifications are recognized:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">classification</th>
+<th style="text-align: left;">meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">always</td>
+<td style="text-align: left;">Unconditionally use this tag as a main tag.</td>
+</tr>
+<tr>
+<td style="text-align: left;">named</td>
+<td style="text-align: left;">Consider as main tag, when the object has a primary name (see <a href="#name-tags">names</a> below)</td>
+</tr>
+<tr>
+<td style="text-align: left;">named_with_key</td>
+<td style="text-align: left;">Consider as main tag, when the object has a primary name with a domain prefix. For example, if the main tag is  <code>bridge=yes</code>, then it will only be added as an extra entry, if there is a tag <code>bridge:name[:XXX]</code> for the same object. If this property is set, all names that are not domain-specific are ignored.</td>
+</tr>
+<tr>
+<td style="text-align: left;">fallback</td>
+<td style="text-align: left;">Consider as main tag only when no other main tag was found. Fallback always implies <code>named</code>, i.e. fallbacks are only tried for objects with primary names.</td>
+</tr>
+<tr>
+<td style="text-align: left;">delete</td>
+<td style="text-align: left;">Completely ignore the tag in any further processing</td>
+</tr>
+<tr>
+<td style="text-align: left;">extra</td>
+<td style="text-align: left;">Move the tag to extratags and then ignore it for further processing</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&lt;function&gt;</code></td>
+<td style="text-align: left;">Advanced handling, see <a href="#advanced-main-tag-handling">below</a></td>
+</tr>
+</tbody>
+</table>
+<p>Each key in the table parameter defines an OSM tag key. The value may
+be directly a classification as described above. Then the tag will
+be considered a main tag for any possible value that is not further defined.
+To further restrict which values are acceptable, give a table with the
+permitted values and their kind of main tag. If the table contains a simple
+value without key, then this is used as default for values that are not listed.</p>
+<p><code>set_main_tags()</code> will completely replace the current main tag configuration
+with the new configuration. <code>modify_main_tags()</code> will merge the new
+configuration with the existing one. Otherwise, the two functions do exactly
+the same.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">flex</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;import-full&#39;</span><span class="p">)</span>
+
+<span class="n">flex</span><span class="p">.</span><span class="n">set_main_tags</span><span class="p">{</span>
+    <span class="n">boundary</span> <span class="o">=</span> <span class="p">{</span><span class="n">administrative</span> <span class="o">=</span> <span class="s1">&#39;named&#39;</span><span class="p">},</span>
+    <span class="n">highway</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;always&#39;</span><span class="p">,</span> <span class="n">street_lamp</span> <span class="o">=</span> <span class="s1">&#39;named&#39;</span><span class="p">,</span> <span class="n">no</span> <span class="o">=</span> <span class="s1">&#39;delete&#39;</span><span class="p">},</span>
+    <span class="n">landuse</span> <span class="o">=</span> <span class="s1">&#39;fallback&#39;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In this example an object with a <code>boundary</code> tag will only be included
+when it has a value of <code>administrative</code>. Objects with <code>highway</code> tags are
+always included with two exceptions: the troll tag <code>highway=no</code> is
+deleted on the spot. And when the value is <code>street_lamp</code> then the object
+must have a name, too. Finally, if a <code>landuse</code> tag is present then
+it will be used independently of the concrete value when neither boundary
+nor highway tags were found and the object is named.</p>
+</div>
+<h5 id="presets">Presets<a class="headerlink" href="#presets" title="Permanent link">🔗</a></h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">admin</td>
+<td style="text-align: left;">Basic tag set collecting places and administrative boundaries. This set is needed also to ensure proper address computation and should therefore always be present. You can disable selected place types like <code>place=locality</code> after adding this set, if they are not relevant for your use case.</td>
+</tr>
+<tr>
+<td style="text-align: left;">all_boundaries</td>
+<td style="text-align: left;">Extends the set of recognized boundaries and places to all available ones.</td>
+</tr>
+<tr>
+<td style="text-align: left;">natural</td>
+<td style="text-align: left;">Tags for natural features like rivers and mountain peaks.</td>
+</tr>
+<tr>
+<td style="text-align: left;">street/default</td>
+<td style="text-align: left;">Tags for streets. Major streets are always included, minor ones only when they have a name.</td>
+</tr>
+<tr>
+<td style="text-align: left;">street/car</td>
+<td style="text-align: left;">Tags for all streets that can be used by a motor vehicle.</td>
+</tr>
+<tr>
+<td style="text-align: left;">street/all</td>
+<td style="text-align: left;">Includes all highway features named and unnamed.</td>
+</tr>
+<tr>
+<td style="text-align: left;">poi/delete</td>
+<td style="text-align: left;">Adds most POI features with and without name. Some frequent but very domain-specific values are excluded by deleting them.</td>
+</tr>
+<tr>
+<td style="text-align: left;">poi/extra</td>
+<td style="text-align: left;">Like 'poi/delete' but excluded values are moved to extratags.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="advanced-main-tag-handling">Advanced main tag handling<a class="headerlink" href="#advanced-main-tag-handling" title="Permanent link">🔗</a></h5>
+<p>The groups described above are in fact only a preset for a filtering function
+that is used to make the final decision how a pre-selected main tag is entered
+into Nominatim's internal table. To further customize handling you may also
+supply your own filtering function.</p>
+<p>The function takes up to three parameters: a Place object of the object
+being processed, the key of the main tag and the value of the main tag.
+The function may return one of three values:</p>
+<ul>
+<li><code>nil</code> or <code>false</code> causes the entry to be ignored</li>
+<li>the Place object causes the place to be added as is</li>
+<li>`Place.copy(names=..., address=..., extratags=...) causes the
+  place to be enter into the database but with name/address/extratags
+  set to the given different values.</li>
+</ul>
+<p>The Place object has some read-only values that can be used to determine
+the handling:</p>
+<ul>
+<li><strong>object</strong> is the original OSM object data handed in by osm2pgsql</li>
+<li><strong>admin_level</strong> is the content of the admin_level tag, parsed into an integer and normalized to a value between 0 and 15</li>
+<li><strong>has_name</strong> is a boolean indicating if the object has a primary name tag</li>
+<li><strong>names</strong> is a table with the collected list of name tags</li>
+<li><strong>address</strong> is a table with the collected list of address tags</li>
+<li><strong>extratags</strong> is a table with the collected list of additional tags to save</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">flex</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;flex-base&#39;</span><span class="p">)</span>
+
+<span class="n">flex</span><span class="p">.</span><span class="n">add_topic</span><span class="p">(</span><span class="s1">&#39;street&#39;</span><span class="p">)</span>
+
+<span class="kd">local</span> <span class="kr">function</span> <span class="nf">no_sidewalks</span><span class="p">(</span><span class="n">place</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="kr">if</span> <span class="n">place</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">footway</span> <span class="o">==</span> <span class="s1">&#39;sidewalk&#39;</span> <span class="kr">then</span>
+        <span class="kr">return</span> <span class="kc">false</span>
+    <span class="kr">end</span>
+
+    <span class="c1">-- default behaviour is to have all footways</span>
+    <span class="kr">return</span> <span class="n">place</span>
+<span class="kr">end</span>
+
+<span class="n">flex</span><span class="p">.</span><span class="n">modify_main_tags</span><span class="p">(</span><span class="n">highway</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;footway&#39;</span> <span class="o">=</span> <span class="n">no_sidewalks</span><span class="p">}</span>
+</code></pre></div>
+This script adds a custom handler for <code>highway=footway</code>. It only includes
+them in the database, when the object doesn't have a tag <code>footway=sidewalk</code>
+indicating that it is just part of a larger street which should already
+be indexed. Note that it is not necessary to check the key and value
+of the main tag because the function is only used for the specific
+main tag.</p>
+</div>
+<h3 id="ignored-tags">Ignored tags<a class="headerlink" href="#ignored-tags" title="Permanent link">🔗</a></h3>
+<p>The function <code>ignore_keys()</code> sets the <code>delete</code> classification for keys.
+This function takes a <em>key match list</em> so that it is possible to exclude
+groups of keys.</p>
+<p>Note that full matches always take precedence over suffix matches, which
+in turn take precedence over prefix matches.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">flex</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;flex-base&#39;</span><span class="p">)</span>
+
+<span class="n">flex</span><span class="p">.</span><span class="n">add_topic</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+<span class="n">flex</span><span class="p">.</span><span class="n">ignore_keys</span><span class="p">{</span><span class="s1">&#39;old_name&#39;</span><span class="p">,</span> <span class="s1">&#39;old_name:*&#39;</span><span class="p">}</span>
+</code></pre></div>
+<p>This example uses the <code>admin</code> preset with the exception that names
+that are no longer are in current use, are ignored.</p>
+</div>
+<h5 id="presets_1">Presets<a class="headerlink" href="#presets_1" title="Permanent link">🔗</a></h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">metatags</td>
+<td style="text-align: left;">Tags with meta information about the OSM tag like source, notes and import sources.</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">Non-names that actually describe properties or name parts. These names can throw off search and should always be removed.</td>
+</tr>
+<tr>
+<td style="text-align: left;">address</td>
+<td style="text-align: left;">Extra <code>addr:*</code> tags that are not useful for Nominatim.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tags-for-extratags">Tags for <code>extratags</code><a class="headerlink" href="#tags-for-extratags" title="Permanent link">🔗</a></h3>
+<p>The function <code>add_for_extratags()</code> sets the <code>extra</code> classification for keys.
+This function takes a
+<em>key match list</em> so that it is possible to move groups of keys to extratags.</p>
+<p>Note that full matches always take precedence over suffix matches, which
+in turn take precedence over prefix matches.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">flex</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;flex-base&#39;</span><span class="p">)</span>
+
+<span class="n">flex</span><span class="p">.</span><span class="n">add_topic</span><span class="p">(</span><span class="s1">&#39;street&#39;</span><span class="p">)</span>
+<span class="n">flex</span><span class="p">.</span><span class="n">add_for_extratags</span><span class="p">{</span><span class="s1">&#39;surface&#39;</span><span class="p">,</span> <span class="s1">&#39;access&#39;</span><span class="p">,</span> <span class="s1">&#39;vehicle&#39;</span><span class="p">,</span> <span class="s1">&#39;maxspeed&#39;</span><span class="p">}</span>
+</code></pre></div>
+<p>This example uses the <code>street</code> preset but adds a couple of tags that
+are of interest about the condition of the street.</p>
+</div>
+<h5 id="presets_2">Presets<a class="headerlink" href="#presets_2" title="Permanent link">🔗</a></h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">required</td>
+<td style="text-align: left;">Tags that Nominatim will use for various computations when present in extratags. Always include these.</td>
+</tr>
+</tbody>
+</table>
+<p>In addition, all <a href="#presets_1">presets from ignored tags</a> are accepted.</p>
+<h3 id="general-pre-filtering">General pre-filtering<a class="headerlink" href="#general-pre-filtering" title="Permanent link">🔗</a></h3>
+<p><em>(deprecated)</em> <code>set_prefilters()</code> allows to set the <code>delete</code> and <code>extra</code>
+classification for main tags.</p>
+<p>This function removes all previously set main tags with <code>delete</code> and <code>extra</code>
+classification and then adds the newly defined tags.</p>
+<p><code>set_prefilters()</code> takes a table with four optional fields:</p>
+<ul>
+<li><strong>delete_keys</strong> is a <em>key match list</em> for tags that should be deleted</li>
+<li><strong>delete_tags</strong> contains a table of tag keys pointing to a list of tag
+  values. Tags with matching key/value pairs are deleted.</li>
+<li><strong>extra_keys</strong> is a <em>key match list</em> for tags which should be saved into
+  extratags</li>
+<li><strong>extra_tags</strong> contains a table of tag keys pointing to a list of tag
+  values. Tags with matching key/value pairs are moved to extratags.</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Deprecation warning</p>
+<p>Use of this function should be replaced with <code>modify_main_tags()</code> to
+set the data from <code>delete_tags</code> and <code>extra_tags</code>, with <code>ignore_keys()</code>
+for the <code>delete_keys</code> parameter and with <code>add_for_extratags()</code> for the
+<code>extra_keys</code> parameter.</p>
+</div>
+<h3 id="name-tags">Name tags<a class="headerlink" href="#name-tags" title="Permanent link">🔗</a></h3>
+<p><code>set/modify_name_tags()</code> allow to define the tags used for naming places. Name tags
+can only be selected by their keys. The import script distinguishes
+between primary and auxiliary names. A primary name is the given name of
+a place. Having a primary name makes a place <em>named</em>. This is important
+for main tags that are only included when a name is present. Auxiliary names
+are identifiers like references. They may be searched for but should not
+be included on their own.</p>
+<p>The functions take a table with two optional fields <code>main</code> and <code>extra</code>.
+They take <em>key match lists</em> for primary and auxiliary names respectively.
+A third field <code>house</code> can contain tags for names that appear in place of
+house numbers in addresses. This field can only contain complete key names.
+'house tags' are special in that they cause the OSM object to be added to
+the database independently of the presence of other main tags.</p>
+<p><code>set_name_tags()</code> overwrites the current configuration, while
+<code>modify_name_tags()</code> replaces the fields that are given. (Be aware that
+the fields are replaced as a whole. <code>main = {'foo_name'}</code> will cause
+<code>foo_name</code> to become the only recognized primary name. Any previously
+defined primary names are forgotten.)</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">flex</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;flex-base&#39;</span><span class="p">)</span>
+
+<span class="n">flex</span><span class="p">.</span><span class="n">set_main_tags</span><span class="p">{</span><span class="n">highway</span> <span class="o">=</span> <span class="p">{</span><span class="n">traffic_light</span> <span class="o">=</span> <span class="s1">&#39;named&#39;</span><span class="p">}}</span>
+<span class="n">flex</span><span class="p">.</span><span class="n">set_name_tags</span><span class="p">{</span><span class="n">main</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;name:*&#39;</span><span class="p">},</span>
+                   <span class="n">extra</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ref&#39;</span><span class="p">}</span>
+                  <span class="p">}</span>
+</code></pre></div>
+<p>This example creates a search index over traffic lights but will
+only include those that have a common name and not those which just
+have some reference ID from the city.</p>
+</div>
+<h5 id="presets_3">Presets<a class="headerlink" href="#presets_3" title="Permanent link">🔗</a></h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">core</td>
+<td style="text-align: left;">Basic set of recognized names for all places.</td>
+</tr>
+<tr>
+<td style="text-align: left;">address</td>
+<td style="text-align: left;">Additional names useful when indexing full addresses.</td>
+</tr>
+<tr>
+<td style="text-align: left;">poi</td>
+<td style="text-align: left;">Extended set of recognized names for pois. Use on top of the core set.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="address-tags">Address tags<a class="headerlink" href="#address-tags" title="Permanent link">🔗</a></h3>
+<p><code>set/modify_address_tags()</code> defines the tags that will be used to build
+up the address of an object. Address tags can only be chosen by their key.</p>
+<p>The functions take a table with arbitrary fields, each defining
+a key list or <em>key match list</em>. Some fields have a special meaning:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">main</td>
+<td style="text-align: left;">key list</td>
+<td style="text-align: left;">Tags that make a full address object out of the OSM object. This is usually the house number or variants thereof. If a main address tag appears, then the object will always be included, if necessary with a fallback of <code>place=house</code>. If the key has a prefix of <code>addr:</code> or <code>is_in:</code> this will be stripped.</td>
+</tr>
+<tr>
+<td style="text-align: left;">extra</td>
+<td style="text-align: left;">key match list</td>
+<td style="text-align: left;">Supplementary tags for addresses, tags like <code>addr:street</code>, <code>addr:city</code> etc. If the key has a prefix of <code>addr:</code> or <code>is_in:</code> this will be stripped.</td>
+</tr>
+<tr>
+<td style="text-align: left;">interpolation</td>
+<td style="text-align: left;">key list</td>
+<td style="text-align: left;">Tags that identify address interpolation lines.</td>
+</tr>
+<tr>
+<td style="text-align: left;">country</td>
+<td style="text-align: left;">key match list</td>
+<td style="text-align: left;">Tags that may contain the country the place is in. The first found value with a two-letter code will be accepted, all other values are discarded.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><em>other</em></td>
+<td style="text-align: left;">key match list</td>
+<td style="text-align: left;">Summary field. If a key matches the key match list, then its value will be added to the address tags with the name of the field as key. If multiple tags match, then an arbitrary one wins.</td>
+</tr>
+</tbody>
+</table>
+<p><code>set_address_tags()</code> overwrites the current configuration, while
+<code>modify_address_tags()</code> replaces the fields that are given. (Be aware that
+the fields are replaced as a whole.)</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">flex</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;import-full&#39;</span><span class="p">)</span>
+
+<span class="n">flex</span><span class="p">.</span><span class="n">set_address_tags</span><span class="p">{</span>
+    <span class="n">main</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;addr:housenumber&#39;</span><span class="p">},</span>
+    <span class="n">extra</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;addr:*&#39;</span><span class="p">},</span>
+    <span class="n">postcode</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;postal_code&#39;</span><span class="p">,</span> <span class="s1">&#39;postcode&#39;</span><span class="p">,</span> <span class="s1">&#39;addr:postcode&#39;</span><span class="p">},</span>
+    <span class="n">country</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;country_code&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO3166-1&#39;</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In this example all tags which begin with <code>addr:</code> will be saved in
+the address tag list. If one of the tags is <code>addr:housenumber</code>, the
+object will fall back to be entered as a <code>place=house</code> in the database
+unless there is another interested main tag to be found.</p>
+<p>Tags with keys <code>country_code</code> and <code>ISO3166-1</code> are saved with their
+value under <code>country</code> in the address tag list. The same thing happens
+to postcodes, they will always be saved under the key <code>postcode</code> thus
+normalizing the multitude of keys that are used in the OSM database.</p>
+</div>
+<h5 id="presets_4">Presets<a class="headerlink" href="#presets_4" title="Permanent link">🔗</a></h5>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">core</td>
+<td style="text-align: left;">Basic set of tags needed to recognize address relationship for any place. Always include this.</td>
+</tr>
+<tr>
+<td style="text-align: left;">houses</td>
+<td style="text-align: left;">Additional set of tags needed to recognize proper addresses</td>
+</tr>
+</tbody>
+</table>
+<h3 id="handling-of-unclassified-tags">Handling of unclassified tags<a class="headerlink" href="#handling-of-unclassified-tags" title="Permanent link">🔗</a></h3>
+<p><code>set_unused_handling()</code> defines what to do with tags that remain after all tags
+have been classified using the functions above. There are two ways in
+which the function can be used:</p>
+<p><code>set_unused_handling(delete_keys = ..., delete_tags = ...)</code> deletes all
+keys that match the descriptions in the parameters and moves all remaining
+tags into the extratags list.</p>
+<p><code>set_unused_handling(extra_keys = ..., extra_tags = ...)</code> moves all tags
+matching the parameters into the extratags list and then deletes the remaining
+tags. For the format of the parameters see the description in <code>set_prefilters()</code>
+above.</p>
+<p>When no special handling is set, then unused tags will be discarded with one
+exception: place tags are kept in extratags for administrative boundaries.
+When using a custom setting, you should also make sure that the place tag
+is added for extratags.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">flex</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;import-full&#39;</span><span class="p">)</span>
+
+<span class="n">flex</span><span class="p">.</span><span class="n">set_address_tags</span><span class="p">{</span>
+    <span class="n">main</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;addr:housenumber&#39;</span><span class="p">},</span>
+    <span class="n">extra</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;addr:*&#39;</span><span class="p">,</span> <span class="s1">&#39;tiger:county&#39;</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">flex</span><span class="p">.</span><span class="n">set_unused_handling</span><span class="p">{</span><span class="n">delete_keys</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tiger:*&#39;</span><span class="p">}}</span>
+</code></pre></div>
+<p>In this example all remaining tags except those beginning with <code>tiger:</code>
+are moved to the extratags list. Note that it is not possible to
+already delete the tiger tags with <code>set_prefilters()</code> because that
+would remove tiger:county before the address tags are processed.</p>
+</div>
+<h2 id="customizing-osm2pgsql-callbacks">Customizing osm2pgsql callbacks<a class="headerlink" href="#customizing-osm2pgsql-callbacks" title="Permanent link">🔗</a></h2>
+<p>osm2pgsql expects the flex style to implement three callbacks, one process
+function per OSM type. If you want to implement special handling for
+certain OSM types, you can override the default implementations provided
+by the flex-base module.</p>
+<h3 id="enabling-additional-relation-types">Enabling additional relation types<a class="headerlink" href="#enabling-additional-relation-types" title="Permanent link">🔗</a></h3>
+<p>OSM relations can represent very diverse
+<a href="https://wiki.openstreetmap.org/wiki/Key:type">types of real-world objects</a>. To
+be able to process them correctly, Nominatim needs to understand how to
+create a geometry for each type. By default, the script knows how to
+process relations of type <code>multipolygon</code>, <code>boundary</code> and <code>waterway</code>. All
+other relation types are ignored.</p>
+<p>To add other types relations, set <code>RELATION_TYPES</code> for
+the type to the kind of geometry that should be created. The following
+kinds of geometries can be used:</p>
+<ul>
+<li><strong>relation_as_multipolygon</strong> creates a (Multi)Polygon from the ways in
+  the relation. If the ways do not form a valid area, then the object is
+  silently discarded.</li>
+<li><strong>relation_as_multiline</strong> creates a (Multi)LineString from the ways in
+  the relations. Ways are combined as much as possible without any regards
+  to their order in the relation.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">flex</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;import-full&#39;</span><span class="p">)</span>
+
+<span class="n">flex</span><span class="p">.</span><span class="n">RELATION_TYPES</span><span class="p">[</span><span class="s1">&#39;site&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flex</span><span class="p">.</span><span class="n">relation_as_multipolygon</span>
+</code></pre></div>
+<p>With this line relations of <code>type=site</code> will be included in the index
+according to main tags found. This only works when the site relation
+resolves to a valid area. Nodes in the site relation are not part of the
+geometry.</p>
+</div>
+<h3 id="adding-additional-logic-to-processing-functions">Adding additional logic to processing functions<a class="headerlink" href="#adding-additional-logic-to-processing-functions" title="Permanent link">🔗</a></h3>
+<p>The default processing functions are also exported by the flex-base module
+as <code>process_node</code>, <code>process_way</code> and <code>process_relation</code>. These can be used
+to implement your own processing functions with some additional processing
+logic.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">flex</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;import-full&#39;</span><span class="p">)</span>
+
+<span class="kr">function</span> <span class="nc">osm2pgsql</span><span class="p">.</span><span class="nf">process_relation</span><span class="p">(</span><span class="n">object</span><span class="p">)</span>
+    <span class="kr">if</span> <span class="n">object</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">boundary</span> <span class="o">~=</span> <span class="s1">&#39;administrative&#39;</span> <span class="ow">or</span> <span class="n">object</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">admin_level</span> <span class="o">~=</span> <span class="s1">&#39;2&#39;</span> <span class="kr">then</span>
+      <span class="n">flex</span><span class="p">.</span><span class="n">process_relation</span><span class="p">(</span><span class="n">object</span><span class="p">)</span>
+    <span class="kr">end</span>
+<span class="kr">end</span>
+</code></pre></div>
+<p>This example discards all country-level boundaries and uses standard
+handling for everything else. This can be useful if you want to use
+your own custom country boundaries.</p>
+</div>
+<h3 id="customizing-the-main-processing-function">Customizing the main processing function<a class="headerlink" href="#customizing-the-main-processing-function" title="Permanent link">🔗</a></h3>
+<div class="admonition danger">
+<p class="admonition-title">Deprecation Warning</p>
+<p>The style used to allow overwriting the internal processing function
+<code>process_tags()</code>. While this is currently still possible, it is no longer
+encouraged and may stop working in future versions. The internal
+<code>Place</code> class should now be considered read-only.</p>
+</div>
+<h2 id="using-osm2pgsql-themepark">Using osm2pgsql-themepark<a class="headerlink" href="#using-osm2pgsql-themepark" title="Permanent link">🔗</a></h2>
+<p>The Nominatim osm2pgsql style is designed so that it can also be used as
+a theme for <a href="https://osm2pgsql.org/themepark/">osm2pgsql-themepark</a>. This
+makes it easy to combine Nominatim with other projects like
+<a href="https://github.com/gravitystorm/openstreetmap-carto">openstreetmap-carto</a>
+in the same database.</p>
+<p>To set up one of the preset styles, simply include a topic with the same name:</p>
+<div class="highlight"><pre><span></span><code>local themepark = require(&#39;themepark&#39;)
+themepark:add_topic(&#39;nominatim/address&#39;)
+</code></pre></div>
+<p>Themepark topics offer two configuration options:</p>
+<ul>
+<li><strong>street_theme</strong> allows to choose one of the sub topics for streets:<ul>
+<li><em>default</em> - include all major streets and named minor paths</li>
+<li><em>car</em> - include all streets physically usable by cars</li>
+<li><em>all</em> - include all major streets and minor paths</li>
+</ul>
+</li>
+<li><strong>with_extratags</strong>, when set to a truthy value, then tags that are
+  not specifically used for address or naming are added to the
+  extratags column</li>
+</ul>
+<p>The customization functions described in the
+<a href="#changing-the-recognized-tags">Changing recognized tags</a> section
+are available from the theme. To access the theme you need to explicitly initialize it.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">themepark</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;themepark&#39;</span><span class="p">)</span>
+
+<span class="n">themepark</span><span class="p">:</span><span class="n">add_topic</span><span class="p">(</span><span class="s1">&#39;nominatim/full&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">with_extratags</span> <span class="o">=</span> <span class="kc">true</span><span class="p">})</span>
+
+<span class="kd">local</span> <span class="n">flex</span> <span class="o">=</span> <span class="n">themepark</span><span class="p">:</span><span class="n">init_theme</span><span class="p">(</span><span class="s1">&#39;nominatim&#39;</span><span class="p">)</span>
+
+<span class="n">flex</span><span class="p">.</span><span class="n">modify_main_tags</span><span class="p">{</span><span class="s1">&#39;amenity&#39;</span> <span class="o">=</span> <span class="p">{</span>
+                       <span class="s1">&#39;waste_basket&#39;</span> <span class="o">=</span> <span class="s1">&#39;delete&#39;</span><span class="p">}</span>
+                  <span class="p">}</span>
+</code></pre></div>
+This example uses the full Nominatim configuration but disables
+importing waste baskets.</p>
+</div>
+<p>You may also write a new configuration from scratch. Simply omit including
+a Nominatim topic and only call the required customization functions.</p>
+<p>Customizing the osm2pgsql processing functions as explained
+<a href="#adding-additional-logic-to-processing-functions">above</a> is not possible
+when running under themepark. Instead include other topics that make the
+necessary modifications or add an additional processor before including
+the Nominatim topic.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">themepark</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;themepark&#39;</span><span class="p">)</span>
+
+<span class="kd">local</span> <span class="kr">function</span> <span class="nf">discard_country_boundaries</span><span class="p">(</span><span class="n">object</span><span class="p">)</span>
+    <span class="kr">if</span> <span class="n">object</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">boundary</span> <span class="o">==</span> <span class="s1">&#39;administrative&#39;</span> <span class="ow">and</span> <span class="n">object</span><span class="p">.</span><span class="n">tags</span><span class="p">.</span><span class="n">admin_level</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span> <span class="kr">then</span>
+        <span class="kr">return</span> <span class="s1">&#39;stop&#39;</span>
+    <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="n">themepark</span><span class="p">:</span><span class="n">add_proc</span><span class="p">(</span><span class="s1">&#39;relation&#39;</span><span class="p">,</span> <span class="n">discard_country_boundaries</span><span class="p">)</span>
+<span class="c1">-- Order matters here. The topic needs to be added after the custom callback.</span>
+<span class="n">themepark</span><span class="p">:</span><span class="n">add_topic</span><span class="p">(</span><span class="s1">&#39;nominatim/full&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">with_extratags</span> <span class="o">=</span> <span class="kc">true</span><span class="p">})</span>
+</code></pre></div>
+Discarding country-level boundaries when running under themepark.</p>
+</div>
+<h2 id="osm2pgsql-gazetteer-output">osm2pgsql gazetteer output<a class="headerlink" href="#osm2pgsql-gazetteer-output" title="Permanent link">🔗</a></h2>
+<p>Nominatim still allows you to configure the gazetteer output to remain
+backwards compatible with older imports. It will be automatically used
+when the style file name ends in <code>.style</code>. For documentation of the
+old import style, please refer to the documentation of older releases
+of Nominatim. Do not use the gazetteer output for new imports. There is no
+guarantee that new versions of Nominatim are fully compatible with the
+gazetteer output.</p>
+<h2 id="changing-the-style-of-existing-databases">Changing the style of existing databases<a class="headerlink" href="#changing-the-style-of-existing-databases" title="Permanent link">🔗</a></h2>
+<p>There is usually no issue changing the style of a database that is already
+imported and now kept up-to-date with change files. Just be aware that any
+change in the style applies to updates only. If you want to change the data
+that is already in the database, then a reimport is necessary.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Nominatim developer community
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "toc.integrate"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
