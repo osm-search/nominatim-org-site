@@ -87,7 +87,7 @@ with indb.begin() as inconn, outdb.begin() as outconn:
 
 That's almost it. SpatialLite is an extension to the standard SQLite database
 and needs a bit of additional setup before it can be used. GeoAlchemy2 has
-[the details](https://geoalchemy-2.readthedocs.io/en/latest/spatialite_tutorial.html#connect-to-the-db).
+[the details](https://geoalchemy-2.readthedocs.io/en/latest/spatialite_dialect.html#connect-to-the-db).
 To make the code above work, add SpatialLite initialisation as follows:
 
 ```python
