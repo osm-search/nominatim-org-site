@@ -62,7 +62,8 @@ Make sure you have the appropriate tool installed.
 
 JSON dumps give you the raw data with which you can build your own Photon
 database. Apart from being much smaller than the database dumps, they are
-also more versatile: they contain a lot more languages[^1] and the full
+also more versatile: they contain a lot more languages[^1], the (almost)
+full set of OSM tags as 'extratags' and the full
 geometries of the objects. Starting from a JSON dump, you can create
 localized databases, databases that allow
 [structured search](https://github.com/komoot/photon/blob/master/docs/structured.md)
