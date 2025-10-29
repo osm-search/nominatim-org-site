@@ -1,0 +1,3493 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nominatim.org/customize/Settings/">
+      
+      
+        <link rel="prev" href="../Import-Styles/">
+      
+      
+        <link rel="next" href="../Result-Formatting/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Configuration Settings - Nominatim 5.2.0 Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuring-nominatim" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nominatim 5.2.0 Manual" class="md-header__button md-logo" aria-label="Nominatim 5.2.0 Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nominatim 5.2.0 Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuration Settings
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Introduction
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/Overview/" class="md-tabs__link">
+          
+  
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../admin/Installation/" class="md-tabs__link">
+          
+  
+  
+  Administration Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Overview/" class="md-tabs__link">
+          
+  
+  
+  Customization Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../library/Getting-Started/" class="md-tabs__link">
+          
+  
+  
+  Library Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../develop/overview/" class="md-tabs__link">
+          
+  
+  
+  Developers Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nominatim 5.2.0 Manual" class="md-nav__button md-logo" aria-label="Nominatim 5.2.0 Manual" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nominatim 5.2.0 Manual
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/openstreetmap/Nominatim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Search
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Reverse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reverse
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Lookup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Address Lookup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Details/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Details
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Place Output Formats
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/Faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Administration Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Administration Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Basic Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Import
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Deployment-Python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Setup-Nominatim-UI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Nominatim UI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Advanced-Installations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Advanced Installations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintenance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migration from older Versions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Install-on-Ubuntu-22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation on Ubuntu 22
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/Install-on-Ubuntu-24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation on Ubuntu 24
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Customization Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Customization Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Import-Styles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Import Styles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Configuration Settings
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuration Settings
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-parameter-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Parameter Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Parameter Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import-and-database-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import and Database Settings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Import and Database Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_database_dsn" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_DATABASE_DSN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_database_webuser" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_DATABASE_WEBUSER
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_tokenizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_TOKENIZER
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_tokenizer_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_TOKENIZER_CONFIG
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_limit_reindexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_LIMIT_REINDEXING
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_LANGUAGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_use_us_tiger_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_USE_US_TIGER_DATA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_use_aux_location_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_USE_AUX_LOCATION_DATA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_http_proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_HTTP_PROXY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_http_proxy_host" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_HTTP_PROXY_HOST
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_http_proxy_port" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_HTTP_PROXY_PORT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_http_proxy_login" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_HTTP_PROXY_LOGIN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_http_proxy_password" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_HTTP_PROXY_PASSWORD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_osm2pgsql_binary" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_OSM2PGSQL_BINARY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_wikipedia_data_path" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_WIKIPEDIA_DATA_PATH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_address_level_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_ADDRESS_LEVEL_CONFIG
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_import_style" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_IMPORT_STYLE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_flatnode_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_FLATNODE_FILE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_tablespace_" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_TABLESPACE_*
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replication-update-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Replication Update Settings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Replication Update Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_replication_url" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_REPLICATION_URL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_replication_max_diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_REPLICATION_MAX_DIFF
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_replication_update_interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_REPLICATION_UPDATE_INTERVAL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_replication_recheck_interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_REPLICATION_RECHECK_INTERVAL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Settings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_cors_noaccesscontrol" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_CORS_NOACCESSCONTROL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_mapicon_url" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_MAPICON_URL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_default_language" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_DEFAULT_LANGUAGE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_lookup_max_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_LOOKUP_MAX_COUNT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_polygon_output_max_types" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_POLYGON_OUTPUT_MAX_TYPES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_search_within_countries" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_SEARCH_WITHIN_COUNTRIES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_serve_legacy_urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_SERVE_LEGACY_URLS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_api_pool_size" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_API_POOL_SIZE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_query_timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_QUERY_TIMEOUT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_request_timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_REQUEST_TIMEOUT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_output_names" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_OUTPUT_NAMES
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging Settings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_log_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_LOG_FILE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_log_format" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_LOG_FORMAT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominatim_debug_sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOMINATIM_DEBUG_SQL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Result-Formatting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Result Formatting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Country-Settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Per-Country Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ranking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Place Ranking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Importance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Importance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tokenizers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tokenizers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Special-Phrases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Special Phrases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tiger/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    External data: US housenumbers from TIGER
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Postcodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    External data: Postcodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQLite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conversion to SQLite
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Library Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Library Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Getting-Started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/NominatimAPI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Nominatim API class
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Input-Parameter-Types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input Parameter Types
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Result-Handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Result Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/Low-Level-DB-Access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Low-level DB Access
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Developers Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Developers Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Database-Layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Database Layout
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Indexing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Indexing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Tokenizers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tokenizers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/ICU-Tokenizer-Modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Custom modules for ICU tokenizer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Development-Environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup for Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/data-sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    External Data Sources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<p>This section provides a reference of all configuration parameters that can
+be used with Nominatim.</p>
+<h1 id="configuring-nominatim">Configuring Nominatim<a class="headerlink" href="#configuring-nominatim" title="Permanent link">🔗</a></h1>
+<p>Nominatim uses <a href="https://github.com/theskumar/python-dotenv">dotenv</a> to manage
+its configuration settings. There are two means to set configuration
+variables: through an <code>.env</code> configuration file or through an environment
+variable.</p>
+<p>The <code>.env</code> configuration file needs to be placed into the
+<a href="../../admin/Import/#creating-the-project-directory">project directory</a>. It
+must contain configuration parameters in <code>&lt;parameter&gt;=&lt;value&gt;</code> format.
+Please refer to the dotenv documentation for details.</p>
+<p>The configuration options may also be set in the form of shell environment
+variables. This is particularly useful, when you want to temporarily change
+a configuration option. For example, to force the replication serve to
+download the next change, you can temporarily disable the update interval:</p>
+<div class="codehilite"><pre><span></span><code>NOMINATIM_REPLICATION_UPDATE_INTERVAL=0 nominatim replication --once
+</code></pre></div>
+
+<p>If a configuration option is defined through .env file and environment
+variable, then the latter takes precedence. </p>
+<h2 id="configuration-parameter-reference">Configuration Parameter Reference<a class="headerlink" href="#configuration-parameter-reference" title="Permanent link">🔗</a></h2>
+<h3 id="import-and-database-settings">Import and Database Settings<a class="headerlink" href="#import-and-database-settings" title="Permanent link">🔗</a></h3>
+<h4 id="nominatim_database_dsn">NOMINATIM_DATABASE_DSN<a class="headerlink" href="#nominatim_database_dsn" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Database connection string</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string: <code>pgsql:&lt;param1&gt;=&lt;value1&gt;;&lt;param2&gt;=&lt;value2&gt;;...</code></td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>pgsql:dbname=nominatim</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>Sets the connection parameters for the Nominatim database. At a minimum
+the name of the database (<code>dbname</code>) is required. You can set any additional
+parameter that is understood by libpq. See the <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS">Postgres documentation</a> for a full list.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is usually recommended not to set the password directly in this
+configuration parameter. Use a
+<a href="https://www.postgresql.org/docs/current/libpq-pgpass.html">password file</a>
+instead.</p>
+</div>
+<h4 id="nominatim_database_webuser">NOMINATIM_DATABASE_WEBUSER<a class="headerlink" href="#nominatim_database_webuser" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Database query user</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>www-data</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>cannot be changed after import</td>
+</tr>
+</tbody>
+</table>
+<p>Defines the name of the database user that will run search queries. Usually
+this is the user under which the webserver is executed. The Postgres user
+needs to be set up before starting the import.</p>
+<p>Nominatim grants minimal rights to this user to all tables that are needed
+for running geocoding queries.</p>
+<h4 id="nominatim_tokenizer">NOMINATIM_TOKENIZER<a class="headerlink" href="#nominatim_tokenizer" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Tokenizer used for normalizing and parsing queries and names</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>icu</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>cannot be changed after import</td>
+</tr>
+</tbody>
+</table>
+<p>Sets the tokenizer type to use for the import. For more information on
+available tokenizers and how they are configured, see
+<a href="../Tokenizers/">Tokenizers</a>.</p>
+<h4 id="nominatim_tokenizer_config">NOMINATIM_TOKENIZER_CONFIG<a class="headerlink" href="#nominatim_tokenizer_config" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Configuration file for the tokenizer</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (default file depends on tokenizer)</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>see documentation for each tokenizer</td>
+</tr>
+</tbody>
+</table>
+<p>Points to the file with additional configuration for the tokenizer.
+See the <a href="../Tokenizers/">Tokenizer</a> descriptions for details
+on the file format.</p>
+<p>If a relative path is given, then the file is searched first relative to the
+project directory and then in the global settings directory.</p>
+<h4 id="nominatim_limit_reindexing">NOMINATIM_LIMIT_REINDEXING<a class="headerlink" href="#nominatim_limit_reindexing" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Avoid invalidating large areas</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>bool</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p>Nominatim computes the address of each place at indexing time. This has the
+advantage to make search faster but also means that more objects needs to
+be invalidated when the data changes. For example, changing the name of
+the state of Florida would require recomputing every single address point
+in the state to make the new name searchable in conjunction with addresses.</p>
+<p>Setting this option to 'yes' means that Nominatim skips reindexing of contained
+objects when the area becomes too large.</p>
+<h4 id="nominatim_languages">NOMINATIM_LANGUAGES<a class="headerlink" href="#nominatim_languages" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Restrict search languages</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string: comma-separated list of language codes</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em></td>
+</tr>
+</tbody>
+</table>
+<p>Normally Nominatim will include all language variants of name:XX
+in the search index. Set this to a comma separated list of language
+codes, to restrict import to a subset of languages.</p>
+<p>Currently only affects the initial import of country names and special phrases.</p>
+<h4 id="nominatim_use_us_tiger_data">NOMINATIM_USE_US_TIGER_DATA<a class="headerlink" href="#nominatim_use_us_tiger_data" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Enable searching for Tiger house number data</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>no</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --functions</code></td>
+</tr>
+</tbody>
+</table>
+<p>When this setting is enabled, search and reverse queries also take data
+from <a href="../Tiger/">Tiger house number data</a> into account.</p>
+<h4 id="nominatim_use_aux_location_data">NOMINATIM_USE_AUX_LOCATION_DATA<a class="headerlink" href="#nominatim_use_aux_location_data" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Enable searching in external house number tables</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>no</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --functions</code></td>
+</tr>
+<tr>
+<td><strong>Comment:</strong></td>
+<td>Do not use.</td>
+</tr>
+</tbody>
+</table>
+<p>When this setting is enabled, search queries also take data from external
+house number tables into account.</p>
+<p><em>Warning:</em> This feature is currently unmaintained and should not be used.</p>
+<h4 id="nominatim_http_proxy">NOMINATIM_HTTP_PROXY<a class="headerlink" href="#nominatim_http_proxy" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Use HTTP proxy when downloading data</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p>When this setting is enabled and at least
+<a href="#nominatim_http_proxy_host">NOMINATIM_HTTP_PROXY_HOST</a> and
+<a href="#nominatim_http_proxy_port">NOMINATIM_HTTP_PROXY_PORT</a> are set, the
+configured proxy will be used, when downloading external data like
+replication diffs.</p>
+<h4 id="nominatim_http_proxy_host">NOMINATIM_HTTP_PROXY_HOST<a class="headerlink" href="#nominatim_http_proxy_host" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Host name of the proxy to use</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em></td>
+</tr>
+</tbody>
+</table>
+<p>When <a href="#nominatim_http_proxy">NOMINATIM_HTTP_PROXY</a> is enabled, this setting
+configures the proxy host name.</p>
+<h4 id="nominatim_http_proxy_port">NOMINATIM_HTTP_PROXY_PORT<a class="headerlink" href="#nominatim_http_proxy_port" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Port number of the proxy to use</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>3128</td>
+</tr>
+</tbody>
+</table>
+<p>When <a href="#nominatim_http_proxy">NOMINATIM_HTTP_PROXY</a> is enabled, this setting
+configures the port number to use with the proxy.</p>
+<h4 id="nominatim_http_proxy_login">NOMINATIM_HTTP_PROXY_LOGIN<a class="headerlink" href="#nominatim_http_proxy_login" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Username for proxies that require login</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em></td>
+</tr>
+</tbody>
+</table>
+<p>When <a href="#nominatim_http_proxy">NOMINATIM_HTTP_PROXY</a> is enabled, use this
+setting to define the username for proxies that require a login.</p>
+<h4 id="nominatim_http_proxy_password">NOMINATIM_HTTP_PROXY_PASSWORD<a class="headerlink" href="#nominatim_http_proxy_password" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Password for proxies that require login</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em></td>
+</tr>
+</tbody>
+</table>
+<p>When <a href="#nominatim_http_proxy">NOMINATIM_HTTP_PROXY</a> is enabled, use this
+setting to define the password for proxies that require a login.</p>
+<h4 id="nominatim_osm2pgsql_binary">NOMINATIM_OSM2PGSQL_BINARY<a class="headerlink" href="#nominatim_osm2pgsql_binary" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Location of the osm2pgsql binary</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (use binary shipped with Nominatim)</td>
+</tr>
+<tr>
+<td><strong>Comment:</strong></td>
+<td>EXPERT ONLY</td>
+</tr>
+</tbody>
+</table>
+<p>Nominatim uses <a href="https://osm2pgsql.org">osm2pgsql</a> to load the OSM data
+initially into the database. Nominatim comes bundled with a version of
+osm2pgsql that is guaranteed to be compatible. Use this setting to use
+a different binary instead. You should do this only when you know exactly
+what you are doing. If the osm2pgsql version is not compatible, then the
+result is undefined.</p>
+<h4 id="nominatim_wikipedia_data_path">NOMINATIM_WIKIPEDIA_DATA_PATH<a class="headerlink" href="#nominatim_wikipedia_data_path" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Directory with the wikipedia importance data</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (project directory)</td>
+</tr>
+</tbody>
+</table>
+<p>Set a custom location for the
+<a href="../../admin/Import/#wikipediawikidata-rankings">wikipedia ranking file</a>. When
+unset, Nominatim expects the data to be saved in the project directory.</p>
+<h4 id="nominatim_address_level_config">NOMINATIM_ADDRESS_LEVEL_CONFIG<a class="headerlink" href="#nominatim_address_level_config" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Configuration file for rank assignments</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>address-levels.json</td>
+</tr>
+</tbody>
+</table>
+<p>The <em>address level configuration</em> defines the rank assignments for places. See
+<a href="../Ranking/">Place Ranking</a> for a detailed explanation what rank assignments
+are and what the configuration file must look like.</p>
+<p>When a relative path is given, then the file is searched first relative to the
+project directory and then in the global settings directory.</p>
+<h4 id="nominatim_import_style">NOMINATIM_IMPORT_STYLE<a class="headerlink" href="#nominatim_import_style" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Configuration to use for the initial OSM data import</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string or path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>extratags</td>
+</tr>
+</tbody>
+</table>
+<p>The <em>style configuration</em> describes which OSM objects and tags are taken
+into consideration for the search database. Nominatim comes with a set
+of pre-configured styles, that may be configured here.</p>
+<p>You can also write your own custom style and point the setting to the file
+with the style. When a relative path is given, then the style file is searched
+first relative to the project directory and then in the global settings
+directory.</p>
+<p>See <a href="../Import-Styles/">Import Styles</a>
+for more information on the available internal styles and the format of the
+configuration file.</p>
+<h4 id="nominatim_flatnode_file">NOMINATIM_FLATNODE_FILE<a class="headerlink" href="#nominatim_flatnode_file" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Location of osm2pgsql flatnode file</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (do not use a flatnote file)</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>Only change when moving the file physically.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>osm2pgsql flatnode file</code> is file that efficiently stores geographic
+location for OSM nodes. For larger imports it can significantly speed up
+the import. When this option is unset, then osm2pgsql uses a PsotgreSQL table
+to store the locations.</p>
+<p>When a relative path is given, then the flatnode file is created/searched
+relative to the project directory.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The flatnode file is not only used during the initial import but also
+when adding new data with <code>nominatim add-data</code> or <code>nominatim replication</code>.
+Make sure you keep the flatnode file around and this setting unmodified,
+if you plan to add more data or run regular updates.</p>
+</div>
+<h4 id="nominatim_tablespace_">NOMINATIM_TABLESPACE_*<a class="headerlink" href="#nominatim_tablespace_" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Group of settings for distributing the database over tablespaces</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (do not use a table space)</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>no effect after initial import</td>
+</tr>
+</tbody>
+</table>
+<p>Nominatim allows to distribute the search database over up to 10 different
+<a href="https://www.postgresql.org/docs/current/manage-ag-tablespaces.html">PostgreSQL tablespaces</a>.
+If you use this option, make sure that the tablespaces exist before starting
+the import.</p>
+<p>The available tablespace groups are:</p>
+<dl>
+<dt>NOMINATIM_TABLESPACE_SEARCH_DATA</dt>
+<dd>Data used by the geocoding frontend.</dd>
+<dt>NOMINATIM_TABLESPACE_SEARCH_INDEX</dt>
+<dd>Indexes used by the geocoding frontend.</dd>
+<dt>NOMINATIM_TABLESPACE_OSM_DATA</dt>
+<dd>Raw OSM data cache used for import and updates.</dd>
+<dt>NOMINATIM_TABLESPACE_OSM_INDEX</dt>
+<dd>Indexes on the raw OSM data cache.</dd>
+<dt>NOMINATIM_TABLESPACE_PLACE_DATA</dt>
+<dd>Data table with the pre-filtered but still unprocessed OSM data.
+ Used only during imports and updates.</dd>
+<dt>NOMINATIM_TABLESPACE_PLACE_INDEX</dt>
+<dd>Indexes on raw data table. Used only during imports and updates.</dd>
+<dt>NOMINATIM_TABLESPACE_ADDRESS_DATA</dt>
+<dd>Data tables used for computing search terms and addresses of places
+ during import and updates.</dd>
+<dt>NOMINATIM_TABLESPACE_ADDRESS_INDEX</dt>
+<dd>Indexes on the data tables for search term and address computation.
+ Used only for import and updates.</dd>
+<dt>NOMINATIM_TABLESPACE_AUX_DATA</dt>
+<dd>Auxiliary data tables for non-OSM data, e.g. for Tiger house number data.</dd>
+<dt>NOMINATIM_TABLESPACE_AUX_INDEX</dt>
+<dd>Indexes on auxiliary data tables.</dd>
+</dl>
+<h3 id="replication-update-settings">Replication Update Settings<a class="headerlink" href="#replication-update-settings" title="Permanent link">🔗</a></h3>
+<h4 id="nominatim_replication_url">NOMINATIM_REPLICATION_URL<a class="headerlink" href="#nominatim_replication_url" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Base URL of the replication service</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>url</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>https://planet.openstreetmap.org/replication/minute</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim replication --init</code></td>
+</tr>
+</tbody>
+</table>
+<p>Replication services deliver updates to OSM data. Use this setting to choose
+which replication service to use. See <a href="../../admin/Update/">Updates</a> for more
+information on how to set up regular updates.</p>
+<h4 id="nominatim_replication_max_diff">NOMINATIM_REPLICATION_MAX_DIFF<a class="headerlink" href="#nominatim_replication_max_diff" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Maximum amount of data to download per update cycle (in MB)</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>50</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>restart the replication process</td>
+</tr>
+</tbody>
+</table>
+<p>At each update cycle Nominatim downloads diffs until either no more diffs
+are available on the server (i.e. the database is up-to-date) or the limit
+given in this setting is exceeded. Nominatim guarantees to downloads at least
+one diff, if one is available, no matter how small the setting.</p>
+<p>The default for this setting is fairly conservative because Nominatim keeps
+all data downloaded in one cycle in RAM. Using large values in a production
+server may interfere badly with the search frontend because it evicts data
+from RAM that is needed for speedy answers to incoming requests. It is usually
+a better idea to keep this setting lower and run multiple update cycles
+to catch up with updates.</p>
+<p>When catching up in non-production mode, for example after the initial import,
+the setting can easily be changed temporarily on the command line:</p>
+<div class="codehilite"><pre><span></span><code>NOMINATIM_REPLICATION_MAX_DIFF=3000 nominatim replication
+</code></pre></div>
+
+<h4 id="nominatim_replication_update_interval">NOMINATIM_REPLICATION_UPDATE_INTERVAL<a class="headerlink" href="#nominatim_replication_update_interval" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Publication interval of the replication service (in seconds)</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>75</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>restart the replication process</td>
+</tr>
+</tbody>
+</table>
+<p>This setting determines when Nominatim will attempt to download again a new
+update. The time is computed from the publication date of the last diff
+downloaded. Setting this to a slightly higher value than the actual
+publication interval avoids unnecessary rechecks.</p>
+<h4 id="nominatim_replication_recheck_interval">NOMINATIM_REPLICATION_RECHECK_INTERVAL<a class="headerlink" href="#nominatim_replication_recheck_interval" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Wait time to recheck for a pending update (in seconds)</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>60</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>restart the replication process</td>
+</tr>
+</tbody>
+</table>
+<p>When replication updates are run in continuous mode (using <code>nominatim replication</code>),
+this setting determines how long Nominatim waits until it looks for updates
+again when updates were not available on the server.</p>
+<p>Note that this is different from
+<a href="#nominatim_replication_update_interval">NOMINATIM_REPLICATION_UPDATE_INTERVAL</a>.
+Nominatim will never attempt to query for new updates for UPDATE_INTERVAL
+seconds after the current database date. Only after the update interval has
+passed it asks for new data. If then no new data is found, it waits for
+RECHECK_INTERVAL seconds before it attempts again.</p>
+<h3 id="api-settings">API Settings<a class="headerlink" href="#api-settings" title="Permanent link">🔗</a></h3>
+<h4 id="nominatim_cors_noaccesscontrol">NOMINATIM_CORS_NOACCESSCONTROL<a class="headerlink" href="#nominatim_cors_noaccesscontrol" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Send permissive CORS access headers</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>When this setting is enabled, API HTTP responses include the HTTP
+<a href="https://en.wikipedia.org/wiki/CORS">CORS</a> headers
+<code>access-control-allow-origin: *</code> and <code>access-control-allow-methods: OPTIONS,GET</code>.</p>
+<h4 id="nominatim_mapicon_url">NOMINATIM_MAPICON_URL<a class="headerlink" href="#nominatim_mapicon_url" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>URL prefix for static icon images</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>url</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em></td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>When a mapicon URL is configured, then Nominatim includes an additional <code>icon</code>
+field in the responses, pointing to an appropriate icon for the place type.</p>
+<p>Map icons used to be included in Nominatim itself but now have moved to the
+<a href="https://github.com/osm-search/nominatim-ui/">nominatim-ui</a> project. If you
+want the URL to be included in API responses, make the <code>/mapicon</code>
+directory of the project available under a public URL and point this setting
+to the directory.</p>
+<h4 id="nominatim_default_language">NOMINATIM_DEFAULT_LANGUAGE<a class="headerlink" href="#nominatim_default_language" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Language of responses when no language is requested</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>language code</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (use the local language of the feature)</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>Nominatim localizes the place names in responses when the corresponding
+translation is available. Users can request a custom language setting through
+the HTTP accept-languages header or through the explicit parameter
+<a href="../../api/Search/#language-of-results">accept-languages</a>. If neither is
+given, it falls back to this setting. If the setting is also empty, then
+the local languages (in OSM: the name tag without any language suffix) is
+used.</p>
+<h4 id="nominatim_lookup_max_count">NOMINATIM_LOOKUP_MAX_COUNT<a class="headerlink" href="#nominatim_lookup_max_count" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Maximum number of OSM ids accepted by /lookup</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>50</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>The /lookup point accepts list of ids to look up address details for. This
+setting restricts the number of places a user may look up with a single
+request.</p>
+<h4 id="nominatim_polygon_output_max_types">NOMINATIM_POLYGON_OUTPUT_MAX_TYPES<a class="headerlink" href="#nominatim_polygon_output_max_types" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Number of different geometry formats that may be returned</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>integer</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>Nominatim supports returning full geometries of places. The geometries may
+be requested in different formats with one of the
+<a href="../../api/Search/#polygon-output"><code>polygon_*</code> parameters</a>. Use this
+setting to restrict the number of geometry types that may be requested
+with a single query.</p>
+<p>Setting this parameter to 0 disables polygon output completely.</p>
+<h4 id="nominatim_search_within_countries">NOMINATIM_SEARCH_WITHIN_COUNTRIES<a class="headerlink" href="#nominatim_search_within_countries" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Disable search for elements that are not in the country grid</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>no</td>
+</tr>
+<tr>
+<td><strong>After Changes:</strong></td>
+<td>run <code>nominatim refresh --website</code></td>
+</tr>
+</tbody>
+</table>
+<p>Enable to search elements just within countries.</p>
+<p>When enabled, if, despite not finding a point within the static grid of countries, it
+finds a geometry of a region, do not return the geometry.
+Return "Unable to geocode" instead.</p>
+<h4 id="nominatim_serve_legacy_urls">NOMINATIM_SERVE_LEGACY_URLS<a class="headerlink" href="#nominatim_serve_legacy_urls" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Enable serving via URLs with a .php suffix</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><strong>Comment:</strong></td>
+<td>Python frontend only</td>
+</tr>
+</tbody>
+</table>
+<p>When enabled, then endpoints are reachable as <code>/&lt;name&gt;</code> as well as <code>/&lt;name&gt;.php</code>.
+This can be useful when you want to be backwards-compatible with previous
+versions of Nominatim.</p>
+<h4 id="nominatim_api_pool_size">NOMINATIM_API_POOL_SIZE<a class="headerlink" href="#nominatim_api_pool_size" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Number of parallel database connections per worker</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>number</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>10</td>
+</tr>
+<tr>
+<td><strong>Comment:</strong></td>
+<td>Python frontend only</td>
+</tr>
+</tbody>
+</table>
+<p>Sets the maximum number of database connections available for a single instance
+of Nominatim. When configuring the maximum number of connections that your
+PostgreSQL database can handle, you need at least
+<code>NOMINATIM_API_POOL_SIZE</code> * <code>&lt;number of configured workers&gt;</code> connections.
+For configuring the number of workers, refer to the section about
+<a href="../../admin/Deployment-Python/">Deploying the Python frontend</a>.</p>
+<h4 id="nominatim_query_timeout">NOMINATIM_QUERY_TIMEOUT<a class="headerlink" href="#nominatim_query_timeout" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Timeout for SQL queries to the database</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>number (seconds)</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>10</td>
+</tr>
+<tr>
+<td><strong>Comment:</strong></td>
+<td>Python frontend only</td>
+</tr>
+</tbody>
+</table>
+<p>When this timeout is set, then all SQL queries that run longer than the
+specified numbers of seconds will be cancelled and the user receives a
+timeout exceptions. Users of the API see a 503 HTTP error.</p>
+<p>The timeout does ont apply when using the
+<a href="../../library/Low-Level-DB-Access/">low-level DB access</a>
+of the library. A timeout can be manually set, if required.</p>
+<h4 id="nominatim_request_timeout">NOMINATIM_REQUEST_TIMEOUT<a class="headerlink" href="#nominatim_request_timeout" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Timeout for search queries</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>number (seconds)</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>60</td>
+</tr>
+<tr>
+<td><strong>Comment:</strong></td>
+<td>Python frontend only</td>
+</tr>
+</tbody>
+</table>
+<p>When this timeout is set, a search query will finish sending queries
+to the database after the timeout has passed and immediately return the
+results gathered so far.</p>
+<p>Note that under high load you may observe that users receive different results
+than usual without seeing an error. This may cause some confusion.</p>
+<h4 id="nominatim_output_names">NOMINATIM_OUTPUT_NAMES<a class="headerlink" href="#nominatim_output_names" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Specifies order of name tags</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>string: comma-separated list of tag names</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>name:XX,name,brand,official_name:XX,short_name:XX,official_name,short_name,ref</td>
+</tr>
+</tbody>
+</table>
+<p>Specifies the order in which different name tags are used.
+The values in this list determine the preferred order of name variants,
+including language-specific names (in OSM: the name tag with and without any language suffix).</p>
+<p>Comma-separated list, where :XX stands for language suffix
+(e.g. name:en) and no :XX stands for general tags (e.g. name).</p>
+<p>See also <a href="#nominatim_default_language">NOMINATIM_DEFAULT_LANGUAGE</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If NOMINATIM_OUTPUT_NAMES = <code>name:XX,name,short_name:XX,short_name</code> the search follows</p>
+<div class="codehilite"><pre><span></span><code><span class="s">```</span>
+&#39;name&#39;, &#39;short_name&#39;
+<span class="s">```</span>
+</code></pre></div>
+
+<p>if we have no preferred language order for showing search results.</p>
+<p>For languages ['en', 'es'] the search follows</p>
+<div class="codehilite"><pre><span></span><code><span class="s">```</span>
+&#39;name:en&#39;, &#39;name:es&#39;,
+&#39;name&#39;,
+&#39;short_name:en&#39;, &#39;short_name:es&#39;,
+&#39;short_name&#39;
+<span class="s">```</span>
+</code></pre></div>
+
+<p>For those familiar with the internal implementation, the <code>_place_*</code> expansion is added, but to simplify, it is not included in this example.</p>
+</div>
+<h3 id="logging-settings">Logging Settings<a class="headerlink" href="#logging-settings" title="Permanent link">🔗</a></h3>
+<h4 id="nominatim_log_file">NOMINATIM_LOG_FILE<a class="headerlink" href="#nominatim_log_file" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Log requests into a file</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>path</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><em>empty</em> (logging disabled)</td>
+</tr>
+</tbody>
+</table>
+<p>Enable logging of requests into a file with this setting by setting the log
+file where to log to. A relative file name is assumed to be relative to
+the project directory. The format of the log output can be set
+with NOMINATIM_LOG_FORMAT.</p>
+<h4 id="nominatim_log_format">NOMINATIM_LOG_FORMAT<a class="headerlink" href="#nominatim_log_format" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Log requests into a file</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td><a href="https://docs.python.org/3/library/string.html#formatstrings">Python String Format</a> string</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td><code>[{start}] {total_time:.4f} {results_total} {endpoint} "{query_string}"</code></td>
+</tr>
+</tbody>
+</table>
+<p>Describes the content of a log line for a single request. The format
+must be readable by Python's format function. Nominatim provides a number
+of metrics than can be logged. The default set of metrics is the following:</p>
+<div class="simple-table">
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td>time</td>
+<td>Point in time when the request arrived.</td>
+</tr>
+<tr>
+<td>end</td>
+<td>time</td>
+<td>Point in time when the request was done.</td>
+</tr>
+<tr>
+<td>query_start</td>
+<td>time</td>
+<td>Point in time when processing started.</td>
+</tr>
+<tr>
+<td>total_time</td>
+<td>float</td>
+<td>Total time in seconds to handle the request.</td>
+</tr>
+<tr>
+<td>wait_time</td>
+<td>float</td>
+<td>Time in seconds the request waited for a database connection to be available.</td>
+</tr>
+<tr>
+<td>query_time</td>
+<td>float</td>
+<td>Total time in seconds to process the request once a connection was available.</td>
+</tr>
+<tr>
+<td>results_total</td>
+<td>int</td>
+<td>Number of results found.</td>
+</tr>
+<tr>
+<td>endpoint</td>
+<td>string</td>
+<td>API endpoint used.</td>
+</tr>
+<tr>
+<td>query_string</td>
+<td>string</td>
+<td>Raw query string received.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Variables of type 'time' contain a UTC timestamp string in ISO format.</p>
+<p>Nominatim also exposes additional metrics to help with development. These
+are subject to change between versions:</p>
+<div class="simple-table">
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>search_rounds</td>
+<td>int</td>
+<td>Total number of searches executed for the request.</td>
+</tr>
+<tr>
+<td>search_min_penalty</td>
+<td>float</td>
+<td>Minimal possible penalty for the request.</td>
+</tr>
+<tr>
+<td>search_first_result_round</td>
+<td>int</td>
+<td>Number of first search to yield any result.</td>
+</tr>
+<tr>
+<td>search_min_result_penalty</td>
+<td>float</td>
+<td>Minimal penalty by a result found.</td>
+</tr>
+<tr>
+<td>search_best_penalty_round</td>
+<td>int</td>
+<td>Search round that yielded the best penalty result.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="nominatim_debug_sql">NOMINATIM_DEBUG_SQL<a class="headerlink" href="#nominatim_debug_sql" title="Permanent link">🔗</a></h4>
+<table>
+<thead>
+<tr>
+<th>Summary</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Description:</strong></td>
+<td>Enable printing of raw SQL by SQLAlchemy</td>
+</tr>
+<tr>
+<td><strong>Format:</strong></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>Default:</strong></td>
+<td>no</td>
+</tr>
+<tr>
+<td><strong>Comment:</strong></td>
+<td><strong>For developers only.</strong></td>
+</tr>
+</tbody>
+</table>
+<p>This settings enables
+<a href="https://docs.sqlalchemy.org/en/20/core/engines.html#dbengine-logging">SQL debugging</a>
+by SQLAlchemy. This can be helpful when debugging some bugs with internal
+query handling. It should only be used together with the CLI query functions.
+Enabling it for server mode may have unintended consequences. Use the <code>debug</code>
+parameter instead, which prints information on how the search is executed
+including SQL statements.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Nominatim developer community
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "toc.integrate"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -8,7 +8,7 @@ permalink: /downloads/
 You can download the latest development version from
 [github](https://github.com/osm-search/Nominatim).
 
-The latest release is [{{site.data.releases[0].name}}](http://www.nominatim.org/release/Nominatim-{{site.data.releases[0].name}}.tar.bz2).
+The latest release is [{{site.data.releases[0].name}}](https://www.nominatim.org/release/Nominatim-{{site.data.releases[0].name}}.tar.bz2).
 
 For older releases, see the [release history](/release-history).
 
