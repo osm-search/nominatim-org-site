@@ -2033,7 +2033,6 @@ and <a href="https://www.starlette.io/">Starlette</a> as the ASGI framework.</p>
 Nominatim. Please refer to the documentation of
 <a href="https://nginx.org/en/docs/">Nginx</a> for background information on how
 to configure it.</p>
-<h3 id="installing-the-required-packages">Installing the required packages<a class="headerlink" href="#installing-the-required-packages" title="Permanent link">🔗</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>ASGI support in gunicorn requires at least version 25.0. If you need
@@ -2041,6 +2040,16 @@ to work with an older version of gunicorn, please refer to
 <a href="https://nominatim.org/release-docs/5.2/admin/Deployment-Python/">older Nominatim deployment documentation</a>
 to learn how to run gunicorn with uvicorn.</p>
 </div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>UWSGI support in gunicorn 25.2.0+ does not work together
+with recent versions of nginx.
+See <a href="https://github.com/benoitc/gunicorn/discussions/3605">this bug report</a>
+for more information. If you encounter <strong>Incomplete Header</strong> errors,
+either downgrade gunicorn to version 25.1.0 or switch to using the http
+protocol for communication with nginx.</p>
+</div>
+<h3 id="installing-the-required-packages">Installing the required packages<a class="headerlink" href="#installing-the-required-packages" title="Permanent link">🔗</a></h3>
 <p>The Nominatim frontend is best run from its own virtual environment. If
 you have already created one for the database backend during the
 <a href="../Installation/#building-nominatim">installation</a>, you can use that. Otherwise
